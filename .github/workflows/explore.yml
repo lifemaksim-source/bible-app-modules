@@ -1,0 +1,37 @@
+# Studies a source before a builder is written: saves page lists and samples to the «explore» branch.
+name: Разведка источника
+
+on:
+  workflow_dispatch:
+    inputs:
+      args:
+        description: 'Аргументы tools/explore.mjs, например: wikisource "Толковая Библия Лопухина"'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  explore:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Разведка
+        env:
+          ARGS: ${{ inputs.args }}
+        run: eval "node tools/explore.mjs $ARGS"
+      - name: Сохранить в ветку explore
+        run: |
+          git config user.name "modules-bot"
+          git config user.email "modules-bot@users.noreply.github.com"
+          git checkout --orphan explore-new
+          git rm -rq --cached .
+          git add -f explore
+          git commit -qm "Разведка: $(head -c 200 explore/README.md | tr '\n' ' ')"
+          git push -f origin explore-new:explore
