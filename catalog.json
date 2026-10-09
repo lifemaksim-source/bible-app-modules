@@ -105,6 +105,25 @@
       "installedSize": 6189056,
       "sha256": "615823620f9898ffb2a7ed78643a8f3d8ef87cfdd9e40bc8c5c44a1616b16565",
       "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/xref-v1.db.gz"
+    },
+    {
+      "id": "strong",
+      "type": "strongs",
+      "code": "СТР",
+      "name": "Слова оригинала (Стронг)",
+      "language": "en",
+      "numbering": "eng",
+      "year": "",
+      "entries": 14298,
+      "source": "https://github.com/openscriptures/HebrewLexicon",
+      "license": "Public Domain; еврейский словарь — CC BY 4.0",
+      "attribution": "Open Scriptures (Hebrew Lexicon, CC BY 4.0), Strong’s Greek Dictionary, KJV с номерами Стронга — eBible.org",
+      "version": 1,
+      "size": 2448223,
+      "compression": "gzip",
+      "installedSize": 7036928,
+      "sha256": "be47d4bfab00307a240a02f5c8ea7adabf7dc4f845e2987454cf5a32c4c6a08b",
+      "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/strong-v1.db.gz"
     }
   ],
   "sets": [
