@@ -1,0 +1,12 @@
+{
+  "name": "bible-app-modules",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test tools/usfm.test.mjs"
+  },
+  "dependencies": {
+    "sql.js": "^1.14.2"
+  }
+}

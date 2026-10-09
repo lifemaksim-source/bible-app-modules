@@ -1,0 +1,6 @@
+{
+  "base": "https://ebible.org/Scriptures",
+  "modules": [
+    { "id": "web", "ebible": "engwebp", "code": "WEB", "name": "World English Bible", "language": "en", "numbering": "eng", "year": "2000–2020", "license": "Public Domain" }
+  ]
+}

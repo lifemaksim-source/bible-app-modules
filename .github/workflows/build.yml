@@ -1,0 +1,61 @@
+# Builds modules from eBible.org, publishes them to the Release "modules" and updates catalog.json.
+# Run by hand: Actions → Сборка модулей → Run workflow. «list» — показать переводы eBible для выбора id.
+name: Сборка модулей
+
+on:
+  push:
+    branches: [main]
+    paths: ['sources.json', 'tools/**', 'canon/**', '.github/workflows/build.yml']
+  workflow_dispatch:
+    inputs:
+      list:
+        description: 'Только показать переводы eBible (коды языков через пробел, например "rus ukr eng")'
+        required: false
+        default: ''
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Список переводов eBible
+        if: ${{ inputs.list != '' }}
+        run: node tools/build.mjs --list ${{ inputs.list }} | tee list.txt | head -300
+      - name: Сборка
+        id: build
+        if: ${{ inputs.list == '' }}
+        continue-on-error: true
+        run: node tools/build.mjs
+      - name: Опубликовать модули в Release
+        if: ${{ inputs.list == '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view modules >/dev/null 2>&1 || gh release create modules --title "Модули" --notes "Файлы модулей. Каталог — catalog.json в корне репозитория."
+          if ls dist/*.db >/dev/null 2>&1; then gh release upload modules dist/*.db --clobber; fi
+      - name: Обновить catalog.json
+        if: ${{ inputs.list == '' }}
+        run: |
+          git config user.name "modules-bot"
+          git config user.email "modules-bot@users.noreply.github.com"
+          git add catalog.json
+          git diff --cached --quiet || { git commit -m "catalog.json: $(date -u +%F)"; git push; }
+      - name: Итог
+        if: ${{ inputs.list == '' }}
+        run: |
+          cat dist/report.md >> "$GITHUB_STEP_SUMMARY"
+          [ "${{ steps.build.outcome }}" = "success" ]
