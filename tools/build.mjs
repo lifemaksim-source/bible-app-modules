@@ -21,6 +21,27 @@ const BASE = process.env.EBIBLE_BASE || cfg.base;
 const REPO = process.env.GITHUB_REPOSITORY || 'lifemaksim-source/bible-app-modules';
 const args = process.argv.slice(2);
 
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let q = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (q) {
+      if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (ch === '"') q = false;
+      else cell += ch;
+    } else if (ch === '"') q = true;
+    else if (ch === ',') { row.push(cell); cell = ''; }
+    else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+    else if (ch !== '\r') cell += ch;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  rows[0][0] = rows[0][0].replace(/^\uFEFF/, '');
+  return rows;
+}
+
 async function get(url, to) {
   if (url.startsWith('/')) return fs.copyFileSync(url, to);
   const res = await fetch(url, { headers: { 'user-agent': 'bible-app-modules (+https://github.com/lifemaksim-source/bible-app-modules)' } });
@@ -32,10 +53,14 @@ if (args[0] === '--list') {
   const csv = path.join(root, 'work/translations.csv');
   fs.mkdirSync(path.dirname(csv), { recursive: true });
   await get(`${BASE}/translations.csv`, csv);
-  const rows = fs.readFileSync(csv, 'utf8').split(/\r?\n/);
-  console.log(rows[0]);
+  const rows = parseCsv(fs.readFileSync(csv, 'utf8'));
+  const head = rows[0];
+  const col = (n) => head.indexOf(n);
   const langs = args.slice(1);
-  for (const r of rows.slice(1)) if (r && (!langs.length || langs.some((l) => r.includes(l)))) console.log(r);
+  for (const r of rows.slice(1)) {
+    if (langs.length && !langs.includes(r[col('languageCode')])) continue;
+    console.log([r[col('translationId')], r[col('languageCode')], r[col('title')], `redistr=${r[col('Redistributable')]}`, r[col('Copyright')].slice(0, 45), `OT${r[col('OTbooks')]}/NT${r[col('NTbooks')]}`].join(' ; '));
+  }
   process.exit(0);
 }
 
