@@ -19,11 +19,11 @@ async function api(params) {
   return res.json();
 }
 
-async function allPages(prefix) {
+async function allPages(prefix, ns = '0') {
   const titles = [];
   let cont = {};
   for (;;) {
-    const r = await api({ action: 'query', list: 'allpages', apprefix: prefix, aplimit: '500', apnamespace: '0', ...cont });
+    const r = await api({ action: 'query', list: 'allpages', apprefix: prefix, aplimit: '500', apnamespace: ns, ...cont });
     titles.push(...r.query.allpages.map((p) => p.title));
     if (!r.continue) break;
     cont = r.continue;
@@ -40,9 +40,11 @@ const safe = (t) => t.replace(/[\/\\:*?"<>|]+/g, '_').slice(0, 120);
 const [mode, ...args] = process.argv.slice(2);
 const summary = [];
 
-if (mode === 'wikisource') {
+if (mode === 'wikisource' || mode === 'wikisource-ns') {
+  // wikisource-ns <namespace> <prefix…>: e.g. 104 — «Страница:» (pages of scanned books)
+  const ns = mode === 'wikisource-ns' ? args.shift() : '0';
   for (const prefix of args) {
-    const titles = await allPages(prefix);
+    const titles = await allPages(prefix, ns);
     fs.writeFileSync(path.join(out, `${safe(prefix)}.titles.txt`), titles.join('\n') + '\n');
     summary.push(`${prefix}: ${titles.length} страниц`);
     // samples: the root page, the first pages and a spread across the list
