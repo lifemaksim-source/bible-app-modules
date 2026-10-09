@@ -56,9 +56,11 @@ if (args[0] === '--list') {
   const rows = parseCsv(fs.readFileSync(csv, 'utf8'));
   const head = rows[0];
   const col = (n) => head.indexOf(n);
-  const langs = args.slice(1);
+  const pd = args.includes('pd');
+  const langs = args.slice(1).filter((a) => a !== 'pd');
   for (const r of rows.slice(1)) {
     if (langs.length && !langs.includes(r[col('languageCode')])) continue;
+    if (pd && !/public domain/i.test(r[col('Copyright')])) continue;
     console.log([r[col('translationId')], r[col('languageCode')], r[col('title')], `redistr=${r[col('Redistributable')]}`, r[col('Copyright')].slice(0, 45), `OT${r[col('OTbooks')]}/NT${r[col('NTbooks')]}`].join(' ; '));
   }
   process.exit(0);
