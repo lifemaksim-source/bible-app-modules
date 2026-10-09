@@ -58,6 +58,22 @@ if (mode === 'wikisource' || mode === 'wikisource-ns') {
       summary.push(`${p.title}: ${p.text.length} символов`);
     }
   }
+} else if (mode === 'zip') {
+  // zip <url> <file regex>: lists the archive and saves the first 20 kB of matching files
+  const [url, pattern = '.'] = args;
+  const { execFileSync } = await import('node:child_process');
+  const { get } = await import('./common.mjs');
+  const tmp = path.join(root, 'work', 'explore');
+  fs.mkdirSync(tmp, { recursive: true });
+  await get(url, path.join(tmp, 'a.zip'));
+  execFileSync('unzip', ['-q', '-o', path.join(tmp, 'a.zip'), '-d', path.join(tmp, 'x')]);
+  const files = execFileSync('find', [path.join(tmp, 'x'), '-type', 'f'], { encoding: 'utf8' }).trim().split('\n');
+  fs.writeFileSync(path.join(out, 'files.txt'), files.map((f) => `${fs.statSync(f).size}\t${path.relative(path.join(tmp, 'x'), f)}`).join('\n') + '\n');
+  for (const f of files.filter((x) => new RegExp(pattern).test(x)).slice(0, 5)) {
+    fs.writeFileSync(path.join(out, 'pages', safe(path.basename(f)) + '.txt'), fs.readFileSync(f).subarray(0, 20000));
+    summary.push(`${path.basename(f)}: ${fs.statSync(f).size} байт`);
+  }
+  summary.unshift(`${url}: ${files.length} файлов`);
 } else throw new Error('usage: explore.mjs wikisource <prefix…> | pages <title…>');
 
 fs.writeFileSync(path.join(out, 'README.md'), summary.join('\n') + '\n');
