@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { SQL, get, writeInfo } from './common.mjs';
+import { SQL, get } from './common.mjs';
 import { parseBook } from './usfm.mjs';
 import { books, validate } from './validate.mjs';
 
@@ -33,14 +33,18 @@ export async function buildBible(src, { work, base }) {
   if (v.errors.length) throw new Error(`проверка не пройдена:\n  ${v.errors.slice(0, 15).join('\n  ')}`);
 
   const db = new (await SQL()).Database();
-  writeInfo(db, {
-    description: src.name, language: src.language, origin: `eBible.org (${src.ebible})`, license: src.license,
-    year: src.year, code: src.code, numbering: src.numbering, app_format: '1',
-  });
-  db.run(`CREATE TABLE books (book_color TEXT, book_number NUMERIC, short_name TEXT, long_name TEXT, is_present NUMERIC);
+  // Same statements in the same order as the first version of this builder: an unchanged text must give
+  // byte-identical files, otherwise every Bible would get a new version and the app would offer a needless update.
+  db.run(`CREATE TABLE info (name TEXT, value TEXT);
+    CREATE TABLE books (book_color TEXT, book_number NUMERIC, short_name TEXT, long_name TEXT, is_present NUMERIC);
     CREATE TABLE verses (book_number NUMERIC, chapter NUMERIC, verse NUMERIC, text TEXT, PRIMARY KEY (book_number, chapter, verse));
     CREATE TABLE stories (book_number NUMERIC, chapter NUMERIC, verse NUMERIC, order_if_several NUMERIC, title TEXT);
     CREATE TABLE notes (book_number NUMERIC, chapter NUMERIC, verse NUMERIC, text TEXT);`);
+  const info = {
+    description: src.name, language: src.language, origin: `eBible.org (${src.ebible})`, license: src.license,
+    year: src.year, code: src.code, numbering: src.numbering, app_format: '1',
+  };
+  for (const [k, val] of Object.entries(info)) db.run('INSERT INTO info VALUES (?, ?)', [k, val]);
   db.run('BEGIN');
   for (const b of books) {
     const vs = byBook.get(b.n);
