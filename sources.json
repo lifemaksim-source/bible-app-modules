@@ -1,6 +1,10 @@
 {
   "base": "https://ebible.org/Scriptures",
   "modules": [
-    { "id": "web", "ebible": "engwebp", "code": "WEB", "name": "World English Bible", "language": "en", "numbering": "eng", "year": "2000–2020", "license": "Public Domain" }
+    { "id": "web", "ebible": "engwebp", "code": "WEB", "name": "World English Bible", "language": "en", "numbering": "eng", "year": "2000–2020", "license": "Public Domain" },
+    { "id": "bsb", "ebible": "engbsb", "code": "BSB", "name": "Berean Standard Bible", "language": "en", "numbering": "eng", "year": "2023", "license": "Public Domain" },
+    { "id": "asv", "ebible": "eng-asv", "code": "ASV", "name": "American Standard Version", "language": "en", "numbering": "eng", "year": "1901", "license": "Public Domain" },
+    { "id": "bbe", "ebible": "engBBE", "code": "BBE", "name": "Bible in Basic English", "language": "en", "numbering": "eng", "year": "1965", "license": "Public Domain" },
+    { "id": "msb", "ebible": "engmsb", "code": "MSB", "name": "Majority Standard Bible", "language": "en", "numbering": "eng", "year": "2023", "license": "Public Domain" }
   ]
 }
