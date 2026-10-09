@@ -96,3 +96,8 @@ test('strongs: words with numbers per verse', () => {
   assert.deepEqual(w.get(10001001), [['beginning', 'H7225'], ['God', 'H430'], ['created', 'H1254 H853']]);
   assert.equal(w.has(10001002), false);
 });
+
+test('lopukhin: one-chapter books have ids without a chapter', () => {
+  const { entries } = parseFb2('<FictionBook><body><section><title><p>ГЛАВА I</p></title><poem><stanza><v id="n25-Phm_1"><cite><strong>1. Павел</strong></cite></v></stanza></poem><p>1. Узник.</p></section></body></FictionBook>');
+  assert.deepEqual(entries.map((e) => [e.code, e.chapter, e.verse, e.paras[0]]), [['Phm', 1, 1, 'Узник.']]);
+});
