@@ -14,12 +14,14 @@ import zlib from 'node:zlib';
 import { buildBible } from './bible.mjs';
 import { get, parseCsv, root, sha256 } from './common.mjs';
 import { buildCrossrefs } from './crossrefs.mjs';
+import { buildLopukhin } from './lopukhin.mjs';
 
 const cfg = JSON.parse(fs.readFileSync(path.join(root, 'sources.json'), 'utf8'));
 const BASE = process.env.EBIBLE_BASE || cfg.base;
 const REPO = process.env.GITHUB_REPOSITORY || 'lifemaksim-source/bible-app-modules';
 const args = process.argv.slice(2);
-const BUILDERS = { bible: buildBible, crossrefs: buildCrossrefs };
+// A builder per type; commentaries differ by source format.
+const BUILDERS = { bible: buildBible, crossrefs: buildCrossrefs, 'commentary:ccel-fb2': buildLopukhin };
 
 if (args[0] === '--list') {
   const csv = path.join(root, 'work/translations.csv');
@@ -51,8 +53,8 @@ for (const src of cfg.modules) {
   const type = src.type ?? 'bible';
   const work = path.join(root, 'work', src.id);
   try {
-    const build = BUILDERS[type];
-    if (!build) throw new Error(`неизвестный тип модуля: ${type}`);
+    const build = BUILDERS[src.format ? `${type}:${src.format}` : type];
+    if (!build) throw new Error(`неизвестный тип модуля: ${type}${src.format ? ` (${src.format})` : ''}`);
     fs.rmSync(work, { recursive: true, force: true });
     fs.mkdirSync(work, { recursive: true });
     const built = await build(src, { work, base: BASE });
@@ -62,6 +64,11 @@ for (const src of cfg.modules) {
     const bytes = gzip ? zlib.gzipSync(built.bytes, { level: 9 }) : built.bytes;
 
     const hash = sha256(bytes);
+    if (src.draft) {
+      // Built and checked, but not published: waits for a decision (e.g. about the rights of a source).
+      report.push(`📝 ${src.id} (черновик, не опубликован): ${summary}, ${(bytes.length / 1e6).toFixed(1)} МБ` + (warnings.length ? `\n   предупреждений: ${warnings.length}\n   ${warnings.slice(0, 12).join('\n   ')}` : ''));
+      continue;
+    }
     const prev = entries.get(src.id);
     const same = prev?.sha256 === hash;
     const version = !prev ? 1 : same ? prev.version : prev.version + 1;
@@ -83,7 +90,8 @@ for (const src of cfg.modules) {
 
 // Modules removed from sources.json leave the catalog too.
 const order = new Map(cfg.modules.map((m, i) => [m.id, i]));
-const modules = [...entries.values()].filter((m) => order.has(m.id)).sort((a, b) => order.get(a.id) - order.get(b.id));
+const drafts = new Set(cfg.modules.filter((m) => m.draft).map((m) => m.id));
+const modules = [...entries.values()].filter((m) => order.has(m.id) && !drafts.has(m.id)).sort((a, b) => order.get(a.id) - order.get(b.id));
 const sets = (cfg.sets ?? []).map((s) => ({ ...s, modules: s.modules.filter((id) => modules.some((m) => m.id === id)) }));
 fs.writeFileSync(catalogPath, JSON.stringify({ format: 1, updated: new Date().toISOString().slice(0, 10), modules, sets }, null, 2) + '\n');
 fs.writeFileSync(path.join(root, 'dist/report.md'), report.join('\n') + '\n');
