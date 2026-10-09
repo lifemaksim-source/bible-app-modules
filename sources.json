@@ -1,10 +1,14 @@
 {
   "base": "https://ebible.org/Scriptures",
   "modules": [
-    { "id": "web", "ebible": "engwebp", "code": "WEB", "name": "World English Bible", "language": "en", "numbering": "eng", "year": "2000–2020", "license": "Public Domain" },
-    { "id": "bsb", "ebible": "engbsb", "code": "BSB", "name": "Berean Standard Bible", "language": "en", "numbering": "eng", "year": "2023", "license": "Public Domain" },
-    { "id": "asv", "ebible": "eng-asv", "code": "ASV", "name": "American Standard Version", "language": "en", "numbering": "eng", "year": "1901", "license": "Public Domain" },
-    { "id": "bbe", "ebible": "engBBE", "code": "BBE", "name": "Bible in Basic English", "language": "en", "numbering": "eng", "year": "1965", "license": "Public Domain" },
-    { "id": "msb", "ebible": "engmsb", "code": "MSB", "name": "Majority Standard Bible", "language": "en", "numbering": "eng", "year": "2023", "license": "Public Domain" }
+    {"id": "web", "ebible": "engwebp", "code": "WEB", "name": "World English Bible", "language": "en", "numbering": "eng", "year": "2000–2020", "license": "Public Domain"},
+    {"id": "bsb", "ebible": "engbsb", "code": "BSB", "name": "Berean Standard Bible", "language": "en", "numbering": "eng", "year": "2023", "license": "Public Domain"},
+    {"id": "asv", "ebible": "eng-asv", "code": "ASV", "name": "American Standard Version", "language": "en", "numbering": "eng", "year": "1901", "license": "Public Domain"},
+    {"id": "bbe", "ebible": "engBBE", "code": "BBE", "name": "Bible in Basic English", "language": "en", "numbering": "eng", "year": "1965", "license": "Public Domain"},
+    {"id": "msb", "ebible": "engmsb", "code": "MSB", "name": "Majority Standard Bible", "language": "en", "numbering": "eng", "year": "2023", "license": "Public Domain"},
+    {"id": "xref", "type": "crossrefs", "code": "ПМ", "name": "Параллельные места", "language": "*", "numbering": "eng", "license": "CC BY", "attribution": "OpenBible.info", "origin": "OpenBible.info cross references (2024-11-04), via scrollmapper/bible_databases", "homepage": "https://www.openbible.info/labs/cross-references/", "url": "https://raw.githubusercontent.com/scrollmapper/bible_databases/e1b254cef86d0e65b1a5d1a94b8b112d0f296a2c/sources/extras/cross_references.txt", "sha256": "452b263f657d3e721d20341b6b82f1196fc98882d685bd4ef9050ae17f033f82"}
+  ],
+  "sets": [
+    {"id": "start", "name": "Для начала", "description": "Параллельные места к каждому стиху", "modules": ["xref"]}
   ]
 }

@@ -48,7 +48,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release view modules >/dev/null 2>&1 || gh release create modules --title "Модули" --notes "Файлы модулей. Каталог — catalog.json в корне репозитория."
-          if ls dist/*.db >/dev/null 2>&1; then gh release upload modules dist/*.db --clobber; fi
+          shopt -s nullglob; files=(dist/*.db dist/*.db.gz); if [ ${#files[@]} -gt 0 ]; then gh release upload modules "${files[@]}" --clobber; fi
       - name: Обновить catalog.json
         if: ${{ inputs.list == '' }}
         run: |

@@ -47,3 +47,15 @@ test('validate: wrong numbering is an error', () => {
   assert.ok(r.errors.some((e) => e.startsWith('PSA')));
   assert.ok(!validate(new Map([[230, psa]]), 'eng').errors.some((e) => e.startsWith('PSA: глав')));
 });
+
+import { parseCrossrefs, parseOsis } from './crossrefs.mjs';
+
+test('crossrefs: OSIS references and ranges', () => {
+  assert.deepEqual(parseOsis('Ps.23.1'), { book: 230, chapter: 23, verse: 1 });
+  assert.deepEqual(parseOsis('1John.4.8'), { book: 690, chapter: 4, verse: 8 });
+  assert.equal(parseOsis('Tob.1.1'), null);
+  const { rows, dropped } = parseCrossrefs('From Verse\tTo Verse\tVotes\nGen.1.1\tProv.8.22-Prov.8.30\t59\nGen.1.1\tJohn.1.1\t-3\nGen.1.1\tPs.33.6-Ps.34.2\t5\n');
+  assert.equal(dropped.votes, 1);
+  assert.deepEqual(rows[0], [10, 1, 1, 240, 8, 22, 8, 30, 59]);
+  assert.deepEqual(rows[1], [10, 1, 1, 230, 33, 6, 34, 2, 5]);
+});
