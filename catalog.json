@@ -10,13 +10,13 @@
       "language": "en",
       "numbering": "eng",
       "year": "2000–2020",
-      "license": "Public Domain",
       "scope": "bible",
       "verses": 31098,
+      "source": "https://ebible.org/find/details.php?id=engwebp",
+      "license": "Public Domain",
       "version": 1,
       "size": 5586944,
       "sha256": "1009f9c7b6f3e04607673539d0803cbc765e98e8613a42fb61dd988bebedfb7a",
-      "source": "https://ebible.org/find/details.php?id=engwebp",
       "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/web-v1.db"
     },
     {
@@ -27,13 +27,13 @@
       "language": "en",
       "numbering": "eng",
       "year": "2023",
-      "license": "Public Domain",
       "scope": "bible",
       "verses": 31086,
+      "source": "https://ebible.org/find/details.php?id=engbsb",
+      "license": "Public Domain",
       "version": 1,
       "size": 5758976,
       "sha256": "d6e37ba039185f94f78ec932848edf3bddbb093ed212a9b8c0609f197668e23a",
-      "source": "https://ebible.org/find/details.php?id=engbsb",
       "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/bsb-v1.db"
     },
     {
@@ -44,13 +44,13 @@
       "language": "en",
       "numbering": "eng",
       "year": "1901",
-      "license": "Public Domain",
       "scope": "bible",
       "verses": 31086,
+      "source": "https://ebible.org/find/details.php?id=eng-asv",
+      "license": "Public Domain",
       "version": 1,
       "size": 5603328,
       "sha256": "f219337b1d0809827b06f8207cce099a49fe686390248857f248c3d35620866b",
-      "source": "https://ebible.org/find/details.php?id=eng-asv",
       "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/asv-v1.db"
     },
     {
@@ -61,13 +61,13 @@
       "language": "en",
       "numbering": "eng",
       "year": "1965",
-      "license": "Public Domain",
       "scope": "bible",
       "verses": 31102,
+      "source": "https://ebible.org/find/details.php?id=engBBE",
+      "license": "Public Domain",
       "version": 1,
       "size": 5627904,
       "sha256": "781f506b5dff48812524eb8db04a5b30d7b6003c767242004c4bb7fbe2372e4c",
-      "source": "https://ebible.org/find/details.php?id=engBBE",
       "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/bbe-v1.db"
     },
     {
@@ -78,14 +78,43 @@
       "language": "en",
       "numbering": "eng",
       "year": "2023",
-      "license": "Public Domain",
       "scope": "bible",
       "verses": 31098,
+      "source": "https://ebible.org/find/details.php?id=engmsb",
+      "license": "Public Domain",
       "version": 1,
       "size": 5328896,
       "sha256": "6a2755e572e0f076d4e4d09af1ef45d4a716427ab897211c7c0acb62d2aa5103",
-      "source": "https://ebible.org/find/details.php?id=engmsb",
       "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/msb-v1.db"
+    },
+    {
+      "id": "xref",
+      "type": "crossrefs",
+      "code": "ПМ",
+      "name": "Параллельные места",
+      "language": "*",
+      "numbering": "eng",
+      "year": "",
+      "links": 341385,
+      "source": "https://www.openbible.info/labs/cross-references/",
+      "license": "CC BY",
+      "attribution": "OpenBible.info",
+      "version": 1,
+      "size": 2600535,
+      "compression": "gzip",
+      "installedSize": 6189056,
+      "sha256": "615823620f9898ffb2a7ed78643a8f3d8ef87cfdd9e40bc8c5c44a1616b16565",
+      "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/xref-v1.db.gz"
+    }
+  ],
+  "sets": [
+    {
+      "id": "start",
+      "name": "Для начала",
+      "description": "Параллельные места к каждому стиху",
+      "modules": [
+        "xref"
+      ]
     }
   ]
 }
