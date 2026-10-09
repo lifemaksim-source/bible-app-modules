@@ -40,8 +40,10 @@ test('inline strips markers', () => {
 });
 
 test('validate: wrong numbering is an error', () => {
-  const mal = new Map();
-  for (let c = 1; c <= 4; c++) for (let v = 1; v <= 5; v++) mal.set(`${c}:${v}`, 'x');
-  const r = validate(new Map([[460, mal]]), 'rus');
-  assert.ok(r.errors.some((e) => e.startsWith('MAL')));
+  // The Synodal Psalter has 151 psalms, the English one 150.
+  const psa = new Map();
+  for (let c = 1; c <= 150; c++) for (let v = 1; v <= 3; v++) psa.set(`${c}:${v}`, 'x');
+  const r = validate(new Map([[230, psa]]), 'rus');
+  assert.ok(r.errors.some((e) => e.startsWith('PSA')));
+  assert.ok(!validate(new Map([[230, psa]]), 'eng').errors.some((e) => e.startsWith('PSA: глав')));
 });
