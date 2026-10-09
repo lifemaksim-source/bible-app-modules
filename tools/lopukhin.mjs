@@ -26,7 +26,7 @@ export const CODES = {
   // «Jud» is Jude here: the book of Judith (deuterocanonical) is not downloaded
   Jude: 720, Iud: 720, Jud: 720, Jud_Ep: 720,
   Rom: 520, Rim: 520, '1Cor': 530, '1Kor': 530, '2Cor': 540, '2Kor': 540, Gal: 550, Eph: 560, Efes: 560, Ef: 560, Phil: 570, Phi: 570, Phlp: 570, Flp: 570, Col: 580, Kol: 580,
-  '1Thes': 590, '1Thess': 590, '1Sol': 590, '1Fes': 590, '2Thes': 600, '2Thess': 600, '2Sol': 600, '2Fes': 600, '1Tim': 610, '2Tim': 620, Tit: 630, Phlm: 640, Flm: 640, Heb: 650, Evr: 650,
+  '1Thes': 590, '1Thess': 590, '1Sol': 590, '1Fes': 590, '2Thes': 600, '2Thess': 600, '2Sol': 600, '2Fes': 600, '1Tim': 610, '2Tim': 620, Tit: 630, Phlm: 640, Phm: 640, Flm: 640, Heb: 650, Evr: 650,
   Rev: 730, Apok: 730, Otkr: 730, Ap: 730,
 };
 const SKIP = /^(Tob|Iudif|Judith|Wis|Sir|Bar|JerEp|EpJer|[123]Mak|[123]Mac|[23]Ezd|Prem|Varuh)$/;
@@ -85,7 +85,8 @@ export function parseFb2(input) {
   let mode = 'book';
   let quote = 0; // inside <cite>/<poem>: Bible text, not commentary
   let lastWasVerse = false;
-  const re = /<title>([\s\S]*?)<\/title>|<(p|v)\s+id="n\d+-([^"_]+)_([^"_]+)_(\d+)"[^>]*>[\s\S]*?<\/\2>|<(cite|poem)\b[^>]*>|<\/(cite|poem)>|<p>([\s\S]*?)<\/p>/g;
+  // verse ids: «n32-Jona_I_1», «n19-Ps_22_1», one-chapter books without a chapter: «n25-Phm_1»
+  const re = /<title>([\s\S]*?)<\/title>|<(p|v)\s+id="n\d+-([^"_]+?)(?:_([IVXLC]+|\d+))?_(\d+)"[^>]*>[\s\S]*?<\/\2>|<(cite|poem)\b[^>]*>|<\/(cite|poem)>|<p>([\s\S]*?)<\/p>/g;
   for (let m; (m = re.exec(body)); ) {
     if (m[1] !== undefined) {
       // a title: «Глава IV», «Псалом 22» — a new chapter; anything else (book or section names) — an introduction
@@ -97,7 +98,7 @@ export function parseFb2(input) {
       continue;
     }
     if (m[3] !== undefined) {
-      const [vCode, vChap, vVerse] = [m[3], roman(m[4]), Number(m[5])];
+      const [vCode, vChap, vVerse] = [m[3], m[4] ? roman(m[4]) : 1, Number(m[5])];
       codes.add(vCode);
       if (vCode !== code) {
         // a new book: what was collected is its introduction and the introduction of its first chapter
