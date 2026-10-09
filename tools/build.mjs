@@ -66,7 +66,7 @@ for (const src of cfg.modules) {
     const hash = sha256(bytes);
     if (src.draft) {
       // Built and checked, but not published: waits for a decision (e.g. about the rights of a source).
-      report.push(`📝 ${src.id} (черновик, не опубликован): ${summary}, ${(bytes.length / 1e6).toFixed(1)} МБ` + (warnings.length ? `\n   предупреждений: ${warnings.length}\n   ${warnings.slice(0, 12).join('\n   ')}` : ''));
+      report.push(`📝 ${src.id} (черновик, не опубликован): ${summary}, ${(bytes.length / 1e6).toFixed(1)} МБ` + (warnings.length ? `\n   предупреждений: ${warnings.length}\n   ${warnings.slice(0, 80).join('\n   ')}` : ''));
       continue;
     }
     const prev = entries.get(src.id);

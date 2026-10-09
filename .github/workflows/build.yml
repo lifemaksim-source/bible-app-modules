@@ -60,5 +60,5 @@ jobs:
         if: ${{ inputs.list == '' }}
         run: |
           cat dist/report.md >> "$GITHUB_STEP_SUMMARY"
-          echo "::notice title=Отчёт::$(cat dist/report.md | head -c 1500 | sed ':a;N;$!ba;s/\n/ | /g')"
+          echo "::notice title=Отчёт::$(cat dist/report.md | head -c 6000 | sed ':a;N;$!ba;s/\n/ | /g')"
           [ "${{ steps.build.outcome }}" = "success" ]

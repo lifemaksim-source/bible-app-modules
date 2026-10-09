@@ -16,19 +16,20 @@ import { books, canon } from './validate.mjs';
 // 2–3 Ezd, JerEp) are not in the app and are skipped on purpose.
 export const CODES = {
   Gen: 10, Ex: 20, Exod: 20, Lev: 30, Num: 40, Deu: 50, Deut: 50, Jos: 60, Josh: 60, Judg: 70, Jdg: 70, Ruth: 80, Rut: 80,
-  '1Kings': 90, '1Sam': 90, '1Sm': 90, '1Ts': 90, '2Kings': 100, '2Sam': 100, '2Sm': 100, '2Ts': 100, '3Kings': 110, '1Kgs': 110, '3Ts': 110, '4Kings': 120, '2Kgs': 120, '4Ts': 120,
+  '1Kings': 90, '1King': 90, '1Sam': 90, '1Sm': 90, '1Ts': 90, '2Kings': 100, '2King': 100, '2Sam': 100, '2Sm': 100, '2Ts': 100, '3Kings': 110, '3King': 110, '1Kgs': 110, '3Ts': 110, '4Kings': 120, '4King': 120, '2Kgs': 120, '4Ts': 120,
   '1Par': 130, '1Chr': 130, '2Par': 140, '2Chr': 140, '1Ezd': 150, Ezr: 150, Ezra: 150, Neh: 160, Esth: 190, Est: 190, Job: 220, Iov: 220,
   Ps: 230, Psaltyr: 230, Psa: 230, Prov: 240, Pr: 240, Eccl: 250, Ecc: 250, Song: 260, Sng: 260, Isa: 290, Is: 290, Jer: 300, Ier: 300, Lam: 310, Plach: 310,
-  Eze: 330, Ezek: 330, Iez: 330, Dan: 340, Hos: 350, Os: 350, Joe: 360, Joel: 360, Amo: 370, Am: 370, Oba: 380, Avd: 380, Jona: 390, Jon: 390, Ion: 390,
-  Mic: 400, Mih: 400, Nah: 410, Naum: 410, Hab: 420, Avv: 420, Zep: 430, Sof: 430, Hag: 440, Agg: 440, Zec: 450, Zah: 450, Mal: 460,
+  Eze: 330, Ese: 330, Ezek: 330, Iez: 330, Dan: 340, Hos: 350, Os: 350, Joe: 360, Joel: 360, Amo: 370, Amos: 370, Am: 370, Oba: 380, Obad: 380, Avd: 380, Jona: 390, Jon: 390, Ion: 390,
+  Mic: 400, Mih: 400, Nah: 410, Naum: 410, Hab: 420, Avv: 420, Zep: 430, Zeph: 430, Sof: 430, Hag: 440, Agg: 440, Zec: 450, Zeh: 450, Zah: 450, Mal: 460,
   Mf: 470, Mt: 470, Matt: 470, Mk: 480, Mr: 480, Mark: 480, Lk: 490, Luke: 490, Jn: 500, In: 500, Ioan: 500, John: 500, Act: 510, Acts: 510, Deyan: 510,
-  Jas: 660, Iak: 660, Jac: 660, '1Pet': 670, '1Pt': 670, '2Pet': 680, '2Pt': 680, '1Jn': 690, '1In': 690, '1Ioan': 690, '2Jn': 700, '2In': 700, '2Ioan': 700, '3Jn': 710, '3In': 710, '3Ioan': 710,
-  Jude: 720, Iud: 720, Jud_Ep: 720,
-  Rom: 520, Rim: 520, '1Cor': 530, '1Kor': 530, '2Cor': 540, '2Kor': 540, Gal: 550, Eph: 560, Efes: 560, Ef: 560, Phil: 570, Phlp: 570, Flp: 570, Col: 580, Kol: 580,
+  Jas: 660, Iak: 660, Jac: 660, Jak: 660, '1Pet': 670, '1Pt': 670, '2Pet': 680, '2Pt': 680, '1Jn': 690, '1In': 690, '1Ioan': 690, '2Jn': 700, '2In': 700, '2Ioan': 700, '3Jn': 710, '3In': 710, '3Ioan': 710,
+  // «Jud» is Jude here: the book of Judith (deuterocanonical) is not downloaded
+  Jude: 720, Iud: 720, Jud: 720, Jud_Ep: 720,
+  Rom: 520, Rim: 520, '1Cor': 530, '1Kor': 530, '2Cor': 540, '2Kor': 540, Gal: 550, Eph: 560, Efes: 560, Ef: 560, Phil: 570, Phi: 570, Phlp: 570, Flp: 570, Col: 580, Kol: 580,
   '1Thes': 590, '1Thess': 590, '1Sol': 590, '1Fes': 590, '2Thes': 600, '2Thess': 600, '2Sol': 600, '2Fes': 600, '1Tim': 610, '2Tim': 620, Tit: 630, Phlm: 640, Flm: 640, Heb: 650, Evr: 650,
   Rev: 730, Apok: 730, Otkr: 730, Ap: 730,
 };
-const SKIP = /^(Tob|Jud|Iudif|Wis|Sir|Bar|JerEp|EpJer|[123]Mak|[123]Mac|[23]Ezd|Prem|Varuh)$/;
+const SKIP = /^(Tob|Iudif|Judith|Wis|Sir|Bar|JerEp|EpJer|[123]Mak|[123]Mac|[23]Ezd|Prem|Varuh)$/;
 
 const ROMAN = { I: 1, V: 5, X: 10, L: 50, C: 100 };
 export function roman(s) {
@@ -141,6 +142,7 @@ export function parseFb2(input) {
 export async function buildLopukhin(src, { work }) {
   const all = [];
   const unknown = new Set();
+  const seen = [];
   for (const [i, url] of src.files.entries()) {
     const zip = path.join(work, `${i}.zip`);
     await get(url, zip);
@@ -149,6 +151,7 @@ export async function buildLopukhin(src, { work }) {
     for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.fb2'))) {
       const { entries, codes } = parseFb2(fs.readFileSync(path.join(dir, f)));
       for (const c of codes) if (!(c in CODES) && !SKIP.test(c)) unknown.add(`${c} (${f})`);
+      seen.push(`${f.replace(/\.fb2$/, '')}: ${[...codes].map((c) => `${c}→${CODES[c] ?? '—'}`).join(' ')}`);
       all.push(...entries.filter((e) => CODES[e.code]).map((e) => ({ ...e, book: CODES[e.code] })));
     }
   }
@@ -194,6 +197,6 @@ export async function buildLopukhin(src, { work }) {
     bytes,
     meta: { code: src.code, name: src.name, language: src.language, numbering: src.numbering, year: src.year, entries: all.length, source: src.homepage },
     summary: `${all.length} толкований, главы с толкованиями: ${covered} из ${total}`,
-    warnings,
+    warnings: [...warnings, ...seen],
   };
 }
