@@ -34,7 +34,9 @@ jobs:
       - run: npm test
       - name: Список переводов eBible
         if: ${{ inputs.list != '' }}
-        run: node tools/build.mjs --list ${{ inputs.list }} | tee list.txt | head -300
+        run: |
+          node tools/build.mjs --list ${{ inputs.list }} > list.txt
+          echo "::notice title=Список::$(head -c 3000 list.txt | sed ':a;N;$!ba;s/\n/ | /g')"
       - name: Сборка
         id: build
         if: ${{ inputs.list == '' }}
@@ -58,4 +60,5 @@ jobs:
         if: ${{ inputs.list == '' }}
         run: |
           cat dist/report.md >> "$GITHUB_STEP_SUMMARY"
+          echo "::notice title=Отчёт::$(cat dist/report.md | head -c 1500 | sed ':a;N;$!ba;s/\n/ | /g')"
           [ "${{ steps.build.outcome }}" = "success" ]
