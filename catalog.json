@@ -1,0 +1,23 @@
+{
+  "format": 1,
+  "updated": "2026-10-09",
+  "modules": [
+    {
+      "id": "web",
+      "type": "bible",
+      "code": "WEB",
+      "name": "World English Bible",
+      "language": "en",
+      "numbering": "eng",
+      "year": "2000–2020",
+      "license": "Public Domain",
+      "scope": "bible",
+      "verses": 31098,
+      "version": 1,
+      "size": 5586944,
+      "sha256": "1009f9c7b6f3e04607673539d0803cbc765e98e8613a42fb61dd988bebedfb7a",
+      "source": "https://ebible.org/find/details.php?id=engwebp",
+      "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/web-v1.db"
+    }
+  ]
+}
