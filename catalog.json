@@ -124,15 +124,35 @@
       "installedSize": 7036928,
       "sha256": "be47d4bfab00307a240a02f5c8ea7adabf7dc4f845e2987454cf5a32c4c6a08b",
       "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/strong-v1.db.gz"
+    },
+    {
+      "id": "lopukhin",
+      "type": "commentary",
+      "code": "ЛОП",
+      "name": "Толковая Библия Лопухина",
+      "language": "ru",
+      "numbering": "rus",
+      "year": "1904–1913",
+      "entries": 14918,
+      "source": "https://www.ccel.org/contrib/ru/",
+      "license": "Общественное достояние (текст 1904–1913)",
+      "attribution": "«Библиотечка православной литературы» (ccel.org), вычитка И. Грушина",
+      "version": 1,
+      "size": 6764299,
+      "compression": "gzip",
+      "installedSize": 28086272,
+      "sha256": "236d6ea8f9124aa03fc23085ab8661297333641cc37c6d6bb1f0cb2b8825c347",
+      "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/lopukhin-v1.db.gz"
     }
   ],
   "sets": [
     {
       "id": "start",
       "name": "Для начала",
-      "description": "Параллельные места к каждому стиху",
+      "description": "Параллельные места и толкования Лопухина к каждому стиху",
       "modules": [
-        "xref"
+        "xref",
+        "lopukhin"
       ]
     }
   ]
