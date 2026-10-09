@@ -85,3 +85,14 @@ test('lopukhin: verses, ranges, introductions', () => {
     [2, 1, 2, 1, 'Кит.'],
   ]);
 });
+
+import { topic, wordsOfBook } from './strongs.mjs';
+
+test('strongs: words with numbers per verse', () => {
+  assert.equal(topic('H0512'), 'H512');
+  assert.equal(topic('G26'), 'G26');
+  const usfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the \\w beginning|strong="H7225"\\w* \\w God|strong="H0430"\\w* \\w created|strong="H1254 H0853"\\w*.\\f + \\fr 1.1 \\ft note\\f*\n\\v 2 And the earth.\n';
+  const w = wordsOfBook(usfm, 10);
+  assert.deepEqual(w.get(10001001), [['beginning', 'H7225'], ['God', 'H430'], ['created', 'H1254 H853']]);
+  assert.equal(w.has(10001002), false);
+});

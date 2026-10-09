@@ -15,13 +15,14 @@ import { buildBible } from './bible.mjs';
 import { get, parseCsv, root, sha256 } from './common.mjs';
 import { buildCrossrefs } from './crossrefs.mjs';
 import { buildLopukhin } from './lopukhin.mjs';
+import { buildStrongs } from './strongs.mjs';
 
 const cfg = JSON.parse(fs.readFileSync(path.join(root, 'sources.json'), 'utf8'));
 const BASE = process.env.EBIBLE_BASE || cfg.base;
 const REPO = process.env.GITHUB_REPOSITORY || 'lifemaksim-source/bible-app-modules';
 const args = process.argv.slice(2);
 // A builder per type; commentaries differ by source format.
-const BUILDERS = { bible: buildBible, crossrefs: buildCrossrefs, 'commentary:ccel-fb2': buildLopukhin };
+const BUILDERS = { bible: buildBible, crossrefs: buildCrossrefs, strongs: buildStrongs, 'commentary:ccel-fb2': buildLopukhin };
 
 if (args[0] === '--list') {
   const csv = path.join(root, 'work/translations.csv');
