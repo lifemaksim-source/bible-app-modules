@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "updated": "2026-10-09",
+  "updated": "2026-10-10",
   "modules": [
     {
       "id": "web",
@@ -133,16 +133,16 @@
       "language": "ru",
       "numbering": "rus",
       "year": "1904–1913",
-      "entries": 14918,
+      "entries": 14908,
       "source": "https://www.ccel.org/contrib/ru/",
       "license": "Общественное достояние (текст 1904–1913)",
       "attribution": "«Библиотечка православной литературы» (ccel.org), вычитка И. Грушина",
-      "version": 1,
-      "size": 6764299,
+      "version": 2,
+      "size": 6759228,
       "compression": "gzip",
-      "installedSize": 28086272,
-      "sha256": "236d6ea8f9124aa03fc23085ab8661297333641cc37c6d6bb1f0cb2b8825c347",
-      "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/lopukhin-v1.db.gz"
+      "installedSize": 28069888,
+      "sha256": "e04625b3f8a7acdadf5f446ab9743327d0061081ba50928d1eea07f33f5de297",
+      "url": "https://github.com/lifemaksim-source/bible-app-modules/releases/download/modules/lopukhin-v2.db.gz"
     }
   ],
   "sets": [
