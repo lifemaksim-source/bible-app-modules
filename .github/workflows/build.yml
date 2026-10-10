@@ -12,6 +12,11 @@ on:
         description: 'Только показать переводы eBible (коды языков через пробел, например "rus ukr eng")'
         required: false
         default: ''
+      dry:
+        description: 'Только собрать и проверить: не публиковать файлы и каталог'
+        type: boolean
+        required: false
+        default: false
 
 concurrency:
   group: build
@@ -25,8 +30,8 @@ jobs:
     runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to Ubuntu 26 on 2026-10-19
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
@@ -43,14 +48,14 @@ jobs:
         continue-on-error: true
         run: node tools/build.mjs
       - name: Опубликовать модули в Release
-        if: ${{ inputs.list == '' }}
+        if: ${{ inputs.list == '' && !inputs.dry && github.ref == 'refs/heads/main' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release view modules >/dev/null 2>&1 || gh release create modules --title "Модули" --notes "Файлы модулей. Каталог — catalog.json в корне репозитория."
           shopt -s nullglob; files=(dist/*.db dist/*.db.gz); if [ ${#files[@]} -gt 0 ]; then gh release upload modules "${files[@]}" --clobber; fi
       - name: Обновить catalog.json
-        if: ${{ inputs.list == '' }}
+        if: ${{ inputs.list == '' && !inputs.dry && github.ref == 'refs/heads/main' }}
         run: |
           git config user.name "modules-bot"
           git config user.email "modules-bot@users.noreply.github.com"
