@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node tools/build.mjs",
-    "test": "node --test tools/usfm.test.mjs"
+    "test": "node --test tools/usfm.test.mjs tools/lopukhin.test.mjs"
   },
   "dependencies": {
     "sql.js": "^1.14.2"

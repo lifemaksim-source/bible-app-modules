@@ -66,15 +66,40 @@ export function decode(input) {
   return new TextDecoder(enc === 'windows-1251' || enc === 'cp1251' ? 'windows-1251' : 'utf-8').decode(input);
 }
 
+/** One file may contain several books/bodies. Notes also occur as a final section of each book. */
+function commentaryBodies(text) {
+  const bodies = [];
+  for (const match of text.matchAll(/<body\b([^>]*)>([\s\S]*?)<\/body>/g)) {
+    if (/\bname\s*=\s*["'](?:notes|footnotes|Примечания)["']/i.test(match[1])) continue;
+    const body = match[2];
+    const headers = /<section\b[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
+    let from = 0;
+    let clean = '';
+    for (let header; (header = headers.exec(body)); ) {
+      if (!/^Примечания$/i.test(plain(header[1]))) continue;
+      clean += body.slice(from, header.index);
+      const sections = /<\/?section\b[^>]*>/g;
+      sections.lastIndex = headers.lastIndex;
+      let depth = 1;
+      for (let tag; depth && (tag = sections.exec(body)); ) depth += tag[0].startsWith('</') ? -1 : 1;
+      if (depth) throw new Error('FB2: не закрыт раздел примечаний');
+      from = sections.lastIndex;
+      headers.lastIndex = from;
+    }
+    bodies.push(clean + body.slice(from));
+  }
+  if (!bodies.length) throw new Error('FB2: основной body не найден');
+  return bodies.join('\n');
+}
+
 /**
  * Parses one FB2 file (a Buffer, or text already decoded).
  * @returns {{ entries: {code:string, chapter:number, verse:number, chapterTo:number, verseTo:number, paras:string[]}[], codes: Set<string> }}
  */
 export function parseFb2(input) {
   const text = decode(input).replace(/\r/g, '');
-  const start = text.indexOf('<body');
-  const notes = text.indexOf('<body name="notes"');
-  const body = text.slice(start, notes > start ? notes : undefined);
+  // Note ids (e.g. n01-Gen_789) look like one-chapter verse ids, but are not verses.
+  const body = commentaryBodies(text);
   const entries = [];
   const codes = new Set();
   let code = null; // current book code
@@ -82,17 +107,33 @@ export function parseFb2(input) {
   // Paragraphs whose verse is not known yet: after a book or section title (bookIntro) or after a chapter title (chapIntro).
   let bookIntro = [];
   let chapIntro = [];
+  let chapterHeading = null;
+  let chapterGroup = null;
   let mode = 'book';
   let quote = 0; // inside <cite>/<poem>: Bible text, not commentary
   let lastWasVerse = false;
+  const flushChapterIntro = () => {
+    if (!code || !chapterHeading || !chapIntro.length) return;
+    entries.push({ code, chapter: chapterHeading.from, verse: 0, chapterTo: chapterHeading.to, verseTo: 0, paras: chapIntro });
+    chapIntro = [];
+  };
   // verse ids: «n32-Jona_I_1», «n19-Ps_22_1», one-chapter books without a chapter: «n25-Phm_1»
   const re = /<title>([\s\S]*?)<\/title>|<(p|v)\s+id="n\d+-([^"_]+?)(?:_([IVXLC]+|\d+))?_(\d+)"[^>]*>[\s\S]*?<\/\2>|<(cite|poem)\b[^>]*>|<\/(cite|poem)>|<p>([\s\S]*?)<\/p>/g;
   for (let m; (m = re.exec(body)); ) {
     if (m[1] !== undefined) {
-      // a title: «Глава IV», «Псалом 22» — a new chapter; anything else (book or section names) — an introduction
+      // A heading may cover several psalms; its introduction belongs to all of them,
+      // not just to the chapter of the next verse anchor.
       if (!quote) {
+        flushChapterIntro();
         target = null;
-        mode = /^(?:Глава|Псалом)\s+([IVXLC]+|\d+)\b/i.test(plain(m[1])) ? 'chapter' : 'book';
+        const heading = plain(m[1]).match(/^(?:Глав[аы]|Псал(?:ом|мы))\s+([IVXLC]+|\d+)(?:\s*(?:[–—-]|и)\s*([IVXLC]+|\d+))?\b/i);
+        chapterHeading = heading ? { from: roman(heading[1].toUpperCase()), to: roman((heading[2] ?? heading[1]).toUpperCase()) } : null;
+        if (chapterHeading) {
+          if (chapterHeading.to > chapterHeading.from) chapterGroup = chapterHeading;
+          else if (chapterGroup && chapterHeading.from >= chapterGroup.from && chapterHeading.to <= chapterGroup.to) chapterHeading = chapterGroup;
+          else chapterGroup = null;
+        }
+        mode = chapterHeading ? 'chapter' : 'book';
       }
       lastWasVerse = false;
       continue;
@@ -104,9 +145,9 @@ export function parseFb2(input) {
         // a new book: what was collected is its introduction and the introduction of its first chapter
         code = vCode;
         if (bookIntro.length) entries.push({ code, chapter: 0, verse: 0, chapterTo: 0, verseTo: 0, paras: bookIntro });
-        if (chapIntro.length) entries.push({ code, chapter: vChap, verse: 0, chapterTo: vChap, verseTo: 0, paras: chapIntro });
+        if (chapIntro.length) entries.push({ code, chapter: chapterHeading?.from ?? vChap, verse: 0, chapterTo: chapterHeading?.to ?? vChap, verseTo: 0, paras: chapIntro });
       } else if (bookIntro.length || chapIntro.length) {
-        entries.push({ code, chapter: vChap, verse: 0, chapterTo: vChap, verseTo: 0, paras: [...bookIntro, ...chapIntro] });
+        entries.push({ code, chapter: chapterHeading?.from ?? vChap, verse: 0, chapterTo: chapterHeading?.to ?? vChap, verseTo: 0, paras: [...bookIntro, ...chapIntro] });
       }
       bookIntro = [];
       chapIntro = [];
@@ -137,7 +178,39 @@ export function parseFb2(input) {
       else (mode === 'chapter' ? chapIntro : bookIntro).push(p);
     }
   }
+  flushChapterIntro();
   return { entries: entries.filter((e) => e.paras.length), codes };
+}
+
+/** Chapter introductions count as commentary too; validate both ends of every range. */
+export function coverage(all) {
+  const ref = canon('rus');
+  const warnings = [];
+  const invalid = [];
+  let covered = 0;
+  let total = 0;
+  for (const b of books) {
+    const counts = ref[b.n];
+    total += counts.length;
+    const have = new Set();
+    for (const e of all.filter((e) => e.book === b.n)) {
+      if (e.chapter === 0 && e.verse === 0 && e.chapterTo === 0 && e.verseTo === 0) continue; // book introduction
+      const validEnd = (chapter, verse) => Number.isInteger(chapter) && chapter >= 1 && chapter <= counts.length &&
+        Number.isInteger(verse) && verse >= 0 && verse <= counts[chapter - 1];
+      if (!validEnd(e.chapter, e.verse) || !validEnd(e.chapterTo, e.verseTo) ||
+          e.chapterTo < e.chapter || (e.chapterTo === e.chapter && e.verseTo < e.verse)) {
+        invalid.push(`${b.usfm} ${e.chapter}:${e.verse}–${e.chapterTo}:${e.verseTo}`);
+        continue;
+      }
+      if (e.paras.some((p) => p.trim())) {
+        for (let chapter = e.chapter; chapter <= e.chapterTo; chapter++) have.add(chapter);
+      }
+    }
+    covered += have.size;
+    const missing = counts.map((_, i) => i + 1).filter((chapter) => !have.has(chapter));
+    if (missing.length) warnings.push(`${b.usfm}: толкования к ${have.size} из ${counts.length} глав; нет: ${missing.join(', ')}`);
+  }
+  return { covered, total, warnings, invalid };
 }
 
 export async function buildLopukhin(src, { work }) {
@@ -149,8 +222,10 @@ export async function buildLopukhin(src, { work }) {
     await get(url, zip);
     const dir = path.join(work, String(i));
     execFileSync('unzip', ['-q', '-o', zip, '-d', dir]);
-    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.fb2'))) {
-      const { entries, codes } = parseFb2(fs.readFileSync(path.join(dir, f)));
+    // unzip may retain legacy-encoded filenames; preserve their bytes for filesystem access.
+    for (const file of fs.readdirSync(dir, { encoding: 'buffer' }).filter((x) => x.subarray(-4).toString() === '.fb2')) {
+      const f = file.toString().includes('\uFFFD') ? new TextDecoder('ibm866').decode(file) : file.toString();
+      const { entries, codes } = parseFb2(fs.readFileSync(Buffer.concat([Buffer.from(`${dir}/`), file])));
       for (const c of codes) if (!(c in CODES) && !SKIP.test(c)) unknown.add(`${c} (${f})`);
       seen.push(`${f.replace(/\.fb2$/, '')}: ${[...codes].map((c) => `${c}→${CODES[c] ?? '—'}`).join(' ')}`);
       all.push(...entries.filter((e) => CODES[e.code]).map((e) => ({ ...e, book: CODES[e.code] })));
@@ -158,21 +233,8 @@ export async function buildLopukhin(src, { work }) {
   }
   if (unknown.size) throw new Error(`неизвестные коды книг: ${[...unknown].join(', ')}`);
 
-  // Coverage: which chapters of each book have comments.
-  const ref = canon('rus');
-  const warnings = [];
-  let covered = 0;
-  let total = 0;
-  for (const b of books) {
-    const chapters = ref[b.n].length;
-    total += chapters;
-    const have = new Set(all.filter((e) => e.book === b.n && e.verse > 0).map((e) => e.chapter));
-    covered += have.size;
-    if (have.size === 0) warnings.push(`${b.usfm}: нет толкований`);
-    else if (have.size < chapters) warnings.push(`${b.usfm}: толкования к ${have.size} из ${chapters} глав`);
-    const bad = all.filter((e) => e.book === b.n && e.verse > 0 && (e.chapter > chapters || e.verse > (ref[b.n][e.chapter - 1] ?? 0) + 2));
-    if (bad.length) warnings.push(`${b.usfm}: ${bad.length} ссылок на несуществующие стихи, напр. ${bad[0].chapter}:${bad[0].verse}`);
-  }
+  const { covered, total, warnings, invalid } = coverage(all);
+  if (invalid.length) throw new Error(`ссылки на несуществующие стихи (${invalid.length}): ${invalid.join(', ')}`);
   if (covered < total * 0.8) throw new Error(`толкования только к ${covered} из ${total} глав:\n  ${warnings.slice(0, 15).join('\n  ')}`);
 
   const db = new (await SQL()).Database();
@@ -197,7 +259,7 @@ export async function buildLopukhin(src, { work }) {
   return {
     bytes,
     meta: { code: src.code, name: src.name, language: src.language, numbering: src.numbering, year: src.year, entries: all.length, source: src.homepage },
-    summary: `${all.length} толкований, главы с толкованиями: ${covered} из ${total}`,
+    summary: `${all.length} толкований, главы с толкованиями: ${covered} из ${total}, ссылок на несуществующие стихи: 0`,
     warnings: [...warnings, ...seen],
   };
 }
