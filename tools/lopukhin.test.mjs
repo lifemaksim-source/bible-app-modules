@@ -26,12 +26,25 @@ test('псалом с арабским номером главы', () => {
 });
 
 test('общая статья к псалмам 134 и 135 привязана к обоим, даже если следующий якорь в 135-м', () => {
-  for (const heading of ['Псалмы 134 и 135', 'Псалмы 134–135', 'Псалмы CXXXIV–CXXXV']) {
-    const { entries } = parseFb2(fb2(`<title><p>${heading}</p></title><p>Оба псалма — торжественный гимн.</p>
+  for (const heading of ['Псалом 134–135', 'Псалмы 134 и 135', 'Псалмы CXXXIV–CXXXV']) {
+    const { entries } = parseFb2(fb2(`<title><p>${heading}</p></title><cite>${verse('n19-Ps_134_1')}</cite>
+      <title><p>Псалом 135</p></title><p>Оба псалма — торжественный гимн.</p>
       <cite>${verse('n19-Ps_135_1')}</cite>`));
     assert.deepEqual(entries.map((e) => [e.chapter, e.verse, e.chapterTo, e.verseTo]), [[134, 0, 135, 0]]);
     assert.equal(coverage(entries.map((e) => ({ ...e, book: 230 }))).covered, 2);
   }
+});
+
+test('примечания внутри основного body исключаются, все книги в одном FB2 сохраняются', () => {
+  const body = (code, num, chapter, note) => `<body name="${code}"><section><title><p>Глава ${chapter}</p></title>
+    <cite>${verse(`n${num}-${code}_${chapter}_1`)}</cite><p>Толкование ${code}.</p></section>
+    <section><title><p>Примечания</p></title><p id="n${num}-${code}_${note}">Сноска</p><p>Продолжение сноски.</p>
+      <section><p>Вложенное пояснение.</p></section></section></body>`;
+  const { entries, codes } = parseFb2(`<FictionBook>${body('Gen','01','I',789)}${body('Isa','23','I',237)}${body('Jn','04','III',72)}</FictionBook>`);
+  assert.deepEqual([...codes], ['Gen', 'Isa', 'Jn']);
+  assert.deepEqual(entries.map((e) => [e.code, e.chapter, e.verse, e.paras]), [
+    ['Gen',1,1,['Толкование Gen.']], ['Isa',1,1,['Толкование Isa.']], ['Jn',3,1,['Толкование Jn.']],
+  ]);
 });
 
 test('вступление без стиховых якорей не переносится в следующий псалом и не теряется в конце', () => {

@@ -66,16 +66,40 @@ export function decode(input) {
   return new TextDecoder(enc === 'windows-1251' || enc === 'cp1251' ? 'windows-1251' : 'utf-8').decode(input);
 }
 
+/** One file may contain several books/bodies. Notes also occur as a final section of each book. */
+function commentaryBodies(text) {
+  const bodies = [];
+  for (const match of text.matchAll(/<body\b([^>]*)>([\s\S]*?)<\/body>/g)) {
+    if (/\bname\s*=\s*["'](?:notes|footnotes|Примечания)["']/i.test(match[1])) continue;
+    const body = match[2];
+    const headers = /<section\b[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
+    let from = 0;
+    let clean = '';
+    for (let header; (header = headers.exec(body)); ) {
+      if (!/^Примечания$/i.test(plain(header[1]))) continue;
+      clean += body.slice(from, header.index);
+      const sections = /<\/?section\b[^>]*>/g;
+      sections.lastIndex = headers.lastIndex;
+      let depth = 1;
+      for (let tag; depth && (tag = sections.exec(body)); ) depth += tag[0].startsWith('</') ? -1 : 1;
+      if (depth) throw new Error('FB2: не закрыт раздел примечаний');
+      from = sections.lastIndex;
+      headers.lastIndex = from;
+    }
+    bodies.push(clean + body.slice(from));
+  }
+  if (!bodies.length) throw new Error('FB2: основной body не найден');
+  return bodies.join('\n');
+}
+
 /**
  * Parses one FB2 file (a Buffer, or text already decoded).
  * @returns {{ entries: {code:string, chapter:number, verse:number, chapterTo:number, verseTo:number, paras:string[]}[], codes: Set<string> }}
  */
 export function parseFb2(input) {
   const text = decode(input).replace(/\r/g, '');
-  // FB2 notes are separate bodies; their names are not necessarily "notes".
-  // Their ids (e.g. n01-Gen_789) look like one-chapter verse ids, but are not verses.
-  const body = text.match(/<body\b[^>]*>([\s\S]*?)<\/body>/)?.[1];
-  if (body === undefined) throw new Error('FB2: основной body не найден');
+  // Note ids (e.g. n01-Gen_789) look like one-chapter verse ids, but are not verses.
+  const body = commentaryBodies(text);
   const entries = [];
   const codes = new Set();
   let code = null; // current book code
@@ -84,6 +108,7 @@ export function parseFb2(input) {
   let bookIntro = [];
   let chapIntro = [];
   let chapterHeading = null;
+  let chapterGroup = null;
   let mode = 'book';
   let quote = 0; // inside <cite>/<poem>: Bible text, not commentary
   let lastWasVerse = false;
@@ -103,6 +128,11 @@ export function parseFb2(input) {
         target = null;
         const heading = plain(m[1]).match(/^(?:Глав[аы]|Псал(?:ом|мы))\s+([IVXLC]+|\d+)(?:\s*(?:[–—-]|и)\s*([IVXLC]+|\d+))?\b/i);
         chapterHeading = heading ? { from: roman(heading[1].toUpperCase()), to: roman((heading[2] ?? heading[1]).toUpperCase()) } : null;
+        if (chapterHeading) {
+          if (chapterHeading.to > chapterHeading.from) chapterGroup = chapterHeading;
+          else if (chapterGroup && chapterHeading.from >= chapterGroup.from && chapterHeading.to <= chapterGroup.to) chapterHeading = chapterGroup;
+          else chapterGroup = null;
+        }
         mode = chapterHeading ? 'chapter' : 'book';
       }
       lastWasVerse = false;
@@ -192,8 +222,10 @@ export async function buildLopukhin(src, { work }) {
     await get(url, zip);
     const dir = path.join(work, String(i));
     execFileSync('unzip', ['-q', '-o', zip, '-d', dir]);
-    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.fb2'))) {
-      const { entries, codes } = parseFb2(fs.readFileSync(path.join(dir, f)));
+    // unzip may retain legacy-encoded filenames; preserve their bytes for filesystem access.
+    for (const file of fs.readdirSync(dir, { encoding: 'buffer' }).filter((x) => x.subarray(-4).toString() === '.fb2')) {
+      const f = file.toString().includes('\uFFFD') ? new TextDecoder('ibm866').decode(file) : file.toString();
+      const { entries, codes } = parseFb2(fs.readFileSync(Buffer.concat([Buffer.from(`${dir}/`), file])));
       for (const c of codes) if (!(c in CODES) && !SKIP.test(c)) unknown.add(`${c} (${f})`);
       seen.push(`${f.replace(/\.fb2$/, '')}: ${[...codes].map((c) => `${c}→${CODES[c] ?? '—'}`).join(' ')}`);
       all.push(...entries.filter((e) => CODES[e.code]).map((e) => ({ ...e, book: CODES[e.code] })));
