@@ -1,0 +1,29 @@
+https://www.crosswire.org/sword/modules/ModInfo.jsp?modName=JapKougo
+HTTP 200
+
+
+ The SWORD Project 
+ FAQ 
+ News 
+ Applications 
+ Module Add-ins 
+ Developers' Wiki 
+ Mailing Lists 
+ Contact 
+ About 
+ Sun Oct 11 16:10:05 EDT 2026
+ Developers' Quickstart (Code and Instructions) 
+ Publishers 
+ Module Name JapKougo 
+ Book Name Japanese Kougo-yaku 口語訳「聖書」(1954/1955年版) 
+ Module Type Bible 
+ Language ja 
+ Module Version 1.1 (2008-06-08) 
+ Minimum SWORD Version 1.5.12 
+ Download Size ?.?? b 
+ Install Size 2.22 MB 
+ About This text is based on the Kougo-yaku 口語訳「聖書」, Colloquial Japanese Bible Published in 1954/1955 (whose copyright is expired at 1 Jan 2006). 
+ Distribution License Public Domain 
+ Download [download] 
+ Source code for ModInfo.jsp 
+The SWORD Project; P. O. Box 2528; Tempe, AZ 85280-2528 USA

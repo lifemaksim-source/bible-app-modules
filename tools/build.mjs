@@ -12,6 +12,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 
 import { buildBible } from './bible.mjs';
+import { buildSword } from './sword.mjs';
 import { get, parseCsv, root, sha256 } from './common.mjs';
 import { buildCrossrefs } from './crossrefs.mjs';
 import { buildLopukhin } from './lopukhin.mjs';
@@ -22,7 +23,7 @@ const BASE = process.env.EBIBLE_BASE || cfg.base;
 const REPO = process.env.GITHUB_REPOSITORY || 'lifemaksim-source/bible-app-modules';
 const args = process.argv.slice(2);
 // A builder per type; commentaries differ by source format.
-const BUILDERS = { bible: buildBible, crossrefs: buildCrossrefs, strongs: buildStrongs, 'commentary:ccel-fb2': buildLopukhin };
+const BUILDERS = { bible: buildBible, 'bible:sword': buildSword, crossrefs: buildCrossrefs, strongs: buildStrongs, 'commentary:ccel-fb2': buildLopukhin };
 
 if (args[0] === '--list') {
   const csv = path.join(root, 'work/translations.csv');
@@ -41,6 +42,7 @@ if (args[0] === '--list') {
   process.exit(0);
 }
 
+const onlyDrafts = args.includes('--drafts');
 const only = args[0] === '--only' ? args[1] : null;
 const catalogPath = path.join(root, 'catalog.json');
 const old = fs.existsSync(catalogPath) ? JSON.parse(fs.readFileSync(catalogPath, 'utf8')) : { format: 1, modules: [] };
@@ -51,6 +53,7 @@ let failed = 0;
 
 for (const src of cfg.modules) {
   if (only && src.id !== only) continue;
+  if (onlyDrafts && !src.draft) continue;
   const type = src.type ?? 'bible';
   const work = path.join(root, 'work', src.id);
   try {
@@ -66,6 +69,8 @@ for (const src of cfg.modules) {
 
     const hash = sha256(bytes);
     if (src.draft) {
+      fs.mkdirSync(path.join(root, 'dist/drafts'), { recursive: true });
+      fs.writeFileSync(path.join(root, 'dist/drafts', `${src.id}.db${gzip ? '.gz' : ''}`), bytes);
       // Built and checked, but not published: waits for a decision (e.g. about the rights of a source).
       report.push(`📝 ${src.id} (черновик, не опубликован): ${summary}, ${(bytes.length / 1e6).toFixed(1)} МБ` + (warnings.length ? `\n   предупреждений: ${warnings.length}\n   ${warnings.slice(0, 80).join('\n   ')}` : ''));
       continue;
@@ -76,7 +81,7 @@ for (const src of cfg.modules) {
     const file = `${src.id}-v${version}.db${gzip ? '.gz' : ''}`;
     if (!same) fs.writeFileSync(path.join(root, 'dist', file), bytes);
     entries.set(src.id, {
-      id: src.id, type, ...meta, license: src.license, ...(src.attribution ? { attribution: src.attribution } : {}),
+      id: src.id, type, ...meta, license: src.license, ...(src.attribution ? { attribution: src.attribution } : {}), ...(src.licenseUrl ? { licenseUrl: src.licenseUrl } : {}), ...(src.noncommercial ? { noncommercial: true } : {}),
       version, size: bytes.length, ...(gzip ? { compression: 'gzip', installedSize: built.bytes.length } : {}), sha256: hash, url: `https://github.com/${REPO}/releases/download/modules/${file}`,
     });
     report.push(

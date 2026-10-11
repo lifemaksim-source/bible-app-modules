@@ -35,6 +35,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install -r tools/requirements-sword.txt
       - run: npm ci
       - run: npm test
       - name: Список переводов eBible

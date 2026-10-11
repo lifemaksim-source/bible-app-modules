@@ -1,0 +1,60 @@
+name: Проверка языков
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: languages-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: python3 -m pip install -r tools/requirements-sword.txt
+      - run: npm test
+      - name: Собрать черновики и сравнить нумерацию
+        id: build
+        continue-on-error: true
+        run: node tools/build.mjs --drafts
+      - name: Сохранить отчёты
+        if: always()
+        run: |
+          mkdir -p language-results
+          cp dist/report.md language-results/README.md
+          for f in work/*/numbering.json work/*/names.json; do
+            [ -f "$f" ] || continue
+            id=$(basename "$(dirname "$f")")
+            mkdir -p "language-results/$id"
+            cp "$f" "language-results/$id/"
+          done
+          cat language-results/README.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: language-drafts
+          path: |
+            language-results
+            dist/drafts
+      - name: Отчёт для проверки в своей ветке
+        if: always() && github.ref == 'refs/heads/codex/languages'
+        run: |
+          git config user.name "modules-bot"
+          git config user.email "modules-bot@users.noreply.github.com"
+          git checkout --orphan languages-result-new
+          git rm -rq --cached .
+          git add -f language-results
+          git commit -qm "Нумерация языков: $GITHUB_SHA"
+          git push -f origin languages-result-new:codex/languages-results
+      - name: Результат проверки
+        if: always()
+        run: test '${{ steps.build.outcome }}' = success
