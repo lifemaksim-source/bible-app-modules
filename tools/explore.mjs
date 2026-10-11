@@ -78,7 +78,16 @@ if (mode === 'wikisource' || mode === 'wikisource-ns') {
     }
   }
   fs.writeFileSync(path.join(out, 'files.txt'), lists.join('\n') + '\n');
-} else throw new Error('usage: explore.mjs wikisource <prefix…> | pages <title…>');
+} else if (mode === 'urls') {
+  // urls <url…>: the text of web pages (tags removed) — e.g. license pages of translations
+  for (const [i, url] of args.entries()) {
+    const res = await fetch(url, { headers: { 'user-agent': UA } });
+    const html = await res.text();
+    const text = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n');
+    fs.writeFileSync(path.join(out, 'pages', `${String(i).padStart(2, '0')}-${safe(url.replace(/^https?:\/\//, ''))}.txt`), `${url}\nHTTP ${res.status}\n\n${text}`);
+    summary.push(`${url}: HTTP ${res.status}, ${text.length} символов`);
+  }
+} else throw new Error('usage: explore.mjs wikisource <prefix…> | pages <title…> | zip <regex> <url…> | urls <url…>');
 
 fs.writeFileSync(path.join(out, 'README.md'), summary.join('\n') + '\n');
 console.log(summary.join('\n'));
