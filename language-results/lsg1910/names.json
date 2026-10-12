@@ -1,0 +1,332 @@
+{
+  "10": {
+    "h": "GENÈSE",
+    "toc1": "Genèse",
+    "toc2": "Genèse"
+  },
+  "20": {
+    "h": "EXODE",
+    "toc1": "Exode",
+    "toc2": "Exode"
+  },
+  "30": {
+    "h": "LÉVITIQUE",
+    "toc1": "Lévitique",
+    "toc2": "Lévitique"
+  },
+  "40": {
+    "h": "NOMBRES",
+    "toc1": "Nombres",
+    "toc2": "Nombres"
+  },
+  "50": {
+    "h": "DEUTÉRONOME",
+    "toc1": "Deutéronome",
+    "toc2": "Deutéronome"
+  },
+  "60": {
+    "h": "JOSUÉ",
+    "toc1": "Josué",
+    "toc2": "Josué"
+  },
+  "70": {
+    "h": "JUGES",
+    "toc1": "Juges",
+    "toc2": "Juges"
+  },
+  "80": {
+    "h": "RUTH",
+    "toc1": "Ruth",
+    "toc2": "Ruth"
+  },
+  "90": {
+    "h": "1 SAMUEL",
+    "toc1": "Premier livre de Samuel",
+    "toc2": "1 Samuel"
+  },
+  "100": {
+    "h": "2 SAMUEL",
+    "toc1": "Deuxième livre de Samuel",
+    "toc2": "2 Samuel"
+  },
+  "110": {
+    "h": "1 ROIS",
+    "toc1": "Premier livre des Rois",
+    "toc2": "1 Rois"
+  },
+  "120": {
+    "h": "2 ROIS",
+    "toc1": "Second livre des Rois",
+    "toc2": "2 Rois"
+  },
+  "130": {
+    "h": "1 CHRONIQUES",
+    "toc1": "Premier livre des Chroniques",
+    "toc2": "1 Chroniques"
+  },
+  "140": {
+    "h": "2 CHRONIQUES",
+    "toc1": "Second livre des Chroniques",
+    "toc2": "2 Chroniques"
+  },
+  "150": {
+    "h": "ESDRAS",
+    "toc1": "Esdras",
+    "toc2": "Esdras"
+  },
+  "160": {
+    "h": "NÉHÉMIE",
+    "toc1": "Néhémie",
+    "toc2": "Néhémie"
+  },
+  "190": {
+    "h": "ESTHER",
+    "toc1": "Esther",
+    "toc2": "Esther"
+  },
+  "220": {
+    "h": "JOB",
+    "toc1": "Job",
+    "toc2": "Job"
+  },
+  "230": {
+    "h": "PSAUMES",
+    "toc1": "Psaumes",
+    "toc2": "Psaumes"
+  },
+  "240": {
+    "h": "PROVERBES",
+    "toc1": "Proverbes",
+    "toc2": "Proverbes"
+  },
+  "250": {
+    "h": "ECCLÉSIASTE",
+    "toc1": "L'Ecclésiaste",
+    "toc2": "Ecclésiaste"
+  },
+  "260": {
+    "h": "CANTIQUE DES CANTIQUES",
+    "toc1": "Cantique des Cantiques",
+    "toc2": "Cantique"
+  },
+  "290": {
+    "h": "ÉSAÏE",
+    "toc1": "Ésaïe",
+    "toc2": "Ésaïe"
+  },
+  "300": {
+    "h": "JÉRÉMIE",
+    "toc1": "Jérémie",
+    "toc2": "Jérémie"
+  },
+  "310": {
+    "h": "LAMENTATIONS",
+    "toc1": "Lamentations",
+    "toc2": "Lamentations"
+  },
+  "330": {
+    "h": "ÉZÉCHIEL",
+    "toc1": "Ézékiel",
+    "toc2": "Ézékiel"
+  },
+  "340": {
+    "h": "DANIEL",
+    "toc1": "Daniel",
+    "toc2": "Daniel"
+  },
+  "350": {
+    "h": "OSÉE",
+    "toc1": "Osée",
+    "toc2": "Osée"
+  },
+  "360": {
+    "h": "JOËL",
+    "toc1": "Joël",
+    "toc2": "Joël"
+  },
+  "370": {
+    "h": "AMOS",
+    "toc1": "Amos",
+    "toc2": "Amos"
+  },
+  "380": {
+    "h": "ABDIAS",
+    "toc1": "Abdias",
+    "toc2": "Abdias"
+  },
+  "390": {
+    "h": "JONAS",
+    "toc1": "Jonas",
+    "toc2": "Jonas"
+  },
+  "400": {
+    "h": "MICHÉE",
+    "toc1": "Michée",
+    "toc2": "Michée"
+  },
+  "410": {
+    "h": "NAHUM",
+    "toc1": "Nahum",
+    "toc2": "Nahum"
+  },
+  "420": {
+    "h": "HABACUC",
+    "toc1": "Habacuc",
+    "toc2": "Habacuc"
+  },
+  "430": {
+    "h": "SOPHONIE",
+    "toc1": "Sophonie",
+    "toc2": "Sophonie"
+  },
+  "440": {
+    "h": "AGGÉE",
+    "toc1": "Aggée",
+    "toc2": "Aggée"
+  },
+  "450": {
+    "h": "ZACHARIE",
+    "toc1": "Zacharie",
+    "toc2": "Zacharie"
+  },
+  "460": {
+    "h": "MALACHIE",
+    "toc1": "Malachie",
+    "toc2": "Malachie"
+  },
+  "470": {
+    "h": "MATTHIEU",
+    "toc1": "Évangile selon Matthieu",
+    "toc2": "Matthieu"
+  },
+  "480": {
+    "h": "MARC",
+    "toc1": "Évangile selon Marc",
+    "toc2": "Marc"
+  },
+  "490": {
+    "h": "LUC",
+    "toc1": "Évangile selon Luc",
+    "toc2": "Luc"
+  },
+  "500": {
+    "h": "JEAN",
+    "toc1": "Évangile selon Jean",
+    "toc2": "Jean"
+  },
+  "510": {
+    "h": "ACTES",
+    "toc1": "Actes des Apôtres",
+    "toc2": "Actes"
+  },
+  "520": {
+    "h": "ROMAINS",
+    "toc1": "Épître de Paul aux Romains",
+    "toc2": "Romains"
+  },
+  "530": {
+    "h": "1 CORINTHIENS",
+    "toc1": "Première épître de Paul aux Corinthiens",
+    "toc2": "1 Corinthiens"
+  },
+  "540": {
+    "h": "2 CORINTHIENS",
+    "toc1": "Seconde épître de Paul aux Corinthiens",
+    "toc2": "2 Corinthiens"
+  },
+  "550": {
+    "h": "GALATES",
+    "toc1": "Épître de Paul aux Galates",
+    "toc2": "Galates"
+  },
+  "560": {
+    "h": "ÉPHÉSIENS",
+    "toc1": "Épître de Paul aux Éphésiens",
+    "toc2": "Éphésiens"
+  },
+  "570": {
+    "h": "PHILIPPIENS",
+    "toc1": "Épître de Paul aux Philippiens",
+    "toc2": "Philippiens"
+  },
+  "580": {
+    "h": "COLOSSIENS",
+    "toc1": "Épître de Paul aux Colossiens",
+    "toc2": "Colossiens"
+  },
+  "590": {
+    "h": "1 THESSALONICIENS",
+    "toc1": "Première épître de Paul aux Thessaloniciens",
+    "toc2": "1 Thessaloniciens"
+  },
+  "600": {
+    "h": "2 THESSALONICIENS",
+    "toc1": "Second épître de Paul aux Thessaloniciens",
+    "toc2": "2 Thessaloniciens"
+  },
+  "610": {
+    "h": "1 TIMOTHÉE",
+    "toc1": "Première épître de Paul à Timothée",
+    "toc2": "1 Timothée"
+  },
+  "620": {
+    "h": "2 THIMOTHÉE",
+    "toc1": "Second épître de Paul à Timothée",
+    "toc2": "2 Timothée"
+  },
+  "630": {
+    "h": "TITE",
+    "toc1": "Épître de Paul à Tite",
+    "toc2": "Tite"
+  },
+  "640": {
+    "h": "PHILÉMON",
+    "toc1": "Épître de Paul à Philémon",
+    "toc2": "Philémon"
+  },
+  "650": {
+    "h": "HÉBREUX",
+    "toc1": "Épître aux Hébreux",
+    "toc2": "Hébreux"
+  },
+  "660": {
+    "h": "JACQUES",
+    "toc1": "Épître de Jacques",
+    "toc2": "Jacques"
+  },
+  "670": {
+    "h": "1 PIERRE",
+    "toc1": "Première épître de Pierre",
+    "toc2": "1 Pierre"
+  },
+  "680": {
+    "h": "2 PIERRE",
+    "toc1": "Seconde épître de Pierre",
+    "toc2": "2 Pierre"
+  },
+  "690": {
+    "h": "1 JEAN",
+    "toc1": "Première épître de Jean",
+    "toc2": "1 Jean"
+  },
+  "700": {
+    "h": "2 JEAN",
+    "toc1": "Seconde épître de Jean",
+    "toc2": "2 Jean"
+  },
+  "710": {
+    "h": "3 JEAN",
+    "toc1": "Troisième épître de Jean",
+    "toc2": "3 Jean"
+  },
+  "720": {
+    "h": "JUDE",
+    "toc1": "Épître de Jude",
+    "toc2": "Jude"
+  },
+  "730": {
+    "h": "APOCALYPSE",
+    "toc1": "Apocalypse de Jean",
+    "toc2": "Apocalypse"
+  }
+}

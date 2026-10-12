@@ -1,0 +1,398 @@
+{
+  "10": {
+    "h": "YARADILIŞ",
+    "toc1": "Yaradiliş Kitabi",
+    "toc2": "Yaradiliş",
+    "toc3": "Yar"
+  },
+  "20": {
+    "h": "ÇIXIŞ",
+    "toc1": "Çixiş Kitabi",
+    "toc2": "Çixiş",
+    "toc3": "Çıx"
+  },
+  "30": {
+    "h": "LEVİLİLƏR",
+    "toc1": "Levililər Kitabi",
+    "toc2": "Levililər",
+    "toc3": "Lev"
+  },
+  "40": {
+    "h": "SAYLAR",
+    "toc1": "Saylar Kitabi",
+    "toc2": "Saylar",
+    "toc3": "Say"
+  },
+  "50": {
+    "h": "QANUNUN TƏKRARI",
+    "toc1": "Qanunun Təkrari Kitabi",
+    "toc2": "Qanunun Təkrari",
+    "toc3": "Qanun"
+  },
+  "60": {
+    "h": "YEŞUA",
+    "toc1": "Yeşua Peyğəmbərin Kitabi",
+    "toc2": "Yeşua",
+    "toc3": "Yeşua"
+  },
+  "70": {
+    "h": "HAKİMLƏR",
+    "toc1": "Hakimlər Kitabi",
+    "toc2": "Hakimlər",
+    "toc3": "Hak"
+  },
+  "80": {
+    "h": "RUT",
+    "toc1": "Rut Kitabi",
+    "toc2": "Rut",
+    "toc3": "Rut"
+  },
+  "90": {
+    "h": "BİRİNCİ ŞAMUEL",
+    "toc1": "Birinci Şamuel Kitabi",
+    "toc2": "Birinci Şamuel",
+    "toc3": "1Şam"
+  },
+  "100": {
+    "h": "İKİNCİ ŞAMUEL",
+    "toc1": "Ikinci Şamuel Kitabi",
+    "toc2": "Ikinci Şamuel",
+    "toc3": "2Şam"
+  },
+  "110": {
+    "h": "BİRİNCİ PADŞAHLAR",
+    "toc1": "Birinci Padşahlar Kitabi",
+    "toc2": "Birinci Padşahlar",
+    "toc3": "1Pad"
+  },
+  "120": {
+    "h": "İKİNCİ PADŞAHLAR",
+    "toc1": "Ikinci Padşahlar Kitabi",
+    "toc2": "Ikinci Padşahlar",
+    "toc3": "2Pad"
+  },
+  "130": {
+    "h": "BİRİNCİ SALNAMƏLƏR",
+    "toc1": "Birinci Salnamələr Kitabi",
+    "toc2": "Birinci Salnamələr",
+    "toc3": "1Saln"
+  },
+  "140": {
+    "h": "İKİNCİ SALNAMƏLƏR",
+    "toc1": "Ikinci Salnamələr Kitabi",
+    "toc2": "Ikinci Salnamələr",
+    "toc3": "2Saln"
+  },
+  "150": {
+    "h": "EZRA",
+    "toc1": "Ezra Kitabi",
+    "toc2": "Ezra",
+    "toc3": "Ezra"
+  },
+  "160": {
+    "h": "NEHEMYA",
+    "toc1": "Nehemya Kitabi",
+    "toc2": "Nehemya",
+    "toc3": "Neh"
+  },
+  "190": {
+    "h": "ESTER",
+    "toc1": "Ester Kitabi",
+    "toc2": "Ester",
+    "toc3": "Est"
+  },
+  "220": {
+    "h": "ƏYYUB",
+    "toc1": "Əyyub Kitabi",
+    "toc2": "Əyyub",
+    "toc3": "Əyy"
+  },
+  "230": {
+    "h": "ZƏBUR",
+    "toc1": "Zəbur",
+    "toc2": "Zəbur",
+    "toc3": "Zəb"
+  },
+  "240": {
+    "h": "SÜLEYMANIN MƏSƏLLƏRİ",
+    "toc1": "Süleymanin Məsəlləri",
+    "toc2": "Süleymanin Məsəlləri",
+    "toc3": "Sül"
+  },
+  "250": {
+    "h": "VAİZ",
+    "toc1": "VaizKitabi",
+    "toc2": "Vaiz",
+    "toc3": "Vaiz"
+  },
+  "260": {
+    "h": "NƏĞMƏLƏR NƏĞMƏSİ",
+    "toc1": "Nəğmələr Nəğməsi Kitabi",
+    "toc2": "Nəğmələr Nəğməsi",
+    "toc3": "Nəğ"
+  },
+  "290": {
+    "h": "YEŞAYA",
+    "toc1": "Yeşaya PeyğəmbərinKitabi",
+    "toc2": "Yeşaya",
+    "toc3": "Yeş"
+  },
+  "300": {
+    "h": "YEREMYA",
+    "toc1": "Yeremya Peyğəmbərin Kitabi",
+    "toc2": "Yeremya",
+    "toc3": "Yer"
+  },
+  "310": {
+    "h": "MƏRSİYƏLƏR",
+    "toc1": "Mərsiyələr Kitabi",
+    "toc2": "Mərsiyələr",
+    "toc3": "Mərs"
+  },
+  "330": {
+    "h": "YEZEKEL",
+    "toc1": "Yezekel Peyğəmbərin Kitabi",
+    "toc2": "Yezekel",
+    "toc3": "Yez"
+  },
+  "340": {
+    "h": "DANİEL",
+    "toc1": "Daniel Peyğəmbərin Kitabi",
+    "toc2": "Daniel",
+    "toc3": "Dan"
+  },
+  "350": {
+    "h": "HUŞƏ",
+    "toc1": "Huşə Peyğəmbərin Kitabi",
+    "toc2": "Huşə",
+    "toc3": "Huşə"
+  },
+  "360": {
+    "h": "YOEL",
+    "toc1": "Yoel Peyğəmbərin Kitabi",
+    "toc2": "Yoel",
+    "toc3": "Yoel"
+  },
+  "370": {
+    "h": "AMOS",
+    "toc1": "Amos Peyğəmbərin Kitabi",
+    "toc2": "Amos",
+    "toc3": "Amos"
+  },
+  "380": {
+    "h": "AVDİYA",
+    "toc1": "Avdiya Peyğəmbərin Kitabi",
+    "toc2": "Avdiya",
+    "toc3": "Avd"
+  },
+  "390": {
+    "h": "YUNUS",
+    "toc1": "Yunus Peyğəmbərin Kitabi",
+    "toc2": "Yunus",
+    "toc3": "Yun"
+  },
+  "400": {
+    "h": "MİKEYA",
+    "toc1": "Mikeya Peyğəmbərin Kitabi",
+    "toc2": "Mikeya",
+    "toc3": "Mik"
+  },
+  "410": {
+    "h": "NAHUM",
+    "toc1": "Nahum Peyğəmbərin Kitabi",
+    "toc2": "Nahum",
+    "toc3": "Nah"
+  },
+  "420": {
+    "h": "HABAQQUQ",
+    "toc1": "Habaqquq Peyğəmbərin Kitabi",
+    "toc2": "Habaqquq",
+    "toc3": "Hab"
+  },
+  "430": {
+    "h": "SEFANYA",
+    "toc1": "Sefanya Peyğəmbərin Kitabi",
+    "toc2": "Sefanya",
+    "toc3": "Sef"
+  },
+  "440": {
+    "h": "HAQQAY",
+    "toc1": "Haqqay Peyğəmbərin Kitabi",
+    "toc2": "Haqqay",
+    "toc3": "Haq"
+  },
+  "450": {
+    "h": "ZƏKƏRİYYƏ",
+    "toc1": "Zəkəriyyə Peyğəmbərin Kitabi",
+    "toc2": "Zəkəriyyə",
+    "toc3": "Zək"
+  },
+  "460": {
+    "h": "MALAKİ",
+    "toc1": "Malaki Peyğəmbərin Kitabi",
+    "toc2": "Malaki",
+    "toc3": "Mal"
+  },
+  "470": {
+    "h": "MATTA",
+    "toc1": "Mattanin Nəql Etdiyi Müjdə",
+    "toc2": "Matta",
+    "toc3": "Mat"
+  },
+  "480": {
+    "h": "MARK",
+    "toc1": "Markin Nəql Etdiyi Müjdə",
+    "toc2": "Mark",
+    "toc3": "Mark"
+  },
+  "490": {
+    "h": "LUKA",
+    "toc1": "Lukanin Nəql Etdiyi Müjdə",
+    "toc2": "Luka",
+    "toc3": "Luka"
+  },
+  "500": {
+    "h": "YƏHYA",
+    "toc1": "Yəhyanin Nəql Etdiyi Müjdə",
+    "toc2": "Yəhya",
+    "toc3": "Yəh"
+  },
+  "510": {
+    "h": "HƏVARİLƏRİN İŞLƏRİ",
+    "toc1": "Həvarilərin Işləri",
+    "toc2": "Həvarilərin Işləri",
+    "toc3": "Həv"
+  },
+  "520": {
+    "h": "ROMALILARA",
+    "toc1": "Paulun Romalilara Məktubu",
+    "toc2": "Romalilara",
+    "toc3": "Rom"
+  },
+  "530": {
+    "h": "1 KORİNFLİLƏRƏ",
+    "toc1": "Paulun Korinflilərə Birinci Məktubu",
+    "toc2": "1 Korinflilərə",
+    "toc3": "1Kor"
+  },
+  "540": {
+    "h": "2 KORİNFLİLƏRƏ",
+    "toc1": "Paulun Korinflilərə Ikinci Məktubu",
+    "toc2": "2 Korinflilərə",
+    "toc3": "2Kor"
+  },
+  "550": {
+    "h": "QALATİYALILARA",
+    "toc1": "Paulun Qalatiyalilara Məktubu",
+    "toc2": "Qalatiyalilara",
+    "toc3": "Qal"
+  },
+  "560": {
+    "h": "EFESLİLƏRƏ",
+    "toc1": "Paulun Efeslilərə Məktubu",
+    "toc2": "Efeslilərə",
+    "toc3": "Ef"
+  },
+  "570": {
+    "h": "FİLİPİLİLƏRƏ",
+    "toc1": "Paulun Filipililərə Məktubu",
+    "toc2": "Filipililərə",
+    "toc3": "Fil"
+  },
+  "580": {
+    "h": "KOLOSSELİLƏRƏ",
+    "toc1": "Paulun Kolosselilərə Məktubu",
+    "toc2": "Kolosselilərə",
+    "toc3": "Kol"
+  },
+  "590": {
+    "h": "1 SALONİKLİLƏRƏ",
+    "toc1": "Paulun Saloniklilərə Birinci Məktubu",
+    "toc2": "1 Saloniklilərə",
+    "toc3": "1Sal"
+  },
+  "600": {
+    "h": "2 SALONİKLİLƏRƏ",
+    "toc1": "Paulun Saloniklilərə Ikinci Məktubu",
+    "toc2": "2 Saloniklilərə",
+    "toc3": "2Sal"
+  },
+  "610": {
+    "h": "1 TİMOTEYƏ",
+    "toc1": "Paulun Timoteyə Birinci Məktubu",
+    "toc2": "1 Timoteyə",
+    "toc3": "1Tim"
+  },
+  "620": {
+    "h": "2 TİMOTEYƏ",
+    "toc1": "Paulun Timoteyə Ikinci Məktubu",
+    "toc2": "2 Timoteyə",
+    "toc3": "2Tim"
+  },
+  "630": {
+    "h": "TİTƏ",
+    "toc1": "Paulun Titə Məktubu",
+    "toc2": "Titə",
+    "toc3": "Titə"
+  },
+  "640": {
+    "h": "FİLİMONA",
+    "toc1": "Paulun Filimona Məktubu",
+    "toc2": "Filimona",
+    "toc3": "Flm"
+  },
+  "650": {
+    "h": "İBRANİLƏRƏ",
+    "toc1": "Ibranilərə Məktubu",
+    "toc2": "Ibranilərə",
+    "toc3": "İbr"
+  },
+  "660": {
+    "h": "YAQUB",
+    "toc1": "Yaqubun Məktubu",
+    "toc2": "Yaqubun",
+    "toc3": "Yaq"
+  },
+  "670": {
+    "h": "1 PETER",
+    "toc1": "Peterin Birinci Məktubu",
+    "toc2": "1 Peter",
+    "toc3": "1Pet"
+  },
+  "680": {
+    "h": "2 PETER",
+    "toc1": "Peterin Ikinci Məktubu",
+    "toc2": "2 Peter",
+    "toc3": "2Pet"
+  },
+  "690": {
+    "h": "1 YƏHYA",
+    "toc1": "Yəhyanin Birinci Məktubu",
+    "toc2": "1 Yəhya",
+    "toc3": "1Yəh"
+  },
+  "700": {
+    "h": "2 YƏHYA",
+    "toc1": "Yəhyanin Ikinci Məktubu",
+    "toc2": "2 Yəhya",
+    "toc3": "2Yəh"
+  },
+  "710": {
+    "h": "3 YƏHYA",
+    "toc1": "Yəhyanin Üçüncü Məktubu",
+    "toc2": "3 Yəhya",
+    "toc3": "3Yəh"
+  },
+  "720": {
+    "h": "YƏHUDA",
+    "toc1": "Yəhudanin Məktubu",
+    "toc2": "Yəhuda",
+    "toc3": "Yəhd"
+  },
+  "730": {
+    "h": "VƏHY",
+    "toc1": "Yəhyaya Nazil Olan Vəhy",
+    "toc2": "Vəhy",
+    "toc3": "Vəhy"
+  }
+}

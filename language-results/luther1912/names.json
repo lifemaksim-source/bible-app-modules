@@ -1,0 +1,398 @@
+{
+  "10": {
+    "h": "1. Mose",
+    "toc1": "Das 1. Buch Mose (Genesis)",
+    "toc2": "1. Mose",
+    "toc3": "1. Mose"
+  },
+  "20": {
+    "h": "2. Mose",
+    "toc1": "Das 2. Buch Mose (Exodus)",
+    "toc2": "2. Mose",
+    "toc3": "2. Mose"
+  },
+  "30": {
+    "h": "3. Mose",
+    "toc1": "Das 3. Buch Mose (Levitikus)",
+    "toc2": "3. Mose",
+    "toc3": "3. Mose"
+  },
+  "40": {
+    "h": "4. Mose",
+    "toc1": "Das 4. Buch Mose (Numeri)",
+    "toc2": "4. Mose",
+    "toc3": "4. Mose"
+  },
+  "50": {
+    "h": "5. Mose",
+    "toc1": "Das 5. Buch Mose (Deuteronomium)",
+    "toc2": "5. Mose",
+    "toc3": "5. Mose"
+  },
+  "60": {
+    "h": "Josua",
+    "toc1": "Das Buch Josua",
+    "toc2": "Josua",
+    "toc3": "Josua"
+  },
+  "70": {
+    "h": "Richter",
+    "toc1": "Das Buch Richter",
+    "toc2": "Richter",
+    "toc3": "Richter"
+  },
+  "80": {
+    "h": "Ruth",
+    "toc1": "Das Buch Ruth",
+    "toc2": "Ruth",
+    "toc3": "Ruth"
+  },
+  "90": {
+    "h": "1. Samuel",
+    "toc1": "Das erste Buch Samuel",
+    "toc2": "1. Samuel",
+    "toc3": "1. Samuel"
+  },
+  "100": {
+    "h": "2. Samuel",
+    "toc1": "Das zweite Buch Samuel",
+    "toc2": "2. Samuel",
+    "toc3": "2. Samuel"
+  },
+  "110": {
+    "h": "1. Könige",
+    "toc1": "Das erste Buch der Könige",
+    "toc2": "1. Könige",
+    "toc3": "1. Könige"
+  },
+  "120": {
+    "h": "2. Könige",
+    "toc1": "Das zweite Buch der Könige",
+    "toc2": "2. Könige",
+    "toc3": "2. Könige"
+  },
+  "130": {
+    "h": "1. Chonik",
+    "toc1": "Das erste Buch der Chonik",
+    "toc2": "1. Chonik",
+    "toc3": "1. Chonik"
+  },
+  "140": {
+    "h": "2. Chronik",
+    "toc1": "Das zweite Buch der Chonik",
+    "toc2": "2. Chronik",
+    "toc3": "2. Chronik"
+  },
+  "150": {
+    "h": "Esra",
+    "toc1": "Das Buch Esra",
+    "toc2": "Esra",
+    "toc3": "Esra"
+  },
+  "160": {
+    "h": "Nehemia",
+    "toc1": "Das Buch Nehemia",
+    "toc2": "Nehemia",
+    "toc3": "Nehemia"
+  },
+  "190": {
+    "h": "Esther",
+    "toc1": "Das Buch Esther",
+    "toc2": "Esther",
+    "toc3": "Esther"
+  },
+  "220": {
+    "h": "Hiob",
+    "toc1": "Das Buch Hiob",
+    "toc2": "Hiob",
+    "toc3": "Hiob"
+  },
+  "230": {
+    "h": "Psalmen",
+    "toc1": "Die Psalmen",
+    "toc2": "Psalmen",
+    "toc3": "Psalmen"
+  },
+  "240": {
+    "h": "Sprüche",
+    "toc1": "Die Sprüche",
+    "toc2": "Sprüche",
+    "toc3": "Sprüche"
+  },
+  "250": {
+    "h": "Prediger",
+    "toc1": "Der Prediger",
+    "toc2": "Prediger",
+    "toc3": "Prediger"
+  },
+  "260": {
+    "h": "Hohelied",
+    "toc1": "Das Hohelied Salomos",
+    "toc2": "Hohelied",
+    "toc3": "Hohelied"
+  },
+  "290": {
+    "h": "Jesaja",
+    "toc1": "Der Prophet Jesaja",
+    "toc2": "Jesaja",
+    "toc3": "Jesaja"
+  },
+  "300": {
+    "h": "Jeremia",
+    "toc1": "Der Prophet Jeremia",
+    "toc2": "Jeremia",
+    "toc3": "Jeremia"
+  },
+  "310": {
+    "h": "Klagelieder",
+    "toc1": "Die Klagelieder",
+    "toc2": "Klagelieder",
+    "toc3": "Klagelieder"
+  },
+  "330": {
+    "h": "Hesekiel",
+    "toc1": "Der Prophet Hesekiel",
+    "toc2": "Hesekiel",
+    "toc3": "Hesekiel"
+  },
+  "340": {
+    "h": "Daniel",
+    "toc1": "Der Prophet Daniel",
+    "toc2": "Daniel",
+    "toc3": "Daniel"
+  },
+  "350": {
+    "h": "Hosea",
+    "toc1": "Der Prophet Hosea",
+    "toc2": "Hosea",
+    "toc3": "Hosea"
+  },
+  "360": {
+    "h": "Joel",
+    "toc1": "Der Prophet Joel",
+    "toc2": "Joel",
+    "toc3": "Joel"
+  },
+  "370": {
+    "h": "Amos",
+    "toc1": "Der Prophet Amos",
+    "toc2": "Amos",
+    "toc3": "Amos"
+  },
+  "380": {
+    "h": "Obadja",
+    "toc1": "Der Prophet Obadja",
+    "toc2": "Obadja",
+    "toc3": "Obadja"
+  },
+  "390": {
+    "h": "Jona",
+    "toc1": "Der Prophet Jona",
+    "toc2": "Jona",
+    "toc3": "Jona"
+  },
+  "400": {
+    "h": "Micha",
+    "toc1": "Der Prophet Micha",
+    "toc2": "Micha",
+    "toc3": "Micha"
+  },
+  "410": {
+    "h": "Nahum",
+    "toc1": "Der Prophet Nahum",
+    "toc2": "Nahum",
+    "toc3": "Nahum"
+  },
+  "420": {
+    "h": "Habakuk",
+    "toc1": "Der Prophet Habakuk",
+    "toc2": "Habakuk",
+    "toc3": "Habakuk"
+  },
+  "430": {
+    "h": "Zephanja",
+    "toc1": "Der Prophet Zephanja",
+    "toc2": "Zephanja",
+    "toc3": "Zephanja"
+  },
+  "440": {
+    "h": "Haggai",
+    "toc1": "Der Prophet Haggai",
+    "toc2": "Haggai",
+    "toc3": "Haggai"
+  },
+  "450": {
+    "h": "Sacharja",
+    "toc1": "Der Prophet Sacharja",
+    "toc2": "Sacharja",
+    "toc3": "Sacharja"
+  },
+  "460": {
+    "h": "Maleachi",
+    "toc1": "Der Prophet Maleachi",
+    "toc2": "Maleachi",
+    "toc3": "Maleachi"
+  },
+  "470": {
+    "h": "Matthäus",
+    "toc1": "Das Evangelium nach Matthäus",
+    "toc2": "Matthäus",
+    "toc3": "Matthäus"
+  },
+  "480": {
+    "h": "Markus",
+    "toc1": "Das Evangelium nach Markus",
+    "toc2": "Markus",
+    "toc3": "Markus"
+  },
+  "490": {
+    "h": "Lukas",
+    "toc1": "Das Evangelium nach Lukas",
+    "toc2": "Lukas",
+    "toc3": "Lukas"
+  },
+  "500": {
+    "h": "Johannes",
+    "toc1": "Das Evangelium nach Johannes",
+    "toc2": "Johannes",
+    "toc3": "Johannes"
+  },
+  "510": {
+    "h": "Apostelgeschichte",
+    "toc1": "Die Apostelgeschichte",
+    "toc2": "Apostelgeschichte",
+    "toc3": "Apostelgeschichte"
+  },
+  "520": {
+    "h": "Römer",
+    "toc1": "Der Brief des Paulus an die Römer",
+    "toc2": "Römer",
+    "toc3": "Römer"
+  },
+  "530": {
+    "h": "1. Korinther",
+    "toc1": "Der erste Brief des Apostels Paulus an die Korinther",
+    "toc2": "1. Korinther",
+    "toc3": "1. Korinther"
+  },
+  "540": {
+    "h": "2. Korinther",
+    "toc1": "Der zweite Brief des Apostels Paulus an die Korinther",
+    "toc2": "2. Korinther",
+    "toc3": "2. Korinther"
+  },
+  "550": {
+    "h": "Galater",
+    "toc1": "Der Brief des Apostels Paulus an die Galater",
+    "toc2": "Galater",
+    "toc3": "Galater"
+  },
+  "560": {
+    "h": "Epheser",
+    "toc1": "Der Brief des Apostels Paulus an die Epheser",
+    "toc2": "Epheser",
+    "toc3": "Epheser"
+  },
+  "570": {
+    "h": "Philipper",
+    "toc1": "Der Brief des Apostels Paulus an die Philipper",
+    "toc2": "Philipper",
+    "toc3": "Philipper"
+  },
+  "580": {
+    "h": "Kolosser",
+    "toc1": "Der Brief des Apostels Paulus an die Kolosser",
+    "toc2": "Kolosser",
+    "toc3": "Kolosser"
+  },
+  "590": {
+    "h": "1. Thessalonicher",
+    "toc1": "Der erste Brief des Apostels Paulus an die Thessalonicher",
+    "toc2": "1. Thessalonicher",
+    "toc3": "1. Thessalonicher"
+  },
+  "600": {
+    "h": "2. Thessalonicher",
+    "toc1": "Der zweite Brief des Apostels Paulus an die Thessalonicher",
+    "toc2": "2. Thessalonicher",
+    "toc3": "2. Thessalonicher"
+  },
+  "610": {
+    "h": "1. Timotheus",
+    "toc1": "Der erste Brief des Apostels Paulus an Timotheus",
+    "toc2": "1. Timotheus",
+    "toc3": "1. Timotheus"
+  },
+  "620": {
+    "h": "2. Timotheus",
+    "toc1": "Der zweite Brief des Apostels Paulus an Timotheus",
+    "toc2": "2. Timotheus",
+    "toc3": "2. Timotheus"
+  },
+  "630": {
+    "h": "Titus",
+    "toc1": "Der Brief des Apostels Paulus an Titus",
+    "toc2": "Titus",
+    "toc3": "Titus"
+  },
+  "640": {
+    "h": "Philemon",
+    "toc1": "Der Brief des Apostels Paulus an Philemon",
+    "toc2": "Philemon",
+    "toc3": "Philemon"
+  },
+  "650": {
+    "h": "Hebräer",
+    "toc1": "Der Brief an die Hebräer",
+    "toc2": "Hebräer",
+    "toc3": "Hebräer"
+  },
+  "660": {
+    "h": "Jakobus",
+    "toc1": "Der Brief des Jakobus",
+    "toc2": "Jakobus",
+    "toc3": "Jakobus"
+  },
+  "670": {
+    "h": "1. Petrus",
+    "toc1": "Der erste Brief des Petrus",
+    "toc2": "1. Petrus",
+    "toc3": "1. Petrus"
+  },
+  "680": {
+    "h": "2. Petrus",
+    "toc1": "Der zweite Brief des Petrus",
+    "toc2": "2. Petrus",
+    "toc3": "2. Petrus"
+  },
+  "690": {
+    "h": "1. Johannes",
+    "toc1": "Der erste Brief des Johannes",
+    "toc2": "1. Johannes",
+    "toc3": "1. Johannes"
+  },
+  "700": {
+    "h": "2. Johannes",
+    "toc1": "Der zweite Brief des Johannes",
+    "toc2": "2. Johannes",
+    "toc3": "2. Johannes"
+  },
+  "710": {
+    "h": "3. Johannes",
+    "toc1": "Der dritte Brief des Johannes",
+    "toc2": "3. Johannes",
+    "toc3": "3. Johannes"
+  },
+  "720": {
+    "h": "Judas",
+    "toc1": "Der Brief des Judas",
+    "toc2": "Judas",
+    "toc3": "Judas"
+  },
+  "730": {
+    "h": "Offenbarung",
+    "toc1": "Das Buch der Offenbarung Jesu Christi",
+    "toc2": "Offenbarung",
+    "toc3": "Offenbarung"
+  }
+}

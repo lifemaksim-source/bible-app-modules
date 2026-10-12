@@ -1,0 +1,398 @@
+{
+  "10": {
+    "h": "Rodzaju",
+    "toc1": "Księga Rodzaju",
+    "toc2": "Rodzaju",
+    "toc3": "Rdz"
+  },
+  "20": {
+    "h": "Księga Wyjścia",
+    "toc1": "Wyjścia",
+    "toc2": "Wyjścia",
+    "toc3": "Wj"
+  },
+  "30": {
+    "h": "Kapłańska",
+    "toc1": "Księga Kapłańska",
+    "toc2": "Kapłańska",
+    "toc3": "Kpł"
+  },
+  "40": {
+    "h": "Liczb",
+    "toc1": "Księga Liczb",
+    "toc2": "Liczb",
+    "toc3": "Lb"
+  },
+  "50": {
+    "h": "Powtórzonego",
+    "toc1": "Księga Powtórzonego Prawa",
+    "toc2": "Powtórzonego",
+    "toc3": "Pwt"
+  },
+  "60": {
+    "h": "Jozuego",
+    "toc1": "Księga Jozuego",
+    "toc2": "Jozuego",
+    "toc3": "Joz"
+  },
+  "70": {
+    "h": "Księga Sędziów",
+    "toc1": "Księga Sędziów",
+    "toc2": "Księga Sędziów",
+    "toc3": "Sdz"
+  },
+  "80": {
+    "h": "Rut",
+    "toc1": "Księga Rut",
+    "toc2": "Rut",
+    "toc3": "Rt"
+  },
+  "90": {
+    "h": "I Samuela",
+    "toc1": "I Księga Samuela",
+    "toc2": "I Samuela",
+    "toc3": "1Sm"
+  },
+  "100": {
+    "h": "II Samuela",
+    "toc1": "II Księga Samuela",
+    "toc2": "II Samuela",
+    "toc3": "2Sm"
+  },
+  "110": {
+    "h": "I Królewska",
+    "toc1": "I Księga Królewska",
+    "toc2": "I Królewska",
+    "toc3": "1Krl"
+  },
+  "120": {
+    "h": "II Królewska",
+    "toc1": "II Księga Królewska",
+    "toc2": "II Królewska",
+    "toc3": "2Krl"
+  },
+  "130": {
+    "h": "I Kronik",
+    "toc1": "I Księga Kronik",
+    "toc2": "I Kronik",
+    "toc3": "1Krn"
+  },
+  "140": {
+    "h": "II Kronik",
+    "toc1": "II Księga Kronik",
+    "toc2": "II Kronik",
+    "toc3": "2Krn"
+  },
+  "150": {
+    "h": "Ezdrasza",
+    "toc1": "Księga Ezdrasza",
+    "toc2": "Ezdrasza",
+    "toc3": "Ezd"
+  },
+  "160": {
+    "h": "Nehemiasza",
+    "toc1": "Księga Nehemiasza",
+    "toc2": "Nehemiasza",
+    "toc3": "Neh"
+  },
+  "190": {
+    "h": "Estery",
+    "toc1": "Księga Estery",
+    "toc2": "Estery",
+    "toc3": "Est"
+  },
+  "220": {
+    "h": "Hioba",
+    "toc1": "Księga Hioba",
+    "toc2": "Hioba",
+    "toc3": "Hi"
+  },
+  "230": {
+    "h": "Psalmów",
+    "toc1": "Księga Psalmów",
+    "toc2": "Psalmów",
+    "toc3": "Ps"
+  },
+  "240": {
+    "h": "Przysłów",
+    "toc1": "Księga Przysłów",
+    "toc2": "Przysłów",
+    "toc3": "Prz"
+  },
+  "250": {
+    "h": "Kaznodziei",
+    "toc1": "Księga Kaznodziei",
+    "toc2": "Kaznodziei",
+    "toc3": "Kaz"
+  },
+  "260": {
+    "h": "Pieśń nad Pieśniami",
+    "toc1": "Pieśń nad Pieśniami",
+    "toc2": "Pieśń nad Pieśniami",
+    "toc3": "Pnp"
+  },
+  "290": {
+    "h": "Izajasza",
+    "toc1": "Księga Izajasza",
+    "toc2": "Izajasza",
+    "toc3": "Iz"
+  },
+  "300": {
+    "h": "Jeremiasza",
+    "toc1": "Księga Jeremiasza",
+    "toc2": "Jeremiasza",
+    "toc3": "Jr"
+  },
+  "310": {
+    "h": "Lamentacje",
+    "toc1": "Lamentacje",
+    "toc2": "Lamentacje",
+    "toc3": "Lm"
+  },
+  "330": {
+    "h": "Ezechiela",
+    "toc1": "Księga Ezechiela",
+    "toc2": "Ezechiela",
+    "toc3": "Ez"
+  },
+  "340": {
+    "h": "Daniela",
+    "toc1": "Księga Daniela",
+    "toc2": "Daniela",
+    "toc3": "Dn"
+  },
+  "350": {
+    "h": "Ozeasza",
+    "toc1": "Księga Ozeasza",
+    "toc2": "Ozeasza",
+    "toc3": "Oz"
+  },
+  "360": {
+    "h": "Joela",
+    "toc1": "Księga Joela",
+    "toc2": "Joela",
+    "toc3": "Jl"
+  },
+  "370": {
+    "h": "Amosa",
+    "toc1": "Księga Amosa",
+    "toc2": "Amosa",
+    "toc3": "Am"
+  },
+  "380": {
+    "h": "Abdiasza",
+    "toc1": "Księga Abdiasza",
+    "toc2": "Abdiasza",
+    "toc3": "Ab"
+  },
+  "390": {
+    "h": "Jonasza",
+    "toc1": "Księga Jonasza",
+    "toc2": "Jonasza",
+    "toc3": "Jon"
+  },
+  "400": {
+    "h": "Micheasza",
+    "toc1": "Księga Micheasza",
+    "toc2": "Micheasza",
+    "toc3": "Mic"
+  },
+  "410": {
+    "h": "Nahuma",
+    "toc1": "Księga Nahuma",
+    "toc2": "Nahuma",
+    "toc3": "Na"
+  },
+  "420": {
+    "h": "Habakuka",
+    "toc1": "Księga Habakuka",
+    "toc2": "Habakuka",
+    "toc3": "Ha"
+  },
+  "430": {
+    "h": "Sofoniasza",
+    "toc1": "Księga Sofoniasza",
+    "toc2": "Sofoniasza",
+    "toc3": "So"
+  },
+  "440": {
+    "h": "Aggeusza",
+    "toc1": "Księga Aggeusza",
+    "toc2": "Aggeusza",
+    "toc3": "Ag"
+  },
+  "450": {
+    "h": "Zachariasza",
+    "toc1": "Księga Zachariasza",
+    "toc2": "Zachariasza",
+    "toc3": "Za"
+  },
+  "460": {
+    "h": "Malachiasza",
+    "toc1": "Księga Malachiasza",
+    "toc2": "Malachiasza",
+    "toc3": "Ml"
+  },
+  "470": {
+    "h": "Mateusza",
+    "toc1": "Ewangelia Mateusza",
+    "toc2": "Mateusza",
+    "toc3": "Mt"
+  },
+  "480": {
+    "h": "Marka",
+    "toc1": "Ewangelia Marka",
+    "toc2": "Marka",
+    "toc3": "Mk"
+  },
+  "490": {
+    "h": "Łukasza",
+    "toc1": "Ewangelia Łukasza",
+    "toc2": "Łukasza",
+    "toc3": "Łk"
+  },
+  "500": {
+    "h": "Jana",
+    "toc1": "Ewangelia Jana",
+    "toc2": "Jana",
+    "toc3": "J"
+  },
+  "510": {
+    "h": "Dzieje",
+    "toc1": "Dzieje Apostolskie",
+    "toc2": "Dzieje",
+    "toc3": "Dz"
+  },
+  "520": {
+    "h": "Rzymian",
+    "toc1": "List do Rzymian",
+    "toc2": "Rzymian",
+    "toc3": "Rz"
+  },
+  "530": {
+    "h": "I Koryntian",
+    "toc1": "I List do Koryntian",
+    "toc2": "I Koryntian",
+    "toc3": "1Kor"
+  },
+  "540": {
+    "h": "II Koryntian",
+    "toc1": "II List do Koryntian",
+    "toc2": "II Koryntian",
+    "toc3": "2Kor"
+  },
+  "550": {
+    "h": "Galacjan",
+    "toc1": "List do Galacjan",
+    "toc2": "Galacjan",
+    "toc3": "Ga"
+  },
+  "560": {
+    "h": "Efezjan",
+    "toc1": "List do Efezjan",
+    "toc2": "Efezjan",
+    "toc3": "Ef"
+  },
+  "570": {
+    "h": "Filipian",
+    "toc1": "List do Filipian",
+    "toc2": "Filipian",
+    "toc3": "Flp"
+  },
+  "580": {
+    "h": "Kolosan",
+    "toc1": "List do Kolosan",
+    "toc2": "Kolosan",
+    "toc3": "Kol"
+  },
+  "590": {
+    "h": "I Tesaloniczan",
+    "toc1": "I List do Tesaloniczan",
+    "toc2": "I Tesaloniczan",
+    "toc3": "1Tes"
+  },
+  "600": {
+    "h": "II Tesaloniczan",
+    "toc1": "II List do Tesaloniczan",
+    "toc2": "II Tesaloniczan",
+    "toc3": "2Tes"
+  },
+  "610": {
+    "h": "I Tymoteusza",
+    "toc1": "I List do Tymoteusza",
+    "toc2": "I Tymoteusza",
+    "toc3": "1Tm"
+  },
+  "620": {
+    "h": "II Tymoteusza",
+    "toc1": "II List do Tymoteusza",
+    "toc2": "II Tymoteusza",
+    "toc3": "2Tm"
+  },
+  "630": {
+    "h": "Tytusa",
+    "toc1": "List do Tytusa",
+    "toc2": "Tytusa",
+    "toc3": "Tt"
+  },
+  "640": {
+    "h": "Filemona",
+    "toc1": "List do Filemona",
+    "toc2": "Filemona",
+    "toc3": "Flm"
+  },
+  "650": {
+    "h": "Hebrajczyków",
+    "toc1": "List do Hebrajczyków",
+    "toc2": "Hebrajczyków",
+    "toc3": "Hbr"
+  },
+  "660": {
+    "h": "Jakuba",
+    "toc1": "List Jakuba",
+    "toc2": "Jakuba",
+    "toc3": "Jk"
+  },
+  "670": {
+    "h": "I Piotra",
+    "toc1": "I List Piotra",
+    "toc2": "I Piotra",
+    "toc3": "1P"
+  },
+  "680": {
+    "h": "II Piotra",
+    "toc1": "II List Piotra",
+    "toc2": "II Piotra",
+    "toc3": "2P"
+  },
+  "690": {
+    "h": "I Jana",
+    "toc1": "I List Jana",
+    "toc2": "I Jana",
+    "toc3": "1J"
+  },
+  "700": {
+    "h": "II Jana",
+    "toc1": "II List Jana",
+    "toc2": "II Jana",
+    "toc3": "2J"
+  },
+  "710": {
+    "h": "III Jana",
+    "toc1": "III List Jana",
+    "toc2": "III Jana",
+    "toc3": "3J"
+  },
+  "720": {
+    "h": "Judy",
+    "toc1": "List Judy",
+    "toc2": "Judy",
+    "toc3": "Jud"
+  },
+  "730": {
+    "h": "Objawienie",
+    "toc1": "Objawienie Jana",
+    "toc2": "Objawienie",
+    "toc3": "Obj"
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "10": {
+    "h": "Genèse",
+    "toc1": "Le premier livre de Moïse, communément appelé la Genèse",
+    "toc2": "Genèse",
+    "toc3": "Gen"
+  },
+  "20": {
+    "h": "Exode",
+    "toc1": "Le deuxième livre de Moïse, communément appelé Exode",
+    "toc2": "Exode",
+    "toc3": "Exo"
+  },
+  "30": {
+    "h": "Lévitique",
+    "toc1": "Le troisième livre de Moïse, communément appelé Lévitique",
+    "toc2": "Lévitique",
+    "toc3": "Lév"
+  },
+  "40": {
+    "h": "Nombres",
+    "toc1": "Le quatrième livre de Moïse, communément appelé Nombres",
+    "toc2": "Nombres",
+    "toc3": "Nb"
+  },
+  "50": {
+    "h": "Deutéronome",
+    "toc1": "Le cinquième livre de Moïse, communément appelé Deutéronome",
+    "toc2": "Deutéronome",
+    "toc3": "Deu"
+  },
+  "60": {
+    "h": "Josué",
+    "toc1": "Le Livre de Josué",
+    "toc2": "Josué",
+    "toc3": "Jos"
+  },
+  "70": {
+    "h": "Juges",
+    "toc1": "Le Livre des Juges",
+    "toc2": "Juges",
+    "toc3": "Jg"
+  },
+  "80": {
+    "h": "Ruth",
+    "toc1": "Le Livre de Ruth",
+    "toc2": "Ruth",
+    "toc3": "Rt"
+  },
+  "90": {
+    "h": "1 Samuel",
+    "toc1": "Le Premier Livre de Samuel",
+    "toc2": "1 Samuel",
+    "toc3": "1Sa"
+  },
+  "100": {
+    "h": "2 Samuel",
+    "toc1": "Le Deuxième Livre de Samuel",
+    "toc2": "2 Samuel",
+    "toc3": "2Sa"
+  },
+  "110": {
+    "h": "1 Rois",
+    "toc1": "Le Premier Livre des Rois",
+    "toc2": "1 Rois",
+    "toc3": "1Ro"
+  },
+  "120": {
+    "h": "2 Rois",
+    "toc1": "Le Deuxième Livre des Rois",
+    "toc2": "2 Rois",
+    "toc3": "2Ro"
+  },
+  "130": {
+    "h": "1 Chroniques",
+    "toc1": "Le premier livre des Chroniques",
+    "toc2": "1 Chroniques",
+    "toc3": "1Ch"
+  },
+  "140": {
+    "h": "2 Chroniques",
+    "toc1": "Le Deuxième Livre des Chroniques",
+    "toc2": "2 Chroniques",
+    "toc3": "2Ch"
+  },
+  "150": {
+    "h": "Esdras",
+    "toc1": "Le Livre d'Esdras",
+    "toc2": "Esdras",
+    "toc3": "Esd"
+  },
+  "160": {
+    "h": "Néhémie",
+    "toc1": "Le Livre de Néhémie",
+    "toc2": "Néhémie",
+    "toc3": "Néh"
+  },
+  "190": {
+    "h": "Esther",
+    "toc1": "Le Livre d’Esther",
+    "toc2": "Esther",
+    "toc3": "Est"
+  },
+  "220": {
+    "h": "Job",
+    "toc1": "Le Livre de Job",
+    "toc2": "Job",
+    "toc3": "Job"
+  },
+  "230": {
+    "h": "Psaumes",
+    "toc1": "Les Psaumes",
+    "toc2": "Psaumes",
+    "toc3": "Psa"
+  },
+  "240": {
+    "h": "Proverbes",
+    "toc1": "Les Proverbes",
+    "toc2": "Proverbes",
+    "toc3": "Pro"
+  },
+  "250": {
+    "h": "Ecclésiaste",
+    "toc1": "Ecclésiaste ou le Prédicateur",
+    "toc2": "Ecclésiaste",
+    "toc3": "Ecc"
+  },
+  "260": {
+    "h": "Le Cantique des cantiques",
+    "toc1": "Le Cantique des cantiques",
+    "toc2": "Cantique",
+    "toc3": "Ct"
+  },
+  "290": {
+    "h": "Ésaïe",
+    "toc1": "Le livre d'Ésaïe",
+    "toc2": "Ésaïe",
+    "toc3": "Ésa"
+  },
+  "300": {
+    "h": "Jérémie",
+    "toc1": "Le livre de Jérémie",
+    "toc2": "Jérémie",
+    "toc3": "Jér"
+  },
+  "310": {
+    "h": "Lamentations",
+    "toc1": "Les Lamentations de Jérémie",
+    "toc2": "Lamentations",
+    "toc3": "Lam"
+  },
+  "330": {
+    "h": "Ézéchiel",
+    "toc1": "Le livre d'Ézéchiel",
+    "toc2": "Ézéchiel",
+    "toc3": "Éze"
+  },
+  "340": {
+    "h": "Daniel",
+    "toc1": "Le Livre de Daniel",
+    "toc2": "Daniel",
+    "toc3": "Dan"
+  },
+  "350": {
+    "h": "Osée",
+    "toc1": "Le livre d’Osée",
+    "toc2": "Osée",
+    "toc3": "Os"
+  },
+  "360": {
+    "h": "Joël",
+    "toc1": "Le livre de Joël",
+    "toc2": "Joël",
+    "toc3": "Jol"
+  },
+  "370": {
+    "h": "Amos",
+    "toc1": "Le livre d’Amos",
+    "toc2": "Amos",
+    "toc3": "Amo"
+  },
+  "380": {
+    "h": "Abdias",
+    "toc1": "Le Livre d’Abdias",
+    "toc2": "Abdias",
+    "toc3": "Abd"
+  },
+  "390": {
+    "h": "Jonas",
+    "toc1": "Le livre de Jonas",
+    "toc2": "Jonas",
+    "toc3": "Jon"
+  },
+  "400": {
+    "h": "Michée",
+    "toc1": "Le Livre de Michée",
+    "toc2": "Michée",
+    "toc3": "Mic"
+  },
+  "410": {
+    "h": "Nahum",
+    "toc1": "Le Livre de Nahum",
+    "toc2": "Nahum",
+    "toc3": "Nah"
+  },
+  "420": {
+    "h": "Habacuc",
+    "toc1": "Le livre d'Habacuc",
+    "toc2": "Habacuc",
+    "toc3": "Hab"
+  },
+  "430": {
+    "h": "Sophonie",
+    "toc1": "Le livre de Sophonie",
+    "toc2": "Sophonie",
+    "toc3": "Sop"
+  },
+  "440": {
+    "h": "Aggée",
+    "toc1": "Le Livre d’Aggée",
+    "toc2": "Aggée",
+    "toc3": "Ag"
+  },
+  "450": {
+    "h": "Zacharie",
+    "toc1": "Le livre de Zacharie",
+    "toc2": "Zacharie",
+    "toc3": "Zac"
+  },
+  "460": {
+    "h": "Malachie",
+    "toc1": "Le Livre de Malachie",
+    "toc2": "Malachie",
+    "toc3": "Mal"
+  },
+  "470": {
+    "h": "Matthieu",
+    "toc1": "L'Évangile selon Matthieu",
+    "toc2": "Matthieu",
+    "toc3": "Mat"
+  },
+  "480": {
+    "h": "Marc",
+    "toc1": "L'Évangile selon Marc",
+    "toc2": "Marc",
+    "toc3": "Mc"
+  },
+  "490": {
+    "h": "Luc",
+    "toc1": "L'Évangile selon Luc",
+    "toc2": "Luc",
+    "toc3": "Luc"
+  },
+  "500": {
+    "h": "Jean",
+    "toc1": "L'Évangile selon Jean",
+    "toc2": "Jean",
+    "toc3": "Jn"
+  },
+  "510": {
+    "h": "Actes",
+    "toc1": "Les Actes des Apôtres",
+    "toc2": "Actes",
+    "toc3": "Act"
+  },
+  "520": {
+    "h": "Romains",
+    "toc1": "Lettre de Paul aux Romains",
+    "toc2": "Romains",
+    "toc3": "Rom"
+  },
+  "530": {
+    "h": "1 Corinthiens",
+    "toc1": "Première Lettre de Paul aux Corinthiens",
+    "toc2": "1 Corinthiens",
+    "toc3": "1Co"
+  },
+  "540": {
+    "h": "2 Corinthiens",
+    "toc1": "Seconde Lettre de Paul aux Corinthiens",
+    "toc2": "2 Corinthiens",
+    "toc3": "2Co"
+  },
+  "550": {
+    "h": "Galates",
+    "toc1": "Lettre de Paul aux Galates",
+    "toc2": "Galates",
+    "toc3": "Gal"
+  },
+  "560": {
+    "h": "Éphésiens",
+    "toc1": "Lettre de Paul aux Éphésiens",
+    "toc2": "Éphésiens",
+    "toc3": "Eph"
+  },
+  "570": {
+    "h": "Philippiens",
+    "toc1": "Lettre de Paul aux Philippiens",
+    "toc2": "Philippiens",
+    "toc3": "Php"
+  },
+  "580": {
+    "h": "Colossiens",
+    "toc1": "Lettre de Paul aux Colossiens",
+    "toc2": "Colossiens",
+    "toc3": "Col"
+  },
+  "590": {
+    "h": "1 Thessaloniciens",
+    "toc1": "Première Lettre de Paul aux Thessaloniciens",
+    "toc2": "1 Thessaloniciens",
+    "toc3": "1Th"
+  },
+  "600": {
+    "h": "2 Thessaloniciens",
+    "toc1": "Deuxième lettre de Paul aux Thessaloniciens",
+    "toc2": "2 Thessaloniciens",
+    "toc3": "2Th"
+  },
+  "610": {
+    "h": "1 Timothée",
+    "toc1": "Première lettre de Paul à Timothée",
+    "toc2": "1 Timothée",
+    "toc3": "1Ti"
+  },
+  "620": {
+    "h": "2 Timothée",
+    "toc1": "Deuxième lettre de Paul à Timothée",
+    "toc2": "2 Timothée",
+    "toc3": "2Ti"
+  },
+  "630": {
+    "h": "Tite",
+    "toc1": "Lettre de Paul à Tite",
+    "toc2": "Tite",
+    "toc3": "Tt"
+  },
+  "640": {
+    "h": "Philémon",
+    "toc1": "Lettre de Paul à Philémon",
+    "toc2": "Philémon",
+    "toc3": "Phm"
+  },
+  "650": {
+    "h": "Hébreux",
+    "toc1": "Lettre aux Hébreux",
+    "toc2": "Hébreux",
+    "toc3": "Hé"
+  },
+  "660": {
+    "h": "Jacques",
+    "toc1": "Lettre de Jacques",
+    "toc2": "Jacques",
+    "toc3": "Jc"
+  },
+  "670": {
+    "h": "1 Pierre",
+    "toc1": "Première lettre de Pierre",
+    "toc2": "1 Pierre",
+    "toc3": "1 Pi"
+  },
+  "680": {
+    "h": "2 Pierre",
+    "toc1": "Deuxième lettre de Pierre",
+    "toc2": "2 Pierre",
+    "toc3": "2 Pi"
+  },
+  "690": {
+    "h": "1 Jean",
+    "toc1": "Première lettre de Jean",
+    "toc2": "1 Jean",
+    "toc3": "1 Jn"
+  },
+  "700": {
+    "h": "2 Jean",
+    "toc1": "Deuxième lettre de Jean",
+    "toc2": "2 Jean",
+    "toc3": "2 Jn"
+  },
+  "710": {
+    "h": "3 Jean",
+    "toc1": "Troisième lettre de Jean",
+    "toc2": "3 Jean",
+    "toc3": "3Jn"
+  },
+  "720": {
+    "h": "Jude",
+    "toc1": "Lettre de Jude",
+    "toc2": "Jude",
+    "toc3": "Jud"
+  },
+  "730": {
+    "h": "Apocalypse",
+    "toc1": "Apocalypse de Jean",
+    "toc2": "Apocalypse",
+    "toc3": "Apo"
+  }
+}

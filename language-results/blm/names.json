@@ -1,0 +1,398 @@
+{
+  "10": {
+    "h": "GÉNESIS",
+    "toc3": "Génesis",
+    "toc1": "LIBRO PRIMERO DE MOISÉS, COMÚNMENTE LLAMADO GÉNESIS",
+    "toc2": "GÉNESIS"
+  },
+  "20": {
+    "h": "ÉXODO",
+    "toc3": "Éxodo",
+    "toc1": "LIBRO SEGUNDO DE MOISÉS, COMÚNMENTE LLAMADO ÉXODO",
+    "toc2": "ÉXODO"
+  },
+  "30": {
+    "h": "LEVÍTICO",
+    "toc3": "Levítico",
+    "toc1": "LIBRO TERCERO DE MOISÉS COMÚNMENTE LLAMADO LEVÍTICO",
+    "toc2": "LEVÍTICO"
+  },
+  "40": {
+    "h": "NÚMEROS",
+    "toc3": "Números",
+    "toc1": "LIBRO CUARTO DE MOISÉS, COMÚNMENTE LLAMADO NÚMEROS",
+    "toc2": "NÚMEROS"
+  },
+  "50": {
+    "h": "DEUTERONOMIO",
+    "toc3": "Deuteronomio",
+    "toc1": "LIBRO QUINTO DE MOISÉS COMÚNMENTE LLAMADO DEUTERONOMIO",
+    "toc2": "DEUTERONOMIO"
+  },
+  "60": {
+    "h": "JOSUÉ",
+    "toc3": "Josué",
+    "toc1": "EL LIBRO DE JOSUÉ",
+    "toc2": "JOSUÉ"
+  },
+  "70": {
+    "h": "JUECES",
+    "toc3": "Jueces",
+    "toc1": "EL LIBRO DE JUECES",
+    "toc2": "JUECES"
+  },
+  "80": {
+    "h": "RUT",
+    "toc3": "Rut",
+    "toc1": "RUT",
+    "toc2": "RUT"
+  },
+  "90": {
+    "h": "1 SAMUEL",
+    "toc3": "1 Samuel",
+    "toc1": "PRIMER LIBRO DE SAMUEL",
+    "toc2": "1 SAMUEL"
+  },
+  "100": {
+    "h": "2 SAMUEL",
+    "toc3": "2 Samuel",
+    "toc1": "SEGUNDO LIBRO DE SAMUEL",
+    "toc2": "2 SAMUEL"
+  },
+  "110": {
+    "h": "1 REYES",
+    "toc3": "1 Reyes",
+    "toc1": "PRIMER LIBRO DE LOS REYES",
+    "toc2": "1 REYES"
+  },
+  "120": {
+    "h": "2 REYES",
+    "toc3": "2 Reyes",
+    "toc1": "SEGUNDO LIBRO DE LOS REYES",
+    "toc2": "2 REYES"
+  },
+  "130": {
+    "h": "1 CRÓNICAS",
+    "toc3": "1 Crónicas",
+    "toc1": "PRIMER LIBRO DE LAS CRÓNICAS",
+    "toc2": "1 CRÓNICAS"
+  },
+  "140": {
+    "h": "2 CRÓNICAS",
+    "toc3": "2 Crónicas",
+    "toc1": "SEGUNDO LIBRO DE LAS CRÓNICAS",
+    "toc2": "2 CRÓNICAS"
+  },
+  "150": {
+    "h": "ESDRAS",
+    "toc3": "Esdras",
+    "toc1": "ESDRAS",
+    "toc2": "ESDRAS"
+  },
+  "160": {
+    "h": "NEHEMÍAS",
+    "toc3": "Nehemías",
+    "toc1": "NEHEMÍAS",
+    "toc2": "NEHEMÍAS"
+  },
+  "190": {
+    "h": "ESTER",
+    "toc3": "Ester",
+    "toc1": "ESTER",
+    "toc2": "ESTER"
+  },
+  "220": {
+    "h": "JOB",
+    "toc3": "Job",
+    "toc1": "JOB",
+    "toc2": "JOB"
+  },
+  "230": {
+    "h": "SALMOS",
+    "toc3": "Salmos",
+    "toc1": "SALMOS",
+    "toc2": "SALMOS"
+  },
+  "240": {
+    "h": "PROVERBIOS",
+    "toc3": "Proverbios",
+    "toc1": "PROVERBIOS",
+    "toc2": "PROVERBIOS"
+  },
+  "250": {
+    "h": "ECLESIASTÉS",
+    "toc3": "Eclesiastés",
+    "toc1": "ECLESIASTÉS O EL PREDICADOR",
+    "toc2": "ECLESIASTÉS"
+  },
+  "260": {
+    "h": "CANTARES",
+    "toc3": "Cantares",
+    "toc1": "CANTAR DE LOS CANTARES DE SALOMÓN",
+    "toc2": "CANTARES"
+  },
+  "290": {
+    "h": "ISAÍAS",
+    "toc3": "Isaías",
+    "toc1": "ISAÍAS",
+    "toc2": "ISAÍAS"
+  },
+  "300": {
+    "h": "JEREMÍAS",
+    "toc3": "Jeremías",
+    "toc1": "JEREMÍAS",
+    "toc2": "JEREMÍAS"
+  },
+  "310": {
+    "h": "LAMENTACIONES",
+    "toc3": "Lamentaciones",
+    "toc1": "LAMENTACIONES DE JEREMÍAS",
+    "toc2": "LAMENTACIONES"
+  },
+  "330": {
+    "h": "EZEQUIEL",
+    "toc3": "Ezequiel",
+    "toc1": "EZEQUIEL",
+    "toc2": "EZEQUIEL"
+  },
+  "340": {
+    "h": "DANIEL",
+    "toc3": "Daniel",
+    "toc1": "DANIEL",
+    "toc2": "DANIEL"
+  },
+  "350": {
+    "h": "OSEAS",
+    "toc3": "Oseas",
+    "toc1": "OSEAS",
+    "toc2": "OSEAS"
+  },
+  "360": {
+    "h": "JOEL",
+    "toc3": "Joel",
+    "toc1": "JOEL",
+    "toc2": "JOEL"
+  },
+  "370": {
+    "h": "AMÓS",
+    "toc3": "Amós",
+    "toc1": "AMÓS",
+    "toc2": "AMÓS"
+  },
+  "380": {
+    "h": "ABDÍAS",
+    "toc3": "Abdías",
+    "toc1": "ABDÍAS",
+    "toc2": "ABDÍAS"
+  },
+  "390": {
+    "h": "JONÁS",
+    "toc3": "Jonás",
+    "toc1": "JONÁS",
+    "toc2": "JONÁS"
+  },
+  "400": {
+    "h": "MIQUEAS",
+    "toc3": "Miqueas",
+    "toc1": "MIQUEAS",
+    "toc2": "MIQUEAS"
+  },
+  "410": {
+    "h": "NAHUM",
+    "toc3": "Nahum",
+    "toc1": "NAHUM",
+    "toc2": "NAHUM"
+  },
+  "420": {
+    "h": "HABACUC",
+    "toc3": "Habacuc",
+    "toc1": "HABACUC",
+    "toc2": "HABACUC"
+  },
+  "430": {
+    "h": "SOFONÍAS",
+    "toc3": "Sofonías",
+    "toc1": "SOFONÍAS",
+    "toc2": "SOFONÍAS"
+  },
+  "440": {
+    "h": "HAGEO",
+    "toc3": "Hageo",
+    "toc1": "HAGEO",
+    "toc2": "HAGEO"
+  },
+  "450": {
+    "h": "ZACARÍAS",
+    "toc3": "Zacarías",
+    "toc1": "ZACARÍAS",
+    "toc2": "ZACARÍAS"
+  },
+  "460": {
+    "h": "MALAQUÍAS",
+    "toc3": "Malaquías",
+    "toc1": "MALAQUÍAS",
+    "toc2": "MALAQUÍAS"
+  },
+  "470": {
+    "h": "SAN MATEO",
+    "toc1": "El santo evangelio según San Mateo",
+    "toc2": "SAN MATEO",
+    "toc3": "Mateo"
+  },
+  "480": {
+    "h": "SAN MARCOS",
+    "toc3": "Marcos",
+    "toc1": "EL SANTO EVANGELIO SEGÚN SAN MARCOS",
+    "toc2": "SAN MARCOS"
+  },
+  "490": {
+    "h": "SAN LUCAS",
+    "toc1": "EL SANTO EVANGELIO SEGÚN SAN LUCAS",
+    "toc2": "SAN LUCAS",
+    "toc3": "Lucas"
+  },
+  "500": {
+    "h": "SAN JUAN",
+    "toc1": "EL SANTO EVANGELIO SEGÚN SAN JUAN",
+    "toc2": "SAN JUAN",
+    "toc3": "Juan"
+  },
+  "510": {
+    "h": "HECHOS",
+    "toc3": "Hechos",
+    "toc1": "HECHOS DE LOS APÓSTOLES",
+    "toc2": "HECHOS"
+  },
+  "520": {
+    "h": "ROMANOS",
+    "toc3": "Romanos",
+    "toc1": "LA CARTA DEL APÓSTOL SAN PABLO A LOS ROMANOS",
+    "toc2": "ROMANOS"
+  },
+  "530": {
+    "h": "1 CORINTIOS",
+    "toc3": "1 Corintios",
+    "toc1": "PRIMERA CARTA DEL APÓSTOL SAN PABLO A LOS CORINTIOS",
+    "toc2": "1 CORINTIOS"
+  },
+  "540": {
+    "h": "2 CORINTIOS",
+    "toc3": "2 Corintios",
+    "toc1": "SEGUNDA CARTA DEL APÓSTOL SAN PABLO A LOS CORINTIOS",
+    "toc2": "2 CORINTIOS"
+  },
+  "550": {
+    "h": "GÁLATAS",
+    "toc3": "Gálatas",
+    "toc1": "LA CARTA DEL APÓSTOL SAN PABLO A LOS GÁLATAS",
+    "toc2": "GÁLATAS"
+  },
+  "560": {
+    "h": "EFESIOS",
+    "toc3": "Efesios",
+    "toc1": "LA CARTA DEL APÓSTOL SAN PABLO A LOS EFESIOS",
+    "toc2": "EFESIOS"
+  },
+  "570": {
+    "h": "FILIPENSES",
+    "toc3": "Filipenses",
+    "toc1": "LA CARTA DEL APÓSTOL SAN PABLO A LOS FILIPENSES",
+    "toc2": "FILIPENSES"
+  },
+  "580": {
+    "h": "COLOSENSES",
+    "toc3": "Colosenses",
+    "toc1": "LA CARTA DEL APÓSTOL SAN PABLO A LOS COLOSENSES",
+    "toc2": "COLOSENSES"
+  },
+  "590": {
+    "h": "1 TESALONICENSES",
+    "toc3": "1 Tesalonicenses",
+    "toc1": "PRIMERA CARTA DEL APÓSTOL SAN PABLO A LOS TESALONICENSES",
+    "toc2": "1 TESALONICENSES"
+  },
+  "600": {
+    "h": "2 TESALONICENSES",
+    "toc3": "2 Tesalonicenses",
+    "toc1": "SEGUNDA CARTA DEL APÓSTOL SAN PABLO A LOS TESALONICENSES",
+    "toc2": "2 TESALONICENSES"
+  },
+  "610": {
+    "h": "1 TIMOTEO",
+    "toc3": "1 Timoteo",
+    "toc1": "PRIMERA CARTA DEL APÓSTOL SAN PABLO A TIMOTEO",
+    "toc2": "1 TIMOTEO"
+  },
+  "620": {
+    "h": "2 TIMOTEO",
+    "toc3": "2 Timoteo",
+    "toc1": "SEGUNDA CARTA DEL APÓSTOL SAN PABLO A TIMOTEO",
+    "toc2": "2 TIMOTEO"
+  },
+  "630": {
+    "h": "TITO",
+    "toc3": "Tito",
+    "toc1": "LA CARTA DEL APÓSTOL SAN PABLO A TITO",
+    "toc2": "TITO"
+  },
+  "640": {
+    "h": "FILEMÓN",
+    "toc3": "Filemón",
+    "toc1": "LA CARTA DEL APÓSTOL SAN PABLO A FILEMÓN",
+    "toc2": "FILEMÓN"
+  },
+  "650": {
+    "h": "HEBREOS",
+    "toc3": "Hebreos",
+    "toc1": "LA CARTA A LOS HEBREOS",
+    "toc2": "HEBREOS"
+  },
+  "660": {
+    "h": "SANTIAGO",
+    "toc3": "Santiago",
+    "toc1": "LA CARTA UNIVERSAL DE SANTIAGO",
+    "toc2": "SANTIAGO"
+  },
+  "670": {
+    "h": "1 PEDRO",
+    "toc3": "1 Pedro",
+    "toc1": "PRIMERA CARTA UNIVERSAL DE SAN PEDRO APÓSTOL",
+    "toc2": "1 PEDRO"
+  },
+  "680": {
+    "h": "2 PEDRO",
+    "toc3": "2 Pedro",
+    "toc1": "SEGUNDA CARTA UNIVERSAL DE SAN PEDRO APÓSTOL",
+    "toc2": "2 PEDRO"
+  },
+  "690": {
+    "h": "1 JUAN",
+    "toc3": "1 Juan",
+    "toc1": "PRIMERA CARTA UNIVERSAL DE SAN JUAN APÓSTOL",
+    "toc2": "1 JUAN"
+  },
+  "700": {
+    "h": "2 JUAN",
+    "toc3": "2 Juan",
+    "toc1": "SEGUNDA CARTA DE SAN JUAN APÓSTOL",
+    "toc2": "2 JUAN"
+  },
+  "710": {
+    "h": "3 JUAN",
+    "toc3": "3 Juan",
+    "toc1": "TERCERA CARTA DE SAN JUAN APÓSTOL",
+    "toc2": "3 JUAN"
+  },
+  "720": {
+    "h": "SAN JUDAS",
+    "toc3": "Judas",
+    "toc1": "LA CARTA UNIVERSAL DE SAN JUDAS APÓSTOL",
+    "toc2": "SAN JUDAS"
+  },
+  "730": {
+    "h": "EL APOCALIPSIS",
+    "toc3": "Apocalipsis",
+    "toc1": "EL APOCALIPSIS DE SAN JUAN",
+    "toc2": "EL APOCALIPSIS"
+  }
+}

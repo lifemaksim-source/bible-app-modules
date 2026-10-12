@@ -1,0 +1,398 @@
+{
+  "10": {
+    "h": "Gênesis",
+    "toc1": "Gênesis",
+    "toc2": "Gênesis",
+    "toc3": "Gn"
+  },
+  "20": {
+    "h": "Êxodo",
+    "toc1": "Êxodo",
+    "toc2": "Êxodo",
+    "toc3": "Êx"
+  },
+  "30": {
+    "h": "Levítico",
+    "toc1": "Levítico",
+    "toc2": "Levítico",
+    "toc3": "Lv"
+  },
+  "40": {
+    "h": "Números",
+    "toc1": "Números",
+    "toc2": "Números",
+    "toc3": "Nm"
+  },
+  "50": {
+    "h": "Deuteronômio",
+    "toc1": "Deuteronômio",
+    "toc2": "Deuteronômio",
+    "toc3": "Dt"
+  },
+  "60": {
+    "h": "Josué",
+    "toc1": "Josué",
+    "toc2": "Josué",
+    "toc3": "Js"
+  },
+  "70": {
+    "h": "Juízes",
+    "toc1": "Juízes",
+    "toc2": "Juízes",
+    "toc3": "Jz"
+  },
+  "80": {
+    "h": "Rute",
+    "toc1": "Rute",
+    "toc2": "Rute",
+    "toc3": "Rt"
+  },
+  "90": {
+    "h": "1 Samuel",
+    "toc1": "1 Samuel",
+    "toc2": "1 Samuel",
+    "toc3": "1 Sm"
+  },
+  "100": {
+    "h": "2 Samuel",
+    "toc1": "2 Samuel",
+    "toc2": "2 Samuel",
+    "toc3": "2 Sm"
+  },
+  "110": {
+    "h": "1 Reis",
+    "toc1": "1 Reis",
+    "toc2": "1 Reis",
+    "toc3": "1 Rs"
+  },
+  "120": {
+    "h": "2 Reis",
+    "toc1": "2 Reis",
+    "toc2": "2 Reis",
+    "toc3": "2 Rs"
+  },
+  "130": {
+    "h": "1 Crônicas",
+    "toc1": "1 Crônicas",
+    "toc2": "1 Crônicas",
+    "toc3": "1 Cr"
+  },
+  "140": {
+    "h": "2 Crônicas",
+    "toc1": "2 Crônicas",
+    "toc2": "2 Crônicas",
+    "toc3": "2 Cr"
+  },
+  "150": {
+    "h": "Esdras",
+    "toc1": "Esdras",
+    "toc2": "Esdras",
+    "toc3": "Esd"
+  },
+  "160": {
+    "h": "Neemias",
+    "toc1": "Neemias",
+    "toc2": "Neemias",
+    "toc3": "Ne"
+  },
+  "190": {
+    "h": "Ester",
+    "toc1": "Ester",
+    "toc2": "Ester",
+    "toc3": "Et"
+  },
+  "220": {
+    "h": "Jó",
+    "toc1": "Jó",
+    "toc2": "Jó",
+    "toc3": "Jb"
+  },
+  "230": {
+    "h": "Salmos",
+    "toc1": "Salmos",
+    "toc2": "Salmos",
+    "toc3": "Sl"
+  },
+  "240": {
+    "h": "Provérbios",
+    "toc1": "Provérbios",
+    "toc2": "Provérbios",
+    "toc3": "Pv"
+  },
+  "250": {
+    "h": "Eclesiastes",
+    "toc1": "Eclesiastes",
+    "toc2": "Eclesiastes",
+    "toc3": "Ec"
+  },
+  "260": {
+    "h": "Cântico dos Cânticos",
+    "toc1": "Cântico dos Cânticos",
+    "toc2": "Cântico dos Cânticos",
+    "toc3": "Ct"
+  },
+  "290": {
+    "h": "Isaías",
+    "toc1": "Isaías",
+    "toc2": "Isaías",
+    "toc3": "Is"
+  },
+  "300": {
+    "h": "Jeremias",
+    "toc1": "Jeremias",
+    "toc2": "Jeremias",
+    "toc3": "Jr"
+  },
+  "310": {
+    "h": "Lamentações",
+    "toc1": "Lamentações",
+    "toc2": "Lamentações",
+    "toc3": "Lm"
+  },
+  "330": {
+    "h": "Ezequiel",
+    "toc1": "Ezequiel",
+    "toc2": "Ezequiel",
+    "toc3": "Ez"
+  },
+  "340": {
+    "h": "Daniel",
+    "toc1": "Daniel",
+    "toc2": "Daniel",
+    "toc3": "Dn"
+  },
+  "350": {
+    "h": "Oseias",
+    "toc1": "Oseias",
+    "toc2": "Oseias",
+    "toc3": "Os"
+  },
+  "360": {
+    "h": "Joel",
+    "toc1": "Joel",
+    "toc2": "Joel",
+    "toc3": "Jl"
+  },
+  "370": {
+    "h": "Amós",
+    "toc1": "Amós",
+    "toc2": "Amós",
+    "toc3": "Am"
+  },
+  "380": {
+    "h": "Obadias",
+    "toc1": "Obadias",
+    "toc2": "Obadias",
+    "toc3": "Ob"
+  },
+  "390": {
+    "h": "Jonas",
+    "toc1": "Jonas",
+    "toc2": "Jonas",
+    "toc3": "Jn"
+  },
+  "400": {
+    "h": "Miqueias",
+    "toc1": "Miqueias",
+    "toc2": "Miqueias",
+    "toc3": "Mq"
+  },
+  "410": {
+    "h": "Naum",
+    "toc1": "Naum",
+    "toc2": "Naum",
+    "toc3": "Na"
+  },
+  "420": {
+    "h": "Habacuque",
+    "toc1": "Habacuque",
+    "toc2": "Habacuque",
+    "toc3": "Hc"
+  },
+  "430": {
+    "h": "Sofonias",
+    "toc1": "Sofonias",
+    "toc2": "Sofonias",
+    "toc3": "Sf"
+  },
+  "440": {
+    "h": "Ageu",
+    "toc1": "Ageu",
+    "toc2": "Ageu",
+    "toc3": "Ag"
+  },
+  "450": {
+    "h": "Zacarias",
+    "toc1": "Zacarias",
+    "toc2": "Zacarias",
+    "toc3": "Zc"
+  },
+  "460": {
+    "h": "Malaquias",
+    "toc1": "Malaquias",
+    "toc2": "Malaquias",
+    "toc3": "Ml"
+  },
+  "470": {
+    "h": "Mateus",
+    "toc1": "Mateus",
+    "toc2": "Mateus",
+    "toc3": "Mt"
+  },
+  "480": {
+    "h": "Marcos",
+    "toc1": "Marcos",
+    "toc2": "Marcos",
+    "toc3": "Mc"
+  },
+  "490": {
+    "h": "Lucas",
+    "toc1": "Lucas",
+    "toc2": "Lucas",
+    "toc3": "Lc"
+  },
+  "500": {
+    "h": "João",
+    "toc1": "João",
+    "toc2": "João",
+    "toc3": "Jo"
+  },
+  "510": {
+    "h": "Atos",
+    "toc1": "Atos",
+    "toc2": "Atos",
+    "toc3": "At"
+  },
+  "520": {
+    "h": "Romanos",
+    "toc1": "Romanos",
+    "toc2": "Romanos",
+    "toc3": "Rm"
+  },
+  "530": {
+    "h": "1 Coríntios",
+    "toc1": "1 Coríntios",
+    "toc2": "1 Coríntios",
+    "toc3": "1 Co"
+  },
+  "540": {
+    "h": "2 Coríntios",
+    "toc1": "2 Coríntios",
+    "toc2": "2 Coríntios",
+    "toc3": "2 Co"
+  },
+  "550": {
+    "h": "Gálatas",
+    "toc1": "Gálatas",
+    "toc2": "Gálatas",
+    "toc3": "Gl"
+  },
+  "560": {
+    "h": "Efésios",
+    "toc1": "Efésios",
+    "toc2": "Efésios",
+    "toc3": "Ef"
+  },
+  "570": {
+    "h": "Filipenses",
+    "toc1": "Filipenses",
+    "toc2": "Filipenses",
+    "toc3": "Fp"
+  },
+  "580": {
+    "h": "Colossenses",
+    "toc1": "Colossenses",
+    "toc2": "Colossenses",
+    "toc3": "Cl"
+  },
+  "590": {
+    "h": "1 Tessalonicenses",
+    "toc1": "1 Tessalonicenses",
+    "toc2": "1 Tessalonicenses",
+    "toc3": "1 Ts"
+  },
+  "600": {
+    "h": "2 Tessalonicenses",
+    "toc1": "2 Tessalonicenses",
+    "toc2": "2 Tessalonicenses",
+    "toc3": "2 Ts"
+  },
+  "610": {
+    "h": "1 Timóteo",
+    "toc1": "1 Timóteo",
+    "toc2": "1 Timóteo",
+    "toc3": "1 Tm"
+  },
+  "620": {
+    "h": "2 Timóteo",
+    "toc1": "2 Timóteo",
+    "toc2": "2 Timóteo",
+    "toc3": "2 Tm"
+  },
+  "630": {
+    "h": "Tito",
+    "toc1": "Tito",
+    "toc2": "Tito",
+    "toc3": "Tt"
+  },
+  "640": {
+    "h": "Filemom",
+    "toc1": "Filemom",
+    "toc2": "Filemom",
+    "toc3": "Fm"
+  },
+  "650": {
+    "h": "Hebreus",
+    "toc1": "Hebreus",
+    "toc2": "Hebreus",
+    "toc3": "Hb"
+  },
+  "660": {
+    "h": "Tiago",
+    "toc1": "Tiago",
+    "toc2": "Tiago",
+    "toc3": "Tg"
+  },
+  "670": {
+    "h": "1 Pedro",
+    "toc1": "1 Pedro",
+    "toc2": "1 Pedro",
+    "toc3": "1 Pe"
+  },
+  "680": {
+    "h": "2 Pedro",
+    "toc1": "2 Pedro",
+    "toc2": "2 Pedro",
+    "toc3": "2 Pe"
+  },
+  "690": {
+    "h": "1 João",
+    "toc1": "1 João",
+    "toc2": "1 João",
+    "toc3": "1 Jo"
+  },
+  "700": {
+    "h": "2 João",
+    "toc1": "2 João",
+    "toc2": "2 João",
+    "toc3": "2 Jo"
+  },
+  "710": {
+    "h": "3 João",
+    "toc1": "3 João",
+    "toc2": "3 João",
+    "toc3": "3 Jo"
+  },
+  "720": {
+    "h": "Judas",
+    "toc1": "Judas",
+    "toc2": "Judas",
+    "toc3": "Jd"
+  },
+  "730": {
+    "h": "Apocalipse",
+    "toc1": "Apocalipse",
+    "toc2": "Apocalipse",
+    "toc3": "Ap"
+  }
+}
