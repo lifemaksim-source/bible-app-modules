@@ -9,6 +9,11 @@ import { buildBibleData } from './bible.mjs';
 export async function buildSword(src, { work }) {
   const zip = path.join(work, 'sword.zip');
   await getPinned(src.url, src.sha256, zip);
+  execFileSync('unzip', ['-q', '-o', zip, '-d', path.join(work, 'sword')]);
+  try {
+    const sample = execFileSync('diatheke', ['-b', src.sword, '-f', 'plain', '-k', 'Psalms 130; Proverbs 30; Matthew 25'], { encoding: 'utf8', env: { ...process.env, SWORD_PATH: path.join(work, 'sword') } });
+    fs.writeFileSync(path.join(work, 'sword-check.txt'), sample);
+  } catch (e) { fs.writeFileSync(path.join(work, 'sword-check.txt'), String(e)); }
   const decoded = path.join(work, 'sword.json');
   execFileSync('python3', [path.join(root, 'tools/sword-export.py'), zip, src.sword, decoded], { stdio: 'inherit' });
   const full = JSON.parse(fs.readFileSync(path.join(root, `canon/abbr/${src.language}-long.json`), 'utf8'));

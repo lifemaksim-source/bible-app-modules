@@ -44,6 +44,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 -m pip install -r tools/requirements-sword.txt
+      - run: sudo apt-get update -qq && sudo apt-get install -y libsword-utils diatheke
       - run: npm ci
       - run: npm test
       - name: Список переводов eBible
@@ -92,6 +93,7 @@ jobs:
           python-version: '3.12'
       - run: npm ci
       - run: python3 -m pip install -r tools/requirements-sword.txt
+      - run: sudo apt-get update -qq && sudo apt-get install -y libsword-utils diatheke
       - run: npm test
       - name: Собрать черновики и сравнить нумерацию
         id: build
@@ -102,7 +104,7 @@ jobs:
         run: |
           mkdir -p language-results
           cp dist/report.md language-results/README.md
-          for f in work/*/numbering.json work/*/names.json; do
+          for f in work/*/numbering.json work/*/names.json work/*/sword-check.txt; do
             [ -f "$f" ] || continue
             id=$(basename "$(dirname "$f")")
             mkdir -p "language-results/$id"
