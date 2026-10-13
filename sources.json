@@ -159,7 +159,8 @@
       "homepage": "https://ebible.org/spaRV1909/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "pddpt",
@@ -175,7 +176,8 @@
       "licenseChecked": "2026-10-11",
       "bookNames": true,
       "draft": true,
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "blm",
@@ -190,7 +192,8 @@
       "homepage": "https://ebible.org/spablm/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "blivre",
@@ -206,7 +209,8 @@
       "licenseChecked": "2026-10-11",
       "bookNames": true,
       "draft": true,
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "numberingReview": "exact-coordinates"
     },
     {
       "id": "onbv",
@@ -222,7 +226,8 @@
       "licenseChecked": "2026-10-11",
       "bookNames": true,
       "draft": true,
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "luther1912",
@@ -237,7 +242,8 @@
       "homepage": "https://ebible.org/deu1912/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "exact-coordinates"
     },
     {
       "id": "schlachter1951",
@@ -253,7 +259,8 @@
       "licenseChecked": "2026-10-11",
       "bookNames": true,
       "draft": true,
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "numberingReview": "source-gaps"
     },
     {
       "id": "elberfelder1905",
@@ -268,7 +275,8 @@
       "homepage": "https://ebible.org/deuelo/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "exact-coordinates"
     },
     {
       "id": "lsg1910",
@@ -283,7 +291,8 @@
       "homepage": "https://ebible.org/fraLSG/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "darby",
@@ -298,7 +307,8 @@
       "homepage": "https://ebible.org/frajnd/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "source-gaps"
     },
     {
       "id": "sbl",
@@ -313,7 +323,8 @@
       "homepage": "https://ebible.org/frasbl/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "ubg",
@@ -329,7 +340,8 @@
       "licenseChecked": "2026-10-11",
       "bookNames": true,
       "draft": true,
-      "licenseUrl": "https://creativecommons.org/licenses/by-nd/4.0/"
+      "licenseUrl": "https://creativecommons.org/licenses/by-nd/4.0/",
+      "numberingReview": "exact-coordinates"
     },
     {
       "id": "kulish1905",
@@ -344,7 +356,8 @@
       "homepage": "https://ebible.org/ukr1871/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "ukrfb",
@@ -359,7 +372,8 @@
       "homepage": "https://ebible.org/ukrfb/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "jpnm",
@@ -374,7 +388,8 @@
       "homepage": "https://ebible.org/jpnm/copyright.htm",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "azb",
@@ -392,7 +407,8 @@
       "draft": true,
       "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/3.0/",
       "noncommercial": true,
-      "licenseNote": "The source explicitly grants CC BY-NC-ND 3.0 format conversion without changing words/punctuation; its footer also lists 4.0. Both statements retained in the license report."
+      "licenseNote": "The source explicitly grants CC BY-NC-ND 3.0 format conversion without changing words/punctuation; its footer also lists 4.0. Both statements retained in the license report.",
+      "numberingReview": "custom-map-required"
     },
     {
       "id": "kougo",
@@ -409,7 +425,8 @@
       "homepage": "https://www.crosswire.org/sword/modules/ModInfo.jsp?modName=JapKougo",
       "licenseChecked": "2026-10-11",
       "bookNames": true,
-      "draft": true
+      "draft": true,
+      "deferred": "По решению владельца 13.10.2026: неполный источник JapKougo, 1171 из 1189 глав; не собирать и не публиковать до отдельного решения."
     }
   ],
   "sets": [

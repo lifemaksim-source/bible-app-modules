@@ -11,6 +11,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 
+import { unpublished, assertNumberingForPublication } from './source-policy.mjs';
 import { buildBible } from './bible.mjs';
 import { buildSword } from './sword.mjs';
 import { get, parseCsv, root, sha256 } from './common.mjs';
@@ -54,9 +55,11 @@ let failed = 0;
 for (const src of cfg.modules) {
   if (only && src.id !== only) continue;
   if (onlyDrafts && !src.draft) continue;
+  if (src.deferred) { report.push(`⏸ ${src.id}: отложен — ${src.deferred}`); continue; }
   const type = src.type ?? 'bible';
   const work = path.join(root, 'work', src.id);
   try {
+    assertNumberingForPublication(src);
     const build = BUILDERS[src.format ? `${type}:${src.format}` : type];
     if (!build) throw new Error(`неизвестный тип модуля: ${type}${src.format ? ` (${src.format})` : ''}`);
     fs.rmSync(work, { recursive: true, force: true });
@@ -96,7 +99,7 @@ for (const src of cfg.modules) {
 
 // Modules removed from sources.json leave the catalog too.
 const order = new Map(cfg.modules.map((m, i) => [m.id, i]));
-const drafts = new Set(cfg.modules.filter((m) => m.draft).map((m) => m.id));
+const drafts = new Set(cfg.modules.filter(unpublished).map((m) => m.id));
 const modules = [...entries.values()].filter((m) => order.has(m.id) && !drafts.has(m.id)).sort((a, b) => order.get(a.id) - order.get(b.id));
 const sets = (cfg.sets ?? []).map((s) => ({ ...s, modules: s.modules.filter((id) => modules.some((m) => m.id === id)) }));
 fs.writeFileSync(catalogPath, JSON.stringify({ format: 1, updated: new Date().toISOString().slice(0, 10), modules, sets }, null, 2) + '\n');
