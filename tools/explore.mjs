@@ -142,7 +142,8 @@ if (mode === 'wikisource' || mode === 'wikisource-ns') {
   }
   const hosts = arrays.find(([, v]) => v.some((e) => e?.alias))?.[1] ?? [];
   const entries = arrays.reduce((a, b) => (b[1].length > a[1].length ? b : a), ['', []])[1];
-  const resolve = (u) => u.replace(/\{([^}]+)\}/g, (m, alias) => hosts.find((h) => h.alias === alias)?.path ?? m);
+  // «{mz}Баркли-к.commentaries» + host «https://…/modules/%s.zip» → «https://…/modules/Баркли-к.commentaries.zip»
+  const resolve = (u) => u.replace(/^\{([^}]+)\}(.*)$/, (m, alias, rest) => hosts.find((h) => h.alias === alias)?.path.replace('%s', rest) ?? m);
   if (pattern) {
     const re = new RegExp(pattern, 'i');
     const hits = entries.filter((e) => re.test(JSON.stringify(e)));
