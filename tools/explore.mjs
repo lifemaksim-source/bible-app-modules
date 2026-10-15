@@ -87,7 +87,94 @@ if (mode === 'wikisource' || mode === 'wikisource-ns') {
     fs.writeFileSync(path.join(out, 'pages', `${String(i).padStart(2, '0')}-${safe(url.replace(/^https?:\/\//, ''))}.txt`), `${url}\nHTTP ${res.status}\n\n${text}`);
     summary.push(`${url}: HTTP ${res.status}, ${text.length} символов`);
   }
-} else throw new Error('usage: explore.mjs wikisource <prefix…> | pages <title…> | zip <regex> <url…> | urls <url…>');
+} else if (mode === 'mybible') {
+  // mybible <registry zip url> [entry regex] [max]: the MyBible module registry (the list, as text) and a DESCRIPTION
+  // of a few modules — tables, info and first rows. Archives are read in memory (no extraction to disk), modules are
+  // opened in sql.js (WebAssembly) and never saved — they are not ours to publish.
+  const [url, pattern, max = '4'] = args;
+  const zlib = await import('node:zlib');
+  const { SQL } = await import('./common.mjs');
+  const LIMIT = 80e6;
+  const fetchBytes = async (u) => {
+    const res = await fetch(u, { headers: { 'user-agent': UA } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const b = Buffer.from(await res.arrayBuffer());
+    if (b.length > LIMIT) throw new Error(`слишком большой файл: ${b.length}`);
+    return b;
+  };
+  // entries of a zip archive (central directory; stored or deflated) → [{ name, data }]
+  const unzip = (b) => {
+    let e = b.length - 22;
+    while (e >= 0 && b.readUInt32LE(e) !== 0x06054b50) e--;
+    if (e < 0) throw new Error('не zip');
+    const list = [];
+    let p = b.readUInt32LE(e + 16);
+    for (let i = 0, n = b.readUInt16LE(e + 10); i < n; i++) {
+      const method = b.readUInt16LE(p + 10);
+      const packed = b.readUInt32LE(p + 20);
+      const nameLen = b.readUInt16LE(p + 28);
+      const name = b.toString('utf8', p + 46, p + 46 + nameLen);
+      const local = b.readUInt32LE(p + 42);
+      const start = local + 30 + b.readUInt16LE(local + 26) + b.readUInt16LE(local + 28);
+      if (b.readUInt32LE(p + 24) > LIMIT) throw new Error(`${name}: слишком большой`);
+      const raw = b.subarray(start, start + packed);
+      if (!name.endsWith('/')) list.push({ name, data: method === 8 ? zlib.inflateRawSync(raw) : raw });
+      p += 46 + nameLen + b.readUInt16LE(p + 30) + b.readUInt16LE(p + 32);
+    }
+    return list;
+  };
+  fs.mkdirSync(path.join(out, 'registry'), { recursive: true });
+  let reg;
+  for (const f of unzip(await fetchBytes(url))) {
+    summary.push(`${f.name}: ${f.data.length} байт`);
+    if (!/\.json$/i.test(f.name)) continue;
+    const text = f.data.toString('utf8').replace(/^﻿/, '');
+    fs.writeFileSync(path.join(out, 'registry', safe(path.basename(f.name))), text);
+    reg = JSON.parse(text);
+  }
+  const arrays = Object.entries(reg ?? {}).filter(([, v]) => Array.isArray(v));
+  for (const [k, v] of Object.entries(reg ?? {})) if (!Array.isArray(v)) summary.push(`${k}: ${JSON.stringify(v).slice(0, 300)}`);
+  for (const [k, v] of arrays) {
+    const keys = new Map();
+    for (const e of v) for (const kk of Object.keys(e ?? {})) keys.set(kk, (keys.get(kk) ?? 0) + 1);
+    summary.push(`${k}: ${v.length} записей; поля: ${[...keys].map(([kk, c]) => `${kk}(${c})`).join(', ')}`);
+    for (const e of v.slice(0, 3)) summary.push('  ' + JSON.stringify(e).slice(0, 1500));
+  }
+  const hosts = arrays.find(([, v]) => v.some((e) => e?.alias))?.[1] ?? [];
+  const entries = arrays.reduce((a, b) => (b[1].length > a[1].length ? b : a), ['', []])[1];
+  const resolve = (u) => u.replace(/\{([^}]+)\}/g, (m, alias) => hosts.find((h) => h.alias === alias)?.path ?? m);
+  if (pattern) {
+    const re = new RegExp(pattern, 'i');
+    const hits = entries.filter((e) => re.test(JSON.stringify(e)));
+    summary.push('', `## Совпадения «${pattern}»: ${hits.length}`, ...hits.map((e) => JSON.stringify(e).slice(0, 600)));
+    const sql = await SQL();
+    for (const e of hits.slice(0, Number(max))) {
+      const urls = Object.values(e).flat().filter((v) => typeof v === 'string' && /\.zip|\{|https?:/i.test(v)).map(resolve);
+      summary.push('', `## ${JSON.stringify(e).slice(0, 200)}`, `ссылки: ${urls.join(' | ')}`);
+      for (const u of urls) {
+        try {
+          for (const f of unzip(await fetchBytes(u))) {
+            summary.push(`### ${f.name} — ${f.data.length} байт (с ${u})`);
+            if (!/\.sqlite3?$/i.test(f.name)) continue;
+            const db = new sql.Database(f.data);
+            for (const [name, ddl] of db.exec("SELECT name, sql FROM sqlite_master WHERE type IN ('table','index')")[0]?.values ?? []) {
+              summary.push(String(ddl ?? name));
+              if (!String(ddl ?? '').startsWith('CREATE TABLE')) continue;
+              const q = `"${String(name).replace(/"/g, '""')}"`;
+              const c = db.exec(`SELECT count(*) FROM ${q}`)[0].values[0][0];
+              const rows = db.exec(`SELECT * FROM ${q} LIMIT ${name === 'info' ? 60 : 4}`)[0];
+              summary.push(`  строк: ${c}`, ...(rows?.values ?? []).map((r) => '  ' + JSON.stringify(r).slice(0, 700)));
+            }
+            db.close();
+          }
+          break;
+        } catch (err) {
+          summary.push(`  ${u}: ${err.message}`);
+        }
+      }
+    }
+  }
+} else throw new Error('usage: explore.mjs wikisource <prefix…> | pages <title…> | zip <regex> <url…> | urls <url…> | mybible <registry url> [regex] [max]');
 
 fs.writeFileSync(path.join(out, 'README.md'), summary.join('\n') + '\n');
 console.log(summary.join('\n'));
