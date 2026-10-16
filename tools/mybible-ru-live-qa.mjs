@@ -1,4 +1,4 @@
-// Real RU MyBible compatibility probes: two tiny public-registry modules.
+// Real RU MyBible compatibility probes: five public-registry modules.
 // NEVER print article texts, commit binaries or upload the archives as artifacts.
 import fs from 'node:fs';
 import os from 'node:os';
@@ -12,7 +12,10 @@ import { auditDictionary } from './dictionary-audit.mjs';
 const REGISTRY = 'https://mybible.zone/repository/registry/registry.zip';
 const MODULES = [
   { file: 'Имена.dictionary', kind: 'dictionary' },
+  { file: 'Нюстрем.dictionary', kind: 'dictionary' },
+  { file: 'Брокгауз.dictionary', kind: 'dictionary' },
   { file: 'БТ-к.commentaries', kind: 'commentary' },
+  { file: 'Баркли-к.commentaries', kind: 'commentary' },
 ];
 const MAX_ZIP = 16 * 1024 * 1024;
 const MAX_DB = 48 * 1024 * 1024;
