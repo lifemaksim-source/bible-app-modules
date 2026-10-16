@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { russianModuleMetadata } from './mybible-ru-scan.mjs';
+import { russianModuleMetadata, russianWordformCandidates } from './mybible-ru-scan.mjs';
 
 test('identifies only visible Russian dictionary and commentary metadata', () => {
   const sample = { downloads: [
@@ -34,4 +34,17 @@ test('a license metadata field does not translate into permission to redistribut
 test('rejects missing registry downloads instead of silently reporting empty library', () => {
   assert.throws(() => russianModuleMetadata(null), /Unsupported registry/);
   assert.throws(() => russianModuleMetadata({ modules: [] }), /Unsupported registry/);
+});
+
+
+test('finds language-level and wordform candidates without treating names as proof of contents', () => {
+  const candidate = russianWordformCandidates({ downloads: [
+    { fil: 'ru.dictionary', abr: 'ru', lng: 'ru', des: 'Словоформы русского языка', url: ['{mz}ru.dictionary'], siz: '2M' },
+    { fil: 'Phrases.dictionary', abr: 'Phr', lng: 'ru', des: 'Морфология текстов', url: ['{mz}phr'] },
+    { fil: 'Брокгауз.dictionary', abr: 'Брокгауз', lng: 'ru', des: 'Энциклопедия' },
+    { fil: 'hidden.dictionary', abr: 'ru', lng: 'ru', hid: true },
+  ] });
+  assert.deepEqual(candidate.map((x) => x.file), ['ru.dictionary', 'Phrases.dictionary']);
+  assert.equal(candidate[0].downloadListed, true);
+  assert.equal(candidate[0].language, 'ru');
 });
