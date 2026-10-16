@@ -6,6 +6,8 @@ on:
     paths:
       - 'tools/step-hebrew.mjs'
       - 'tools/step-hebrew.test.mjs'
+      - 'tools/step-hebrew-rest.mjs'
+      - 'tools/step-hebrew-rest.test.mjs'
       - 'sources-step-hebrew.json'
       - '.github/workflows/step-hebrew.yml'
   workflow_dispatch:
@@ -14,7 +16,7 @@ permissions:
 jobs:
   source-audit:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 14
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -23,6 +25,8 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Test row-preserving Hebrew parser and SQLite (synthetic data)
-        run: node --test tools/step-hebrew.test.mjs
+        run: node --test tools/step-hebrew.test.mjs tools/step-hebrew-rest.test.mjs
       - name: Verify fixed STEP Bible TAHOT Gen-Deu and ephemeral SQLite
         run: node tools/step-hebrew.mjs --sqlite-smoke
+      - name: Audit pinned STEP Bible TAHOT remaining 34 books and SQLite
+        run: node tools/step-hebrew-rest.mjs --sqlite-smoke
