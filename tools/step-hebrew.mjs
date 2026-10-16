@@ -32,6 +32,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   let qereRefs = 0;
   let aramaicGrammar = 0;
   let qereWithoutHebrewSurface = 0;
+  let psalmSuperscriptionRows = 0;
 
   const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/);
   for (let lineNo = 0; lineNo < lines.length; lineNo++) {
@@ -53,7 +54,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     // TAHOT #index may encode variants (e.g. #501). It is a source index,
     // not proof of sequential word order; do not coerce to word position.
     if (!book || !Number.isSafeInteger(chapter) || chapter < 1 || chapter > 180 ||
-        !Number.isSafeInteger(verse) || verse < 1 || verse > 200 ||
+        !Number.isSafeInteger(verse) || verse < 0 || verse > 200 || (verse === 0 && book !== 230) ||
         !Number.isSafeInteger(position) || position < 1 || position > 99999) {
       throw new Error('TAHOT reference outside selected-book scope at line ' + (lineNo + 1) + ': ' + [m[1],chapter,verse,position].join('/'));
     }
@@ -72,6 +73,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     }
     // Full original TAHOT reference contains edition and source indicators
     // (including Ketiv "K" and Qere "Q"). Do not strip or reinterpret them.
+    if (verse === 0 && book === 230) psalmSuperscriptionRows++;
     if (emptyQereVariant) qereWithoutHebrewSurface++;
     if (/(^|[^a-z])K/.test(flags)) ketivRefs++;
     if (/(^|[^a-z])Q/.test(flags)) qereRefs++;
@@ -98,7 +100,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     rows,
     stats: {
       rows: rows.length, malformed, malformedSamples, meaningVariants, spellingVariants,
-      ketivRefs, qereRefs, aramaicGrammar, qereWithoutHebrewSurface,
+      ketivRefs, qereRefs, aramaicGrammar, qereWithoutHebrewSurface, psalmSuperscriptionRows,
       columnWidths: histogram, verses: verseKeys.size,
       chapters: Object.fromEntries([...chapters].sort(([a], [b]) => a - b)
         .map(([book, ch]) => [book, ch.size])),
