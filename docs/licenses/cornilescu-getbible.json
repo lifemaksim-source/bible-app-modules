@@ -1,0 +1,26 @@
+{
+  "translation": "Cornilescu",
+  "abbreviation": "cornilescu",
+  "description": "Cornilescu Bible in Romanian language",
+  "lang": "ro",
+  "language": "Romanian",
+  "direction": "LTR",
+  "encoding": "UTF-8",
+  "distribution_lcsh": "Bible.Romanian",
+  "distribution_version": "2.1",
+  "distribution_version_date": "",
+  "distribution_abbreviation": "cornilescu",
+  "distribution_about": "Dumitru Cornilescu (4 April 1891 - 1975), a Romanian orthodox archdeacon, later a Protestant minister created this translation in 1921. It is popular particularly among protestants. Copyright of the Cornilescu Bible © 1924 belongs to British and Foreign Bible Society. Copyright © 2010, 2014 of the revised edition in Romanian language belongs to the Interconfessional Bible Society of Romania, with the approval of the British and Foreign Bible Society. Used by permission. To find out more about the ‘Cornilescu text’ translation visit www.biblesociety.org.uk/shop and the work of Bible Society visit “www.biblesociety.org.uk\"",
+  "distribution_license": "Copyrighted. Distribution permitted to CrossWire Bible Society",
+  "distribution_sourcetype": "OSIS",
+  "distribution_source": "",
+  "distribution_versification": "",
+  "distribution_history": {
+    "history_1.0": "Initial release",
+    "history_2.0": "Release of BFBS text - USFM text, revised spelling, footnotes, crossreferences, titles etc.",
+    "history_2.1": "Correction of multiple conversion errors",
+    "history_2.2": "Correction of xref and conversion errors (updated toolset)"
+  },
+  "url": "https://api.getbible.net/v2/cornilescu.json",
+  "sha": "8043a2bd800355900abdd6f3dd79a327f86aeff5"
+}

@@ -101,3 +101,21 @@ test('lopukhin: one-chapter books have ids without a chapter', () => {
   const { entries } = parseFb2('<FictionBook><body><section><title><p>ГЛАВА I</p></title><poem><stanza><v id="n25-Phm_1"><cite><strong>1. Павел</strong></cite></v></stanza></poem><p>1. Узник.</p></section></body></FictionBook>');
   assert.deepEqual(entries.map((e) => [e.code, e.chapter, e.verse, e.paras[0]]), [['Phm', 1, 1, 'Узник.']]);
 });
+
+test('названия книг из USFM не смешиваются с текстом; ND-слова и пунктуация сохраняются', () => {
+  const parsed = parseBook('\\id GEN\n\\h Yaradılış\n\\toc2 Yaradılış kitabı\n\\toc3 Yar\n\\c 1\n\\v 1 Əvvəlcə: «ışıq, ğ, ş!»\n');
+  assert.deepEqual(parsed.names, { h: 'Yaradılış', toc2: 'Yaradılış kitabı', toc3: 'Yar' });
+  assert.equal(parsed.verses.get('1:1'), 'Əvvəlcə: «ışıq, ğ, ş!»');
+});
+
+test('Original: Мал 3:19 и Иоил 4; отчёт замечает лишние стихи без изменения текста', async () => {
+  const { canon } = await import('./validate.mjs');
+  const { numberingReport } = await import('./numbering-report.mjs');
+  assert.equal(canon('org')[460].length, 3);
+  assert.equal(canon('org')[360].length, 4);
+  const original = new Map([[460, new Map([['3:19', 'same text'], ['5:1', 'extra text']])]]);
+  const report = numberingReport(original);
+  assert(report.candidates.eng.differences.some((d) => d.chapter === 3 && d.extra.includes(19)));
+  assert(report.candidates.org.differences.some((d) => d.chapter === 5 && d.extra.includes(1)));
+  assert.equal(original.get(460).get('3:19'), 'same text');
+});

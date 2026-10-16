@@ -1,0 +1,3164 @@
+{
+  "format": 1,
+  "checkedOn": "2026-10-14",
+  "textComparison": "SQLite main text, notes and headings compared exactly with parseBook output; not a linguistic review or proof of source completeness.",
+  "modules": [
+    {
+      "id": "bokun",
+      "ebible": "bel",
+      "source": "https://ebible.org/Scriptures/bel_usfm.zip",
+      "archiveSha256": "1e7d7ac093404d1be8e9dd856cf0a11ac09403a32046284c8aeea908f96a90a3",
+      "files": [
+        {
+          "file": "02-GENbel.usfm",
+          "sha256": "98867ab08efe7dd6b7e2ab717fdb69c9cad0535ef5ea326f992b5e851855b169"
+        },
+        {
+          "file": "03-EXObel.usfm",
+          "sha256": "6bdb1e6d1b87265d2855ee4e29871f5d06657d2426a2f49617a70043d8e1a5ab"
+        },
+        {
+          "file": "04-LEVbel.usfm",
+          "sha256": "c57ba9510ec708c6c76952bbe1d57840b692bd7f9998022f2393f16a784a619e"
+        },
+        {
+          "file": "05-NUMbel.usfm",
+          "sha256": "e54337bb623bef60745d87c809698082b0dabe3001f808a3347a479e59469e9d"
+        },
+        {
+          "file": "06-DEUbel.usfm",
+          "sha256": "147ec60b3f83b16eda11f2ba82c66465298b2d4de4967892e2d3bb249a030243"
+        },
+        {
+          "file": "07-JOSbel.usfm",
+          "sha256": "12d7beeeb44a6663171aea1a9e1e3a6362f1a3680882976c5fc6013a5fbe9e7d"
+        },
+        {
+          "file": "08-JDGbel.usfm",
+          "sha256": "5f352635925d01d2cff9ef2b45c2f2c892ce5b1070de4f66ef1e418fefb0bea0"
+        },
+        {
+          "file": "09-RUTbel.usfm",
+          "sha256": "73538602b4a2fea3aa2062774d2738ddd7f6b1f294c8750f5facf82c37e1ce19"
+        },
+        {
+          "file": "10-1SAbel.usfm",
+          "sha256": "429e5351a7c3b6e48da4dc5f19ab09150632453d7bbd19dfacc9f35baef4ef85"
+        },
+        {
+          "file": "11-2SAbel.usfm",
+          "sha256": "49f42e61e5de044fd47e1f69f5fb19ba7c25b1a35117b2dfaeb5eb279883599b"
+        },
+        {
+          "file": "12-1KIbel.usfm",
+          "sha256": "2eb84c02b4988d8265245bb2af1c9ca86215f6fc4e7f833a0b0cdbb487a3a8e9"
+        },
+        {
+          "file": "13-2KIbel.usfm",
+          "sha256": "c92fa32b7f85d146e5f4489abec373dbc2b13c94d2687cd66c50af97693e967e"
+        },
+        {
+          "file": "14-1CHbel.usfm",
+          "sha256": "2d68d407d47ad1d29b44aee56ae84cf9ceeae2f693de79a74a03baae49bd834e"
+        },
+        {
+          "file": "15-2CHbel.usfm",
+          "sha256": "8c1d90931592a1abbd31826e4425a9270ea98289498a4c3f39e27be5496b28a4"
+        },
+        {
+          "file": "16-EZRbel.usfm",
+          "sha256": "424b4ecc2642f19f61ce4e261d050aef030502741a179248f72b034de7dc6931"
+        },
+        {
+          "file": "17-NEHbel.usfm",
+          "sha256": "87c4ad0df05b99b617d2e5b48033c315d596990790febdd2949fb5ddb9b767c4"
+        },
+        {
+          "file": "18-ESTbel.usfm",
+          "sha256": "785ca176d45ab7e99cc2cf39ed701eb8a91d7d62e922684fd62586ed393a2ab4"
+        },
+        {
+          "file": "19-JOBbel.usfm",
+          "sha256": "e6ef32baeb5f94a91e594404bcb147a29099a15db5c13e5ce598345a10e62098"
+        },
+        {
+          "file": "20-PSAbel.usfm",
+          "sha256": "d466a54f229fbb807f45809db5d7eb6eea752a2a95a773648979bede20ee5808"
+        },
+        {
+          "file": "21-PRObel.usfm",
+          "sha256": "c26a8827c893da9e1361f5859fc0bf68c2167da5e526e12e5525a06b484acd57"
+        },
+        {
+          "file": "22-ECCbel.usfm",
+          "sha256": "0c8e10f695f13d7bcee168bf9eae9138afd333372ae53bcf8d3356da23bb7513"
+        },
+        {
+          "file": "23-SNGbel.usfm",
+          "sha256": "824ccdbdce089c6daf0f6bd57ab1387dcec135ad517caf630df165e54134b97a"
+        },
+        {
+          "file": "24-ISAbel.usfm",
+          "sha256": "f765ba91a49f0eda9c6467edd6e75e37f1336bf7c61cf6d9647e29f7b95a03ef"
+        },
+        {
+          "file": "25-JERbel.usfm",
+          "sha256": "29af0717df6a13c4d2bd3908cd0410418f88b6fb2584a1104878c8c3d394045a"
+        },
+        {
+          "file": "26-LAMbel.usfm",
+          "sha256": "13a31ef13996fd406243e79bfb1c8238bd0c0cc7e804461556b4f00369ba5c9f"
+        },
+        {
+          "file": "27-EZKbel.usfm",
+          "sha256": "682409d46f1432fa0b91b9976527f60b21d426aa641df723a46f3b38ccca48d4"
+        },
+        {
+          "file": "28-DANbel.usfm",
+          "sha256": "c9c2a4ed14f0d95844e496c0e45bf496b8ae253dc50fea94c58a071c72bea447"
+        },
+        {
+          "file": "29-HOSbel.usfm",
+          "sha256": "335ac17d0d52b436c1ff41fb8a5dceae2215bdc3663196025d1e0a6f954cd6ab"
+        },
+        {
+          "file": "30-JOLbel.usfm",
+          "sha256": "822ad6af2ec0c0a45e17c629af73f4bba9edd277a11584040cfcd29d0c7b20ed"
+        },
+        {
+          "file": "31-AMObel.usfm",
+          "sha256": "382dfab0db624e5b7f190490e0cf5f2c5942cf7a2cf47958b6e4e84701735168"
+        },
+        {
+          "file": "32-OBAbel.usfm",
+          "sha256": "81ac5d88e336cad473ae727ba9560444e164427a67718122c037a28843832c33"
+        },
+        {
+          "file": "33-JONbel.usfm",
+          "sha256": "d5aaabe0e8b85c3d0ceb1859a75be8a3640dddcca741c6bde85d3b1d1509397b"
+        },
+        {
+          "file": "34-MICbel.usfm",
+          "sha256": "eaa543b999a0ea2fd4acfd5c476e7da708348aba5cd7ebbbeb943d9ecdc32dae"
+        },
+        {
+          "file": "35-NAMbel.usfm",
+          "sha256": "f10c6072fdfcee550e13241f170cf0f5941965e9372086f0b50e57be12c43287"
+        },
+        {
+          "file": "36-HABbel.usfm",
+          "sha256": "d8417f11e93ee00722f4ec57839c256d516158dc1dae64c7eb7defacec2027ef"
+        },
+        {
+          "file": "37-ZEPbel.usfm",
+          "sha256": "8a85a0f51e2a9a6ca7d2caba468a04428d38bd978a74bf7ad7af38cf04eb5ab2"
+        },
+        {
+          "file": "38-HAGbel.usfm",
+          "sha256": "f88095a22369f6772bfa9d6ecf720f2071916a84c5c782f4177f27e0b03e3ea0"
+        },
+        {
+          "file": "39-ZECbel.usfm",
+          "sha256": "935eaec37b38cb141b353d835d62817b697f1e6ee9bf98727dc6ce0a6767453e"
+        },
+        {
+          "file": "40-MALbel.usfm",
+          "sha256": "267566d15e3057c19d488296dab7db61a656d7a58bbd81328d9691ecc7f4ec81"
+        },
+        {
+          "file": "46-MATbel.usfm",
+          "sha256": "7dc4edaa68f3153498ef1faa71a7f9e68c881119cb8e510873998690130b681f"
+        },
+        {
+          "file": "47-MRKbel.usfm",
+          "sha256": "dd26024d034235fea3efb61013caa37c1ff539bf8d1189e2265dd93cd82774e6"
+        },
+        {
+          "file": "48-LUKbel.usfm",
+          "sha256": "45bc45febd3937ea95be8708a22217960a1e896725f216c62c98ecaff4edba7a"
+        },
+        {
+          "file": "49-JHNbel.usfm",
+          "sha256": "0d90cada59a23f2dcff36a0b41caf253c08430aa13c298db50a201acacedea40"
+        },
+        {
+          "file": "51-ROMbel.usfm",
+          "sha256": "9ed837451c219482778c62b993f12dcba8df337e5241d625126fb45cb501ba32"
+        },
+        {
+          "file": "52-1CObel.usfm",
+          "sha256": "b7a674480010c4d41b38c46041e366056cd42c4213b9dea7811440fe52f4a751"
+        },
+        {
+          "file": "53-2CObel.usfm",
+          "sha256": "b1b4c76f313850bfd0f9aba9015902d66c185dad56f85d747d7190d4385263d2"
+        },
+        {
+          "file": "54-GALbel.usfm",
+          "sha256": "fbf9482eb9de3417c1539ab7d03297de1f8ee69a8cd9b6a6cb6b4d4f04084712"
+        },
+        {
+          "file": "55-EPHbel.usfm",
+          "sha256": "9c6bb833e0dfbc4604ca633396c993b5e53e5fd5f70b3774a1256040d9e55006"
+        },
+        {
+          "file": "56-PHPbel.usfm",
+          "sha256": "47c2615a1e6c8e7eb211939e89802d76d134eaaa4dc363d1eb76d6e5c61e0feb"
+        },
+        {
+          "file": "57-COLbel.usfm",
+          "sha256": "9c2f0c322654c9c03a470ae86d3d63e9b8c34fdaa05f5f7119f13405846e45d3"
+        },
+        {
+          "file": "58-1THbel.usfm",
+          "sha256": "33cb50321c840933f7cbe8ec870f90a4b320f76c6c04524b10169bdec9f7f377"
+        },
+        {
+          "file": "59-2THbel.usfm",
+          "sha256": "00adf9874023c608bcbe49b707914e565e883dc7d29787f10b6ba6a1e9dc13b2"
+        },
+        {
+          "file": "60-1TIbel.usfm",
+          "sha256": "49e16da37f36c4499b2f24efca4871e617c712c60fb42ded6528bad7d098eee0"
+        },
+        {
+          "file": "61-2TIbel.usfm",
+          "sha256": "913c9942016ff1880f50d6231b02e9226af5e2ede143e9971ec98d544deff9b6"
+        },
+        {
+          "file": "62-TITbel.usfm",
+          "sha256": "f0d29537bef2109518454acede55909d64149b55da9ac1d49d71ae999b7b7101"
+        },
+        {
+          "file": "63-PHMbel.usfm",
+          "sha256": "3eee169e7db317d4bf52faec38df228b7edcb21e346b638fa99a4b0874f4992a"
+        },
+        {
+          "file": "64-HEBbel.usfm",
+          "sha256": "5956a57c67a9848fa4f2f199f571b1ddf7a0cda3956d0d62014cf7b4db88ccc6"
+        },
+        {
+          "file": "65-JASbel.usfm",
+          "sha256": "d99050b7c45a38b94d2bbb370fd95673b1d4c15aeca2554062e15647fa489251"
+        },
+        {
+          "file": "67-2PEbel.usfm",
+          "sha256": "eaa5aacc7657dc5d59cee746d2dfe338f348eb1f563d8d8ddd22a4343f356dde"
+        },
+        {
+          "file": "68-1JNbel.usfm",
+          "sha256": "78f8a4aa71b2e9996177952c0daf906f55258b7583f1e0672ce697f9cce076cc"
+        },
+        {
+          "file": "69-2JNbel.usfm",
+          "sha256": "04ced602235b7d49a447e973ce06a2178ea9f80f8b20155289965e9114d2713d"
+        },
+        {
+          "file": "71-JUDbel.usfm",
+          "sha256": "c0fd2dfa609b9cd77bda3fb93b611743de21bc6e285bd0009d380db2b180eaef"
+        },
+        {
+          "file": "72-REVbel.usfm",
+          "sha256": "c31e7e86a378b073447bc95ae5940cec8ba6447bfaeea8f9724d132a5e3d6d85"
+        },
+        {
+          "file": "74-ACTbel.usfm",
+          "sha256": "7e13b63fbfd52c4ecce686513f1dc898cfb1580d6d00e2d0d2f80a29b4f6cf9f"
+        },
+        {
+          "file": "90-1PEbel.usfm",
+          "sha256": "db8b08911a55ad33611a30e64ccb3a0de0b35d897ece4450a4a8467896066bd5"
+        },
+        {
+          "file": "94-3JNbel.usfm",
+          "sha256": "5563b755ab61068a562482015cedd641c30b34ba0903bae5c8867e1736ddee3d"
+        }
+      ],
+      "textSha256": "b692cd063d673455f3dd975f11c72b4f3ed5a642f0bd291cd70308c5cc022cad",
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31170,
+      "comparisonBase": "eng",
+      "review": "custom-map-required",
+      "candidates": {
+        "eng": {
+          "missing": 21,
+          "extra": 89,
+          "chapterMismatches": 0
+        },
+        "rus": {
+          "missing": 982,
+          "extra": 802,
+          "chapterMismatches": 2
+        },
+        "org": {
+          "missing": 120,
+          "extra": 120,
+          "chapterMismatches": 2
+        }
+      },
+      "missing": [
+        {
+          "book": "NUM",
+          "ref": "29:40",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "DEU",
+          "ref": "22:30",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "1SA",
+          "ref": "23:29",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "2SA",
+          "ref": "18:33",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "2KI",
+          "ref": "11:21",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:27",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:28",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:29",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:30",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:31",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:32",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:33",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JOB",
+          "ref": "41:34",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "ECC",
+          "ref": "5:20",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "SNG",
+          "ref": "6:13",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "DAN",
+          "ref": "4:35",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "DAN",
+          "ref": "4:36",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "DAN",
+          "ref": "4:37",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "HOS",
+          "ref": "13:16",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JON",
+          "ref": "1:17",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "2CO",
+          "ref": "13:14",
+          "kind": "no-source-label"
+        }
+      ],
+      "extra": [
+        "NUM 30:17",
+        "DEU 23:26",
+        "1SA 21:16",
+        "1SA 24:23",
+        "2SA 19:44",
+        "1KI 22:54",
+        "2KI 12:22",
+        "JOB 39:31",
+        "JOB 39:32",
+        "JOB 39:33",
+        "JOB 39:34",
+        "JOB 39:35",
+        "JOB 40:25",
+        "JOB 40:26",
+        "JOB 40:27",
+        "PSA 3:9",
+        "PSA 4:9",
+        "PSA 5:13",
+        "PSA 6:11",
+        "PSA 7:18",
+        "PSA 8:10",
+        "PSA 9:21",
+        "PSA 12:9",
+        "PSA 18:51",
+        "PSA 19:15",
+        "PSA 20:10",
+        "PSA 21:14",
+        "PSA 22:32",
+        "PSA 30:13",
+        "PSA 31:25",
+        "PSA 34:23",
+        "PSA 36:13",
+        "PSA 38:23",
+        "PSA 39:14",
+        "PSA 40:18",
+        "PSA 41:14",
+        "PSA 42:12",
+        "PSA 44:27",
+        "PSA 45:18",
+        "PSA 46:12",
+        "PSA 47:10",
+        "PSA 48:15",
+        "PSA 49:21",
+        "PSA 51:20",
+        "PSA 51:21",
+        "PSA 52:10",
+        "PSA 52:11",
+        "PSA 53:7",
+        "PSA 54:8",
+        "PSA 54:9",
+        "PSA 55:24",
+        "PSA 56:14",
+        "PSA 57:12",
+        "PSA 58:12",
+        "PSA 59:18",
+        "PSA 60:13",
+        "PSA 60:14",
+        "PSA 61:9",
+        "PSA 62:13",
+        "PSA 63:12",
+        "PSA 64:11",
+        "PSA 65:14",
+        "PSA 67:8",
+        "PSA 68:36",
+        "PSA 69:37",
+        "PSA 70:6",
+        "PSA 75:11",
+        "PSA 76:13",
+        "PSA 77:21",
+        "PSA 80:20",
+        "PSA 81:17",
+        "PSA 83:19",
+        "PSA 84:13",
+        "PSA 85:14",
+        "PSA 88:19",
+        "PSA 89:53",
+        "PSA 92:16",
+        "PSA 102:29",
+        "PSA 108:14",
+        "PSA 140:14",
+        "PSA 142:8",
+        "ECC 4:17",
+        "SNG 7:14",
+        "DAN 3:31",
+        "DAN 3:32",
+        "DAN 3:33",
+        "HOS 14:10",
+        "JON 2:11",
+        "3JN 1:15"
+      ],
+      "bookList": [
+        {
+          "usfm": "GEN",
+          "number": 10,
+          "name": "БЫЦЬЦЁ",
+          "verses": 1533
+        },
+        {
+          "usfm": "EXO",
+          "number": 20,
+          "name": "ВЫХАД",
+          "verses": 1213
+        },
+        {
+          "usfm": "LEV",
+          "number": 30,
+          "name": "ЛЯВІТ",
+          "verses": 859
+        },
+        {
+          "usfm": "NUM",
+          "number": 40,
+          "name": "ЛІКІ",
+          "verses": 1288
+        },
+        {
+          "usfm": "DEU",
+          "number": 50,
+          "name": "ДРУГАЗАКОНЬНЕ",
+          "verses": 959
+        },
+        {
+          "usfm": "JOS",
+          "number": 60,
+          "name": "ЕГОШУА",
+          "verses": 658
+        },
+        {
+          "usfm": "JDG",
+          "number": 70,
+          "name": "СУДЗЬДЗЯЎ",
+          "verses": 618
+        },
+        {
+          "usfm": "RUT",
+          "number": 80,
+          "name": "РУТ",
+          "verses": 85
+        },
+        {
+          "usfm": "1SA",
+          "number": 90,
+          "name": "1 САМУЭЛЯ",
+          "verses": 811
+        },
+        {
+          "usfm": "2SA",
+          "number": 100,
+          "name": "2 САМУЭЛЯ",
+          "verses": 695
+        },
+        {
+          "usfm": "1KI",
+          "number": 110,
+          "name": "1 ВАЛАДАРОЎ",
+          "verses": 817
+        },
+        {
+          "usfm": "2KI",
+          "number": 120,
+          "name": "2 ВАЛАДАРОЎ",
+          "verses": 719
+        },
+        {
+          "usfm": "1CH",
+          "number": 130,
+          "name": "1 ЛЕТАПІСАЎ",
+          "verses": 942
+        },
+        {
+          "usfm": "2CH",
+          "number": 140,
+          "name": "2 ЛЕТАПІСАЎ",
+          "verses": 822
+        },
+        {
+          "usfm": "EZR",
+          "number": 150,
+          "name": "ЭЗРА",
+          "verses": 280
+        },
+        {
+          "usfm": "NEH",
+          "number": 160,
+          "name": "НЭЭМІЯ",
+          "verses": 406
+        },
+        {
+          "usfm": "EST",
+          "number": 190,
+          "name": "ЭСТЭР",
+          "verses": 167
+        },
+        {
+          "usfm": "JOB",
+          "number": 220,
+          "name": "ЁЎ",
+          "verses": 1070
+        },
+        {
+          "usfm": "PSA",
+          "number": 230,
+          "name": "ПСАЛЬМЫ",
+          "verses": 2527
+        },
+        {
+          "usfm": "PRO",
+          "number": 240,
+          "name": "ПРЫПОВЕСЬЦІ",
+          "verses": 915
+        },
+        {
+          "usfm": "ECC",
+          "number": 250,
+          "name": "ЭКЛЕЗІЯСТ",
+          "verses": 222
+        },
+        {
+          "usfm": "SNG",
+          "number": 260,
+          "name": "ПЕСЬНЯ",
+          "verses": 117
+        },
+        {
+          "usfm": "ISA",
+          "number": 290,
+          "name": "ІСАЯ",
+          "verses": 1292
+        },
+        {
+          "usfm": "JER",
+          "number": 300,
+          "name": "ЯРЭМІЯ",
+          "verses": 1364
+        },
+        {
+          "usfm": "LAM",
+          "number": 310,
+          "name": "ПЛАЧ",
+          "verses": 154
+        },
+        {
+          "usfm": "EZK",
+          "number": 330,
+          "name": "ЭЗЭКІЭЛЬ",
+          "verses": 1273
+        },
+        {
+          "usfm": "DAN",
+          "number": 340,
+          "name": "ДАНІІЛ",
+          "verses": 357
+        },
+        {
+          "usfm": "HOS",
+          "number": 350,
+          "name": "ОСІЯ",
+          "verses": 197
+        },
+        {
+          "usfm": "JOL",
+          "number": 360,
+          "name": "ЁЭЛЬ",
+          "verses": 73
+        },
+        {
+          "usfm": "AMO",
+          "number": 370,
+          "name": "АМОС",
+          "verses": 146
+        },
+        {
+          "usfm": "OBA",
+          "number": 380,
+          "name": "АБАДЫЯ",
+          "verses": 21
+        },
+        {
+          "usfm": "JON",
+          "number": 390,
+          "name": "ЁНА",
+          "verses": 48
+        },
+        {
+          "usfm": "MIC",
+          "number": 400,
+          "name": "МІХЕЙ",
+          "verses": 105
+        },
+        {
+          "usfm": "NAM",
+          "number": 410,
+          "name": "НАВУМ",
+          "verses": 47
+        },
+        {
+          "usfm": "HAB",
+          "number": 420,
+          "name": "АБАКУМ",
+          "verses": 56
+        },
+        {
+          "usfm": "ZEP",
+          "number": 430,
+          "name": "САФОНІЯ",
+          "verses": 53
+        },
+        {
+          "usfm": "HAG",
+          "number": 440,
+          "name": "АГЕЙ",
+          "verses": 38
+        },
+        {
+          "usfm": "ZEC",
+          "number": 450,
+          "name": "ЗАХАРЫЯ",
+          "verses": 211
+        },
+        {
+          "usfm": "MAL",
+          "number": 460,
+          "name": "МАЛАХІЯ",
+          "verses": 55
+        },
+        {
+          "usfm": "MAT",
+          "number": 470,
+          "name": "МАЦЬВЕЯ",
+          "verses": 1071
+        },
+        {
+          "usfm": "MRK",
+          "number": 480,
+          "name": "МАРКА",
+          "verses": 678
+        },
+        {
+          "usfm": "LUK",
+          "number": 490,
+          "name": "ЛУКІ",
+          "verses": 1151
+        },
+        {
+          "usfm": "JHN",
+          "number": 500,
+          "name": "ЯНА",
+          "verses": 879
+        },
+        {
+          "usfm": "ROM",
+          "number": 520,
+          "name": "РЫМЛЯНАЎ",
+          "verses": 433
+        },
+        {
+          "usfm": "1CO",
+          "number": 530,
+          "name": "1 КАРЫНЬЦЯНАЎ",
+          "verses": 437
+        },
+        {
+          "usfm": "2CO",
+          "number": 540,
+          "name": "2 КАРЫНЬЦЯНАЎ",
+          "verses": 256
+        },
+        {
+          "usfm": "GAL",
+          "number": 550,
+          "name": "ГАЛЯТАЎ",
+          "verses": 149
+        },
+        {
+          "usfm": "EPH",
+          "number": 560,
+          "name": "ЭФЭСЦАЎ",
+          "verses": 155
+        },
+        {
+          "usfm": "PHP",
+          "number": 570,
+          "name": "ФІЛІПЯНАЎ",
+          "verses": 104
+        },
+        {
+          "usfm": "COL",
+          "number": 580,
+          "name": "КАЛАСЯНАЎ",
+          "verses": 95
+        },
+        {
+          "usfm": "1TH",
+          "number": 590,
+          "name": "1 ТЭСАЛОНЦАЎ",
+          "verses": 89
+        },
+        {
+          "usfm": "2TH",
+          "number": 600,
+          "name": "2 ТЭСАЛОНЦАЎ",
+          "verses": 47
+        },
+        {
+          "usfm": "1TI",
+          "number": 610,
+          "name": "1 ЦІМАФЕЯ",
+          "verses": 113
+        },
+        {
+          "usfm": "2TI",
+          "number": 620,
+          "name": "2 ЦІМАФЕЯ",
+          "verses": 83
+        },
+        {
+          "usfm": "TIT",
+          "number": 630,
+          "name": "ЦІТА",
+          "verses": 46
+        },
+        {
+          "usfm": "PHM",
+          "number": 640,
+          "name": "ФІЛІМОНА",
+          "verses": 25
+        },
+        {
+          "usfm": "HEB",
+          "number": 650,
+          "name": "ГЕБРАЯЎ",
+          "verses": 303
+        },
+        {
+          "usfm": "JAS",
+          "number": 660,
+          "name": "ЯКУБА",
+          "verses": 108
+        },
+        {
+          "usfm": "2PE",
+          "number": 680,
+          "name": "2 ПЯТРА",
+          "verses": 61
+        },
+        {
+          "usfm": "1JN",
+          "number": 690,
+          "name": "1 ЯНА",
+          "verses": 105
+        },
+        {
+          "usfm": "2JN",
+          "number": 700,
+          "name": "2 ЯНА",
+          "verses": 13
+        },
+        {
+          "usfm": "JUD",
+          "number": 720,
+          "name": "ЮДЫ",
+          "verses": 25
+        },
+        {
+          "usfm": "REV",
+          "number": 730,
+          "name": "АДКРЫЦЬЦЁ",
+          "verses": 404
+        },
+        {
+          "usfm": "ACT",
+          "number": 510,
+          "name": "ДЗЕІ",
+          "verses": 1007
+        },
+        {
+          "usfm": "1PE",
+          "number": 670,
+          "name": "1 ПЯТРА",
+          "verses": 105
+        },
+        {
+          "usfm": "3JN",
+          "number": 710,
+          "name": "3 ЯНА",
+          "verses": 15
+        }
+      ],
+      "verseRanges": [],
+      "build": {
+        "bytes": 7753728,
+        "sha256": "ace9238f889a1f74ef9a63657be7a688a2e477bae2a12fa0d17d7cbe27baa262",
+        "integrity": "ok",
+        "verifiedVerseRows": 31170,
+        "verifiedNoteRows": 0,
+        "verifiedHeadingRows": 0,
+        "scope": "bible",
+        "nativeTested": false
+      }
+    },
+    {
+      "id": "ronbl",
+      "ebible": "ronbl",
+      "source": "https://ebible.org/Scriptures/ronbl_usfm.zip",
+      "archiveSha256": "5d9c8a8b738e459f5f2ab9ad34408b2594465d204b56a9041e4ba8a683fe031f",
+      "files": [
+        {
+          "file": "46-MATronbl.usfm",
+          "sha256": "5db019b86eee097f779cb2a92fd65d7f16877a60e29051ff1e1364878865a3f2"
+        },
+        {
+          "file": "47-MRKronbl.usfm",
+          "sha256": "9b33d65c6aa5fad3adcf9b04f99750013440a902eebb2e9151330d0e63399a41"
+        },
+        {
+          "file": "48-LUKronbl.usfm",
+          "sha256": "4d6b8c70a7710f9d7cbf369ca1733d1c32730dc37fb551d44c7e7340104d8cd6"
+        },
+        {
+          "file": "49-JHNronbl.usfm",
+          "sha256": "a597629409fca6f2458dfb1c439fc21a14b42e95cb94b90abd879489575f0e15"
+        },
+        {
+          "file": "50-ACTronbl.usfm",
+          "sha256": "05cc51ac6bf3dc9d42c9806f0fa4f1bb27b0b8a92391af08c3ea47f062983356"
+        },
+        {
+          "file": "51-ROMronbl.usfm",
+          "sha256": "8c0f9e233a3988c8628fdb42643da273417366b8c5b4690c837edf8fb009331c"
+        },
+        {
+          "file": "52-1COronbl.usfm",
+          "sha256": "7b2771574c70a946b8de5bf2e7b0d6c4d9a26c0008e20252db64920c46eea470"
+        },
+        {
+          "file": "53-2COronbl.usfm",
+          "sha256": "d45fdc3152e825fd15f8a83bd5fd5194186b153a3600fbb9c7d299ef78f35a56"
+        },
+        {
+          "file": "54-GALronbl.usfm",
+          "sha256": "dc5c6dae49c99ba988f0d14d37aa037fcb769f2f74404fd7a4b6ccd44253fc84"
+        },
+        {
+          "file": "55-EPHronbl.usfm",
+          "sha256": "125b7ac2648d2b059567d5860bd29f24e5c64eed6f6842f64ea18e31a02e8354"
+        },
+        {
+          "file": "56-PHPronbl.usfm",
+          "sha256": "c5ec994b2c82968a90258e47bab2d5b107540a5fac6a6f769cd16ee82d113d33"
+        },
+        {
+          "file": "57-COLronbl.usfm",
+          "sha256": "cdaf5a5fefed62485ce105d8133e9dc7d0f7dbb89cf38e851b07ef2506364eb4"
+        },
+        {
+          "file": "58-1THronbl.usfm",
+          "sha256": "155fa9165e5c5e8e0d98ffcc84911ab9b697418311eae39d1c94008728b0752e"
+        },
+        {
+          "file": "59-2THronbl.usfm",
+          "sha256": "e2e7bd649384fec10ef34e8e7d1fc8877e3c05dfd485f9ff9602b25145e376eb"
+        },
+        {
+          "file": "60-1TIronbl.usfm",
+          "sha256": "8ddd6cc019fd619047e109c9694552149f0d15d4498e892294f8d242a36d826d"
+        },
+        {
+          "file": "61-2TIronbl.usfm",
+          "sha256": "32e6b1cd4d4e37db3b671043ac583c1634e7c8ef5e4676aaf1b052d39a4fdae3"
+        },
+        {
+          "file": "62-TITronbl.usfm",
+          "sha256": "68588bcc8961b33441b812807cb00246dc903a4ae75dd64eba876f27444a7c61"
+        },
+        {
+          "file": "63-PHMronbl.usfm",
+          "sha256": "6a5268250eb6f85ca993e385276ff9b512368de373a2947a64153731dba384f0"
+        },
+        {
+          "file": "64-HEBronbl.usfm",
+          "sha256": "ce337d4bee1601cda5713836e68e48df8a94e9d2b02340c6882385e5aa0a2ea3"
+        },
+        {
+          "file": "65-JASronbl.usfm",
+          "sha256": "5cc04b54ee4984a7a82f46d2d880d4a7c762fc15bfa0ab802195b3773450caa7"
+        },
+        {
+          "file": "66-1PEronbl.usfm",
+          "sha256": "c2524c90d43fbd3e09ffcb2d5801447d6ffb415feb601ad3d98c9e84ef852f22"
+        },
+        {
+          "file": "67-2PEronbl.usfm",
+          "sha256": "e6e60c4f5193d3aee97df64a535d660c0fcffb99830eb7098ae03369f15d33db"
+        },
+        {
+          "file": "68-1JNronbl.usfm",
+          "sha256": "eea67b29a0d7dd106c6f868190ce6c2c67116152398ebc872dc7cdb50c41cfc6"
+        },
+        {
+          "file": "69-2JNronbl.usfm",
+          "sha256": "bea1eb99fbf1782ef6df866b862d250ad274556ab9bbd696f9bb58cccc230699"
+        },
+        {
+          "file": "70-3JNronbl.usfm",
+          "sha256": "793a25d5ee4e6752bd8b55d5e3a86a7bbc1949ba591c126b9bc03e512dc866cd"
+        },
+        {
+          "file": "71-JUDronbl.usfm",
+          "sha256": "4d60ee8f5a481176cb30ed06075f0f2cf419b583936bddef83972795e03a4f40"
+        },
+        {
+          "file": "72-REVronbl.usfm",
+          "sha256": "f44c512fd6930cb1e3ce6b01765b388737da5350f08caf00c0f318c8e967de03"
+        }
+      ],
+      "textSha256": "fe220d43657366a39bbfe79a88782d5e3b2e7d8c0c020f8f3136236290138726",
+      "books": 27,
+      "chapters": 260,
+      "verses": 7953,
+      "comparisonBase": "eng",
+      "review": "custom-map-required",
+      "candidates": {
+        "eng": {
+          "missing": 7,
+          "extra": 3,
+          "chapterMismatches": 0
+        },
+        "rus": {
+          "missing": 5,
+          "extra": 3,
+          "chapterMismatches": 0
+        },
+        "org": {
+          "missing": 9,
+          "extra": 5,
+          "chapterMismatches": 0
+        }
+      },
+      "missing": [
+        {
+          "book": "LUK",
+          "ref": "17:36",
+          "kind": "notes-only"
+        },
+        {
+          "book": "ACT",
+          "ref": "8:37",
+          "kind": "notes-only"
+        },
+        {
+          "book": "ACT",
+          "ref": "15:34",
+          "kind": "notes-only"
+        },
+        {
+          "book": "ACT",
+          "ref": "24:7",
+          "kind": "notes-only"
+        },
+        {
+          "book": "ROM",
+          "ref": "16:25",
+          "kind": "notes-only"
+        },
+        {
+          "book": "ROM",
+          "ref": "16:26",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "ROM",
+          "ref": "16:27",
+          "kind": "no-source-label"
+        }
+      ],
+      "extra": [
+        "ROM 14:24",
+        "ROM 14:25",
+        "ROM 14:26"
+      ],
+      "bookList": [
+        {
+          "usfm": "MAT",
+          "number": 470,
+          "name": "Matei",
+          "verses": 1071
+        },
+        {
+          "usfm": "MRK",
+          "number": 480,
+          "name": "Marcu",
+          "verses": 678
+        },
+        {
+          "usfm": "LUK",
+          "number": 490,
+          "name": "Luca",
+          "verses": 1150
+        },
+        {
+          "usfm": "JHN",
+          "number": 500,
+          "name": "Ioan",
+          "verses": 879
+        },
+        {
+          "usfm": "ACT",
+          "number": 510,
+          "name": "Faptele",
+          "verses": 1004
+        },
+        {
+          "usfm": "ROM",
+          "number": 520,
+          "name": "Romani",
+          "verses": 433
+        },
+        {
+          "usfm": "1CO",
+          "number": 530,
+          "name": "1 Corinteni",
+          "verses": 437
+        },
+        {
+          "usfm": "2CO",
+          "number": 540,
+          "name": "2 Corinteni",
+          "verses": 257
+        },
+        {
+          "usfm": "GAL",
+          "number": 550,
+          "name": "Galateni",
+          "verses": 149
+        },
+        {
+          "usfm": "EPH",
+          "number": 560,
+          "name": "Efeseni",
+          "verses": 155
+        },
+        {
+          "usfm": "PHP",
+          "number": 570,
+          "name": "Filipeni",
+          "verses": 104
+        },
+        {
+          "usfm": "COL",
+          "number": 580,
+          "name": "Coloseni",
+          "verses": 95
+        },
+        {
+          "usfm": "1TH",
+          "number": 590,
+          "name": "1 Tesaloniceni",
+          "verses": 89
+        },
+        {
+          "usfm": "2TH",
+          "number": 600,
+          "name": "2 Tesaloniceni",
+          "verses": 47
+        },
+        {
+          "usfm": "1TI",
+          "number": 610,
+          "name": "1 Timotei",
+          "verses": 113
+        },
+        {
+          "usfm": "2TI",
+          "number": 620,
+          "name": "2 Timotei",
+          "verses": 83
+        },
+        {
+          "usfm": "TIT",
+          "number": 630,
+          "name": "Titus",
+          "verses": 46
+        },
+        {
+          "usfm": "PHM",
+          "number": 640,
+          "name": "Filimon",
+          "verses": 25
+        },
+        {
+          "usfm": "HEB",
+          "number": 650,
+          "name": "Evrei",
+          "verses": 303
+        },
+        {
+          "usfm": "JAS",
+          "number": 660,
+          "name": "Iacov",
+          "verses": 108
+        },
+        {
+          "usfm": "1PE",
+          "number": 670,
+          "name": "1 Petru",
+          "verses": 105
+        },
+        {
+          "usfm": "2PE",
+          "number": 680,
+          "name": "2 Petru",
+          "verses": 61
+        },
+        {
+          "usfm": "1JN",
+          "number": 690,
+          "name": "1 Ioan",
+          "verses": 105
+        },
+        {
+          "usfm": "2JN",
+          "number": 700,
+          "name": "2 Ioan",
+          "verses": 13
+        },
+        {
+          "usfm": "3JN",
+          "number": 710,
+          "name": "3 Ioan",
+          "verses": 14
+        },
+        {
+          "usfm": "JUD",
+          "number": 720,
+          "name": "Iuda",
+          "verses": 25
+        },
+        {
+          "usfm": "REV",
+          "number": 730,
+          "name": "Apocalipsa",
+          "verses": 404
+        }
+      ],
+      "verseRanges": [],
+      "build": {
+        "bytes": 1400832,
+        "sha256": "a2c02edb028aa21b3fb6db3fa57488b5b012547b9ac52469bd90118d6e36637c",
+        "integrity": "ok",
+        "verifiedVerseRows": 7953,
+        "verifiedNoteRows": 160,
+        "verifiedHeadingRows": 0,
+        "scope": "nt",
+        "nativeTested": false
+      }
+    },
+    {
+      "id": "hushkhabar",
+      "ebible": "tgk",
+      "source": "https://ebible.org/Scriptures/tgk_usfm.zip",
+      "archiveSha256": "4c8d9b3dd41df01e644aa7c3a10fcbefd0c982f31cc9dc18874f61844ea96ca7",
+      "files": [
+        {
+          "file": "09-RUTtgk.usfm",
+          "sha256": "93e50306d126f2becc511e6f5a34e2e937d2859920e6012e38a73693dbf711f9"
+        },
+        {
+          "file": "18-ESTtgk.usfm",
+          "sha256": "399925c0d4aff2c525ead5359b16d1ca917f2138284c914695089829ef8b8325"
+        },
+        {
+          "file": "46-MATtgk.usfm",
+          "sha256": "5e1e23d91812443dcdf71f64f85ac542cad2dbb1e40a8ecdf7f2d0f032f04c87"
+        },
+        {
+          "file": "47-MRKtgk.usfm",
+          "sha256": "2c93db86b0205898d020164b8b527f7e563495b90156d7d40a899f98a909e95d"
+        },
+        {
+          "file": "48-LUKtgk.usfm",
+          "sha256": "51477dc86041282b92877706b409727f8e54adb4254edc41bbfcdd85e066e4c4"
+        },
+        {
+          "file": "49-JHNtgk.usfm",
+          "sha256": "c22dd2ea5804366467f8be145445906ad1f9016f0a511f470d96865c0bc42592"
+        },
+        {
+          "file": "58-1THtgk.usfm",
+          "sha256": "6a3118c98205da854210dccce4ceda0efae0e71ab6f85c2499c42b349134d70a"
+        },
+        {
+          "file": "63-PHMtgk.usfm",
+          "sha256": "7cfd6d54e83095634886eb321adfc823b2f1a77344c7a1e7808b2c4f44a0608f"
+        },
+        {
+          "file": "65-JAStgk.usfm",
+          "sha256": "d9e7a31c6bd187081122c235b306dbc628d510488edce776ef7d905e7d8c4329"
+        },
+        {
+          "file": "68-1JNtgk.usfm",
+          "sha256": "d19ce6dc7a63a9f53268c1f812eb1f6cdc6458e1f4063d7ff91f18352c907fff"
+        },
+        {
+          "file": "69-2JNtgk.usfm",
+          "sha256": "748bdf535cc492ec8a1a9c019929325f2b1743fdd9b6bd76023332c62ff830fa"
+        },
+        {
+          "file": "70-3JNtgk.usfm",
+          "sha256": "5d22c5aec62fe1d213dd79f6221a7184c89b4cd6109a2d5ace857d2fcc2e1c97"
+        },
+        {
+          "file": "71-JUDtgk.usfm",
+          "sha256": "6ac106b3b8b63eb0eb40320dbd359581f25ea36e13a0578795f1b79b64920f43"
+        }
+      ],
+      "textSha256": "42f1536034963f5701955294eb685b9b9cd141d6724860a8f2b0933f299593a3",
+      "books": 13,
+      "chapters": 122,
+      "verses": 4344,
+      "comparisonBase": "org",
+      "review": "custom-map-required",
+      "candidates": {
+        "eng": {
+          "missing": 67,
+          "extra": 1,
+          "chapterMismatches": 0
+        },
+        "rus": {
+          "missing": 67,
+          "extra": 0,
+          "chapterMismatches": 0
+        },
+        "org": {
+          "missing": 67,
+          "extra": 0,
+          "chapterMismatches": 0
+        }
+      },
+      "missing": [
+        {
+          "book": "RUT",
+          "ref": "1:2",
+          "kind": "verse-bridge",
+          "source": "1:1-2"
+        },
+        {
+          "book": "RUT",
+          "ref": "2:16",
+          "kind": "verse-bridge",
+          "source": "2:15-16"
+        },
+        {
+          "book": "EST",
+          "ref": "1:14",
+          "kind": "verse-bridge",
+          "source": "1:13-14"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:3",
+          "kind": "verse-bridge",
+          "source": "1:2-5"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:4",
+          "kind": "verse-bridge",
+          "source": "1:2-5"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:5",
+          "kind": "verse-bridge",
+          "source": "1:2-5"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:7",
+          "kind": "verse-bridge",
+          "source": "1:6-11"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:8",
+          "kind": "verse-bridge",
+          "source": "1:6-11"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:9",
+          "kind": "verse-bridge",
+          "source": "1:6-11"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:10",
+          "kind": "verse-bridge",
+          "source": "1:6-11"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:11",
+          "kind": "verse-bridge",
+          "source": "1:6-11"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:13",
+          "kind": "verse-bridge",
+          "source": "1:12-16"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:14",
+          "kind": "verse-bridge",
+          "source": "1:12-16"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:15",
+          "kind": "verse-bridge",
+          "source": "1:12-16"
+        },
+        {
+          "book": "MAT",
+          "ref": "1:16",
+          "kind": "verse-bridge",
+          "source": "1:12-16"
+        },
+        {
+          "book": "MAT",
+          "ref": "3:9",
+          "kind": "verse-bridge",
+          "source": "3:8-9"
+        },
+        {
+          "book": "MAT",
+          "ref": "7:18",
+          "kind": "verse-bridge",
+          "source": "7:17-18"
+        },
+        {
+          "book": "MAT",
+          "ref": "9:21",
+          "kind": "verse-bridge",
+          "source": "9:20-21"
+        },
+        {
+          "book": "MAT",
+          "ref": "13:15",
+          "kind": "verse-bridge",
+          "source": "13:14-15"
+        },
+        {
+          "book": "MAT",
+          "ref": "14:4",
+          "kind": "verse-bridge",
+          "source": "14:3-4"
+        },
+        {
+          "book": "MAT",
+          "ref": "18:11",
+          "kind": "verse-bridge",
+          "source": "18:10-11"
+        },
+        {
+          "book": "MAT",
+          "ref": "21:30",
+          "kind": "verse-bridge",
+          "source": "21:29-30"
+        },
+        {
+          "book": "MAT",
+          "ref": "22:38",
+          "kind": "verse-bridge",
+          "source": "22:37-38"
+        },
+        {
+          "book": "MAT",
+          "ref": "23:14",
+          "kind": "verse-bridge",
+          "source": "23:13-14"
+        },
+        {
+          "book": "MAT",
+          "ref": "25:3",
+          "kind": "verse-bridge",
+          "source": "25:2-4"
+        },
+        {
+          "book": "MAT",
+          "ref": "25:4",
+          "kind": "verse-bridge",
+          "source": "25:2-4"
+        },
+        {
+          "book": "MAT",
+          "ref": "27:10",
+          "kind": "verse-bridge",
+          "source": "27:9-10"
+        },
+        {
+          "book": "MRK",
+          "ref": "5:8",
+          "kind": "verse-bridge",
+          "source": "5:7-8"
+        },
+        {
+          "book": "MRK",
+          "ref": "5:28",
+          "kind": "verse-bridge",
+          "source": "5:27-28"
+        },
+        {
+          "book": "MRK",
+          "ref": "6:9",
+          "kind": "verse-bridge",
+          "source": "6:8-9"
+        },
+        {
+          "book": "MRK",
+          "ref": "6:18",
+          "kind": "verse-bridge",
+          "source": "6:17-18"
+        },
+        {
+          "book": "MRK",
+          "ref": "7:16",
+          "kind": "verse-bridge",
+          "source": "7:15-16"
+        },
+        {
+          "book": "MRK",
+          "ref": "7:22",
+          "kind": "verse-bridge",
+          "source": "7:21-22"
+        },
+        {
+          "book": "MRK",
+          "ref": "9:44",
+          "kind": "verse-bridge",
+          "source": "9:43-44"
+        },
+        {
+          "book": "MRK",
+          "ref": "9:46",
+          "kind": "verse-bridge",
+          "source": "9:45-46"
+        },
+        {
+          "book": "MRK",
+          "ref": "10:8",
+          "kind": "verse-bridge",
+          "source": "10:7-8"
+        },
+        {
+          "book": "MRK",
+          "ref": "11:26",
+          "kind": "verse-bridge",
+          "source": "11:25-26"
+        },
+        {
+          "book": "MRK",
+          "ref": "14:67",
+          "kind": "verse-bridge",
+          "source": "14:66-67"
+        },
+        {
+          "book": "MRK",
+          "ref": "15:28",
+          "kind": "verse-bridge",
+          "source": "15:27-28"
+        },
+        {
+          "book": "LUK",
+          "ref": "1:2",
+          "kind": "verse-bridge",
+          "source": "1:1-3"
+        },
+        {
+          "book": "LUK",
+          "ref": "1:3",
+          "kind": "verse-bridge",
+          "source": "1:1-3"
+        },
+        {
+          "book": "LUK",
+          "ref": "1:55",
+          "kind": "verse-bridge",
+          "source": "1:54-55"
+        },
+        {
+          "book": "LUK",
+          "ref": "1:73",
+          "kind": "verse-bridge",
+          "source": "1:72-73"
+        },
+        {
+          "book": "LUK",
+          "ref": "1:75",
+          "kind": "verse-bridge",
+          "source": "1:74-75"
+        },
+        {
+          "book": "LUK",
+          "ref": "3:2",
+          "kind": "verse-bridge",
+          "source": "3:1-2"
+        },
+        {
+          "book": "LUK",
+          "ref": "4:7",
+          "kind": "verse-bridge",
+          "source": "4:6-7"
+        },
+        {
+          "book": "LUK",
+          "ref": "9:31",
+          "kind": "verse-bridge",
+          "source": "9:30-31"
+        },
+        {
+          "book": "LUK",
+          "ref": "9:56",
+          "kind": "verse-bridge",
+          "source": "9:55-56"
+        },
+        {
+          "book": "LUK",
+          "ref": "13:13",
+          "kind": "verse-bridge",
+          "source": "13:12-13"
+        },
+        {
+          "book": "LUK",
+          "ref": "17:36",
+          "kind": "verse-bridge",
+          "source": "17:35-36"
+        },
+        {
+          "book": "LUK",
+          "ref": "19:44",
+          "kind": "verse-bridge",
+          "source": "19:43-44"
+        },
+        {
+          "book": "LUK",
+          "ref": "20:31",
+          "kind": "verse-bridge",
+          "source": "20:30-31"
+        },
+        {
+          "book": "LUK",
+          "ref": "20:43",
+          "kind": "verse-bridge",
+          "source": "20:42-43"
+        },
+        {
+          "book": "LUK",
+          "ref": "23:17",
+          "kind": "verse-bridge",
+          "source": "23:16-17"
+        },
+        {
+          "book": "LUK",
+          "ref": "23:51",
+          "kind": "verse-bridge",
+          "source": "23:50-51"
+        },
+        {
+          "book": "JHN",
+          "ref": "1:20",
+          "kind": "verse-bridge",
+          "source": "1:19-20"
+        },
+        {
+          "book": "JHN",
+          "ref": "1:27",
+          "kind": "verse-bridge",
+          "source": "1:26-27"
+        },
+        {
+          "book": "JHN",
+          "ref": "4:8",
+          "kind": "verse-bridge",
+          "source": "4:7-8"
+        },
+        {
+          "book": "JHN",
+          "ref": "5:4",
+          "kind": "verse-bridge",
+          "source": "5:3-4"
+        },
+        {
+          "book": "JHN",
+          "ref": "5:29",
+          "kind": "verse-bridge",
+          "source": "5:28-29"
+        },
+        {
+          "book": "JHN",
+          "ref": "10:15",
+          "kind": "verse-bridge",
+          "source": "10:14-15"
+        },
+        {
+          "book": "JHN",
+          "ref": "10:23",
+          "kind": "verse-bridge",
+          "source": "10:22-23"
+        },
+        {
+          "book": "JHN",
+          "ref": "13:3",
+          "kind": "verse-bridge",
+          "source": "13:2-3"
+        },
+        {
+          "book": "1JN",
+          "ref": "2:2",
+          "kind": "verse-bridge",
+          "source": "2:1-2"
+        },
+        {
+          "book": "1JN",
+          "ref": "3:20",
+          "kind": "verse-bridge",
+          "source": "3:19-20"
+        },
+        {
+          "book": "2JN",
+          "ref": "1:2",
+          "kind": "verse-bridge",
+          "source": "1:1-2"
+        },
+        {
+          "book": "1TH",
+          "ref": "1:5",
+          "kind": "verse-bridge",
+          "source": "1:4-5"
+        }
+      ],
+      "extra": [],
+      "bookList": [
+        {
+          "usfm": "RUT",
+          "number": 80,
+          "name": "Рут",
+          "verses": 83
+        },
+        {
+          "usfm": "EST",
+          "number": 190,
+          "name": "Эстер",
+          "verses": 166
+        },
+        {
+          "usfm": "MAT",
+          "number": 470,
+          "name": "Матто",
+          "verses": 1047
+        },
+        {
+          "usfm": "MRK",
+          "number": 480,
+          "name": "Марқӯс",
+          "verses": 666
+        },
+        {
+          "usfm": "LUK",
+          "number": 490,
+          "name": "Луқо",
+          "verses": 1135
+        },
+        {
+          "usfm": "JHN",
+          "number": 500,
+          "name": "Юҳанно",
+          "verses": 871
+        },
+        {
+          "usfm": "1TH",
+          "number": 590,
+          "name": "Тасслӯникиён",
+          "verses": 88
+        },
+        {
+          "usfm": "PHM",
+          "number": 640,
+          "name": "Филемӯн",
+          "verses": 25
+        },
+        {
+          "usfm": "JAS",
+          "number": 660,
+          "name": "Ёқуб",
+          "verses": 108
+        },
+        {
+          "usfm": "1JN",
+          "number": 690,
+          "name": "1 Юҳанно",
+          "verses": 103
+        },
+        {
+          "usfm": "2JN",
+          "number": 700,
+          "name": "2 Юҳанно",
+          "verses": 12
+        },
+        {
+          "usfm": "3JN",
+          "number": 710,
+          "name": "3 Юҳанно",
+          "verses": 15
+        },
+        {
+          "usfm": "JUD",
+          "number": 720,
+          "name": "Яҳудо",
+          "verses": 25
+        }
+      ],
+      "verseRanges": [
+        {
+          "book": "RUT",
+          "chapter": 1,
+          "label": "1-2",
+          "storedVerse": 1
+        },
+        {
+          "book": "RUT",
+          "chapter": 2,
+          "label": "15-16",
+          "storedVerse": 15
+        },
+        {
+          "book": "EST",
+          "chapter": 1,
+          "label": "13-14",
+          "storedVerse": 13
+        },
+        {
+          "book": "MAT",
+          "chapter": 1,
+          "label": "2-5",
+          "storedVerse": 2
+        },
+        {
+          "book": "MAT",
+          "chapter": 1,
+          "label": "6-11",
+          "storedVerse": 6
+        },
+        {
+          "book": "MAT",
+          "chapter": 1,
+          "label": "12-16",
+          "storedVerse": 12
+        },
+        {
+          "book": "MAT",
+          "chapter": 3,
+          "label": "8-9",
+          "storedVerse": 8
+        },
+        {
+          "book": "MAT",
+          "chapter": 7,
+          "label": "17-18",
+          "storedVerse": 17
+        },
+        {
+          "book": "MAT",
+          "chapter": 9,
+          "label": "20-21",
+          "storedVerse": 20
+        },
+        {
+          "book": "MAT",
+          "chapter": 13,
+          "label": "14-15",
+          "storedVerse": 14
+        },
+        {
+          "book": "MAT",
+          "chapter": 14,
+          "label": "3-4",
+          "storedVerse": 3
+        },
+        {
+          "book": "MAT",
+          "chapter": 18,
+          "label": "10-11",
+          "storedVerse": 10
+        },
+        {
+          "book": "MAT",
+          "chapter": 21,
+          "label": "29-30",
+          "storedVerse": 29
+        },
+        {
+          "book": "MAT",
+          "chapter": 22,
+          "label": "37-38",
+          "storedVerse": 37
+        },
+        {
+          "book": "MAT",
+          "chapter": 23,
+          "label": "13-14",
+          "storedVerse": 13
+        },
+        {
+          "book": "MAT",
+          "chapter": 25,
+          "label": "2-4",
+          "storedVerse": 2
+        },
+        {
+          "book": "MAT",
+          "chapter": 27,
+          "label": "9-10",
+          "storedVerse": 9
+        },
+        {
+          "book": "MRK",
+          "chapter": 5,
+          "label": "7-8",
+          "storedVerse": 7
+        },
+        {
+          "book": "MRK",
+          "chapter": 5,
+          "label": "27-28",
+          "storedVerse": 27
+        },
+        {
+          "book": "MRK",
+          "chapter": 6,
+          "label": "8-9",
+          "storedVerse": 8
+        },
+        {
+          "book": "MRK",
+          "chapter": 6,
+          "label": "17-18",
+          "storedVerse": 17
+        },
+        {
+          "book": "MRK",
+          "chapter": 7,
+          "label": "15-16",
+          "storedVerse": 15
+        },
+        {
+          "book": "MRK",
+          "chapter": 7,
+          "label": "21-22",
+          "storedVerse": 21
+        },
+        {
+          "book": "MRK",
+          "chapter": 9,
+          "label": "43-44",
+          "storedVerse": 43
+        },
+        {
+          "book": "MRK",
+          "chapter": 9,
+          "label": "45-46",
+          "storedVerse": 45
+        },
+        {
+          "book": "MRK",
+          "chapter": 10,
+          "label": "7-8",
+          "storedVerse": 7
+        },
+        {
+          "book": "MRK",
+          "chapter": 11,
+          "label": "25-26",
+          "storedVerse": 25
+        },
+        {
+          "book": "MRK",
+          "chapter": 14,
+          "label": "66-67",
+          "storedVerse": 66
+        },
+        {
+          "book": "MRK",
+          "chapter": 15,
+          "label": "27-28",
+          "storedVerse": 27
+        },
+        {
+          "book": "LUK",
+          "chapter": 1,
+          "label": "1-3",
+          "storedVerse": 1
+        },
+        {
+          "book": "LUK",
+          "chapter": 1,
+          "label": "54-55",
+          "storedVerse": 54
+        },
+        {
+          "book": "LUK",
+          "chapter": 1,
+          "label": "72-73",
+          "storedVerse": 72
+        },
+        {
+          "book": "LUK",
+          "chapter": 1,
+          "label": "74-75",
+          "storedVerse": 74
+        },
+        {
+          "book": "LUK",
+          "chapter": 3,
+          "label": "1-2",
+          "storedVerse": 1
+        },
+        {
+          "book": "LUK",
+          "chapter": 4,
+          "label": "6-7",
+          "storedVerse": 6
+        },
+        {
+          "book": "LUK",
+          "chapter": 9,
+          "label": "30-31",
+          "storedVerse": 30
+        },
+        {
+          "book": "LUK",
+          "chapter": 9,
+          "label": "55-56",
+          "storedVerse": 55
+        },
+        {
+          "book": "LUK",
+          "chapter": 13,
+          "label": "12-13",
+          "storedVerse": 12
+        },
+        {
+          "book": "LUK",
+          "chapter": 17,
+          "label": "35-36",
+          "storedVerse": 35
+        },
+        {
+          "book": "LUK",
+          "chapter": 19,
+          "label": "43-44",
+          "storedVerse": 43
+        },
+        {
+          "book": "LUK",
+          "chapter": 20,
+          "label": "30-31",
+          "storedVerse": 30
+        },
+        {
+          "book": "LUK",
+          "chapter": 20,
+          "label": "42-43",
+          "storedVerse": 42
+        },
+        {
+          "book": "LUK",
+          "chapter": 23,
+          "label": "16-17",
+          "storedVerse": 16
+        },
+        {
+          "book": "LUK",
+          "chapter": 23,
+          "label": "50-51",
+          "storedVerse": 50
+        },
+        {
+          "book": "JHN",
+          "chapter": 1,
+          "label": "19-20",
+          "storedVerse": 19
+        },
+        {
+          "book": "JHN",
+          "chapter": 1,
+          "label": "26-27",
+          "storedVerse": 26
+        },
+        {
+          "book": "JHN",
+          "chapter": 4,
+          "label": "7-8",
+          "storedVerse": 7
+        },
+        {
+          "book": "JHN",
+          "chapter": 5,
+          "label": "3-4",
+          "storedVerse": 3
+        },
+        {
+          "book": "JHN",
+          "chapter": 5,
+          "label": "28-29",
+          "storedVerse": 28
+        },
+        {
+          "book": "JHN",
+          "chapter": 10,
+          "label": "14-15",
+          "storedVerse": 14
+        },
+        {
+          "book": "JHN",
+          "chapter": 10,
+          "label": "22-23",
+          "storedVerse": 22
+        },
+        {
+          "book": "JHN",
+          "chapter": 13,
+          "label": "2-3",
+          "storedVerse": 2
+        },
+        {
+          "book": "1TH",
+          "chapter": 1,
+          "label": "4-5",
+          "storedVerse": 4
+        },
+        {
+          "book": "1JN",
+          "chapter": 2,
+          "label": "1-2",
+          "storedVerse": 1
+        },
+        {
+          "book": "1JN",
+          "chapter": 3,
+          "label": "19-20",
+          "storedVerse": 19
+        },
+        {
+          "book": "2JN",
+          "chapter": 1,
+          "label": "1-2",
+          "storedVerse": 1
+        }
+      ],
+      "build": {
+        "bytes": 1282048,
+        "sha256": "23742eb678bdd8bb3ace2e9314a0b4fa9fb844c4756edd0b2014b373fc23ad05",
+        "integrity": "ok",
+        "verifiedVerseRows": 4344,
+        "verifiedNoteRows": 123,
+        "verifiedHeadingRows": 497,
+        "scope": "partial",
+        "nativeTested": false
+      }
+    },
+    {
+      "id": "cornilescu-cyrl",
+      "ebible": "ron1924",
+      "source": "https://ebible.org/Scriptures/ron1924_usfm.zip",
+      "archiveSha256": "5b722c8360690e12c70334f913dbcf6b3eccaa7c83cc00d237714caff5459b08",
+      "files": [
+        {
+          "file": "02-GENron1924.usfm",
+          "sha256": "0cb7f75c1c17e5ab8945238edc569ff1ccc011afa64e11ffd318137c23cf8758"
+        },
+        {
+          "file": "03-EXOron1924.usfm",
+          "sha256": "ffd6a62cef0827bc1485371d197bcf1ede3dd2f279b9fc2c221de40efacf0444"
+        },
+        {
+          "file": "04-LEVron1924.usfm",
+          "sha256": "cebff3f8ed063ee03a518a156debc0933d24d79b6b4d30a3ee8ae2688a8210d6"
+        },
+        {
+          "file": "05-NUMron1924.usfm",
+          "sha256": "cdeed97d931a029953c27e4ec5a08e941f3895788e6e1db14ff3ef27bc4cd802"
+        },
+        {
+          "file": "06-DEUron1924.usfm",
+          "sha256": "a7889c94c4513a0ce66a52a5077d19ab284e0581d2b229a758c26ce2c1407b13"
+        },
+        {
+          "file": "07-JOSron1924.usfm",
+          "sha256": "1d96b0b03e925d18caf10b5f77041fa8ee86e75d262d33d28a5ad3f33e621eb6"
+        },
+        {
+          "file": "08-JDGron1924.usfm",
+          "sha256": "66946c33a20df4722bc477b51506330c9b77a6959ab3dcd86658a02a40d662f1"
+        },
+        {
+          "file": "09-RUTron1924.usfm",
+          "sha256": "8be405fd88552d2934932febed8d4f4bc453f8c96d848f1f9ca70d306fbba411"
+        },
+        {
+          "file": "10-1SAron1924.usfm",
+          "sha256": "00e1fd83526a818a3d7b965c37785b749b3d3957de8e5ef18114d37e693bbb7c"
+        },
+        {
+          "file": "11-2SAron1924.usfm",
+          "sha256": "229634dcf55f70375ecbc586ad658aed3e04b6d28ed177a50921877671fb9ee6"
+        },
+        {
+          "file": "12-1KIron1924.usfm",
+          "sha256": "a965c374a94220abdd6e3b0fc1b545e1c84d287e2305640a3be38a83ac50f6e6"
+        },
+        {
+          "file": "13-2KIron1924.usfm",
+          "sha256": "6079f179c5b72babfd9b1b4e9bfcc2160eda9613b42ce1becddae59a835c97dc"
+        },
+        {
+          "file": "14-1CHron1924.usfm",
+          "sha256": "5481a7022ded30a1dd8ae38d0a3cc8feaac248bfb5e58b2be531c310d29d24ca"
+        },
+        {
+          "file": "15-2CHron1924.usfm",
+          "sha256": "e9dd9d4ad43ce17232fe48a129da3a03fc52941c24ab9c542fd47146ac2c0007"
+        },
+        {
+          "file": "16-EZRron1924.usfm",
+          "sha256": "d08e822ed847cea8792bcce5d5c5096ab400df7064aba1ca7e0e1ecead43c684"
+        },
+        {
+          "file": "17-NEHron1924.usfm",
+          "sha256": "2b25a9b05f0d3251137f6d0e8aff367a280ea90fbca521231f2d09098cb3e242"
+        },
+        {
+          "file": "18-ESTron1924.usfm",
+          "sha256": "7f8030261fe8ccbc7eb9b1b1b4eaec1af66ec71aa53f15a0cd1c32b25f5bebdd"
+        },
+        {
+          "file": "19-JOBron1924.usfm",
+          "sha256": "1c3d89f0788f1105365cdd3b2a524c94bd6271e706d6b9da65351391c33d1069"
+        },
+        {
+          "file": "20-PSAron1924.usfm",
+          "sha256": "dc1ae7b2dee6fb3ef989cab88a93086931731f118deafce7c66e1938abe2aab2"
+        },
+        {
+          "file": "21-PROron1924.usfm",
+          "sha256": "dd2ef617dce53f819a69d193f140623dc6c4779068f823fb36aff6d091c51600"
+        },
+        {
+          "file": "22-ECCron1924.usfm",
+          "sha256": "ea027722a0222bb1925aa47d92ec6347bc45678ccab32fb91009e980910f97c4"
+        },
+        {
+          "file": "23-SNGron1924.usfm",
+          "sha256": "1ea295d969ecbd5c3abb7b01924c7dca21f322bc7c41db7701675f509fb43357"
+        },
+        {
+          "file": "24-ISAron1924.usfm",
+          "sha256": "71e4052b71e7717dcdc9bc906861bf2eed5475efcfb6f4d6aecb301034251432"
+        },
+        {
+          "file": "25-JERron1924.usfm",
+          "sha256": "5d23e774f4cc8684c1c49d6a2d26cce75a7a2110104260f09c4dcbee9187f0d6"
+        },
+        {
+          "file": "26-LAMron1924.usfm",
+          "sha256": "78e41c8205b71ab17c58dcf2f084f4c5084c945df154b77504ba26da25567713"
+        },
+        {
+          "file": "27-EZKron1924.usfm",
+          "sha256": "3d0f808bc52cbfc6209d908b9ffe231d1a3749e4b126f12787443762dbd4573a"
+        },
+        {
+          "file": "28-DANron1924.usfm",
+          "sha256": "577ba5304ff7cb4400dec94e8ced80c8fe72790141507f145a616d28d0f126cb"
+        },
+        {
+          "file": "29-HOSron1924.usfm",
+          "sha256": "6a09e548d634ff1e90729d25a73d40af353ace94e1a00c1871987869fadc593d"
+        },
+        {
+          "file": "30-JOLron1924.usfm",
+          "sha256": "6054473a20733c40801136ff126d93fa2507f66c1315b3c1b6a66e7c2d63842e"
+        },
+        {
+          "file": "31-AMOron1924.usfm",
+          "sha256": "4a3d2d04e5031fdd25a4042e0641d2b0a8c9b0817db2b81550fed6a945b18f08"
+        },
+        {
+          "file": "32-OBAron1924.usfm",
+          "sha256": "49eb524a1d7a884e6dcf624cf397341fd28c3046952a7f4f3a2de956fc1aaede"
+        },
+        {
+          "file": "33-JONron1924.usfm",
+          "sha256": "f86d8f95ba395178c967a21fbd177badd79ac9ec7af001002293516f5ed91e0c"
+        },
+        {
+          "file": "34-MICron1924.usfm",
+          "sha256": "8cb0633198a99973880f8d1a1db73e732607e4a112325ffcbaf84a44763eda8b"
+        },
+        {
+          "file": "35-NAMron1924.usfm",
+          "sha256": "76ffd42ff528ff85eab83276f1586e40fa4710987716e52917a6138a4bc7081a"
+        },
+        {
+          "file": "36-HABron1924.usfm",
+          "sha256": "f14833eee55c7d0dae267defa2a3528f23ba63f2c31bbd5c64447dd476b8fa8c"
+        },
+        {
+          "file": "37-ZEPron1924.usfm",
+          "sha256": "439126b4f59850427d52bcd333c0427c5033b8662c885f838bd5af8ed0f21a38"
+        },
+        {
+          "file": "38-HAGron1924.usfm",
+          "sha256": "4ac11d931d298721f65a56f1a6aab398cbb9b91c027f97f070b5850729a9be00"
+        },
+        {
+          "file": "39-ZECron1924.usfm",
+          "sha256": "f52e60f04ee42f11568acfdc5a4bf569e3acf4905a79637cb0e18e9419402bff"
+        },
+        {
+          "file": "40-MALron1924.usfm",
+          "sha256": "8fb6ff4026eaaf8f5ea4e5ef33b448b78594273ab2d3b4d041c9bdb39bc42124"
+        },
+        {
+          "file": "70-MATron1924.usfm",
+          "sha256": "b942f5d6606dbacd9e82b6ce08fa6123df0bd974537d3401c9b5d1854a443bc6"
+        },
+        {
+          "file": "71-MRKron1924.usfm",
+          "sha256": "ecd5a0388b9d0379d73cfbc5a3a1a4cdb9068b3feac3ff0b7c2fccb1136fb51b"
+        },
+        {
+          "file": "72-LUKron1924.usfm",
+          "sha256": "4d78c3f140ef7d3fec993715b59cd05de975828d729557eec1e76f3eb3c2fb03"
+        },
+        {
+          "file": "73-JHNron1924.usfm",
+          "sha256": "b8d9d8172f93753f6faf82570a95d09cd85d40e02cc7af50d40b2f41d4a052fd"
+        },
+        {
+          "file": "74-ACTron1924.usfm",
+          "sha256": "fc2592b61ee6d74a02dfbc0dccff0b9bf5582eb67bb718ae1fcaec2a2cd0fc55"
+        },
+        {
+          "file": "75-ROMron1924.usfm",
+          "sha256": "f48f59a286c7307d2810240a6eb52cfc08d54080df814ed8d1d048647ed69445"
+        },
+        {
+          "file": "76-1COron1924.usfm",
+          "sha256": "636f5d0635a77117d6fa909bb50a67ef42327ed472bb14693abc6719a0a9d1d5"
+        },
+        {
+          "file": "77-2COron1924.usfm",
+          "sha256": "2507ed9e686af8c38fcaa688171b016b524ed51580601a55f4e5730a921a3136"
+        },
+        {
+          "file": "78-GALron1924.usfm",
+          "sha256": "2e01c5b152bd5fb9464fda9b313c27b05638d1ea9419d018eec656b6a6965885"
+        },
+        {
+          "file": "79-EPHron1924.usfm",
+          "sha256": "90bc124f925a2aa836c99aa6a5cb867966da13672264904838e5bf0335560730"
+        },
+        {
+          "file": "80-PHPron1924.usfm",
+          "sha256": "7e0c80ed1b3fe7fc7472316158d15972431e42a3fe154a09d7c99a0459eb8269"
+        },
+        {
+          "file": "81-COLron1924.usfm",
+          "sha256": "d7fe4d15b92d7a500fa014a7fd8e060b620771888db4485be44333d318a376d0"
+        },
+        {
+          "file": "82-1THron1924.usfm",
+          "sha256": "38eb815ac6742bbd66da2772ec94c518c7b86e8041a5ce6fd7d6e5a58cdb2c3a"
+        },
+        {
+          "file": "83-2THron1924.usfm",
+          "sha256": "56fc15cbd7f1a2955d28e1afa34d3528291d6e6a07057b3e16bee49ba1ccdc00"
+        },
+        {
+          "file": "84-1TIron1924.usfm",
+          "sha256": "69c0fbe94dc5eb6a91b4d4b1e502288a8bb5f4de49245c941d75d994f402406d"
+        },
+        {
+          "file": "85-2TIron1924.usfm",
+          "sha256": "114eb0d655f9de27c63131a951cf7fd3b86f831df1a3d5ffe5f7679dc6eb436b"
+        },
+        {
+          "file": "86-TITron1924.usfm",
+          "sha256": "d4bbb6f1090a72b3413f2c249977cae9a59d2fda95e7767da0681b7eb9f24683"
+        },
+        {
+          "file": "87-PHMron1924.usfm",
+          "sha256": "e4e48b086ec0adb6fde46d5b133e0bca34f01dde532ca54a65718a91ee7ccac3"
+        },
+        {
+          "file": "88-HEBron1924.usfm",
+          "sha256": "65f97a303a5120e25a6dfcaf609158cd21b1a8c32018d98d445ab5ea72b6c16f"
+        },
+        {
+          "file": "89-JASron1924.usfm",
+          "sha256": "7f859cfb1efbfe5b408289bebfb700fad53ac813d80fdd483e555aee598607ab"
+        },
+        {
+          "file": "90-1PEron1924.usfm",
+          "sha256": "b7f2bacf073da4b5f845bc15cc50f39c95ae8c9a425371e7a392464e29c31e93"
+        },
+        {
+          "file": "91-2PEron1924.usfm",
+          "sha256": "dfa27130c6165b25b60028d0b0edab66f0e1b00a481a175734d21099c8dea856"
+        },
+        {
+          "file": "92-1JNron1924.usfm",
+          "sha256": "41a4ca353cfe7dc905dd27b49ba3488038d1c6932f4a3293e9c54b60fff171c4"
+        },
+        {
+          "file": "93-2JNron1924.usfm",
+          "sha256": "d11aa83e7ed5b3d88512c88cf27db23af0d4aa1896ae5f37445dc86df45e3ba9"
+        },
+        {
+          "file": "94-3JNron1924.usfm",
+          "sha256": "c690d6c4d45475759c1c4b2f025b0e956ff54415f4db32afacf631df59b2332b"
+        },
+        {
+          "file": "95-JUDron1924.usfm",
+          "sha256": "10383cc0f292669a838321c1e5034acfb66d3369dfb6a7ec34f3c7f0a237424a"
+        },
+        {
+          "file": "96-REVron1924.usfm",
+          "sha256": "706bf9502fb5154fa431550e2696b594d67851b7d8e4bc744d871f38c27a36fa"
+        }
+      ],
+      "textSha256": "e5ca8e33f06c1b4131a75c9c3c792bb80aff8d5166a708ce33a377ecca351a99",
+      "books": 66,
+      "chapters": 1188,
+      "verses": 31045,
+      "comparisonBase": "eng",
+      "review": "source-gaps",
+      "candidates": {
+        "eng": {
+          "missing": 57,
+          "extra": 0,
+          "chapterMismatches": 1
+        },
+        "rus": {
+          "missing": 1089,
+          "extra": 784,
+          "chapterMismatches": 3
+        },
+        "org": {
+          "missing": 261,
+          "extra": 136,
+          "chapterMismatches": 3
+        }
+      },
+      "missing": [
+        {
+          "book": "JHN",
+          "ref": "11:1",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:2",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:3",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:4",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:5",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:6",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:7",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:8",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:9",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:10",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:11",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:12",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:13",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:14",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:15",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:16",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:17",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:18",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:19",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:20",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:21",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:22",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:23",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:24",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:25",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:26",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:27",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:28",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:29",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:30",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:31",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:32",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:33",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:34",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:35",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:36",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:37",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:38",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:39",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:40",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:41",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:42",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:43",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:44",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:45",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:46",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:47",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:48",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:49",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:50",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:51",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:52",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:53",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:54",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:55",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:56",
+          "kind": "no-source-label"
+        },
+        {
+          "book": "JHN",
+          "ref": "11:57",
+          "kind": "no-source-label"
+        }
+      ],
+      "extra": [],
+      "bookList": [
+        {
+          "usfm": "GEN",
+          "number": 10,
+          "name": "Ӂенеза",
+          "verses": 1533
+        },
+        {
+          "usfm": "EXO",
+          "number": 20,
+          "name": "Екзодул",
+          "verses": 1213
+        },
+        {
+          "usfm": "LEV",
+          "number": 30,
+          "name": "Левитикул",
+          "verses": 859
+        },
+        {
+          "usfm": "NUM",
+          "number": 40,
+          "name": "Нумерь",
+          "verses": 1288
+        },
+        {
+          "usfm": "DEU",
+          "number": 50,
+          "name": "Деутерономул",
+          "verses": 959
+        },
+        {
+          "usfm": "JOS",
+          "number": 60,
+          "name": "Иосуа",
+          "verses": 658
+        },
+        {
+          "usfm": "JDG",
+          "number": 70,
+          "name": "Жудекэторий",
+          "verses": 618
+        },
+        {
+          "usfm": "RUT",
+          "number": 80,
+          "name": "Рут",
+          "verses": 85
+        },
+        {
+          "usfm": "1SA",
+          "number": 90,
+          "name": "1 Самуел",
+          "verses": 810
+        },
+        {
+          "usfm": "2SA",
+          "number": 100,
+          "name": "2 Самуел",
+          "verses": 695
+        },
+        {
+          "usfm": "1KI",
+          "number": 110,
+          "name": "1 Ымпэрацилор",
+          "verses": 816
+        },
+        {
+          "usfm": "2KI",
+          "number": 120,
+          "name": "2 Ымпэрацилор",
+          "verses": 719
+        },
+        {
+          "usfm": "1CH",
+          "number": 130,
+          "name": "1 Кроничь",
+          "verses": 942
+        },
+        {
+          "usfm": "2CH",
+          "number": 140,
+          "name": "2 Кроничь",
+          "verses": 822
+        },
+        {
+          "usfm": "EZR",
+          "number": 150,
+          "name": "Езра",
+          "verses": 280
+        },
+        {
+          "usfm": "NEH",
+          "number": 160,
+          "name": "Неемия",
+          "verses": 406
+        },
+        {
+          "usfm": "EST",
+          "number": 190,
+          "name": "Естера",
+          "verses": 167
+        },
+        {
+          "usfm": "JOB",
+          "number": 220,
+          "name": "Йов",
+          "verses": 1070
+        },
+        {
+          "usfm": "PSA",
+          "number": 230,
+          "name": "Псалмул",
+          "verses": 2461
+        },
+        {
+          "usfm": "PRO",
+          "number": 240,
+          "name": "Провербеле",
+          "verses": 915
+        },
+        {
+          "usfm": "ECC",
+          "number": 250,
+          "name": "Еклезиастул",
+          "verses": 222
+        },
+        {
+          "usfm": "SNG",
+          "number": 260,
+          "name": "Кынтаря кынтэрилор",
+          "verses": 117
+        },
+        {
+          "usfm": "ISA",
+          "number": 290,
+          "name": "Исая",
+          "verses": 1292
+        },
+        {
+          "usfm": "JER",
+          "number": 300,
+          "name": "Иеремия",
+          "verses": 1364
+        },
+        {
+          "usfm": "LAM",
+          "number": 310,
+          "name": "Плынӂериле",
+          "verses": 154
+        },
+        {
+          "usfm": "EZK",
+          "number": 330,
+          "name": "Езекиел",
+          "verses": 1273
+        },
+        {
+          "usfm": "DAN",
+          "number": 340,
+          "name": "Даниел",
+          "verses": 357
+        },
+        {
+          "usfm": "HOS",
+          "number": 350,
+          "name": "Осея",
+          "verses": 197
+        },
+        {
+          "usfm": "JOL",
+          "number": 360,
+          "name": "Иоел",
+          "verses": 73
+        },
+        {
+          "usfm": "AMO",
+          "number": 370,
+          "name": "Амос",
+          "verses": 146
+        },
+        {
+          "usfm": "OBA",
+          "number": 380,
+          "name": "ОБАДИЯ",
+          "verses": 21
+        },
+        {
+          "usfm": "JON",
+          "number": 390,
+          "name": "ИОНА",
+          "verses": 48
+        },
+        {
+          "usfm": "MIC",
+          "number": 400,
+          "name": "МИКА",
+          "verses": 105
+        },
+        {
+          "usfm": "NAM",
+          "number": 410,
+          "name": "НАУМ",
+          "verses": 47
+        },
+        {
+          "usfm": "HAB",
+          "number": 420,
+          "name": "ХАБАКУК",
+          "verses": 56
+        },
+        {
+          "usfm": "ZEP",
+          "number": 430,
+          "name": "ЦЕФАНИЯ",
+          "verses": 53
+        },
+        {
+          "usfm": "HAG",
+          "number": 440,
+          "name": "ХАГАЙ",
+          "verses": 38
+        },
+        {
+          "usfm": "ZEC",
+          "number": 450,
+          "name": "ЗАХАРИЯ",
+          "verses": 211
+        },
+        {
+          "usfm": "MAL",
+          "number": 460,
+          "name": "МАЛЕАХИ",
+          "verses": 55
+        },
+        {
+          "usfm": "MAT",
+          "number": 470,
+          "name": "Матей",
+          "verses": 1071
+        },
+        {
+          "usfm": "MRK",
+          "number": 480,
+          "name": "Марку",
+          "verses": 678
+        },
+        {
+          "usfm": "LUK",
+          "number": 490,
+          "name": "Лука",
+          "verses": 1151
+        },
+        {
+          "usfm": "JHN",
+          "number": 500,
+          "name": "Иоан",
+          "verses": 822
+        },
+        {
+          "usfm": "ACT",
+          "number": 510,
+          "name": "Фаптеле",
+          "verses": 1007
+        },
+        {
+          "usfm": "ROM",
+          "number": 520,
+          "name": "Романь",
+          "verses": 433
+        },
+        {
+          "usfm": "1CO",
+          "number": 530,
+          "name": "1 Коринтень",
+          "verses": 437
+        },
+        {
+          "usfm": "2CO",
+          "number": 540,
+          "name": "2 Коринтень",
+          "verses": 257
+        },
+        {
+          "usfm": "GAL",
+          "number": 550,
+          "name": "Галатень",
+          "verses": 149
+        },
+        {
+          "usfm": "EPH",
+          "number": 560,
+          "name": "Ефесень",
+          "verses": 155
+        },
+        {
+          "usfm": "PHP",
+          "number": 570,
+          "name": "Филипень",
+          "verses": 104
+        },
+        {
+          "usfm": "COL",
+          "number": 580,
+          "name": "Колосень",
+          "verses": 95
+        },
+        {
+          "usfm": "1TH",
+          "number": 590,
+          "name": "1 Тесалоничень",
+          "verses": 89
+        },
+        {
+          "usfm": "2TH",
+          "number": 600,
+          "name": "2 Тесалоничень",
+          "verses": 47
+        },
+        {
+          "usfm": "1TI",
+          "number": 610,
+          "name": "1 Тимотей",
+          "verses": 113
+        },
+        {
+          "usfm": "2TI",
+          "number": 620,
+          "name": "2 Тимотей",
+          "verses": 83
+        },
+        {
+          "usfm": "TIT",
+          "number": 630,
+          "name": "Тит",
+          "verses": 46
+        },
+        {
+          "usfm": "PHM",
+          "number": 640,
+          "name": "Филимон",
+          "verses": 25
+        },
+        {
+          "usfm": "HEB",
+          "number": 650,
+          "name": "Еврей",
+          "verses": 303
+        },
+        {
+          "usfm": "JAS",
+          "number": 660,
+          "name": "Иаков",
+          "verses": 108
+        },
+        {
+          "usfm": "1PE",
+          "number": 670,
+          "name": "1 Петру",
+          "verses": 105
+        },
+        {
+          "usfm": "2PE",
+          "number": 680,
+          "name": "2 Петру",
+          "verses": 61
+        },
+        {
+          "usfm": "1JN",
+          "number": 690,
+          "name": "1 Иоан",
+          "verses": 105
+        },
+        {
+          "usfm": "2JN",
+          "number": 700,
+          "name": "2 Иоан",
+          "verses": 13
+        },
+        {
+          "usfm": "3JN",
+          "number": 710,
+          "name": "3 Иоан",
+          "verses": 14
+        },
+        {
+          "usfm": "JUD",
+          "number": 720,
+          "name": "Иуда",
+          "verses": 25
+        },
+        {
+          "usfm": "REV",
+          "number": 730,
+          "name": "Апокалипса",
+          "verses": 404
+        }
+      ],
+      "verseRanges": [],
+      "deferred": "14.10.2026: в USFM отсутствует Ин 11 целиком (57 стихов); не собирать и не публиковать до исправления источника."
+    }
+  ]
+}
