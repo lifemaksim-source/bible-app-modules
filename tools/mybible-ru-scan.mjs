@@ -19,7 +19,7 @@ export function russianModuleMetadata(registry) {
   const result = { dictionary: [], commentary: [] };
   const seen = new Set();
   for (const entry of registry.downloads) {
-    if (!entry || entry.hid === true || entry.lng?.toLowerCase() !== 'ru' ||
+    if (!entry || entry.hid === true || typeof entry.lng !== 'string' || entry.lng.toLowerCase() !== 'ru' ||
         typeof entry.fil !== 'string') continue;
     const type = /\.dictionary$/i.test(entry.fil) ? 'dictionary' :
       /\.commentaries$/i.test(entry.fil) ? 'commentary' : null;
