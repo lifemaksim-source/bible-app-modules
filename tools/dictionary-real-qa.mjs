@@ -43,8 +43,11 @@ export async function validateRealDictionaries() {
       fs.writeFileSync(zipPath, bytes);
       const members = execFileSync('unzip', ['-Z', '-1', zipPath], { encoding: 'utf8', timeout: 15_000 }).trim().split(/\r?\n/);
       const sqliteMembers = members.filter((entry) => /\.sqlite3$/i.test(entry) && !entry.endsWith('/'));
-      if (sqliteMembers.length !== 1) throw new Error(`${fixture.name}: expected exactly one dictionary SQLite file, got ${sqliteMembers.length}`);
-      const data = execFileSync('unzip', ['-p', zipPath, sqliteMembers[0]], { maxBuffer: MAX_DATABASE_BYTES, timeout: 60_000 });
+      // A real MyBible package may contain a main database plus one or more
+      // supplement files. Select the named dictionary, never a random sibling.
+      const chosen = sqliteMembers.find((entry) => path.posix.basename(entry).toLowerCase() === fixture.name.toLowerCase());
+      if (!chosen) throw new Error(`${fixture.name}: expected dictionary not found; archive entries: ${sqliteMembers.map((e) => path.posix.basename(e)).join(', ')}`);
+      const data = execFileSync('unzip', ['-p', zipPath, chosen], { maxBuffer: MAX_DATABASE_BYTES, timeout: 60_000 });
       if (data.length > MAX_DATABASE_BYTES || data.subarray(0, 15).toString('utf8') !== 'SQLite format 3') {
         throw new Error(`${fixture.name}: invalid or oversized SQLite`);
       }
