@@ -48,7 +48,7 @@ export function validateSourceCoverage(parsed, sourceBooks, expectedChapters, ra
     throw new Error('TAHOT ' + range + ': source contains missing or unexpected books');
   }
   if (!parsed.rows.length || parsed.stats.malformed || parsed.stats.verses < expected.length) {
-    throw new Error('TAHOT ' + range + ': absent or malformed source rows');
+    throw new Error('TAHOT ' + range + ': absent or malformed source rows (rows=' + parsed.stats.rows + ', malformed=' + parsed.stats.malformed + ', verses=' + parsed.stats.verses + ')');
   }
   if (Object.keys(parsed.stats.columnWidths).some(n => n !== '17')) {
     throw new Error('TAHOT ' + range + ': unexpected TSV field count (expected 17 columns)');
