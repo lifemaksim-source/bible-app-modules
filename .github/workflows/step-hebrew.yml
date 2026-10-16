@@ -1,0 +1,28 @@
+# Validates pinned original STEP Bible Hebrew data in ephemeral GitHub runner memory.
+# Does not upload Hebrew text, historical variants, SQLite or other binaries.
+name: STEP Bible Hebrew TAHOT source QA
+on:
+  pull_request:
+    paths:
+      - 'tools/step-hebrew.mjs'
+      - 'tools/step-hebrew.test.mjs'
+      - 'sources-step-hebrew.json'
+      - '.github/workflows/step-hebrew.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Test row-preserving Hebrew parser and SQLite (synthetic data)
+        run: node --test tools/step-hebrew.test.mjs
+      - name: Verify fixed STEP Bible TAHOT Gen-Deu and ephemeral SQLite
+        run: node tools/step-hebrew.mjs --sqlite-smoke

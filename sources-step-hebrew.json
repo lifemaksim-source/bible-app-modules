@@ -1,0 +1,42 @@
+{
+  "dataset": "STEP Bible TAHOT — Hebrew/Aramaic OT, row-preserving audit (not yet interlinear rendering)",
+  "repository": "STEPBible/STEPBible-Data",
+  "revision": "94802ced31e63882ab42a86d79eb0017df4545e3",
+  "directory": "Translators Amalgamated OT+NT",
+  "files": [
+    {
+      "range": "Gen-Deu",
+      "name": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "gitBlobSha1": "eb051292f8cee648c4f3eaf1b48cd0f1f30dc1d5",
+      "bytes": 18190455,
+      "audit": true,
+      "sha256": "e9b8546ee48fe0bfc57c3b70f5f40e98d96580e803526d19026224e31753368b"
+    },
+    {
+      "range": "Jos-Est",
+      "name": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "gitBlobSha1": "e3824344f6dea1a3f51932d1b0a53537c3c2023e",
+      "bytes": 24500317,
+      "audit": false
+    },
+    {
+      "range": "Job-Sng",
+      "name": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "gitBlobSha1": "2eee6774c609eb1313ace03d202e85556d4e4f15",
+      "bytes": 9540623,
+      "audit": false
+    },
+    {
+      "range": "Isa-Mal",
+      "name": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "gitBlobSha1": "1cfe6718a1dae0d5d45a57a942d3f7f716ac6342",
+      "bytes": 17977518,
+      "audit": false
+    }
+  ],
+  "license": "CC BY 4.0 (repository data; do not confuse with differently licensed SWORD THOT package)",
+  "attribution": "STEP Bible (https://www.stepbible.org), data based on Tyndale House Cambridge and Open Scriptures",
+  "method": "Preserve TAHOT Hebrew forms, extended Strong tags, morphology, meaning and spelling variant fields, and source reference unmodified. Do not invent words, glosses or a Russian text alignment.",
+  "relatedParser": "https://github.com/openbible-io/step/blob/master/src/tat/tahot.ts (CC BY 4.0; consulted for schema, not imported)",
+  "distribution": "Source QA only; no Hebrew text, binaries or derived modules committed, uploaded as artifacts or released."
+}
