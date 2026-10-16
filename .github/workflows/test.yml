@@ -1,0 +1,29 @@
+# Fast, read-only unit tests for module sources and import validators.
+# Does not build modules, download Bible texts, or publish releases.
+name: Проверки модулей
+
+on:
+  pull_request:
+    paths:
+      - 'tools/**'
+      - 'canon/**'
+      - 'sources.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/test.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
