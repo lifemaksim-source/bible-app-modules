@@ -40,6 +40,28 @@ export function russianModuleMetadata(registry) {
   return result;
 }
 
+
+/** Potential shared wordforms dictionaries based on registry METADATA only, not their contents. */
+export function russianWordformCandidates(registry) {
+  if (!Array.isArray(registry?.downloads)) throw new Error('Unsupported registry JSON');
+  return registry.downloads.filter((entry) => {
+    if (!entry || entry.hid === true || typeof entry.fil !== 'string') return false;
+    const code = typeof entry.abr === 'string' ? entry.abr.trim().toLowerCase() : '';
+    const file = entry.fil.toLowerCase();
+    const title = typeof entry.des === 'string' ? entry.des.toLowerCase() : '';
+    // MyBible specifies that abbreviation equal to the language code makes
+    // its WORDS table applicable to all dictionaries of that language.
+    return code === 'ru' || file === 'ru.dictionary' ||
+      /словоформ|word.forms|морфологи/.test(title);
+  }).map((entry) => ({
+    file: entry.fil, code: typeof entry.abr === 'string' ? entry.abr : '',
+    name: typeof entry.des === 'string' ? entry.des.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 140) : '',
+    language: typeof entry.lng === 'string' ? entry.lng : '',
+    size: typeof entry.siz === 'string' ? entry.siz : '',
+    downloadListed: Array.isArray(entry.url) && entry.url.length > 0,
+  })).slice(0, 30);
+}
+
 async function fetchRegistry() {
   const errors = [];
   for (const url of REGISTRIES) {
@@ -71,11 +93,14 @@ export async function scanRussianRegistry() {
     if (!member) throw new Error('registry.json not found in ZIP');
     const body = execFileSync('unzip', ['-p', zip, member], { encoding: 'utf8',
       maxBuffer: MAX_REGISTRY_JSON_BYTES, timeout: 15_000 });
-    const metadata = russianModuleMetadata(JSON.parse(body.replace(/^\uFEFF/, '')));
+    const registry = JSON.parse(body.replace(/^\uFEFF/, ''));
+    const metadata = russianModuleMetadata(registry);
+    const wordformCandidates = russianWordformCandidates(registry);
     const report = {
       registryHost: host, russianDictionaryCount: metadata.dictionary.length,
       russianCommentaryCount: metadata.commentary.length,
       // The output has titles and filenames only; NO dictionary/commentary content.
+      wordformCandidates,
       dictionaries: metadata.dictionary.slice(0, 25),
       commentaries: metadata.commentary.slice(0, 25),
       rights: 'Registry listing alone does not authorize redistribution',
