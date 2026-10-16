@@ -1,0 +1,23 @@
+name: Проверка конкорданции Стронга
+on:
+  pull_request:
+    paths:
+      - 'tools/strongs.mjs'
+      - 'tools/concordance.mjs'
+      - 'tools/concordance.test.mjs'
+      - '.github/workflows/concordance-check.yml'
+permissions:
+  contents: read
+jobs:
+  concordance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node --test tools/concordance.test.mjs
+      - run: npm test
