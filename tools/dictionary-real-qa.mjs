@@ -53,15 +53,48 @@ export async function validateRealDictionaries() {
       }
       const db = new SQLModule.Database(new Uint8Array(data));
       let audit;
+      let exactLookup = false;
+      let prefixLookup = false;
+      try {
+        audit = auditDictionary(db);
+        if (audit.ok) {
+          // Reproduce the app's exact and prefix SQL against a REAL module,
+          // without printing any source text or article content.
+          const first = db.exec('SELECT topic FROM dictionary ORDER BY topic LIMIT 1')[0]?.values?.[0]?.[0];
+          if (typeof first === 'string' && first.length) {
+            const exact = db.prepare('SELECT definition FROM dictionary WHERE topic = ? LIMIT 1');
+            try {
+              exact.bind([first]);
+              exactLookup = exact.step() && typeof exact.get()[0] === 'string';
+            } finally {
+              exact.free();
+            }
+            const prefix = Array.from(first).slice(0, 2).join('').replace(/[\\%_]/g, '\\      let audit;
       try {
         audit = auditDictionary(db);
       } finally {
         db.close();
       }
+      const summary = {') + '%';
+            const search = db.prepare("SELECT topic FROM dictionary WHERE topic LIKE ? ESCAPE '\\' LIMIT 20");
+            try {
+              search.bind([prefix]);
+              prefixLookup = search.step();
+            } finally {
+              search.free();
+            }
+          }
+        }
+      } finally {
+        db.close();
+      }
+      if (!exactLookup || !prefixLookup) throw new Error(`${fixture.name}: MyBible article lookup failed`);
       const summary = {
         module: fixture.name,
         entries: audit.entries,
         indexed: audit.hasTopicIndex,
+        exactLookup,
+        prefixLookup,
         invalidTopics: audit.invalidTopics,
         duplicateTopics: audit.duplicateTopics,
         invalidDefinitions: audit.invalidDefinitions,
