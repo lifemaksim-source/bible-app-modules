@@ -23,8 +23,8 @@ test('TAHOT preserves all source fields and explicit Qere/Ketiv indicators witho
   assert.equal(result.stats.verses, 5);
   assert.equal(result.stats.meaningVariants, 1);
   assert.equal(result.stats.spellingVariants, 1);
-  assert.equal(result.stats.qereRefs, 1);
-  assert.equal(result.stats.ketivRefs, 1);
+  assert.equal(result.stats.qereRefs, 2); // source labels include Q(K) and K(Q)
+  assert.equal(result.stats.ketivRefs, 2); // counts K present anywhere, not primary readings
   assert.equal(result.stats.malformed, 0);
   assert.equal(result.rows[0].surface, 'בְּ/רֵאשִׁית');
   assert.equal(result.rows[0].strong_tags, 'H9001/H7225');
