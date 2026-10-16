@@ -153,9 +153,14 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
   const content = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
   const parsed = parseTahotLines(content);
   const { stats } = parsed;
+  // A true source audit must not silently accept missing chapters or erased
+  // alternative-reading fields merely because an overall token count looks large.
+  const requiredChapters = { '10': 50, '20': 40, '30': 27, '40': 36, '50': 34 };
   if (stats.rows < 50000 || stats.verses < 4000 || stats.malformed ||
-      stats.books.join(',') !== '10,20,30,40,50') {
-    throw new Error('Unexpected TAHOT first-five-books coverage or invalid row metadata');
+      stats.books.join(',') !== '10,20,30,40,50' ||
+      Object.keys(requiredChapters).some(b => stats.chapters[b] !== requiredChapters[b]) ||
+      !stats.ketivRefs || !stats.qereRefs || !stats.meaningVariants || !stats.spellingVariants) {
+    throw new Error('Unexpected TAHOT first-five-books coverage or missing alternative readings');
   }
   const report = {
     source: 'STEP Bible TAHOT Gen-Deu', revision: meta.revision, sha256,
