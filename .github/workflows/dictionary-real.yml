@@ -1,0 +1,28 @@
+# Real module integration test. The archives are downloaded from a fixed public
+# upstream GitHub commit into runner temp storage; none are uploaded or published.
+name: Реальные словари MyBible
+
+on:
+  pull_request:
+    paths:
+      - 'tools/dictionary-audit.mjs'
+      - 'tools/dictionary-real-qa.mjs'
+      - '.github/workflows/dictionary-real.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-real-dictionaries:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Audit two pinned authentic ETCBC dictionaries
+        run: node tools/dictionary-real-qa.mjs
