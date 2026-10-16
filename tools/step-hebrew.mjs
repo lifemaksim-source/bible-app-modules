@@ -12,7 +12,7 @@ import { SQL, root } from './common.mjs';
 export const FIRST_BOOKS = Object.freeze({ Gen: 10, Exo: 20, Lev: 30, Num: 40, Deu: 50 });
 const MAX_BYTES = 27 * 1024 * 1024;
 const HEBREW = /[\u0590-\u05ff]/u;
-const ANCHORED_REFERENCE = /^([A-Z][a-z]{2})\.(\d+)\.(\d+)(?:\([^)]*\))?#(\d+)(?:=([^\t]*))?$/;
+const ANCHORED_REFERENCE = /^([1-3]?[A-Z][a-z]{2})\.(\d+)\.(\d+)(?:\([^)]*\))?#(\d+)(?:=([^\t]*))?$/;
 
 /** Preserve exact source indicators; do not guess which Ketiv/Qere variant is primary. */
 export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
@@ -37,7 +37,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     const rawRef = cols[0] ?? '';
     const m = ANCHORED_REFERENCE.exec(rawRef);
     if (!m) {
-      if (/^[A-Z][a-z]{2}\.\d+\.\d+/.test(rawRef) && rawRef.includes('#')) malformed++;
+      if (/^[1-3]?[A-Z][a-z]{2}\.\d+\.\d+/.test(rawRef) && rawRef.includes('#')) malformed++;
       continue; // headers, commentaries and non-record content
     }
     const book = expectedBooks[m[1]];
@@ -47,7 +47,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     if (!book || !Number.isSafeInteger(chapter) || chapter < 1 || chapter > 180 ||
         !Number.isSafeInteger(verse) || verse < 1 || verse > 200 ||
         !Number.isSafeInteger(position) || position < 1 || position > 99999) {
-      throw new Error('TAHOT reference outside first-five-books scope at line ' + (lineNo + 1) + ': ' + [m[1],chapter,verse,position].join('/'));
+      throw new Error('TAHOT reference outside selected-book scope at line ' + (lineNo + 1) + ': ' + [m[1],chapter,verse,position].join('/'));
     }
     if (cols.length < 6 || !HEBREW.test(cols[1] ?? '')) {
       malformed++;
@@ -121,7 +121,7 @@ export function exportTahotSqlite(sql, parsed, sourceMetadata) {
   } finally { db.close(); }
 }
 
-async function readPinnedSource(meta, file) {
+export async function readPinnedSource(meta, file) {
   const rel = [meta.directory, file.name].map(encodeURIComponent).join('/');
   const url = 'https://raw.githubusercontent.com/' + meta.repository + '/' + meta.revision + '/' + rel;
   const response = await fetch(url, {
