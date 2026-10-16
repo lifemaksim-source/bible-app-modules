@@ -71,7 +71,7 @@ export async function scanRussianRegistry() {
     if (!member) throw new Error('registry.json not found in ZIP');
     const body = execFileSync('unzip', ['-p', zip, member], { encoding: 'utf8',
       maxBuffer: MAX_REGISTRY_JSON_BYTES, timeout: 15_000 });
-    const metadata = russianModuleMetadata(JSON.parse(body));
+    const metadata = russianModuleMetadata(JSON.parse(body.replace(/^\uFEFF/, '')));
     const report = {
       registryHost: host, russianDictionaryCount: metadata.dictionary.length,
       russianCommentaryCount: metadata.commentary.length,
