@@ -83,6 +83,21 @@ function inspectCommentary(db) {
   return { entries, invalidContent };
 }
 
+/** Table/column NAMES and row counts only. Never log words or definitions. */
+export function wordformSchema(db) {
+  const candidates = (db.exec("SELECT name FROM sqlite_master WHERE type='table'")[0]?.values || [])
+    .map(([name]) => String(name))
+    .filter((name) => /^(words|wordforms|word_forms|morphology|dictionary)$/i.test(name));
+  return candidates.map((name) => {
+    // Only known internal table names may be used in identifier interpolation.
+    const table = name.replace(/"/g, '""');
+    const columns = (db.exec(`PRAGMA table_info("${table}")`)[0]?.values || [])
+      .map((row) => String(row[1]));
+    const rows = count(db, `SELECT COUNT(*) FROM "${table}"`);
+    return { table: name, columns, rows };
+  });
+}
+
 function rightsFlags(db) {
   const tables = new Set((db.exec("SELECT name FROM sqlite_master WHERE type='table'")[0]?.values || []).map((x) => x[0]));
   if (!tables.has('info')) return { license: false, attribution: false, source: false };
@@ -117,7 +132,7 @@ export async function probeRussianModules() {
         if (fixture.kind === 'dictionary') {
           const audit = auditDictionary(db);
           const summary = { file: fixture.file, kind: fixture.kind, entries: audit.entries,
-            ok: audit.ok, problems: audit.errors, rights: rightsFlags(db) };
+            ok: audit.ok, problems: audit.errors, rights: rightsFlags(db), schema: wordformSchema(db) };
           report.push(summary);
           console.log(JSON.stringify(summary));
           if (!audit.ok) throw new Error(fixture.file + ': dictionary audit failed');
