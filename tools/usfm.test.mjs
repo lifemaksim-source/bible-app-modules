@@ -48,7 +48,7 @@ test('validate: wrong numbering is an error', () => {
   assert.ok(!validate(new Map([[230, psa]]), 'eng').errors.some((e) => e.startsWith('PSA: глав')));
 });
 
-import { parseCrossrefs, parseOsis } from './crossrefs.mjs';
+import { checkCrossrefs, parseCrossrefs, parseOsis } from './crossrefs.mjs';
 
 test('crossrefs: OSIS references and ranges', () => {
   assert.deepEqual(parseOsis('Ps.23.1'), { book: 230, chapter: 23, verse: 1 });
@@ -58,6 +58,31 @@ test('crossrefs: OSIS references and ranges', () => {
   assert.equal(dropped.votes, 1);
   assert.deepEqual(rows[0], [10, 1, 1, 240, 8, 22, 8, 30, 59]);
   assert.deepEqual(rows[1], [10, 1, 1, 230, 33, 6, 34, 2, 5]);
+});
+
+
+test('crossrefs: rejects bad range ends, reversed spans and malformed references', () => {
+  const { rows, dropped } = parseCrossrefs([
+    'Gen.1.1\tProv.8.22-Prov.8.30\t10', // valid
+    'Gen.1.1\tProv.8.22-Prov.8.999\t9', // nonexistent endpoint
+    'Gen.1.1\tProv.8.30-Prov.8.22\t8', // reversed within a chapter
+    'Gen.1.1\tPs.33.6-Ps.34.2\t7', // valid cross-chapter range
+    'Gen.1.1\tPs.34.2-Ps.33.6\t6', // reversed across chapters
+    'Gen.1.1\tProv.8.22-Prov.9.999\t5', // nonexistent end chapter verse
+    'Gen.0.1\tJohn.1.1\t4', // nonexistent source
+    'Gen.1.1\tProv.8.22-Prov.8.30-Prov.8.31\t3', // more than one dash
+    'Gen.1.1\tProv.8.22-\t2', // missing range end
+  ].join('\n'));
+  assert.equal(dropped.unknown, 2);
+  assert.equal(rows.length, 7);
+  assert.deepEqual(checkCrossrefs([rows[0], rows[3]]), []);
+  const errors = checkCrossrefs(rows);
+  assert.equal(errors.length, 5);
+  assert.match(errors[0], /нет конца диапазона.*240 8:999/);
+  assert.match(errors[1], /обратный диапазон.*240 8:30/);
+  assert.match(errors[2], /обратный диапазон.*230 34:2/);
+  assert.match(errors[3], /нет конца диапазона.*240 9:999/);
+  assert.match(errors[4], /нет стиха 10 0:1/);
 });
 
 import { parseFb2, plain, roman } from './lopukhin.mjs';
