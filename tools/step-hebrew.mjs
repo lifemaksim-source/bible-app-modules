@@ -42,9 +42,11 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     }
     const book = expectedBooks[m[1]];
     const chapter = Number(m[2]), verse = Number(m[3]), position = Number(m[4]);
+    // TAHOT #index may encode variants (e.g. #501). It is a source index,
+    // not proof of sequential word order; do not coerce to word position.
     if (!book || !Number.isSafeInteger(chapter) || chapter < 1 || chapter > 180 ||
         !Number.isSafeInteger(verse) || verse < 1 || verse > 200 ||
-        !Number.isSafeInteger(position) || position < 1 || position > 400) {
+        !Number.isSafeInteger(position) || position < 1 || position > 99999) {
       throw new Error('TAHOT reference outside first-five-books scope at line ' + (lineNo + 1) + ': ' + [m[1],chapter,verse,position].join('/'));
     }
     if (cols.length < 6 || !HEBREW.test(cols[1] ?? '')) {
