@@ -33,7 +33,13 @@ export function parseCrossrefs(text) {
       continue;
     }
     const from = parseOsis(fromRef);
-    const [startRef, endRef] = (toRef ?? '').split('-');
+    const parts = (toRef ?? '').split('-');
+    // Never silently shorten a malformed range (e.g. A-B-C or A-).
+    if (parts.length > 2 || (parts.length === 2 && !parts[1])) {
+      dropped.unknown++;
+      continue;
+    }
+    const [startRef, endRef] = parts;
     const start = parseOsis(startRef ?? '');
     const end = endRef ? parseOsis(endRef) : null;
     if (!from || !start || (endRef && !end)) {
@@ -47,7 +53,7 @@ export function parseCrossrefs(text) {
   return { rows, dropped };
 }
 
-/** Every verse must exist in English numbering; returns problems found. */
+/** Validate the source, target and both ends of each range in English numbering. */
 export function checkCrossrefs(rows) {
   const ref = canon('eng');
   const bad = [];
@@ -55,6 +61,10 @@ export function checkCrossrefs(rows) {
   for (const r of rows) {
     if (!ok(r[0], r[1], r[2])) bad.push(`нет стиха ${r[0]} ${r[1]}:${r[2]}`);
     else if (!ok(r[3], r[4], r[5])) bad.push(`нет стиха ${r[3]} ${r[4]}:${r[5]}`);
+    else if (!ok(r[3], r[6], r[7])) bad.push(`нет конца диапазона ${r[3]} ${r[6]}:${r[7]}`);
+    else if (r[6] < r[4] || (r[6] === r[4] && r[7] < r[5])) {
+      bad.push(`обратный диапазон ${r[3]} ${r[4]}:${r[5]}–${r[6]}:${r[7]}`);
+    }
     if (bad.length > 20) break;
   }
   return bad;
@@ -66,7 +76,8 @@ export async function buildCrossrefs(src, { work }) {
   const { rows, dropped } = parseCrossrefs(fs.readFileSync(file, 'utf8'));
   if (rows.length < 300000) throw new Error(`слишком мало ссылок: ${rows.length}`);
   const bad = checkCrossrefs(rows);
-  if (bad.length > 10) throw new Error(`ссылки на несуществующие стихи:\n  ${bad.slice(0, 10).join('\n  ')}`);
+  // Publishing even one invalid link makes Bible references misleading.
+  if (bad.length) throw new Error(`некорректные параллельные места:\n  ${bad.slice(0, 10).join('\n  ')}`);
 
   const db = new (await SQL()).Database();
   writeInfo(db, {
