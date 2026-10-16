@@ -116,7 +116,9 @@ async function fetchPinnedSource(meta) {
   const bytes = Buffer.concat(parts);
   const objectHash = crypto.createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex');
   if (objectHash !== meta.gitBlobSha1) throw new Error('Pinned STEP Bible git blob did not match');
-  return { bytes, sha256: crypto.createHash('sha256').update(bytes).digest('hex') };
+  const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
+  if (sha256 !== meta.sha256) throw new Error('Pinned STEP Bible SHA-256 did not match');
+  return { bytes, sha256 };
 }
 
 export async function auditGreekSource({ build = false } = {}) {
