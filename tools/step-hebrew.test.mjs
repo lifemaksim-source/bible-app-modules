@@ -36,9 +36,9 @@ test('TAHOT preserves all source fields and explicit Qere/Ketiv indicators witho
 test('unknown datasets and chapters outside the first five books are rejected', () => {
   assert.throws(() => parseTahotLines('TAGNT Greek'), /Not a TAHOT/);
   const other = lines + '\nPsa.1.1#01=L\tדָּבָר\tdabar\tword\tH1697\tHNcmsa';
-  assert.throws(() => parseTahotLines(other), /outside first-five-books/);
+  assert.throws(() => parseTahotLines(other), /outside selected-book/);
   const unreasonable = lines + '\nGen.0.1#01=L\tדָּבָר\tdabar\tword\tH1697\tHNcmsa';
-  assert.throws(() => parseTahotLines(unreasonable), /outside first-five-books/);
+  assert.throws(() => parseTahotLines(unreasonable), /outside selected-book/);
 });
 
 test('lossless SQLite keeps rows and source alternatives as separate columns', async () => {

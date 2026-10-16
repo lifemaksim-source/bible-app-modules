@@ -12,7 +12,7 @@ import { SQL, root } from './common.mjs';
 export const FIRST_BOOKS = Object.freeze({ Gen: 10, Exo: 20, Lev: 30, Num: 40, Deu: 50 });
 const MAX_BYTES = 27 * 1024 * 1024;
 const HEBREW = /[\u0590-\u05ff]/u;
-const ANCHORED_REFERENCE = /^([A-Z][a-z]{2})\.(\d+)\.(\d+)(?:\([^)]*\))?#(\d+)(?:=([^\t]*))?$/;
+const ANCHORED_REFERENCE = /^([1-3]?[A-Z][a-z]{1,2})\.(\d+)\.(\d+)(?:\([^)]*\))?#(\d+)(?:=([^\t]*))?$/;
 
 /** Preserve exact source indicators; do not guess which Ketiv/Qere variant is primary. */
 export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
@@ -25,11 +25,14 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   const verseKeys = new Set();
   const histogram = {};
   let malformed = 0;
+  const malformedSamples = []; // source reference metadata only; never log Hebrew words
   let meaningVariants = 0;
   let spellingVariants = 0;
   let ketivRefs = 0;
   let qereRefs = 0;
   let aramaicGrammar = 0;
+  let qereWithoutHebrewSurface = 0;
+  let psalmSuperscriptionRows = 0;
 
   const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/);
   for (let lineNo = 0; lineNo < lines.length; lineNo++) {
@@ -37,7 +40,13 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     const rawRef = cols[0] ?? '';
     const m = ANCHORED_REFERENCE.exec(rawRef);
     if (!m) {
-      if (/^[A-Z][a-z]{2}\.\d+\.\d+/.test(rawRef) && rawRef.includes('#')) malformed++;
+      if (/^[1-3]?[A-Z][a-z]{1,2}\.\d+\.\d+/.test(rawRef) && rawRef.includes('#')) {
+        malformed++;
+        if (malformedSamples.length < 12) malformedSamples.push({
+          line: lineNo + 1, ref: rawRef.replace(/[^\x20-\x7e]/g, '?').slice(0, 100),
+          reason: 'invalid-source-reference',
+        });
+      }
       continue; // headers, commentaries and non-record content
     }
     const book = expectedBooks[m[1]];
@@ -45,17 +54,27 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     // TAHOT #index may encode variants (e.g. #501). It is a source index,
     // not proof of sequential word order; do not coerce to word position.
     if (!book || !Number.isSafeInteger(chapter) || chapter < 1 || chapter > 180 ||
-        !Number.isSafeInteger(verse) || verse < 1 || verse > 200 ||
+        !Number.isSafeInteger(verse) || verse < 0 || verse > 200 || (verse === 0 && book !== 230) ||
         !Number.isSafeInteger(position) || position < 1 || position > 99999) {
-      throw new Error('TAHOT reference outside first-five-books scope at line ' + (lineNo + 1) + ': ' + [m[1],chapter,verse,position].join('/'));
+      throw new Error('TAHOT reference outside selected-book scope at line ' + (lineNo + 1) + ': ' + [m[1],chapter,verse,position].join('/'));
     }
-    if (cols.length < 6 || !HEBREW.test(cols[1] ?? '')) {
+    const flags = m[5] ?? '';
+    const hasHebrew = HEBREW.test(cols[1] ?? '');
+    // Authentic TAHOT records a few Q(K) alternatives without a readable
+    // Hebrew surface. Retain the raw row; it is NOT a displayable word.
+    const emptyQereVariant = !hasHebrew && flags === 'Q(K)';
+    if (cols.length < 6 || (!hasHebrew && !emptyQereVariant)) {
       malformed++;
+      if (malformedSamples.length < 12) malformedSamples.push({
+        line: lineNo + 1, ref: rawRef.replace(/[^\x20-\x7e]/g, '?').slice(0, 100),
+        reason: cols.length < 6 ? 'too-few-columns' : 'empty-or-non-hebrew-surface',
+      });
       continue;
     }
     // Full original TAHOT reference contains edition and source indicators
     // (including Ketiv "K" and Qere "Q"). Do not strip or reinterpret them.
-    const flags = m[5] ?? '';
+    if (verse === 0 && book === 230) psalmSuperscriptionRows++;
+    if (emptyQereVariant) qereWithoutHebrewSurface++;
     if (/(^|[^a-z])K/.test(flags)) ketivRefs++;
     if (/(^|[^a-z])Q/.test(flags)) qereRefs++;
     const meaning = cols[6] ?? '', spelling = cols[7] ?? '';
@@ -80,8 +99,8 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   return {
     rows,
     stats: {
-      rows: rows.length, malformed, meaningVariants, spellingVariants,
-      ketivRefs, qereRefs, aramaicGrammar,
+      rows: rows.length, malformed, malformedSamples, meaningVariants, spellingVariants,
+      ketivRefs, qereRefs, aramaicGrammar, qereWithoutHebrewSurface, psalmSuperscriptionRows,
       columnWidths: histogram, verses: verseKeys.size,
       chapters: Object.fromEntries([...chapters].sort(([a], [b]) => a - b)
         .map(([book, ch]) => [book, ch.size])),
@@ -121,7 +140,7 @@ export function exportTahotSqlite(sql, parsed, sourceMetadata) {
   } finally { db.close(); }
 }
 
-async function readPinnedSource(meta, file) {
+export async function readPinnedSource(meta, file) {
   const rel = [meta.directory, file.name].map(encodeURIComponent).join('/');
   const url = 'https://raw.githubusercontent.com/' + meta.repository + '/' + meta.revision + '/' + rel;
   const response = await fetch(url, {
