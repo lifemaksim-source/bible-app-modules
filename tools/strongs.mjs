@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { SQL, get, getPinned } from './common.mjs';
+import { writeConcordance } from './concordance.mjs';
 import { books } from './validate.mjs';
 
 /** «H0512» → «H512», «G26» → «G26». */
@@ -126,6 +127,7 @@ export async function buildStrongs(src, { work, base }) {
   const db = new (await SQL()).Database();
   db.run(`CREATE TABLE info (name TEXT, value TEXT);
     CREATE TABLE words (verse_id INTEGER PRIMARY KEY, words TEXT NOT NULL);
+    CREATE TABLE concordance (topic TEXT NOT NULL, verse_id INTEGER NOT NULL, hits INTEGER NOT NULL CHECK(hits > 0), PRIMARY KEY (topic, verse_id)) WITHOUT ROWID;
     CREATE TABLE lexicon (topic TEXT PRIMARY KEY, lemma TEXT, translit TEXT, pronunciation TEXT, gloss TEXT, definition TEXT, derivation TEXT, kjv TEXT) WITHOUT ROWID;`);
   const info = {
     description: src.name, language: src.language, origin: src.origin, license: src.license, attribution: src.attribution,
@@ -136,6 +138,7 @@ export async function buildStrongs(src, { work, base }) {
   const insW = db.prepare('INSERT INTO words VALUES (?, ?)');
   for (const k of [...verses.keys()].sort((a, b) => a - b)) insW.run([k, verses.get(k).map(([w, n]) => `${w}\t${n}`).join('\n')]);
   insW.free();
+  const concordance = writeConcordance(db, verses);
   const insL = db.prepare('INSERT INTO lexicon VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
   for (const r of lexicon.sort((a, b) => (a.topic < b.topic ? -1 : 1))) insL.run([r.topic, r.lemma, r.translit, r.pronunciation, r.gloss, r.definition, r.derivation, r.kjv]);
   insL.free();
@@ -146,7 +149,7 @@ export async function buildStrongs(src, { work, base }) {
   return {
     bytes,
     meta: { code: src.code, name: src.name, language: src.language, numbering: src.numbering, year: src.year ?? '', entries: lexicon.length, source: src.homepage },
-    summary: `${verses.size} стихов со словами оригинала, ${lexicon.length} статей словаря`,
+    summary: `${verses.size} стихов со словами оригинала, ${lexicon.length} статей словаря, ${concordance.rows} связей Стронга со стихами`, 
     warnings: missing.size ? [`нет в словаре: ${missing.size} номеров, напр. ${[...missing].slice(0, 10).join(', ')}`] : [],
   };
 }
