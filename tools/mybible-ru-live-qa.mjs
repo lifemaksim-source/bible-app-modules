@@ -12,6 +12,7 @@ import { auditDictionary } from './dictionary-audit.mjs';
 const REGISTRY = 'https://mybible.zone/repository/registry/registry.zip';
 const MODULES = [
   { file: 'Имена.dictionary', kind: 'dictionary' },
+  { file: 'ru.dictionary', kind: 'wordforms' },
   { file: 'Нюстрем.dictionary', kind: 'dictionary' },
   { file: 'Брокгауз.dictionary', kind: 'dictionary' },
   { file: 'БТ-к.commentaries', kind: 'commentary' },
@@ -98,6 +99,37 @@ export function wordformSchema(db) {
   });
 }
 
+
+/** A language-wide MyBible wordforms file is allowed to contain WORDS without DICTIONARY. */
+export function inspectWordForms(db) {
+  if (db.exec('PRAGMA quick_check')[0]?.values?.[0]?.[0] !== 'ok') throw new Error('SQLite corruption');
+  const tables = new Set((db.exec("SELECT name FROM sqlite_master WHERE type='table'")[0]?.values || []).map((x) => x[0]));
+  if (!tables.has('words')) throw new Error('Missing MyBible words table');
+  const columns = new Set((db.exec('PRAGMA table_info(words)')[0]?.values || []).map((x) => x[1]));
+  if (!columns.has('standard_form') || !columns.has('variation')) throw new Error('Unsupported MyBible words schema');
+  const entries = count(db, 'SELECT COUNT(*) FROM words');
+  if (!entries) throw new Error('Empty MyBible wordforms table');
+  const invalidRows = count(db, "SELECT COUNT(*) FROM words WHERE typeof(standard_form) != 'text' OR TRIM(standard_form) = '' OR typeof(variation) != 'text' OR TRIM(variation) = ''");
+  if (invalidRows) throw new Error('Invalid MyBible wordform rows: ' + invalidRows);
+  // Parameterized probe validates the same wordform query the app will execute.
+  const first = db.exec('SELECT variation FROM words LIMIT 1')[0]?.values?.[0]?.[0];
+  const lookup = db.prepare('SELECT standard_form FROM words WHERE variation = ? LIMIT 1');
+  let exactLookup = false;
+  try {
+    lookup.bind([first]);
+    exactLookup = lookup.step() && typeof lookup.get()[0] === 'string';
+  } finally {
+    lookup.free();
+  }
+  if (!exactLookup) throw new Error('Wordforms exact lookup failed');
+  const plan = (db.exec("EXPLAIN QUERY PLAN SELECT standard_form FROM words WHERE variation = 'word'")[0]?.values || [])
+    .map((row) => String(row[3] ?? '')).join(' ');
+  return { entries, invalidRows, exactLookup,
+    indexedVariation: /USING (?:COVERING )?INDEX/i.test(plan),
+    hasDictionary: tables.has('dictionary'),
+    columns: [...columns] };
+}
+
 function rightsFlags(db) {
   const tables = new Set((db.exec("SELECT name FROM sqlite_master WHERE type='table'")[0]?.values || []).map((x) => x[0]));
   if (!tables.has('info')) return { license: false, attribution: false, source: false };
@@ -129,7 +161,12 @@ export async function probeRussianModules() {
       const selected = dictionaryOrCommentaryMember(members, fixture.file);
       const db = openModule(InitSqlJs, extractZip(archive, selected));
       try {
-        if (fixture.kind === 'dictionary') {
+        if (fixture.kind === 'wordforms') {
+          const audit = inspectWordForms(db);
+          const summary = { file: fixture.file, kind: fixture.kind, ...audit, ok: true, rights: rightsFlags(db) };
+          report.push(summary);
+          console.log(JSON.stringify(summary));
+        } else if (fixture.kind === 'dictionary') {
           const audit = auditDictionary(db);
           const summary = { file: fixture.file, kind: fixture.kind, entries: audit.entries,
             ok: audit.ok, problems: audit.errors, rights: rightsFlags(db), schema: wordformSchema(db) };
