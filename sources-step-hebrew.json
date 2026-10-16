@@ -17,21 +17,24 @@
       "name": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
       "gitBlobSha1": "e3824344f6dea1a3f51932d1b0a53537c3c2023e",
       "bytes": 24500317,
-      "audit": false
+      "audit": true,
+      "sha256": "195fee1dc3653bab33701f170734eb894ed647c10cd08cc61749375fe8b73775"
     },
     {
       "range": "Job-Sng",
       "name": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
       "gitBlobSha1": "2eee6774c609eb1313ace03d202e85556d4e4f15",
       "bytes": 9540623,
-      "audit": false
+      "audit": true,
+      "sha256": "bb508af3af07822fca84cc43a0eba79eb70eecf672aabc0245b8d8cecf329d96"
     },
     {
       "range": "Isa-Mal",
       "name": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
       "gitBlobSha1": "1cfe6718a1dae0d5d45a57a942d3f7f716ac6342",
       "bytes": 17977518,
-      "audit": false
+      "audit": true,
+      "sha256": "f3ded203d2a74d6368932c97ae550d1d0754b271af491dc0dedf36fe3ba0bcc5"
     }
   ],
   "license": "CC BY 4.0 (repository data; do not confuse with differently licensed SWORD THOT package)",
