@@ -25,6 +25,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   const verseKeys = new Set();
   const histogram = {};
   let malformed = 0;
+  const malformedSamples = []; // source reference metadata only; never log Hebrew words
   let meaningVariants = 0;
   let spellingVariants = 0;
   let ketivRefs = 0;
@@ -37,7 +38,13 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     const rawRef = cols[0] ?? '';
     const m = ANCHORED_REFERENCE.exec(rawRef);
     if (!m) {
-      if (/^[1-3]?[A-Z][a-z]{1,2}\.\d+\.\d+/.test(rawRef) && rawRef.includes('#')) malformed++;
+      if (/^[1-3]?[A-Z][a-z]{1,2}\.\d+\.\d+/.test(rawRef) && rawRef.includes('#')) {
+        malformed++;
+        if (malformedSamples.length < 12) malformedSamples.push({
+          line: lineNo + 1, ref: rawRef.replace(/[^\x20-\x7e]/g, '?').slice(0, 100),
+          reason: 'invalid-source-reference',
+        });
+      }
       continue; // headers, commentaries and non-record content
     }
     const book = expectedBooks[m[1]];
@@ -51,6 +58,10 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     }
     if (cols.length < 6 || !HEBREW.test(cols[1] ?? '')) {
       malformed++;
+      if (malformedSamples.length < 12) malformedSamples.push({
+        line: lineNo + 1, ref: rawRef.replace(/[^\x20-\x7e]/g, '?').slice(0, 100),
+        reason: cols.length < 6 ? 'too-few-columns' : 'empty-or-non-hebrew-surface',
+      });
       continue;
     }
     // Full original TAHOT reference contains edition and source indicators
@@ -80,7 +91,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   return {
     rows,
     stats: {
-      rows: rows.length, malformed, meaningVariants, spellingVariants,
+      rows: rows.length, malformed, malformedSamples, meaningVariants, spellingVariants,
       ketivRefs, qereRefs, aramaicGrammar,
       columnWidths: histogram, verses: verseKeys.size,
       chapters: Object.fromEntries([...chapters].sort(([a], [b]) => a - b)
