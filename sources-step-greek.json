@@ -1,0 +1,13 @@
+{
+  "dataset": "STEP Bible TAGNT Mat–Jhn (SBL edition flags)",
+  "repository": "STEPBible/STEPBible-Data",
+  "revision": "94802ced31e63882ab42a86d79eb0017df4545e3",
+  "path": "Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+  "gitBlobSha1": "705c1bc1cf752e013efcef99b8d9a3b7853bf843",
+  "license": "CC BY 4.0",
+  "attribution": "STEP Bible (https://www.stepbible.org), data based on work at Tyndale House Cambridge",
+  "homepage": "https://github.com/STEPBible/STEPBible-Data",
+  "textSelection": "Include only word rows where the editions field explicitly contains SBL; original surfaces come from TAGNT and are not a byte-for-byte SBLGNT transcription.",
+  "distribution": "Development source audit only; no source text, binaries or generated modules committed or released.",
+  "sha256": "ab8eaaeb68e17a1dcfa34e1e9350358f22f03bc2a97244d848750ad81044bc8e"
+}
