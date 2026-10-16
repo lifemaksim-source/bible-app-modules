@@ -72,3 +72,13 @@ test('preserves authentic surface-less Q(K) variants, rejects other blank word r
   assert.equal(normal.stats.rows, 0);
   assert.equal(normal.stats.malformed, 1);
 });
+
+
+test('Psalm superscriptions at verse 0 are preserved but never reindexed to verse 1', () => {
+  const p = parseTahotLines(synthetic('Psa.3.0#01=L'), { Psa: 230 });
+  assert.equal(p.stats.malformed, 0);
+  assert.equal(p.stats.psalmSuperscriptionRows, 1);
+  assert.equal(p.rows[0].verse, 0);
+  assert.equal(p.rows[0].source_ref, 'Psa.3.0#01=L');
+  assert.throws(() => parseTahotLines(synthetic('Job.3.0#01=L'), { Job: 220 }), /outside selected-book/);
+});
