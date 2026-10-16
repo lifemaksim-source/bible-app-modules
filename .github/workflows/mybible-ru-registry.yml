@@ -1,0 +1,26 @@
+# Discovery only. No Bible text or dictionary/commentary payload downloaded.
+name: Русские модули MyBible — реестр
+
+on:
+  pull_request:
+    paths:
+      - 'tools/mybible-ru-scan.mjs'
+      - 'tools/mybible-ru-scan.test.mjs'
+      - '.github/workflows/mybible-ru-registry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - run: node --test tools/mybible-ru-scan.test.mjs
+      - name: Inspect public MyBible RU module registry (metadata only)
+        run: node tools/mybible-ru-scan.mjs
