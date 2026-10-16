@@ -57,3 +57,18 @@ test('all OT canonical chapter mappings are present', () => {
       assert.ok(Array.isArray(chapters[String(book)]), 'Missing chapter count for book ' + book);
     }
 });
+
+
+test('preserves authentic surface-less Q(K) variants, rejects other blank word rows', () => {
+  const prefix = 'TAHOT synthetic\n';
+  const suffix = '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t';
+  const qere = parseTahotLines(prefix + '1Sa.1.1#02=Q(K)' + suffix, { '1Sa': 90 });
+  assert.equal(qere.stats.rows, 1);
+  assert.equal(qere.stats.malformed, 0);
+  assert.equal(qere.stats.qereWithoutHebrewSurface, 1);
+  assert.equal(qere.rows[0].surface, '');
+  assert.equal(qere.rows[0].source_ref, '1Sa.1.1#02=Q(K)');
+  const normal = parseTahotLines(prefix + '1Sa.1.1#02=L' + suffix, { '1Sa': 90 });
+  assert.equal(normal.stats.rows, 0);
+  assert.equal(normal.stats.malformed, 1);
+});
