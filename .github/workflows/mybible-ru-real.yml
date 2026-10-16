@@ -1,0 +1,30 @@
+# Pinned to two file names in the official live MyBible registry.
+# Binary material is temporary; no artifacts, releases, or PR uploads.
+name: Реальные русские модули MyBible
+
+on:
+  pull_request:
+    paths:
+      - 'tools/mybible-ru-live-qa.mjs'
+      - 'tools/mybible-ru-live-qa.test.mjs'
+      - '.github/workflows/mybible-ru-real.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-ru-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Validate official source allowlist and archive selection
+        run: node --test tools/mybible-ru-live-qa.test.mjs
+      - name: Audit real Russian MyBible dictionary and commentary
+        run: node tools/mybible-ru-live-qa.mjs
