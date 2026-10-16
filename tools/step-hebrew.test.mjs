@@ -9,7 +9,7 @@ const lines = [
   '# description',
   'Eng (Heb) Ref & Type\tHebrew\tTransliteration\tTranslation\tdstrongss\tGrammar\tMeaning Variants\tSpelling Variants',
   'Gen.1.1#01=L\tבְּ/רֵאשִׁית\tbə/rešīt\tin/beginning\tH9001/H7225\tHR/HNcfsa\t\t',
-  'Gen.1.1#02=Q(K)\tאֱלֹהִים\telohim\tGod\tH0430\tHNcmpa\tK=source-variant\tL=spelling-variant',
+  'Gen.1.1#501=Q(K)\tאֱלֹהִים\telohim\tGod\tH0430\tHNcmpa\tK=source-variant\tL=spelling-variant',
   'Exo.2.2#01=K(Q)\tמֹשֶׁה\tmoshe\tMoses\tH4872\tHNp\t\t',
   'Lev.1.1#01=L\tוַיִּקְרָא\twayiqra\tand he called\tH7121\tHV\t\t',
   'Num.1.1#01=L\tדָּבָר\tdabar\tword\tH1697\tHNcmsa\t\t',
@@ -28,7 +28,7 @@ test('TAHOT preserves all source fields and explicit Qere/Ketiv indicators witho
   assert.equal(result.stats.malformed, 0);
   assert.equal(result.rows[0].surface, 'בְּ/רֵאשִׁית');
   assert.equal(result.rows[0].strong_tags, 'H9001/H7225');
-  assert.equal(result.rows[1].source_ref, 'Gen.1.1#02=Q(K)');
+  assert.equal(result.rows[1].source_ref, 'Gen.1.1#501=Q(K)');
   assert.equal(result.rows[1].meaning_variants, 'K=source-variant');
   assert.equal(result.rows[1].spelling_variants, 'L=spelling-variant');
 });
@@ -59,7 +59,7 @@ test('lossless SQLite keeps rows and source alternatives as separate columns', a
       while (stmt.step()) results.push(stmt.get());
       assert.equal(results[0][0], 'בְּ/רֵאשִׁית');
       assert.equal(results[1][1], 'H0430');
-      assert.equal(results[1][2], 'Gen.1.1#02=Q(K)');
+      assert.equal(results[1][2], 'Gen.1.1#501=Q(K)');
       assert.equal(results[1][3], 'K=source-variant');
       assert.equal(results[1][4], 'L=spelling-variant');
     } finally { stmt.free(); }
