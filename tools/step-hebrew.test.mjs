@@ -65,3 +65,21 @@ test('lossless SQLite keeps rows and source alternatives as separate columns', a
     } finally { stmt.free(); }
   } finally { db.close(); }
 });
+
+
+test('unrecognized TAHOT extra columns are preserved without interpreting their meaning', async () => {
+  const sample = lines.split('\n').slice(0, 4).join('\n') +
+    '\tfield8\tfield9\tfield10\tfield11\tfield12\tfield13\tfield14\tfield15\tfield16';
+  const parsed = parseTahotLines(sample);
+  assert.equal(parsed.stats.rows, 1);
+  assert.equal(parsed.stats.columnWidths['17'], 1);
+  assert.deepEqual(JSON.parse(parsed.rows[0].extra_columns),
+    ['field8','field9','field10','field11','field12','field13','field14','field15','field16']);
+  const sql = await SQL();
+  const bytes = exportTahotSqlite(sql, parsed, { dataset: 'synthetic' });
+  const db = new sql.Database(new Uint8Array(bytes));
+  try {
+    const value = db.exec('SELECT extra_columns FROM tahot_rows')[0].values[0][0];
+    assert.equal(value, parsed.rows[0].extra_columns);
+  } finally { db.close(); }
+});
