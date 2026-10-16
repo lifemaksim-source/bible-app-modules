@@ -1,0 +1,934 @@
+{
+  "checkedOn": "2026-10-14",
+  "scope": "Four priority languages of peoples of Russia; source and rights discovery, not completed modules",
+  "candidates": [
+    {
+      "id": "TATIBT",
+      "language": "Татарский",
+      "iso639_3": "tat",
+      "iso639_1": "tt",
+      "status": "source-download-blocked",
+      "publishable": false,
+      "catalogEvidence": {
+        "url": "https://github.com/digitalbiblesociety/data/blob/b4dd623a7606c71bd10604d7722625694556514d/bibles/TATIBT.json",
+        "sha256": "c48f242dec69df1dae19653750f8194ecfcefb24c51fe9dde1a9a1ce6e5732da",
+        "fields": {
+          "abbr": "TATIBT",
+          "title": "Tatar New Testament",
+          "title_vernacular": "Инҗил",
+          "iso": "tat",
+          "script": "Latn",
+          "year": 2001,
+          "copyright": "© Institute for Bible Translation, Moscow (Институт перевода Библии)"
+        },
+        "printDescriptions": [
+          "This Bible is copyrighted by Institute for Bible Translation, Moscow  (ibtrussia.org) and is provided with permission at the cost of printing by the Digital Bible Society (dbs.org). This translation is made available to you under the terms of the Creative Commons Attribution-Noncommercial-No Derivatives license 4.0. <br /><br />This Bible, and many others, are available for free download in a variety of digital formats at dbs.org/bibles."
+        ],
+        "links": [
+          {
+            "bible_abbr": "TATIBT",
+            "url": "http://ibtrussia.org/en/text?m=TTR",
+            "title": "NT",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "IBTRussia",
+            "visible": true,
+            "organization_id": "6c2a6a1a-3686-469f-93e9-d926d7fad9f1"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "http://ibtrussia.org/en/projects?id=TTR",
+            "title": "NT",
+            "scope": "",
+            "type": "pdf",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "IBTRussia",
+            "visible": true,
+            "organization_id": "6c2a6a1a-3686-469f-93e9-d926d7fad9f1"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "http://live.bible.is/bible/TATIBT/MAT/1",
+            "title": "Audio Bible",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://apk.fcbh.org/Tatar_IBT",
+            "title": "Global Bible App",
+            "scope": "",
+            "type": "app",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://live.bible.is/bible/TATIBT",
+            "title": "NT",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://live.bible.is/bible/TATIBT",
+            "title": "NT",
+            "scope": "",
+            "type": "audio_web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://www.bible.com/versions/1502-ttrbbl-izge-yazma",
+            "title": "Изге Язма",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Institute for Bible Translation, Russia",
+            "visible": true,
+            "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=2b00df52326f6705",
+            "title": "Bible For Developers",
+            "scope": "FB",
+            "type": "archive",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "f4b27cf8-7dbf-4bfb-8cd4-93315e272e2a"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://www.bible.com/sr/audio-bible-app-versions/1502",
+            "title": "Изге Язма",
+            "scope": "",
+            "type": "audio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Youversion",
+            "visible": true,
+            "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=6e544072a2b84b6e",
+            "title": "The Bible in Tatar language",
+            "scope": "FB",
+            "type": "archiveaudio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "55fdebf1-84a2-49c7-8820-e29fe9925fc8"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=1a8c10c8a09c11e7",
+            "title": "Tatar - 2001 Edition (Drama - NT)",
+            "scope": "NT",
+            "type": "archiveaudio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://archive.org/download/TATIBT_DBS_HS/Tatar-John-Rd-(book).pdf",
+            "title": "Tatar - John (Book)",
+            "scope": "",
+            "type": "historic",
+            "filesize": "451694",
+            "response_code": "0",
+            "provider": "The Bible Archive",
+            "visible": true,
+            "organization_id": "0f04902f-a48b-4402-8eaa-899296cbb7ea"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://archive.org/download/TATIBT_DBS_HS/Tatar-New-Testament-(book).pdf",
+            "title": "Tatar - New Testament (Book)",
+            "scope": "",
+            "type": "historic",
+            "filesize": "6282019",
+            "response_code": "0",
+            "provider": "The Bible Archive",
+            "visible": true,
+            "organization_id": "0f04902f-a48b-4402-8eaa-899296cbb7ea"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://bible.com/versions/1502",
+            "title": "Youversion",
+            "scope": "",
+            "type": "",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "",
+            "visible": true,
+            "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+          },
+          {
+            "bible_abbr": "TATIBT",
+            "url": "https://dbs.org/bibles/TATIBT",
+            "title": "eBook Downloads",
+            "visible": true,
+            "organization_id": "93619ca8-7f05-48dc-995c-6f46cdc94918"
+          }
+        ]
+      },
+      "websiteEvidence": {
+        "url": "https://github.com/digitalbiblesociety/dbs-prod/blob/5d68727e6e4a5fbf9081103ce98d15c9d2215d21/en/bibles/TATIBT/index.html",
+        "sha256": "aef386dc7aa3d5be7686dee51207668206c92a828fd4252721a2ec6e1e2b1b1d",
+        "downloadUrls": [
+          "https://bibles.dbs.org/TATIBT/pdf/TATIBT.pdf",
+          "https://bibles.dbs.org/TATIBT/epub/TATIBT.epub"
+        ]
+      },
+      "license": {
+        "declared": "CC-BY-NC-ND-4.0",
+        "evidenceField": "bible_pod[].description",
+        "noticeInDownloadedFileVerified": false,
+        "noncommercial": true,
+        "noDerivatives": true,
+        "attributionRequired": true
+      },
+      "downloadAttempt": {
+        "url": "https://bibles.dbs.org/TATIBT/epub/TATIBT.epub",
+        "result": "HTTPS request from cloud environment failed with 403; no EPUB received",
+        "originHttpStatus": null
+      },
+      "validation": {
+        "editionVerified": false,
+        "bookCount": null,
+        "chapterCount": null,
+        "verseCount": null,
+        "numbering": null,
+        "built": false,
+        "androidTested": false
+      }
+    },
+    {
+      "id": "CHVIBT",
+      "language": "Чувашский",
+      "iso639_3": "chv",
+      "iso639_1": "cv",
+      "status": "source-download-blocked",
+      "publishable": false,
+      "catalogEvidence": {
+        "url": "https://github.com/digitalbiblesociety/data/blob/b4dd623a7606c71bd10604d7722625694556514d/bibles/CHVIBT.json",
+        "sha256": "cbba8b0a74b4262b7c37e65b817ded60dddcc7042c694aefc5adfdff33503403",
+        "fields": {
+          "abbr": "CHVIBT",
+          "title": "Chuvash New Testament",
+          "title_vernacular": "Чӑвашла - Иисус Христос Хуҫамӑр",
+          "iso": "chv",
+          "script": "Latn",
+          "year": 2009,
+          "copyright": "© Institute for Bible Translation, Moscow (Институт перевода Библии)"
+        },
+        "printDescriptions": [
+          "This Bible is copyrighted by Institute for Bible Translation, Moscow  (ibtrussia.org) and is provided with permission at the cost of printing by the Digital Bible Society (dbs.org). This translation is made available to you under the terms of the Creative Commons Attribution-Noncommercial-No Derivatives license 4.0. <br /><br />This Bible, and many others, are available for free download in a variety of digital formats at dbs.org/bibles."
+        ],
+        "links": [
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "http://ibtrussia.org/en/text?m=CHV",
+            "title": "NT",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "IBTRussia",
+            "visible": true,
+            "organization_id": "6c2a6a1a-3686-469f-93e9-d926d7fad9f1"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "http://live.bible.is/bible/CHVIBT/MRK/1",
+            "title": "Audio Bible",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://live.bible.is/bible/CHVIBT",
+            "title": "NT",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://live.bible.is/bible/CHVIBT",
+            "title": "NT",
+            "scope": "",
+            "type": "audio_web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://www.bible.com/versions/1803-rso-sinodalnyj-nz",
+            "title": "Синодальный НЗ",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Institute for Bible Translation, Russia",
+            "visible": true,
+            "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=59ce49b29458b2d8",
+            "title": "Bible For Developers",
+            "scope": "NT",
+            "type": "archive",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "f4b27cf8-7dbf-4bfb-8cd4-93315e272e2a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=4abd5da066f011e7",
+            "title": "Chuvash - 2009 Edition (NT) Drama",
+            "scope": "FB",
+            "type": "archiveaudio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=d341955266ef11e7",
+            "title": "Chuvash - 2009 Edition (NT) Non-Drama",
+            "scope": "FB",
+            "type": "archiveaudio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=098fd09e6a9d4f80",
+            "title": "Chuvash Orthodox Bible",
+            "scope": "FBD",
+            "type": "archiveaudio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "55fdebf1-84a2-49c7-8820-e29fe9925fc8"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=049975b4478a11e7",
+            "title": "Chuvash - 2017 Edition (Non-Drama NT)",
+            "scope": "NT",
+            "type": "archiveaudio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=73a71646478a11e7",
+            "title": "Chuvash - 2017 Edition (Drama NT)",
+            "scope": "NT",
+            "type": "archiveaudio",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://archive.org/download/CHVIBT_DBS_HS/Chuvash-John-(book).pdf",
+            "title": "Chuvash - John (Book)",
+            "scope": "",
+            "type": "historic",
+            "filesize": "2466508",
+            "response_code": "0",
+            "provider": "The Bible Archive",
+            "visible": true,
+            "organization_id": "0f04902f-a48b-4402-8eaa-899296cbb7ea"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://bible.com/versions/1803",
+            "title": "Youversion",
+            "scope": "",
+            "type": "",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "",
+            "visible": true,
+            "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+          },
+          {
+            "bible_abbr": "CHVIBT",
+            "url": "https://dbs.org/bibles/CHVIBT",
+            "title": "eBook Downloads",
+            "visible": true,
+            "organization_id": "93619ca8-7f05-48dc-995c-6f46cdc94918"
+          }
+        ]
+      },
+      "websiteEvidence": {
+        "url": "https://github.com/digitalbiblesociety/dbs-prod/blob/5d68727e6e4a5fbf9081103ce98d15c9d2215d21/en/bibles/CHVIBT/index.html",
+        "sha256": "2fc098f5c1d352333f5d9af7d17e7e7ca4b58d499de49f575a7e1f45c2d4a32f",
+        "downloadUrls": [
+          "https://bibles.dbs.org/CHVIBT/pdf/CHVIBT.pdf",
+          "https://bibles.dbs.org/CHVIBT/epub/CHVIBT.epub"
+        ]
+      },
+      "license": {
+        "declared": "CC-BY-NC-ND-4.0",
+        "evidenceField": "bible_pod[].description",
+        "noticeInDownloadedFileVerified": false,
+        "noncommercial": true,
+        "noDerivatives": true,
+        "attributionRequired": true
+      },
+      "downloadAttempt": {
+        "url": "https://bibles.dbs.org/CHVIBT/epub/CHVIBT.epub",
+        "result": "HTTPS request from cloud environment failed with 403; no EPUB received",
+        "originHttpStatus": null
+      },
+      "validation": {
+        "editionVerified": false,
+        "bookCount": null,
+        "chapterCount": null,
+        "verseCount": null,
+        "numbering": null,
+        "built": false,
+        "androidTested": false
+      }
+    },
+    {
+      "id": "BAKIBT",
+      "language": "Башкирский",
+      "iso639_3": "bak",
+      "iso639_1": "ba",
+      "status": "source-download-blocked",
+      "publishable": false,
+      "catalogEvidence": {
+        "url": "https://github.com/digitalbiblesociety/data/blob/b4dd623a7606c71bd10604d7722625694556514d/bibles/BAKIBT.json",
+        "sha256": "59de30afad665d1b382202d5b0cef968924e73f16eb8b409e6be38eab8f973e3",
+        "fields": {
+          "abbr": "BAKIBT",
+          "title": "Bashkir New Testament",
+          "title_vernacular": "Инжилдең (Яңы Ғәһедтең) башҡорт теленә тәржемәһе",
+          "iso": "bak",
+          "script": "Cyrl",
+          "year": 2005,
+          "copyright": "© Institute for Bible Translation, Moscow (Институт перевода Библии)"
+        },
+        "printDescriptions": [
+          "This Bible is copyrighted by Institute for Bible Translation, Moscow  (ibtrussia.org) and is provided with permission at the cost of printing by the Digital Bible Society (dbs.org). This translation is made available to you under the terms of the Creative Commons Attribution-Noncommercial-No Derivatives license 4.0. <br /><br />This Bible, and many others, are available for free download in a variety of digital formats at dbs.org/bibles."
+        ],
+        "links": [
+          {
+            "bible_abbr": "BAKIBT",
+            "url": "http://live.bible.is/bible/BAKIBT/MRK/1",
+            "title": "Audio Bible",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "BAKIBT",
+            "url": "https://live.bible.is/bible/BAKIBT",
+            "title": "NT",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "BAKIBT",
+            "url": "https://live.bible.is/bible/BAKIBT",
+            "title": "NT",
+            "scope": "",
+            "type": "audio_web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "BAKIBT",
+            "url": "https://www.bible.com/versions/1929-bsknt14-inzhil",
+            "title": "Инжил",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Institute for Bible Translation, Russia",
+            "visible": true,
+            "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+          },
+          {
+            "bible_abbr": "BAKIBT",
+            "url": "https://app.thedigitalbiblelibrary.org/entry?id=92014bbe169b0f7d",
+            "title": "Bible For Developers",
+            "scope": "NT",
+            "type": "archive",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Digital Bible Library",
+            "visible": true,
+            "organization_id": "f4b27cf8-7dbf-4bfb-8cd4-93315e272e2a"
+          },
+          {
+            "bible_abbr": "BAKIBT",
+            "url": "https://bible.com/versions/1929",
+            "title": "Youversion",
+            "scope": "",
+            "type": "",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "",
+            "visible": true,
+            "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+          },
+          {
+            "bible_abbr": "BAKIBT",
+            "url": "https://dbs.org/bibles/BAKIBT",
+            "title": "eBook Downloads",
+            "visible": true,
+            "organization_id": "93619ca8-7f05-48dc-995c-6f46cdc94918"
+          }
+        ]
+      },
+      "websiteEvidence": {
+        "url": "https://github.com/digitalbiblesociety/dbs-prod/blob/5d68727e6e4a5fbf9081103ce98d15c9d2215d21/en/bibles/BAKIBT/index.html",
+        "sha256": "fff03089e4f68429416ae8c3e5bc82660bc19d06fadb7c37cc636a4dbeb696c2",
+        "downloadUrls": [
+          "https://bibles.dbs.org/BAKIBT/pdf/BAKIBT.pdf",
+          "https://bibles.dbs.org/BAKIBT/epub/BAKIBT.epub"
+        ]
+      },
+      "license": {
+        "declared": "CC-BY-NC-ND-4.0",
+        "evidenceField": "bible_pod[].description",
+        "noticeInDownloadedFileVerified": false,
+        "noncommercial": true,
+        "noDerivatives": true,
+        "attributionRequired": true
+      },
+      "downloadAttempt": {
+        "url": "https://bibles.dbs.org/BAKIBT/epub/BAKIBT.epub",
+        "result": "HTTPS request from cloud environment failed with 403; no EPUB received",
+        "originHttpStatus": null
+      },
+      "validation": {
+        "editionVerified": false,
+        "bookCount": null,
+        "chapterCount": null,
+        "verseCount": null,
+        "numbering": null,
+        "built": false,
+        "androidTested": false
+      }
+    },
+    {
+      "id": "SAHIBT",
+      "language": "Саха (якутский)",
+      "iso639_3": "sah",
+      "iso639_1": null,
+      "status": "source-download-blocked",
+      "publishable": false,
+      "catalogEvidence": {
+        "url": "https://github.com/digitalbiblesociety/data/blob/b4dd623a7606c71bd10604d7722625694556514d/bibles/SAHIBT.json",
+        "sha256": "61ce9e0fe136c4453ec2c524f4981bc5593a9d14b955bb4a7f9462edfb612b50",
+        "fields": {
+          "abbr": "SAHIBT",
+          "title": "Yakut New Testaments and Old Testament Portions",
+          "title_vernacular": "САҤА: КЭС ТЫЛ",
+          "iso": "sah",
+          "script": "Latn",
+          "year": 2009,
+          "copyright": "©  Institute for Bible Translation, Moscow (Институт перевода Библии)"
+        },
+        "printDescriptions": [
+          "This Bible is copyrighted by Institute for Bible Translation, Moscow  (ibtrussia.org) and is provided with permission at the cost of printing by the Digital Bible Society (dbs.org). This translation is made available to you under the terms of the Creative Commons Attribution-Noncommercial-No Derivatives license 4.0. <br /><br />This Bible, and many others, are available for free download in a variety of digital formats at dbs.org/bibles."
+        ],
+        "links": [
+          {
+            "bible_abbr": "SAHIBT",
+            "url": "http://ibtrussia.org/en/media?id=YKT",
+            "title": "NT",
+            "scope": "",
+            "type": "epub",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "IBTRussia",
+            "visible": true,
+            "organization_id": "6c2a6a1a-3686-469f-93e9-d926d7fad9f1"
+          },
+          {
+            "bible_abbr": "SAHIBT",
+            "url": "https://live.bible.is/bible/SAHIBT",
+            "title": "Full Bible",
+            "scope": "",
+            "type": "web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "SAHIBT",
+            "url": "https://live.bible.is/bible/SAHIBT",
+            "title": "OT",
+            "scope": "",
+            "type": "audio_web",
+            "filesize": "0",
+            "response_code": "0",
+            "provider": "Faith Comes By Hearing",
+            "visible": true,
+            "organization_id": "2c3d2807-1559-4187-a15e-c8bb07ba3c7a"
+          },
+          {
+            "bible_abbr": "SAHIBT",
+            "url": "https://dbs.org/bibles/SAHIBT",
+            "title": "eBook Downloads",
+            "visible": true,
+            "organization_id": "93619ca8-7f05-48dc-995c-6f46cdc94918"
+          }
+        ]
+      },
+      "websiteEvidence": {
+        "url": "https://github.com/digitalbiblesociety/dbs-prod/blob/5d68727e6e4a5fbf9081103ce98d15c9d2215d21/en/bibles/SAHIBT/index.html",
+        "sha256": "411bbafc7af1c011b9136ab680308c6078227ab4175fa49ae44822142e33d862",
+        "downloadUrls": [
+          "https://bibles.dbs.org/SAHIBT/pdf/SAHIBT.pdf",
+          "https://bibles.dbs.org/SAHIBT/epub/SAHIBT.epub"
+        ]
+      },
+      "license": {
+        "declared": "CC-BY-NC-ND-4.0",
+        "evidenceField": "bible_pod[].description",
+        "noticeInDownloadedFileVerified": false,
+        "noncommercial": true,
+        "noDerivatives": true,
+        "attributionRequired": true
+      },
+      "downloadAttempt": {
+        "url": "https://bibles.dbs.org/SAHIBT/epub/SAHIBT.epub",
+        "result": "HTTPS request from cloud environment failed with 403; no EPUB received",
+        "originHttpStatus": null
+      },
+      "validation": {
+        "editionVerified": false,
+        "bookCount": null,
+        "chapterCount": null,
+        "verseCount": null,
+        "numbering": null,
+        "built": false,
+        "androidTested": false
+      }
+    }
+  ],
+  "relatedEditions": [
+    {
+      "id": "BAKBNT",
+      "status": "redistribution-license-not-established",
+      "url": "https://github.com/digitalbiblesociety/data/blob/b4dd623a7606c71bd10604d7722625694556514d/bibles/BAKBNT.json",
+      "sha256": "cb78cd70085714c20ee38b70d794705cd295df2b8cf1a4c1efe3427ed654d51d",
+      "fields": {
+        "title": "The New Testament in Bashkir",
+        "title_vernacular": "Ghas̆anyn︠g︡ tormosho",
+        "year": null,
+        "copyright": "© Institute for Bible Translation"
+      },
+      "printDescriptions": [],
+      "links": [
+        {
+          "bible_abbr": "BAKBNT",
+          "url": "https://archive.org/download/BAKBNT_DBS_HS/Bashkir-John-(book).pdf",
+          "title": "Bashkir - John (Book)",
+          "scope": "",
+          "type": "historic",
+          "filesize": "341377",
+          "response_code": "0",
+          "provider": "The Bible Archive",
+          "visible": true,
+          "organization_id": "0f04902f-a48b-4402-8eaa-899296cbb7ea"
+        }
+      ]
+    },
+    {
+      "id": "BAKOTP",
+      "status": "redistribution-license-not-established",
+      "url": "https://github.com/digitalbiblesociety/data/blob/b4dd623a7606c71bd10604d7722625694556514d/bibles/BAKOTP.json",
+      "sha256": "ade5df1c258678e1cc587d391b4e93e015d1635e4d5e66439f37ee23dc1d70e4",
+      "fields": {
+        "title": "Bashkir OT Portion",
+        "title_vernacular": "Башкирский ВЗ (неполный)",
+        "year": 2002,
+        "copyright": "© Bible Society in Russia, 2002-2007, 2010-2012, 2018."
+      },
+      "printDescriptions": [],
+      "links": [
+        {
+          "bible_abbr": "BAKOTP",
+          "url": "https://www.bible.com/versions/2419-bvzn-bashkirskij-vz-nepolnyj",
+          "title": "Башкирский ВЗ (неполный)",
+          "scope": "",
+          "type": "web",
+          "filesize": "0",
+          "response_code": "0",
+          "provider": "Bible Society in Russia",
+          "visible": true,
+          "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+        },
+        {
+          "bible_abbr": "BAKOTP",
+          "url": "https://app.thedigitalbiblelibrary.org/entry?id=cfb9596971706cee",
+          "title": "Bible For Developers",
+          "scope": "P",
+          "type": "archive",
+          "filesize": "0",
+          "response_code": "0",
+          "provider": "Digital Bible Library",
+          "visible": true,
+          "organization_id": "f4b27cf8-7dbf-4bfb-8cd4-93315e272e2a"
+        },
+        {
+          "bible_abbr": "BAKOTP",
+          "url": "https://bible.com/versions/2419",
+          "title": "Youversion",
+          "scope": "",
+          "type": "",
+          "filesize": "0",
+          "response_code": "0",
+          "provider": "",
+          "visible": true,
+          "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+        }
+      ]
+    },
+    {
+      "id": "SAHPSA",
+      "status": "redistribution-license-not-established",
+      "url": "https://github.com/digitalbiblesociety/data/blob/b4dd623a7606c71bd10604d7722625694556514d/bibles/SAHPSA.json",
+      "sha256": "977d40dced18858578540108d4c70365b09eab15c02793ed7a794cdcd22d8ea9",
+      "fields": {
+        "title": "New Testament and Portions in Yakut",
+        "title_vernacular": "Библия",
+        "year": 2009,
+        "copyright": "© Институт перевода Библии"
+      },
+      "printDescriptions": [],
+      "links": [
+        {
+          "bible_abbr": "SAHPSA",
+          "url": "http://ibtrussia.org/en/media?id=YKT",
+          "title": "Psalm",
+          "scope": "",
+          "type": "epub",
+          "filesize": "0",
+          "response_code": "0",
+          "provider": "IBTRussia",
+          "visible": true,
+          "organization_id": "6c2a6a1a-3686-469f-93e9-d926d7fad9f1"
+        },
+        {
+          "bible_abbr": "SAHPSA",
+          "url": "https://www.bible.com/versions/1888-rso-bibliya",
+          "title": "Библия",
+          "scope": "",
+          "type": "web",
+          "filesize": "0",
+          "response_code": "0",
+          "provider": "Institute for Bible Translation, Russia",
+          "visible": true,
+          "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+        },
+        {
+          "bible_abbr": "SAHPSA",
+          "url": "https://app.thedigitalbiblelibrary.org/entry?id=c9d823f8288af9d9",
+          "title": "Bible For Developers",
+          "scope": "FB",
+          "type": "archive",
+          "filesize": "0",
+          "response_code": "0",
+          "provider": "Digital Bible Library",
+          "visible": true,
+          "organization_id": "f4b27cf8-7dbf-4bfb-8cd4-93315e272e2a"
+        },
+        {
+          "bible_abbr": "SAHPSA",
+          "url": "https://archive.org/download/SAHPSA_DBS_HS/Yakut-Mark-(print).pdf",
+          "title": "Yakut - Mark (Print)",
+          "scope": "",
+          "type": "historic",
+          "filesize": "219684",
+          "response_code": "0",
+          "provider": "",
+          "visible": true,
+          "organization_id": "e1c3d43c-728e-4f90-be74-af4ec38c554d"
+        },
+        {
+          "bible_abbr": "SAHPSA",
+          "url": "https://bible.com/versions/1888",
+          "title": "Youversion",
+          "scope": "",
+          "type": "",
+          "filesize": "0",
+          "response_code": "0",
+          "provider": "",
+          "visible": true,
+          "organization_id": "a4f1fc26-64a5-412f-804d-d91da40aee72"
+        }
+      ]
+    }
+  ],
+  "catalogChecks": [
+    {
+      "name": "eBible",
+      "url": "https://ebible.org/Scriptures/translations.csv",
+      "sha256": "b41e8c7eeeedb960c7754f53c8b67b6b255dd5fce1cafa1116ba478ec32a3e96",
+      "translationCount": 1551,
+      "matchingTranslationIds": []
+    },
+    {
+      "name": "getBible",
+      "url": "https://github.com/getbible/v2/blob/58ccb95982059a3aae36ebde2a84b99fa34742ab/translations.json",
+      "sha256": "06268eabc3cc652fe252c52710d77f405488948a34e61dee48ede5e666467df9",
+      "translationCount": 117,
+      "matchingTranslationIds": []
+    },
+    {
+      "name": "scrollmapper",
+      "url": "https://github.com/scrollmapper/bible_databases/tree/e1b254cef86d0e65b1a5d1a94b8b112d0f296a2c/sources",
+      "listingResponseSha256": "004976fac1ae1ee075a377e0af1995b9e2b32fb097b8cc195b2269426fd50e4b",
+      "sourceDirectoryNames": [
+        "bea",
+        "ceb",
+        "chr",
+        "cop-sa",
+        "cs",
+        "cu",
+        "da",
+        "de",
+        "el",
+        "en",
+        "enm",
+        "eo",
+        "es",
+        "et",
+        "extras",
+        "fi",
+        "fr",
+        "got",
+        "grc",
+        "gv",
+        "hbo",
+        "he",
+        "hr",
+        "ht",
+        "hu",
+        "hy",
+        "ja",
+        "ko",
+        "la",
+        "lv",
+        "lzh",
+        "mg",
+        "mi",
+        "ml",
+        "my",
+        "nb",
+        "nl",
+        "nn",
+        "pl",
+        "pon",
+        "pt",
+        "ru",
+        "sl",
+        "sml",
+        "sq",
+        "sr",
+        "sv",
+        "syr",
+        "th",
+        "tl",
+        "tlh",
+        "tpi",
+        "tsg",
+        "uk",
+        "vi",
+        "vls",
+        "zh-hans",
+        "zh-hant"
+      ],
+      "matchingLanguageDirectories": []
+    }
+  ],
+  "caveats": [
+    "Catalog descriptions are not verified text contents.",
+    "No matching records in a checked catalog does not prove no translations exist.",
+    "The four license declarations are in print-on-demand descriptions; confirm their applicability against the actual file and edition.",
+    "NC license acceptance for Azerbaijani does not by itself approve publication of all NC editions.",
+    "Access failure does not establish an origin-server denial or a missing file."
+  ]
+}
