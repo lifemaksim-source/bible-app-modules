@@ -86,7 +86,7 @@ test('lopukhin: verses, ranges, introductions', () => {
   ]);
 });
 
-import { topic, wordsOfBook } from './strongs.mjs';
+import { topic, validStrongVerse, wordsOfBook } from './strongs.mjs';
 
 test('strongs: words with numbers per verse', () => {
   assert.equal(topic('H0512'), 'H512');
@@ -95,6 +95,29 @@ test('strongs: words with numbers per verse', () => {
   const w = wordsOfBook(usfm, 10);
   assert.deepEqual(w.get(10001001), [['beginning', 'H7225'], ['God', 'H430'], ['created', 'H1254 H853']]);
   assert.equal(w.has(10001002), false);
+});
+
+
+test('strongs: validates English verse coordinates before encoding IDs', () => {
+  assert.equal(validStrongVerse(10, 1, 31), true); // Genesis 1:31
+  assert.equal(validStrongVerse(10, 1, 32), false);
+  assert.equal(validStrongVerse(10, 51, 1), false);
+  assert.equal(validStrongVerse(500, 3, 16), true); // John 3:16
+  assert.equal(validStrongVerse(500, 3, 0), false);
+  assert.equal(validStrongVerse(999, 1, 1), false);
+  assert.equal(validStrongVerse(10, 1, 1001), false); // would overflow the verse-id encoding
+});
+
+test('strongs: rejects word tags pointing to missing verses', () => {
+  const word = '\\w testing|strong="H7225"\\w*';
+  const book = (chapter, verse, number = 10) =>
+    wordsOfBook('\\id GEN\n\\c ' + chapter + '\n\\v ' + verse + ' ' + word, number);
+  assert.deepEqual(book(1, 31).get(10001031), [['testing', 'H7225']]);
+  assert.throws(() => book(1, 32), /несуществующему стиху 10 1:32/);
+  assert.throws(() => book(51, 1), /несуществующему стиху 10 51:1/);
+  assert.throws(() => book(1, 1001), /несуществующему стиху 10 1:1001/);
+  assert.throws(() => book(1, 1, 999), /несуществующему стиху 999 1:1/);
+  assert.throws(() => book(1, 0), /несуществующему стиху 10 1:0/);
 });
 
 test('lopukhin: one-chapter books have ids without a chapter', () => {

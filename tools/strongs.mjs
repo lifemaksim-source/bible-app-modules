@@ -9,10 +9,20 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { SQL, get, getPinned } from './common.mjs';
-import { books } from './validate.mjs';
+import { books, canon } from './validate.mjs';
 
 /** «H0512» → «H512», «G26» → «G26». */
 export const topic = (s) => s.replace(/^([HG])0*(\d+)[a-z]?$/i, (_, l, n) => `${l.toUpperCase()}${n}`);
+
+// The KJV Strong's USFM uses English versification. Check the coordinates before
+// encoding chapter/verse into a single number: a verse >= 1000 could otherwise
+// overflow into the next chapter and masquerade as a valid address.
+const englishCanon = canon('eng');
+
+export function validStrongVerse(book, chapter, verse) {
+  return Number.isSafeInteger(book) && Number.isSafeInteger(chapter) && Number.isSafeInteger(verse) &&
+    chapter >= 1 && verse >= 1 && verse <= (englishCanon[book]?.[chapter - 1] ?? 0);
+}
 
 /** One USFM book → Map verse_id → [[phrase, "H7225 H853"], …]. */
 export function wordsOfBook(usfm, bookNumber) {
@@ -21,14 +31,19 @@ export function wordsOfBook(usfm, bookNumber) {
   let vs = 0;
   let buf = '';
   const flush = () => {
-    if (!ch || !vs || !buf) return;
+    if (!buf) return;
     const text = buf.replace(/\\f\s[\s\S]*?\\f\*/g, '').replace(/\\x\s[\s\S]*?\\x\*/g, '');
     const list = [];
     for (const m of text.matchAll(/\\\+?w\s+([^|\\]+?)\|[^\\]*?strong="([^"]+)"[^\\]*?\\\+?w\*/g)) {
       const nums = m[2].split(/[\s,]+/).filter(Boolean).map(topic).join(' ');
       if (nums) list.push([m[1].trim(), nums]);
     }
-    if (list.length) out.set(bookNumber * 1000000 + ch * 1000 + vs, list);
+    if (list.length) {
+      if (!validStrongVerse(bookNumber, ch, vs)) {
+        throw new Error(`номер Стронга привязан к несуществующему стиху ${bookNumber} ${ch}:${vs} (eng)`);
+      }
+      out.set(bookNumber * 1000000 + ch * 1000 + vs, list);
+    }
   };
   for (const line of usfm.split(/\r?\n/)) {
     const c = line.match(/^\\c\s+(\d+)/);
