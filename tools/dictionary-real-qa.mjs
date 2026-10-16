@@ -69,13 +69,7 @@ export async function validateRealDictionaries() {
             } finally {
               exact.free();
             }
-            const prefix = Array.from(first).slice(0, 2).join('').replace(/[\\%_]/g, '\\      let audit;
-      try {
-        audit = auditDictionary(db);
-      } finally {
-        db.close();
-      }
-      const summary = {') + '%';
+            const prefix = Array.from(first).slice(0, 2).join('').replace(/[\\%_]/g, '\\$&') + '%';
             const search = db.prepare("SELECT topic FROM dictionary WHERE topic LIKE ? ESCAPE '\\' LIMIT 20");
             try {
               search.bind([prefix]);
