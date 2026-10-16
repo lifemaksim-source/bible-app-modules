@@ -31,6 +31,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   let ketivRefs = 0;
   let qereRefs = 0;
   let aramaicGrammar = 0;
+  let qereWithoutHebrewSurface = 0;
 
   const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/);
   for (let lineNo = 0; lineNo < lines.length; lineNo++) {
@@ -56,7 +57,12 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
         !Number.isSafeInteger(position) || position < 1 || position > 99999) {
       throw new Error('TAHOT reference outside selected-book scope at line ' + (lineNo + 1) + ': ' + [m[1],chapter,verse,position].join('/'));
     }
-    if (cols.length < 6 || !HEBREW.test(cols[1] ?? '')) {
+    const flags = m[5] ?? '';
+    const hasHebrew = HEBREW.test(cols[1] ?? '');
+    // Authentic TAHOT records a few Q(K) alternatives without a readable
+    // Hebrew surface. Retain the raw row; it is NOT a displayable word.
+    const emptyQereVariant = !hasHebrew && flags === 'Q(K)';
+    if (cols.length < 6 || (!hasHebrew && !emptyQereVariant)) {
       malformed++;
       if (malformedSamples.length < 12) malformedSamples.push({
         line: lineNo + 1, ref: rawRef.replace(/[^\x20-\x7e]/g, '?').slice(0, 100),
@@ -66,7 +72,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     }
     // Full original TAHOT reference contains edition and source indicators
     // (including Ketiv "K" and Qere "Q"). Do not strip or reinterpret them.
-    const flags = m[5] ?? '';
+    if (emptyQereVariant) qereWithoutHebrewSurface++;
     if (/(^|[^a-z])K/.test(flags)) ketivRefs++;
     if (/(^|[^a-z])Q/.test(flags)) qereRefs++;
     const meaning = cols[6] ?? '', spelling = cols[7] ?? '';
@@ -92,7 +98,7 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
     rows,
     stats: {
       rows: rows.length, malformed, malformedSamples, meaningVariants, spellingVariants,
-      ketivRefs, qereRefs, aramaicGrammar,
+      ketivRefs, qereRefs, aramaicGrammar, qereWithoutHebrewSurface,
       columnWidths: histogram, verses: verseKeys.size,
       chapters: Object.fromEntries([...chapters].sort(([a], [b]) => a - b)
         .map(([book, ch]) => [book, ch.size])),
