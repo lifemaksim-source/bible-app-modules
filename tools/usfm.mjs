@@ -47,6 +47,7 @@ export function parseBook(source) {
   const headings = new Map();
   const notes = new Map();
   let id = null;
+  const names = {};
   let ch = 0;
   let vs = 0;
   let buf = '';
@@ -81,6 +82,8 @@ export function parseBook(source) {
     const rest = m[2] ?? '';
     if (mk === 'id') {
       id = rest.trim().split(/\s+/)[0]?.toUpperCase() ?? null;
+    } else if (['h', 'toc1', 'toc2', 'toc3'].includes(mk)) {
+      names[mk] = inline(rest).text;
     } else if (mk === 'c') {
       flush();
       ch = parseInt(rest, 10) || 0;
@@ -113,5 +116,5 @@ export function parseBook(source) {
     }
   }
   flush();
-  return { id, verses, headings, notes };
+  return { id, verses, headings, notes, names };
 }

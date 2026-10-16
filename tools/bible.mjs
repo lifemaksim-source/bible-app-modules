@@ -6,6 +6,7 @@ import path from 'node:path';
 import { SQL, get } from './common.mjs';
 import { parseBook } from './usfm.mjs';
 import { books, validate } from './validate.mjs';
+import { numberingReport } from './numbering-report.mjs';
 
 /**
  * @param src   entry of sources.json (type "bible")
@@ -21,6 +22,7 @@ export async function buildBible(src, { work, base }) {
   const byBook = new Map();
   const headings = new Map();
   const notes = new Map();
+  const names = new Map();
   for (const f of fs.readdirSync(path.join(work, 'usfm')).filter((x) => /\.(usfm|sfm)$/i.test(x))) {
     const parsed = parseBook(fs.readFileSync(path.join(work, 'usfm', f), 'utf8'));
     const b = books.find((x) => x.usfm === parsed.id);
@@ -28,6 +30,16 @@ export async function buildBible(src, { work, base }) {
     byBook.set(b.n, parsed.verses);
     headings.set(b.n, parsed.headings);
     notes.set(b.n, parsed.notes);
+    names.set(b.n, parsed.names);
+  }
+  return buildBibleData(src, { byBook, headings, notes, names }, work);
+}
+
+/** Shared SQLite writer; SWORD is decoded by pysword, USFM by parseBook. */
+export async function buildBibleData(src, { byBook, headings, notes, names }, work) {
+  if (src.bookNames) {
+    fs.writeFileSync(path.join(work, 'numbering.json'), JSON.stringify(numberingReport(byBook), null, 2));
+    fs.writeFileSync(path.join(work, 'names.json'), JSON.stringify(Object.fromEntries(names), null, 2));
   }
   const v = validate(byBook, src.numbering);
   if (v.errors.length) throw new Error(`проверка не пройдена:\n  ${v.errors.slice(0, 15).join('\n  ')}`);
@@ -41,15 +53,19 @@ export async function buildBible(src, { work, base }) {
     CREATE TABLE stories (book_number NUMERIC, chapter NUMERIC, verse NUMERIC, order_if_several NUMERIC, title TEXT);
     CREATE TABLE notes (book_number NUMERIC, chapter NUMERIC, verse NUMERIC, text TEXT);`);
   const info = {
-    description: src.name, language: src.language, origin: `eBible.org (${src.ebible})`, license: src.license,
+    description: src.name, language: src.language, origin: src.origin ?? (src.sword ? `CrossWire (${src.sword})` : `eBible.org (${src.ebible})`), license: src.license,
     year: src.year, code: src.code, numbering: src.numbering, app_format: '1',
   };
+  if (src.bookNames) Object.assign(info, { attribution: src.attribution, license_url: src.licenseUrl ?? '', homepage: src.homepage, noncommercial: src.noncommercial ? 'true' : 'false' });
+  const abbrPath = path.join(import.meta.dirname, `../canon/abbr/${src.language}.json`);
+  const abbr = src.bookNames && fs.existsSync(abbrPath) ? JSON.parse(fs.readFileSync(abbrPath, 'utf8')) : {};
   for (const [k, val] of Object.entries(info)) db.run('INSERT INTO info VALUES (?, ?)', [k, val]);
   db.run('BEGIN');
   for (const b of books) {
     const vs = byBook.get(b.n);
     if (!vs) continue;
-    db.run('INSERT INTO books VALUES (?, ?, ?, ?, 1)', ['', b.n, b.usfm, b.src]);
+    const bn = names.get(b.n) ?? {};
+    db.run('INSERT INTO books VALUES (?, ?, ?, ?, 1)', ['', b.n, src.bookNames ? (bn.toc3 || abbr[b.usfm] || b.usfm) : b.usfm, src.bookNames ? (bn.toc2 || bn.h || bn.toc1 || b.src) : b.src]);
     const keys = [...vs.keys()].map((k) => k.split(':').map(Number)).sort((a, z) => a[0] - z[0] || a[1] - z[1]);
     for (const [c, vv] of keys) db.run('INSERT INTO verses VALUES (?, ?, ?, ?)', [b.n, c, vv, vs.get(`${c}:${vv}`)]);
     for (const [k, t] of headings.get(b.n)) {
@@ -67,7 +83,7 @@ export async function buildBible(src, { work, base }) {
   db.close();
   return {
     bytes,
-    meta: { code: src.code, name: src.name, language: src.language, numbering: src.numbering, year: src.year, scope: v.scope, verses: v.verses, source: `https://ebible.org/find/details.php?id=${src.ebible}` },
+    meta: { code: src.code, name: src.name, language: src.language, numbering: src.numbering, year: src.year, scope: v.scope, verses: v.verses, source: src.homepage ?? `https://ebible.org/find/details.php?id=${src.ebible}` },
     summary: `${v.verses} стихов, ${v.scope}`,
     warnings: v.warnings,
   };

@@ -1,0 +1,2 @@
+# MIT, https://pypi.org/project/pysword/0.2.8/
+pysword==0.2.8
