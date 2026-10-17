@@ -200,6 +200,7 @@ export async function auditHebrewSource({ sqliteSmoke = false, exportLocal = fal
       if (checked !== 'ok' || actual !== stats.rows) throw new Error('TAHOT SQLite corruption or missing rows');
       report.sqliteRows = actual;
       report.databaseBytes = buffer.length;
+      report.sqliteSha256 = crypto.createHash('sha256').update(buffer).digest('hex');
       if (exportLocal) {
         const local = path.join(root, 'work', 'step-hebrew-gen-deu.db');
         fs.mkdirSync(path.dirname(local), { recursive: true });
