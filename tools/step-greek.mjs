@@ -121,7 +121,7 @@ async function fetchPinnedSource(meta) {
   return { bytes, sha256 };
 }
 
-export async function auditGreekSource({ build = false } = {}) {
+export async function auditGreekSource({ build = false, exportLocal = false } = {}) {
   const source = JSON.parse(fs.readFileSync(path.join(root, 'sources-step-greek.json'), 'utf8'));
   const { bytes, sha256 } = await fetchPinnedSource(source);
   const canon = JSON.parse(fs.readFileSync(path.join(root, 'canon/eng.json'), 'utf8'));
@@ -145,6 +145,13 @@ export async function auditGreekSource({ build = false } = {}) {
       if (integrity !== 'ok' || count !== result.rows.length) throw new Error('TAGNT SQLite validation failed');
       report.databaseBytes = sqlite.length;
       report.sqliteRows = count;
+      if (exportLocal) {
+        // Only user-initiated local export, into a gitignored folder.
+        const local = path.join(root, 'work', 'step-greek-gospels.db');
+        fs.mkdirSync(path.dirname(local), { recursive: true });
+        fs.writeFileSync(local, sqlite, { flag: 'w' });
+        report.localOutput = 'work/step-greek-gospels.db';
+      }
     } finally { db.close(); }
   }
   // Counts and hashes only: no Greek or English texts in logs or artifacts.
@@ -153,6 +160,6 @@ export async function auditGreekSource({ build = false } = {}) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { await auditGreekSource({ build: process.argv.includes('--sqlite-smoke') }); }
+  try { await auditGreekSource({ build: process.argv.includes('--sqlite-smoke') || process.argv.includes('--export-local'), exportLocal: process.argv.includes('--export-local') }); }
   catch (err) { console.error('STEP Greek source audit failed: ' + err.message); process.exitCode = 1; }
 }
