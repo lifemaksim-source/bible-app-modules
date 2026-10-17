@@ -164,7 +164,7 @@ export async function readPinnedSource(meta, file) {
   return { bytes, sha256 };
 }
 
-export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
+export async function auditHebrewSource({ sqliteSmoke = false, exportLocal = false } = {}) {
   const meta = JSON.parse(fs.readFileSync(path.join(root, 'sources-step-hebrew.json'), 'utf8'));
   const first = meta.files.find(f => f.audit);
   if (!first || first.range !== 'Gen-Deu') throw new Error('TAHOT audit scope unexpectedly changed');
@@ -187,7 +187,7 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
     caveat: 'Row-level source retention, not established morphological word alignment',
     license: meta.license, attribution: meta.attribution,
   };
-  if (sqliteSmoke) {
+  if (sqliteSmoke || exportLocal) {
     const SQLModule = await SQL();
     const buffer = exportTahotSqlite(SQLModule, parsed, {
       dataset: meta.dataset, revision: meta.revision, sha256,
@@ -200,6 +200,12 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
       if (checked !== 'ok' || actual !== stats.rows) throw new Error('TAHOT SQLite corruption or missing rows');
       report.sqliteRows = actual;
       report.databaseBytes = buffer.length;
+      if (exportLocal) {
+        const local = path.join(root, 'work', 'step-hebrew-gen-deu.db');
+        fs.mkdirSync(path.dirname(local), { recursive: true });
+        fs.writeFileSync(local, buffer);
+        report.localOutput = 'work/step-hebrew-gen-deu.db';
+      }
     } finally { db.close(); }
   }
   // No scripture text, morphology records or variant readings in runner logs.
@@ -208,6 +214,6 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { await auditHebrewSource({ sqliteSmoke: process.argv.includes('--sqlite-smoke') }); }
+  try { await auditHebrewSource({ sqliteSmoke: process.argv.includes('--sqlite-smoke'), exportLocal: process.argv.includes('--export-local') }); }
   catch (err) { console.error('STEP Hebrew audit failed: ' + err.message); process.exitCode = 1; }
 }

@@ -37,9 +37,10 @@
       "sha256": "f3ded203d2a74d6368932c97ae550d1d0754b271af491dc0dedf36fe3ba0bcc5"
     }
   ],
-  "license": "CC BY 4.0 (repository data; do not confuse with differently licensed SWORD THOT package)",
+  "license": "CC BY 4.0",
   "attribution": "STEP Bible (https://www.stepbible.org), data based on Tyndale House Cambridge and Open Scriptures",
   "method": "Preserve TAHOT Hebrew forms, extended Strong tags, morphology, meaning and spelling variant fields, and source reference unmodified. Do not invent words, glosses or a Russian text alignment.",
   "relatedParser": "https://github.com/openbible-io/step/blob/master/src/tat/tahot.ts (CC BY 4.0; consulted for schema, not imported)",
-  "distribution": "Source QA only; no Hebrew text, binaries or derived modules committed, uploaded as artifacts or released."
+  "distribution": "Source QA only; no Hebrew text, binaries or derived modules committed, uploaded as artifacts or released.",
+  "licenseNotice": "Source TAHOT data, not unrelated SWORD THOT packages, is under CC BY 4.0. Preserve STEP Bible/Tyndale attribution."
 }

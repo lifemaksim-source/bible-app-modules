@@ -27,6 +27,12 @@ jobs:
       - name: Test row-preserving Hebrew parser and SQLite (synthetic data)
         run: node --test tools/step-hebrew.test.mjs tools/step-hebrew-rest.test.mjs
       - name: Verify fixed STEP Bible TAHOT Gen-Deu and ephemeral SQLite
-        run: node tools/step-hebrew.mjs --sqlite-smoke
+        run: |
+          node tools/step-hebrew.mjs --export-local
+          test -s work/step-hebrew-gen-deu.db
       - name: Audit pinned STEP Bible TAHOT remaining 34 books and SQLite
-        run: node tools/step-hebrew-rest.mjs --sqlite-smoke
+        run: |
+          node tools/step-hebrew-rest.mjs --export-local
+          test -s work/step-hebrew-jos-est.db
+          test -s work/step-hebrew-job-sng.db
+          test -s work/step-hebrew-isa-mal.db

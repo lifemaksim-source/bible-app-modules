@@ -73,7 +73,7 @@ export function validateSourceCoverage(parsed, sourceBooks, expectedChapters, ra
   return { books: expected.length, chapters: [...observed.values()].reduce((n, ch) => n + ch.size, 0) };
 }
 
-export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
+export async function auditRemainingHebrew({ sqliteSmoke = false, exportLocal = false } = {}) {
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'sources-step-hebrew.json'), 'utf8'));
   const canonBooks = JSON.parse(fs.readFileSync(path.join(root, 'canon/books.json'), 'utf8'));
   const chapterCounts = JSON.parse(fs.readFileSync(path.join(root, 'canon/eng.json'), 'utf8')).books;
@@ -94,7 +94,7 @@ export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
       ...parsed.stats, coverage,
       method: 'Exact source-row retention; no inferred word alignment or verse remapping',
     };
-    if (sqliteSmoke) {
+    if (sqliteSmoke || exportLocal) {
       const sql = await SQL();
       const buffer = exportTahotSqlite(sql, parsed, {
         dataset: manifest.dataset, range, revision: manifest.revision, sha256,
@@ -109,6 +109,12 @@ export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
         }
         report.sqliteRows = rows;
         report.databaseBytes = buffer.length;
+        if (exportLocal) {
+          const local = path.join(root, 'work', 'step-hebrew-' + range.toLowerCase() + '.db');
+          fs.mkdirSync(path.dirname(local), { recursive: true });
+          fs.writeFileSync(local, buffer);
+          report.localOutput = 'work/step-hebrew-' + range.toLowerCase() + '.db';
+        }
       } finally { db.close(); }
     }
     // Do not print any Hebrew/Aramaic words, variant readings, glosses or records.
@@ -128,7 +134,7 @@ export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { await auditRemainingHebrew({ sqliteSmoke: process.argv.includes('--sqlite-smoke') }); }
+  try { await auditRemainingHebrew({ sqliteSmoke: process.argv.includes('--sqlite-smoke'), exportLocal: process.argv.includes('--export-local') }); }
   catch (error) {
     console.error('Remaining TAHOT QA failed: ' + error.message);
     process.exitCode = 1;
