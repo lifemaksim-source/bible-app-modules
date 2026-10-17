@@ -144,6 +144,7 @@ export async function auditGreekSource({ build = false, exportLocal = false } = 
       const count = db.exec('SELECT COUNT(*) FROM tagnt_tokens')[0]?.values[0][0];
       if (integrity !== 'ok' || count !== result.rows.length) throw new Error('TAGNT SQLite validation failed');
       report.databaseBytes = sqlite.length;
+      report.sqliteSha256 = crypto.createHash('sha256').update(sqlite).digest('hex');
       report.sqliteRows = count;
       if (exportLocal) {
         // Only user-initiated local export, into a gitignored folder.
