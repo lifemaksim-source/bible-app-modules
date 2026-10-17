@@ -1,6 +1,7 @@
 // Read-only audit for the remaining three pinned STEPBible TAHOT OT sources.
 // The companion Gen–Deu probe is in step-hebrew.mjs (PR #15).
 // The data and temporary SQLite files are never committed, released or uploaded.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
