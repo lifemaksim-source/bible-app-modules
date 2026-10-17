@@ -23,4 +23,6 @@ jobs:
       - name: Check mapping logic using synthetic words
         run: node --test tools/step-greek.test.mjs
       - name: Verify fixed STEP Bible TAGNT source and in-memory SQLite import
-        run: node tools/step-greek.mjs --sqlite-smoke
+        run: |
+          node tools/step-greek.mjs --export-local
+          test -s work/step-greek-gospels.db
