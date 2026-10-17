@@ -110,6 +110,7 @@ export async function auditRemainingHebrew({ sqliteSmoke = false, exportLocal = 
         }
         report.sqliteRows = rows;
         report.databaseBytes = buffer.length;
+        report.sqliteSha256 = crypto.createHash('sha256').update(buffer).digest('hex');
         if (exportLocal) {
           const local = path.join(root, 'work', 'step-hebrew-' + range.toLowerCase() + '.db');
           fs.mkdirSync(path.dirname(local), { recursive: true });
