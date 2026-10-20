@@ -59,7 +59,7 @@ export function auditGreekVerseCoverage(parsed, chapterCounts, sourceBooks = RES
   // TAGNT may have an edition-specific extra source verse (e.g. 3 John 1:15).
   // Keep its exact address; do not silently shift it to the KJV chapter count.
   const extraSourceVerses = [...observed].filter(key => !canonicalAddressSet.has(key)).sort();
-  if (extraSourceVerses.some(key => key !== '710:1:15')) {
+  if (extraSourceVerses.some(key => !new Set(['710:1:15','730:12:18']).has(key))) {
     throw new Error('Unexpected noncanonical TAGNT source verse: ' + extraSourceVerses.join(','));
   }
   if (parsed.stats.verses !== canonicalVerses - missingSourceVerses.length + extraSourceVerses.length) {
