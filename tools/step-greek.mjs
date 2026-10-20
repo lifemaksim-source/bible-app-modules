@@ -16,7 +16,7 @@ const removeTranslit = /\s*\([^()]*\)\s*$/;
 const greekLetters = /[\u0370-\u03ff\u1f00-\u1fff]/u;
 // Pinned TAGNT source has 3 John 1:15 although project English canon ends at 1:14.
 // Preserve this original source address; do NOT fold it into verse 14.
-const EXTRA_SOURCE_VERSES = new Set(['710:1:15']);
+const EXTRA_SOURCE_VERSES = new Set(['710:1:15', '730:12:18']);
 
 export function parseTagntGreek(text, chapterCounts, sourceBooks = BOOKS) {
   if (typeof text !== 'string') throw new Error('TAGNT text must be UTF-8');
