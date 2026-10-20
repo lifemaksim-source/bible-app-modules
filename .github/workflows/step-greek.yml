@@ -5,6 +5,7 @@ on:
     paths:
       - 'tools/step-greek*'
       - 'sources-step-greek.json'
+      - 'sources-step-greek-rest.json'
       - '.github/workflows/step-greek.yml'
   workflow_dispatch:
 permissions:
@@ -12,7 +13,7 @@ permissions:
 jobs:
   source-audit:
     runs-on: ubuntu-24.04
-    timeout-minutes: 9
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -21,8 +22,12 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Check mapping logic using synthetic words
-        run: node --test tools/step-greek.test.mjs
+        run: node --test tools/step-greek.test.mjs tools/step-greek-rest.test.mjs
       - name: Verify fixed STEP Bible TAGNT source and in-memory SQLite import
         run: |
           node tools/step-greek.mjs --export-local
           test -s work/step-greek-gospels.db
+      - name: Verify all remaining 23 NT books and temporary SQLite export
+        run: |
+          node tools/step-greek-rest.mjs --export-local
+          test -s work/step-greek-acts-revelation.db
