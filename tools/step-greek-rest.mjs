@@ -37,6 +37,7 @@ export function auditGreekVerseCoverage(parsed, chapterCounts, sourceBooks = RES
   }
   const observed = new Set(parsed.rows.map(r => [r.book, r.chapter, r.verse].join(':')));
   const missingSourceVerses = [];
+  const canonicalAddressSet = new Set();
   let canonicalVerses = 0;
   let chapters = 0;
   for (const book of books) {
@@ -48,18 +49,24 @@ export function auditGreekVerseCoverage(parsed, chapterCounts, sourceBooks = RES
       for (let verse = 1; verse <= counts[chapter - 1]; verse++) {
         canonicalVerses++;
         const key = [book, chapter, verse].join(':');
+        canonicalAddressSet.add(key);
         if (observed.has(key)) chapterWords++;
         else missingSourceVerses.push(key);
       }
       if (!chapterWords) throw new Error('Missing full source chapter: ' + book + ':' + chapter);
     }
   }
-  // This is a source coverage check, NOT a statement that an absent verse is an error.
-  if (parsed.stats.verses !== canonicalVerses - missingSourceVerses.length) {
-    throw new Error('TAGNT verses outside canonical numbering or duplicated source reference');
+  // TAGNT may have an edition-specific extra source verse (e.g. 3 John 1:15).
+  // Keep its exact address; do not silently shift it to the KJV chapter count.
+  const extraSourceVerses = [...observed].filter(key => !canonicalAddressSet.has(key)).sort();
+  if (extraSourceVerses.some(key => key !== '710:1:15')) {
+    throw new Error('Unexpected noncanonical TAGNT source verse: ' + extraSourceVerses.join(','));
+  }
+  if (parsed.stats.verses !== canonicalVerses - missingSourceVerses.length + extraSourceVerses.length) {
+    throw new Error('TAGNT source reference count differs from canonical plus explicitly retained variants');
   }
   return { books: books.length, chapters, canonicalVerses,
-    annotatedVerses: parsed.stats.verses, missingSourceVerses };
+    annotatedVerses: parsed.stats.verses, missingSourceVerses, extraSourceVerses };
 }
 
 export async function auditGreekRest({ sqliteSmoke = false, exportLocal = false } = {}) {
