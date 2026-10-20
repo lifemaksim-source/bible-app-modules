@@ -30,7 +30,7 @@ test('official source abbreviations cover Acts to Revelation, without the Gospel
 test('missing SBL verse is reported but never manufactured from TR', () => {
   const subset = { Act: 510, Rom: 520 };
   const canon = { '510': [2,1], '520': [1] };
-  const parsed = parseTagntGreek(lines, canon, subset);
+  const parsed = parseTagntGreek(lines.split('\n').filter(l => /^Act\.|^Rom\./.test(l)).join('\n'), canon, subset);
   const checked = auditGreekVerseCoverage(parsed, canon, subset);
   assert.deepEqual(checked, {
     books: 2, chapters: 2, canonicalVerses: 4,
@@ -40,15 +40,15 @@ test('missing SBL verse is reported but never manufactured from TR', () => {
 });
 
 test('fails closed if any whole source chapter or book is missing', () => {
-  const canon = { '510': [1,1] };
-  const parsed = parseTagntGreek(lines, canon, {Act:510});
+  const canon = { '510': [2,1] };
+  const parsed = parseTagntGreek(lines.split('\n').filter(l => /^Act\./.test(l)).join('\n'), canon, {Act:510});
   assert.throws(() => auditGreekVerseCoverage(parsed, canon, {Act:510}), /Missing full source chapter/);
   assert.throws(() => auditGreekVerseCoverage(parsed, canon, {Act:510,Rom:520}),
     /missing or unexpected books/);
 });
 
 test('retains source-selected morphology and dataset scope in the local SQLite', async () => {
-  const parsed = parseTagntGreek(lines, {'510':[2]}, {Act:510});
+  const parsed = parseTagntGreek(lines.split('\n').filter(l => /^Act\./.test(l)).join('\n'), {'510':[2]}, {Act:510});
   const sql = await SQL();
   const bytes = writeTagntDatabase(sql, parsed, 'STEP Bible TAGNT Act–Rev (SBL edition flags)');
   const db = new sql.Database(new Uint8Array(bytes));
