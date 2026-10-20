@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { SQL, root } from './common.mjs';
-import { parseTahotLines, exportTahotSqlite, readPinnedSource } from './step-hebrew.mjs';
+import { parseTahotLines, exportTahotSqlite, readPinnedSource, validateHebrewVerses } from './step-hebrew.mjs';
 
 // Codes below come from the STEPBible-Data README (not inferred from AI);
 // numbers are from the project's canon/books.json, 10–460.
@@ -90,9 +90,10 @@ export async function auditRemainingHebrew({ sqliteSmoke = false, exportLocal = 
     const { bytes, sha256 } = await readPinnedSource(manifest, entry);
     const parsed = parseTahotLines(new TextDecoder('utf-8', { fatal: true }).decode(bytes), BOOK_GROUPS[range]);
     const coverage = validateSourceCoverage(parsed, BOOK_GROUPS[range], chapterCounts, range);
+    const verseCoverage = validateHebrewVerses(parsed, chapterCounts, BOOK_GROUPS[range], range);
     const report = {
       range, sha256, bytes: bytes.length,
-      ...parsed.stats, coverage,
+      ...parsed.stats, coverage, verseCoverage,
       method: 'Exact source-row retention; no inferred word alignment or verse remapping',
     };
     if (sqliteSmoke || exportLocal) {
@@ -129,6 +130,8 @@ export async function auditRemainingHebrew({ sqliteSmoke = false, exportLocal = 
     chapters: results.reduce((s, x) => s + x.coverage.chapters, 0),
     rows: results.reduce((s, x) => s + x.rows, 0),
     verses: results.reduce((s, x) => s + x.verses, 0),
+    canonicalVerses: results.reduce((s, x) => s + x.verseCoverage.canonicalVerses, 0),
+    psalmSuperscriptionAddresses: results.reduce((s, x) => s + x.verseCoverage.psalmSuperscriptionAddresses, 0),
     provenance: 'STEP Bible / Tyndale House Cambridge, CC BY 4.0',
   };
   console.log(JSON.stringify({ totals: total }));
