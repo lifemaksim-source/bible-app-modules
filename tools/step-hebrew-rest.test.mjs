@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { root } from './common.mjs';
-import { parseTahotLines } from './step-hebrew.mjs';
+import { parseTahotLines, validateHebrewVerses } from './step-hebrew.mjs';
 import { BOOK_GROUPS, validateBookGroups, validateSourceCoverage } from './step-hebrew-rest.mjs';
 
 const books = JSON.parse(fs.readFileSync(path.join(root, 'canon/books.json'), 'utf8'));
@@ -81,4 +81,25 @@ test('Psalm superscriptions at verse 0 are preserved but never reindexed to vers
   assert.equal(p.rows[0].verse, 0);
   assert.equal(p.rows[0].source_ref, 'Psa.3.0#01=L');
   assert.throws(() => parseTahotLines(synthetic('Job.3.0#01=L'), { Job: 220 }), /outside selected-book/);
+});
+
+test('strict source verse audit rejects missing/extra verses while retaining Psalm 0', () => {
+  const row = (book, chapter, verse) => ({ book, chapter, verse });
+  const source = { rows: [row(230, 1, 0), row(230, 1, 1), row(230, 1, 2)] };
+  const expected = { '230': [2] };
+  assert.deepEqual(validateHebrewVerses(source, expected, { Psa: 230 }, 'synthetic'), {
+    canonicalVerses: 2, psalmSuperscriptionAddresses: 1,
+  });
+  assert.throws(() => validateHebrewVerses(
+    { rows: [row(230, 1, 0), row(230, 1, 1)] },
+    expected, { Psa: 230 }, 'synthetic'
+  ), /missing numbered verse 230:1:2/);
+  assert.throws(() => validateHebrewVerses(
+    { rows: [...source.rows, row(230, 1, 3)] },
+    expected, { Psa: 230 }, 'synthetic'
+  ), /unexpected verse address 230:1:3/);
+  assert.throws(() => validateHebrewVerses(
+    { rows: [row(10, 1, 0), row(10, 1, 1)] },
+    { '10': [1] }, { Gen: 10 }, 'synthetic'
+  ), /unexpected verse address 10:1:0/);
 });

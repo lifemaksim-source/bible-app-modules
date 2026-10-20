@@ -109,6 +109,42 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   };
 }
 
+/**
+ * Audit every numbered source verse against the existing English canon.
+ * This validates verse *presence*, not equality of Hebrew/Russian readings.
+ * Psalm superscriptions are source verse 0 and must never be counted as verse 1.
+ */
+export function validateHebrewVerses(parsed, expectedChapters, sourceBooks, range) {
+  const observed = new Set(parsed.rows.map(r => r.book + ':' + r.chapter + ':' + r.verse));
+  const books = new Set(Object.values(sourceBooks));
+  let canonicalVerses = 0;
+  let psalmSuperscriptionAddresses = 0;
+  for (const book of books) {
+    const chapters = expectedChapters[String(book)];
+    if (!Array.isArray(chapters)) throw new Error('TAHOT ' + range + ': missing canonical book ' + book);
+    for (let chapter = 1; chapter <= chapters.length; chapter++) {
+      for (let verse = 1; verse <= chapters[chapter - 1]; verse++) {
+        const key = book + ':' + chapter + ':' + verse;
+        if (!observed.delete(key)) {
+          throw new Error('TAHOT ' + range + ': missing numbered verse ' + key);
+        }
+        canonicalVerses++;
+      }
+    }
+  }
+  for (const key of observed) {
+    const [book, chapter, verse] = key.split(':').map(Number);
+    if (book === 230 && verse === 0 &&
+        Number.isInteger(chapter) && chapter >= 1 &&
+        chapter <= expectedChapters['230']?.length) {
+      psalmSuperscriptionAddresses++;
+    } else {
+      throw new Error('TAHOT ' + range + ': unexpected verse address ' + key);
+    }
+  }
+  return { canonicalVerses, psalmSuperscriptionAddresses };
+}
+
 /** Strictly preserves raw alternative readings instead of guessing their morphology. */
 export function exportTahotSqlite(sql, parsed, sourceMetadata) {
   const db = new sql.Database();
@@ -164,7 +200,7 @@ export async function readPinnedSource(meta, file) {
   return { bytes, sha256 };
 }
 
-export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
+export async function auditHebrewSource({ sqliteSmoke = false, exportLocal = false } = {}) {
   const meta = JSON.parse(fs.readFileSync(path.join(root, 'sources-step-hebrew.json'), 'utf8'));
   const first = meta.files.find(f => f.audit);
   if (!first || first.range !== 'Gen-Deu') throw new Error('TAHOT audit scope unexpectedly changed');
@@ -172,6 +208,8 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
   const content = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
   const parsed = parseTahotLines(content);
   const { stats } = parsed;
+  const canon = JSON.parse(fs.readFileSync(path.join(root, 'canon/eng.json'), 'utf8')).books;
+  const verseCoverage = validateHebrewVerses(parsed, canon, FIRST_BOOKS, 'Gen-Deu');
   // A true source audit must not silently accept missing chapters or erased
   // alternative-reading fields merely because an overall token count looks large.
   const requiredChapters = { '10': 50, '20': 40, '30': 27, '40': 36, '50': 34 };
@@ -183,11 +221,11 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
   }
   const report = {
     source: 'STEP Bible TAHOT Gen-Deu', revision: meta.revision, sha256,
-    ...stats,
+    ...stats, verseCoverage,
     caveat: 'Row-level source retention, not established morphological word alignment',
     license: meta.license, attribution: meta.attribution,
   };
-  if (sqliteSmoke) {
+  if (sqliteSmoke || exportLocal) {
     const SQLModule = await SQL();
     const buffer = exportTahotSqlite(SQLModule, parsed, {
       dataset: meta.dataset, revision: meta.revision, sha256,
@@ -200,6 +238,13 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
       if (checked !== 'ok' || actual !== stats.rows) throw new Error('TAHOT SQLite corruption or missing rows');
       report.sqliteRows = actual;
       report.databaseBytes = buffer.length;
+      report.sqliteSha256 = crypto.createHash('sha256').update(buffer).digest('hex');
+      if (exportLocal) {
+        const local = path.join(root, 'work', 'step-hebrew-gen-deu.db');
+        fs.mkdirSync(path.dirname(local), { recursive: true });
+        fs.writeFileSync(local, buffer);
+        report.localOutput = 'work/step-hebrew-gen-deu.db';
+      }
     } finally { db.close(); }
   }
   // No scripture text, morphology records or variant readings in runner logs.
@@ -208,6 +253,6 @@ export async function auditHebrewSource({ sqliteSmoke = false } = {}) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { await auditHebrewSource({ sqliteSmoke: process.argv.includes('--sqlite-smoke') }); }
+  try { await auditHebrewSource({ sqliteSmoke: process.argv.includes('--sqlite-smoke'), exportLocal: process.argv.includes('--export-local') }); }
   catch (err) { console.error('STEP Hebrew audit failed: ' + err.message); process.exitCode = 1; }
 }

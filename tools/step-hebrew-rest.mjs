@@ -1,12 +1,13 @@
 // Read-only audit for the remaining three pinned STEPBible TAHOT OT sources.
 // The companion Gen–Deu probe is in step-hebrew.mjs (PR #15).
 // The data and temporary SQLite files are never committed, released or uploaded.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { SQL, root } from './common.mjs';
-import { parseTahotLines, exportTahotSqlite, readPinnedSource } from './step-hebrew.mjs';
+import { parseTahotLines, exportTahotSqlite, readPinnedSource, validateHebrewVerses } from './step-hebrew.mjs';
 
 // Codes below come from the STEPBible-Data README (not inferred from AI);
 // numbers are from the project's canon/books.json, 10–460.
@@ -73,7 +74,7 @@ export function validateSourceCoverage(parsed, sourceBooks, expectedChapters, ra
   return { books: expected.length, chapters: [...observed.values()].reduce((n, ch) => n + ch.size, 0) };
 }
 
-export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
+export async function auditRemainingHebrew({ sqliteSmoke = false, exportLocal = false } = {}) {
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'sources-step-hebrew.json'), 'utf8'));
   const canonBooks = JSON.parse(fs.readFileSync(path.join(root, 'canon/books.json'), 'utf8'));
   const chapterCounts = JSON.parse(fs.readFileSync(path.join(root, 'canon/eng.json'), 'utf8')).books;
@@ -89,12 +90,13 @@ export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
     const { bytes, sha256 } = await readPinnedSource(manifest, entry);
     const parsed = parseTahotLines(new TextDecoder('utf-8', { fatal: true }).decode(bytes), BOOK_GROUPS[range]);
     const coverage = validateSourceCoverage(parsed, BOOK_GROUPS[range], chapterCounts, range);
+    const verseCoverage = validateHebrewVerses(parsed, chapterCounts, BOOK_GROUPS[range], range);
     const report = {
       range, sha256, bytes: bytes.length,
-      ...parsed.stats, coverage,
+      ...parsed.stats, coverage, verseCoverage,
       method: 'Exact source-row retention; no inferred word alignment or verse remapping',
     };
-    if (sqliteSmoke) {
+    if (sqliteSmoke || exportLocal) {
       const sql = await SQL();
       const buffer = exportTahotSqlite(sql, parsed, {
         dataset: manifest.dataset, range, revision: manifest.revision, sha256,
@@ -109,6 +111,13 @@ export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
         }
         report.sqliteRows = rows;
         report.databaseBytes = buffer.length;
+        report.sqliteSha256 = crypto.createHash('sha256').update(buffer).digest('hex');
+        if (exportLocal) {
+          const local = path.join(root, 'work', 'step-hebrew-' + range.toLowerCase() + '.db');
+          fs.mkdirSync(path.dirname(local), { recursive: true });
+          fs.writeFileSync(local, buffer);
+          report.localOutput = 'work/step-hebrew-' + range.toLowerCase() + '.db';
+        }
       } finally { db.close(); }
     }
     // Do not print any Hebrew/Aramaic words, variant readings, glosses or records.
@@ -121,6 +130,8 @@ export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
     chapters: results.reduce((s, x) => s + x.coverage.chapters, 0),
     rows: results.reduce((s, x) => s + x.rows, 0),
     verses: results.reduce((s, x) => s + x.verses, 0),
+    canonicalVerses: results.reduce((s, x) => s + x.verseCoverage.canonicalVerses, 0),
+    psalmSuperscriptionAddresses: results.reduce((s, x) => s + x.verseCoverage.psalmSuperscriptionAddresses, 0),
     provenance: 'STEP Bible / Tyndale House Cambridge, CC BY 4.0',
   };
   console.log(JSON.stringify({ totals: total }));
@@ -128,7 +139,7 @@ export async function auditRemainingHebrew({ sqliteSmoke = false } = {}) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { await auditRemainingHebrew({ sqliteSmoke: process.argv.includes('--sqlite-smoke') }); }
+  try { await auditRemainingHebrew({ sqliteSmoke: process.argv.includes('--sqlite-smoke'), exportLocal: process.argv.includes('--export-local') }); }
   catch (error) {
     console.error('Remaining TAHOT QA failed: ' + error.message);
     process.exitCode = 1;
