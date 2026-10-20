@@ -34,7 +34,7 @@ test('missing SBL verse is reported but never manufactured from TR', () => {
   const checked = auditGreekVerseCoverage(parsed, canon, subset);
   assert.deepEqual(checked, {
     books: 2, chapters: 2, canonicalVerses: 4,
-    annotatedVerses: 3, missingSourceVerses: ['510:1:3'],
+    annotatedVerses: 3, missingSourceVerses: ['510:1:3'], extraSourceVerses: [],
   });
   assert.equal(parsed.rows.find(r=>r.chapter===2),undefined);
 });
@@ -60,4 +60,17 @@ test('retains source-selected morphology and dataset scope in the local SQLite',
     const row=db.exec('SELECT strong_tag,morphology,source_ref FROM tagnt_tokens ORDER BY chapter')[0].values[0];
     assert.deepEqual(row, ['G3056','N-NSM','Act.1.1#01=NKO']);
   } finally { db.close(); }
+});
+
+
+test('retains Greek 3 John 1:15 as a source variant, not a fabricated English verse', () => {
+  const raw = [
+    '3Jn.1.14#01=NKO\tλόγος\tword\tG3056=N-NSM\tλόγος=word\tSBL',
+    '3Jn.1.15#01=NKO\tθεός\tGod\tG2316=N-NSM\tθεός=God\tSBL',
+  ].join('\n');
+  const parsed = parseTagntGreek(raw, { '710': Array(1).fill(14) }, { '3Jn': 710 });
+  assert.equal(parsed.rows[1].sourceRef, '3Jn.1.15#01=NKO');
+  const audited = auditGreekVerseCoverage(parsed, { '710': [14] }, { '3Jn':710 });
+  assert.deepEqual(audited.extraSourceVerses, ['710:1:15']);
+  assert.equal(audited.missingSourceVerses.length, 13);
 });
