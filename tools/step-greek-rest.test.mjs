@@ -29,12 +29,12 @@ test('official source abbreviations cover Acts to Revelation, without the Gospel
 
 test('missing SBL verse is reported but never manufactured from TR', () => {
   const subset = { Act: 510, Rom: 520 };
-  const canon = { '510': [2,1], '520': [1] };
+  const canon = { '510': [3], '520': [1] };
   const parsed = parseTagntGreek(lines.split('\n').filter(l => /^Act\.|^Rom\./.test(l)).join('\n'), canon, subset);
   const checked = auditGreekVerseCoverage(parsed, canon, subset);
   assert.deepEqual(checked, {
     books: 2, chapters: 2, canonicalVerses: 4,
-    annotatedVerses: 3, missingSourceVerses: ['510:2:1'],
+    annotatedVerses: 3, missingSourceVerses: ['510:1:3'],
   });
   assert.equal(parsed.rows.find(r=>r.chapter===2),undefined);
 });
