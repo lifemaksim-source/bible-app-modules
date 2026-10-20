@@ -14,6 +14,9 @@ const MAX_BYTES = 24 * 1024 * 1024;
 const reference = /^([A-Za-z0-9]+)\.(\d+)\.(\d+)[^\t]*?#(\d+)/;
 const removeTranslit = /\s*\([^()]*\)\s*$/;
 const greekLetters = /[\u0370-\u03ff\u1f00-\u1fff]/u;
+// Pinned TAGNT source has 3 John 1:15 although project English canon ends at 1:14.
+// Preserve this original source address; do NOT fold it into verse 14.
+const EXTRA_SOURCE_VERSES = new Set(['710:1:15']);
 
 export function parseTagntGreek(text, chapterCounts, sourceBooks = BOOKS) {
   if (typeof text !== 'string') throw new Error('TAGNT text must be UTF-8');
@@ -42,7 +45,8 @@ export function parseTagntGreek(text, chapterCounts, sourceBooks = BOOKS) {
     if (!book || !Number.isSafeInteger(chapter) || !Number.isSafeInteger(verse) ||
         !Number.isSafeInteger(position) || position <= 0 ||
         !chapterCounts[String(book)]?.[chapter - 1] ||
-        verse < 1 || verse > chapterCounts[String(book)][chapter - 1]) {
+        verse < 1 || (verse > chapterCounts[String(book)][chapter - 1] &&
+          !EXTRA_SOURCE_VERSES.has([book,chapter,verse].join(':')))) {
       throw new Error('Invalid SBL verse or token position in pinned TAGNT at ' + [bookCode,chapterRaw,verseRaw,positionRaw].join('/'));
     }
     const surface = cols[1].replace(removeTranslit, '').normalize('NFC').trim();
