@@ -14,8 +14,11 @@ const MAX_BYTES = 24 * 1024 * 1024;
 const reference = /^([A-Za-z0-9]+)\.(\d+)\.(\d+)[^\t]*?#(\d+)/;
 const removeTranslit = /\s*\([^()]*\)\s*$/;
 const greekLetters = /[\u0370-\u03ff\u1f00-\u1fff]/u;
+// Pinned TAGNT source has 3 John 1:15 although project English canon ends at 1:14.
+// Preserve this original source address; do NOT fold it into verse 14.
+const EXTRA_SOURCE_VERSES = new Set(['710:1:15', '730:12:18']);
 
-export function parseTagntGreek(text, chapterCounts) {
+export function parseTagntGreek(text, chapterCounts, sourceBooks = BOOKS) {
   if (typeof text !== 'string') throw new Error('TAGNT text must be UTF-8');
   const rows = [];
   const seen = new Set();
@@ -35,15 +38,16 @@ export function parseTagntGreek(text, chapterCounts) {
       continue;
     }
     const [ , bookCode, chapterRaw, verseRaw, positionRaw ] = match;
-    const book = BOOKS[bookCode];
+    const book = sourceBooks[bookCode];
     const chapter = Number(chapterRaw);
     const verse = Number(verseRaw);
     const position = Number(positionRaw);
     if (!book || !Number.isSafeInteger(chapter) || !Number.isSafeInteger(verse) ||
         !Number.isSafeInteger(position) || position <= 0 ||
         !chapterCounts[String(book)]?.[chapter - 1] ||
-        verse < 1 || verse > chapterCounts[String(book)][chapter - 1]) {
-      throw new Error('Invalid SBL Gospel verse or token position in pinned TAGNT');
+        verse < 1 || (verse > chapterCounts[String(book)][chapter - 1] &&
+          !EXTRA_SOURCE_VERSES.has([book,chapter,verse].join(':')))) {
+      throw new Error('Invalid SBL verse or token position in pinned TAGNT at ' + [bookCode,chapterRaw,verseRaw,positionRaw].join('/'));
     }
     const surface = cols[1].replace(removeTranslit, '').normalize('NFC').trim();
     if (!surface || !greekLetters.test(surface)) {
@@ -72,7 +76,7 @@ export function parseTagntGreek(text, chapterCounts) {
     books: [...new Set(rows.map(r => r.book))].sort((a, b) => a - b) } };
 }
 
-export function writeTagntDatabase(sqlModule, parsed) {
+export function writeTagntDatabase(sqlModule, parsed, dataset = 'STEP Bible TAGNT Mat-Jhn SBL selection') {
   const db = new sqlModule.Database();
   try {
     db.run('CREATE TABLE info (name TEXT PRIMARY KEY, value TEXT);' +
@@ -82,7 +86,8 @@ export function writeTagntDatabase(sqlModule, parsed) {
       'morphology TEXT, lemma_gloss TEXT, editions TEXT NOT NULL, source_ref TEXT NOT NULL,' +
       'PRIMARY KEY (book_number,chapter,verse,position)) WITHOUT ROWID;');
     db.run('CREATE INDEX tagnt_strong_idx ON tagnt_tokens(strong_tag,book_number,chapter,verse);');
-    db.run("INSERT INTO info VALUES ('dataset', 'STEP Bible TAGNT Mat-Jhn SBL selection')");
+    const datasetInfo = db.prepare('INSERT INTO info VALUES (?, ?)');
+    try { datasetInfo.run(['dataset', dataset]); } finally { datasetInfo.free(); }
     db.run("INSERT INTO info VALUES ('license', 'CC BY 4.0')");
     db.run("INSERT INTO info VALUES ('attribution', 'STEP Bible (stepbible.org); Tyndale House Cambridge')");
     db.run('BEGIN');
@@ -98,7 +103,7 @@ export function writeTagntDatabase(sqlModule, parsed) {
   } finally { db.close(); }
 }
 
-async function fetchPinnedSource(meta) {
+export async function fetchPinnedSource(meta) {
   // Pinned Git commit + git blob SHA: upstream edits invalidate the audit.
   const rel = meta.path.split('/').map(encodeURIComponent).join('/');
   const url = 'https://raw.githubusercontent.com/' + meta.repository + '/' + meta.revision + '/' + rel;

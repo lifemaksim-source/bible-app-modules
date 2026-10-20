@@ -36,9 +36,9 @@ test('reject duplicate positions or invalid canonical book/verse', () => {
   const a = data.split('\n');
   assert.throws(() => parseTagntGreek([...a, a[1]].join('\n'), canon), /Duplicate SBL/);
   assert.throws(() => parseTagntGreek('Mat.1.99#01=NKO\tλόγος\tword\tG3056=N\tgloss\tSBL', canon),
-    /Invalid SBL Gospel/);
+    /Invalid SBL verse/);
   assert.throws(() => parseTagntGreek('Act.1.1#01=NKO\tλόγος\tword\tG3056=N\tgloss\tSBL', canon),
-    /Invalid SBL Gospel/);
+    /Invalid SBL verse/);
 });
 
 test('SQLite schema roundtrips selected words and supports safe references', async () => {
