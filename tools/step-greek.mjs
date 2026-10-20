@@ -43,7 +43,7 @@ export function parseTagntGreek(text, chapterCounts, sourceBooks = BOOKS) {
         !Number.isSafeInteger(position) || position <= 0 ||
         !chapterCounts[String(book)]?.[chapter - 1] ||
         verse < 1 || verse > chapterCounts[String(book)][chapter - 1]) {
-      throw new Error('Invalid SBL Gospel verse or token position in pinned TAGNT');
+      throw new Error('Invalid SBL verse or token position in pinned TAGNT at ' + [bookCode,chapterRaw,verseRaw,positionRaw].join('/'));
     }
     const surface = cols[1].replace(removeTranslit, '').normalize('NFC').trim();
     if (!surface || !greekLetters.test(surface)) {
