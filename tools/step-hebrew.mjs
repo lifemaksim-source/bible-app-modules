@@ -109,6 +109,42 @@ export function parseTahotLines(text, expectedBooks = FIRST_BOOKS) {
   };
 }
 
+/**
+ * Audit every numbered source verse against the existing English canon.
+ * This validates verse *presence*, not equality of Hebrew/Russian readings.
+ * Psalm superscriptions are source verse 0 and must never be counted as verse 1.
+ */
+export function validateHebrewVerses(parsed, expectedChapters, sourceBooks, range) {
+  const observed = new Set(parsed.rows.map(r => r.book + ':' + r.chapter + ':' + r.verse));
+  const books = new Set(Object.values(sourceBooks));
+  let canonicalVerses = 0;
+  let psalmSuperscriptionAddresses = 0;
+  for (const book of books) {
+    const chapters = expectedChapters[String(book)];
+    if (!Array.isArray(chapters)) throw new Error('TAHOT ' + range + ': missing canonical book ' + book);
+    for (let chapter = 1; chapter <= chapters.length; chapter++) {
+      for (let verse = 1; verse <= chapters[chapter - 1]; verse++) {
+        const key = book + ':' + chapter + ':' + verse;
+        if (!observed.delete(key)) {
+          throw new Error('TAHOT ' + range + ': missing numbered verse ' + key);
+        }
+        canonicalVerses++;
+      }
+    }
+  }
+  for (const key of observed) {
+    const [book, chapter, verse] = key.split(':').map(Number);
+    if (book === 230 && verse === 0 &&
+        Number.isInteger(chapter) && chapter >= 1 &&
+        chapter <= expectedChapters['230']?.length) {
+      psalmSuperscriptionAddresses++;
+    } else {
+      throw new Error('TAHOT ' + range + ': unexpected verse address ' + key);
+    }
+  }
+  return { canonicalVerses, psalmSuperscriptionAddresses };
+}
+
 /** Strictly preserves raw alternative readings instead of guessing their morphology. */
 export function exportTahotSqlite(sql, parsed, sourceMetadata) {
   const db = new sql.Database();
@@ -172,6 +208,8 @@ export async function auditHebrewSource({ sqliteSmoke = false, exportLocal = fal
   const content = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
   const parsed = parseTahotLines(content);
   const { stats } = parsed;
+  const canon = JSON.parse(fs.readFileSync(path.join(root, 'canon/eng.json'), 'utf8')).books;
+  const verseCoverage = validateHebrewVerses(parsed, canon, FIRST_BOOKS, 'Gen-Deu');
   // A true source audit must not silently accept missing chapters or erased
   // alternative-reading fields merely because an overall token count looks large.
   const requiredChapters = { '10': 50, '20': 40, '30': 27, '40': 36, '50': 34 };
@@ -183,7 +221,7 @@ export async function auditHebrewSource({ sqliteSmoke = false, exportLocal = fal
   }
   const report = {
     source: 'STEP Bible TAHOT Gen-Deu', revision: meta.revision, sha256,
-    ...stats,
+    ...stats, verseCoverage,
     caveat: 'Row-level source retention, not established morphological word alignment',
     license: meta.license, attribution: meta.attribution,
   };
