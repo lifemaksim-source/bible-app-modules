@@ -143,13 +143,38 @@ def verify_zip(file):
                 if invalid:
                     raise AuditError("Invalid verse coordinates")
                 language_row = db.execute("SELECT value FROM info WHERE name='language' LIMIT 1").fetchone()
+                present_books = [row[0] for row in db.execute(
+                    "SELECT DISTINCT book_number FROM verses WHERE text IS NOT NULL AND TRIM(text) != '' ORDER BY book_number"
+                )]
+                blank_addresses = [
+                    {"bookNumber": row[0], "chapter": row[1], "verse": row[2]}
+                    for row in db.execute(
+                        "SELECT book_number, chapter, verse FROM verses "
+                        "WHERE text IS NULL OR TRIM(text) = '' "
+                        "ORDER BY book_number, chapter, verse LIMIT 25"
+                    )
+                ]
+                chapters = {}
+                for book_number, chapter in db.execute(
+                    "SELECT DISTINCT book_number, chapter FROM verses "
+                    "WHERE text IS NOT NULL AND TRIM(text) != '' ORDER BY book_number, chapter"
+                ):
+                    chapters.setdefault(book_number, []).append(chapter)
+                chapter_gaps = {
+                    str(book): [c for c in range(1, max(existing) + 1) if c not in set(existing)][:25]
+                    for book, existing in chapters.items()
+                    if existing and len(existing) != max(existing)
+                }
             return {
                 "archive": p.name,
                 "sqliteEntry": entry.filename,
                 "sqliteSha256": hashlib.sha256(dest.read_bytes()).hexdigest(),
                 "books": books,
+                "booksWithNonEmptyText": present_books,
                 "nonEmptyVerseRows": count,
                 "blankVerseRows": blank_rows,
+                "blankVerseAddressSample": blank_addresses,
+                "missingChapterSamples": chapter_gaps,
                 "warnings": (["Source contains empty verse rows; inspect before Android approval"] if blank_rows else []),
                 "language": str(language_row[0]) if language_row else "",
                 "status": "sqlite_structure_verified_android_not_tested",
