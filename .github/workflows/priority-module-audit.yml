@@ -20,6 +20,13 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Node.js тесты реестра и существующих модулей
+        run: npm test
       - name: Локальные тесты проверки MyBible
         run: python3 -W error::ResourceWarning -m unittest discover -s tools -p test_audit_mybible.py -v
       - name: Действительный реестр и ZIP-архивы, без публикации
