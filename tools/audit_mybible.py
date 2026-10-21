@@ -20,6 +20,27 @@ MAX_REGISTRY_BYTES = 32 * 1024 * 1024
 MAX_ARCHIVE_BYTES = 100 * 1024 * 1024
 MAX_SQLITE_BYTES = 250 * 1024 * 1024
 BASE_REQUIRED = {"books", "verses", "info"}
+# Use the same canonical book IDs as the Bible App module builder; preserve foreign book IDs.
+CANON = {row["n"] for row in json.loads(
+    (Path(__file__).resolve().parent.parent / "canon" / "books.json").read_text(encoding="utf-8")
+)}
+OT_BOOKS = {number for number in CANON if number < 470}
+NT_BOOKS = CANON - OT_BOOKS
+
+
+def scope_from_book_ids(book_numbers):
+    """Book-level coverage only, not a claim that all chapter/verse text is complete."""
+    present = set(book_numbers)
+    ot = present & OT_BOOKS
+    nt = present & NT_BOOKS
+    if ot == OT_BOOKS and nt == NT_BOOKS:
+        return "bible"
+    if ot == OT_BOOKS and not nt:
+        return "ot"
+    if nt == NT_BOOKS and not ot:
+        return "nt"
+    return "partial"
+
 SIDE_CAR = re.compile(r"\.(?:commentaries|dictionary|crossreferences|subheadings|plan|devotions|bundle|references)\.(?:sqlite3|db)$", re.I)
 
 
@@ -172,6 +193,9 @@ def verify_zip(file):
                 "sqliteEntry": entry.filename,
                 "sqliteSha256": digest,
                 "books": books,
+                "canonicalScope": scope_from_book_ids(present_books),
+                "canonicalBooksWithText": sum(b in CANON for b in present_books),
+                "nonCanonicalBooksWithText": [b for b in present_books if b not in CANON],
                 "booksWithNonEmptyText": present_books,
                 "nonEmptyVerseRows": count,
                 "blankVerseRows": blank_rows,
