@@ -62,6 +62,8 @@ class VerseHtml(HTMLParser):
         self.skipped_anchors = 0
         self.empty_addresses: list[tuple[int, int, int]] = []
         self.outside_flow = Counter()
+        self.outside_flow_full_paths = Counter()
+        self.note_reference_count = 0
         self.blank_reasons = Counter()
         self.blank_samples: list[dict] = []
         self.active_note_chars = 0
@@ -92,6 +94,9 @@ class VerseHtml(HTMLParser):
     def handle_starttag(self, tag, attrs) -> None:
         a = dict(attrs)
         name = a.get("class", "") or ""
+        if tag == "a" and ("noteref" in (a.get("epub:type", "") or "") or
+                            "osis-note" in name):
+            self.note_reference_count += 1
         epub_type = a.get("epub:type", "") or ""
         if tag == "span":
             match = VERSE_ID.fullmatch(a.get("id", "") or "")
@@ -150,6 +155,8 @@ class VerseHtml(HTMLParser):
                 relevant = [f"{tag}:{cls[:48]}" for tag, cls, _ in self.stack if tag in ("p", "div", "td", "span", "v")]
                 label = " > ".join(relevant[-3:]) or "(no p/div)"
                 self.outside_flow[label] += len(data.strip())
+                full_path = " > ".join(f"{tag}:{cls[:36]}" for tag,cls,_ in self.stack[-8:])
+                self.outside_flow_full_paths[full_path] += len(data.strip())
                 self.active_outside_chars += len(data.strip())
             return
         self.parts.append(data)
@@ -176,6 +183,8 @@ def extract_epub(data: bytes) -> dict:
     empty_anchors = 0
     missing_by_book = Counter()
     outside_flow = Counter()
+    outside_flow_full_paths = Counter()
+    note_refs = 0
     blank_reasons = Counter()
     blank_samples = []
     with zipfile.ZipFile(BytesIO(data)) as archive:
@@ -205,6 +214,8 @@ def extract_epub(data: bytes) -> dict:
             empty_anchors += probe.skipped_anchors
             missing_by_book.update(b for b, _, _ in probe.empty_addresses)
             outside_flow.update(probe.outside_flow)
+            outside_flow_full_paths.update(probe.outside_flow_full_paths)
+            note_refs += probe.note_reference_count
             blank_reasons.update(probe.blank_reasons)
             blank_samples.extend(probe.blank_samples[:max(0, 25-len(blank_samples))])
             unknown.update(probe.unknown_codes)
@@ -215,6 +226,8 @@ def extract_epub(data: bytes) -> dict:
         "filesWithVerses": files_with_text, "unknownBooks": dict(unknown),
         "blankByBook": [[book, n] for book, n in missing_by_book.most_common(20)],
         "outsideFlowContexts": outside_flow.most_common(16),
+        "outsideFlowTagPaths": outside_flow_full_paths.most_common(18),
+        "noteReferenceCount": note_refs,
         "blankReasonCounts": dict(blank_reasons),
         "blankAddressSamples": blank_samples,
     }
@@ -287,6 +300,8 @@ def test_registry(registry_file: Path) -> dict:
                          "unknownBooks": parsed["unknownBooks"],
                          "blankByBook": parsed["blankByBook"],
                          "outsideFlowContexts": parsed["outsideFlowContexts"],
+                         "outsideFlowTagPaths": parsed["outsideFlowTagPaths"],
+                         "noteReferenceCount": parsed["noteReferenceCount"],
                          "blankReasonCounts": parsed["blankReasonCounts"],
                          "blankAddressSamples": parsed["blankAddressSamples"]})
             item.update(sqlite_draft(parsed["verses"], entry["language"], source_hash))
