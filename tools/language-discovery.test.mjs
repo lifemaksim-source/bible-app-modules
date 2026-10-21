@@ -54,3 +54,14 @@ test('official MyBible evidence may not contain an invented hash or missing chec
   official.booksChecked = 0;
   assert.match(validateDiscovery(data).join(' '), /missing official downloaded SQLite evidence/);
 });
+
+test('IBT digital sources are only candidates until text and verse mapping verified', () => {
+  const sources = source.records.filter(x => x.sourceKind === 'digital_ebook_listing');
+  assert.equal(sources.length, 5);
+  assert.deepEqual(new Set(sources.map(x => x.language)), new Set(['tab', 'lbe', 'inh', 'gag', 'dng']));
+  assert.ok(sources.every(x => x.verification === 'listing_only' && !x.downloaded && !x.published));
+  const data = clone();
+  const candidate = data.records.find(x => x.sourceKind === 'digital_ebook_listing');
+  candidate.digitalDownloadUrl = 'https://not-trusted.example/forged.fb2.zip';
+  assert.match(validateDiscovery(data).join(' '), /invalid or prematurely promoted digital eBook source/);
+});
