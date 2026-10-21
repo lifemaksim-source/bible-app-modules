@@ -90,6 +90,17 @@ class RegistryTest(unittest.TestCase):
         with self.assertRaisesRegex(AuditError, 'Duplicate'):
             verify_zip(archive)
 
+    def test_rejects_empty_verse(self):
+        p = self.make_db()
+        with closing(sqlite3.connect(p)) as db:
+            db.execute("UPDATE verses SET text = ' '")
+            db.commit()
+        archive = self.p / 'bad.zip'
+        with zipfile.ZipFile(archive, 'w') as z:
+            z.write(p, 'KM.SQLite3')
+        with self.assertRaisesRegex(AuditError, 'No books or verses|Empty verse'):
+            verify_zip(archive)
+
     def test_rejects_missing_book(self):
         p = self.make_db()
         with closing(sqlite3.connect(p)) as db:
