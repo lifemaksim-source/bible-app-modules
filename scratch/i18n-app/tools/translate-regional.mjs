@@ -167,6 +167,8 @@ async function main(){
     try {
       const labels=await translateAll(code,keys.map((k)=>source[k]));
       const bookLabels=await translateAll(code,bk.map((k)=>bookSource[k].name));
+      const untranslated = safeFallbacks.filter((x)=>x.code===code && x.method==='source-fallback');
+      if (untranslated.length > 10) throw Error('too many untranslated strings: '+untranslated.length);
       const locale=Object.fromEntries(keys.map((k,i)=>[k,labels[i]]));
       const books=Object.fromEntries(bk.map((k,i)=>[k,{
         name:bookLabels[i],abbr:bookLabels[i].slice(0,6),
