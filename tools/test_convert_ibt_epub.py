@@ -107,6 +107,37 @@ class EpubDraftTest(unittest.TestCase):
             self.assertEqual(report["attempted"], 1)
             self.assertEqual(report["draftsWithVerses"], 1)
 
+
+    def test_exact_unicode_verse_survives_sqlite_without_text_replacement(self):
+        source = {(470, 1, 1): "Ӏарбий гӀалгӀай — сагӀа́. 日本語 Ω"}
+        report = sqlite_draft(source, "inh", "a" * 64)
+        self.assertEqual(report["verseRows"], 1)
+        self.assertEqual(report["books"], 1)
+
+    def test_blank_anchors_diagnosed_without_inventing_verse(self):
+        parser = VerseHtml()
+        parser.feed('<p class="osis-p"><span id="Gen.1.1"><sup>1</sup></span>'
+                    '<span id="Gen.1.2"><sup>2</sup></span> Real verse two</p>')
+        rows = dict(parser.finish())
+        self.assertEqual(rows, {(10, 1, 2): "Real verse two"})
+        self.assertEqual(parser.skipped_anchors, 1)
+        self.assertEqual(parser.blank_reasons["only_number_or_marker"], 1)
+        self.assertEqual(parser.blank_samples[0]["verse"], 1)
+
+    def test_note_only_content_is_not_mistaken_for_scripture(self):
+        parser = VerseHtml()
+        parser.feed('<p class="osis-p"><span id="Gen.1.1"></span>'
+                    '<a class="osis-note" epub:type="noteref">footnote symbol</a>'
+                    '<span id="Gen.1.2"></span> Real text</p>')
+        rows = dict(parser.finish())
+        self.assertEqual(rows, {(10, 1, 2): "Real text"})
+        self.assertEqual(parser.blank_reasons["notes_only"], 1)
+
+    def test_rejects_epub_invalid_utf8_instead_of_corrupting_scripture(self):
+        epub = make_epub([("a.xhtml", b'<p class="osis-p"><span id="Gen.1.1"></span>\xff</p>')])
+        with self.assertRaises(UnicodeDecodeError):
+            extract_epub(epub)
+
     def test_no_text_fails_closed(self):
         with self.assertRaisesRegex(DraftError, "No unambiguous"):
             sqlite_draft({}, "gag", "b" * 64)
