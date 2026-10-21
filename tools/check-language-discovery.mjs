@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const TYPES = new Set(['mybible_catalog_listing', 'prior_branch_report', 'existing_build_branch', 'digital_api_listing', 'mybible_official_registry', 'digital_ebook_listing']);
-const STATUSES = new Set(['listing_only', 'sqlite_built_checked_not_android', 'sqlite_source_verified_not_android']);
+const TYPES = new Set(['mybible_catalog_listing', 'prior_branch_report', 'existing_build_branch', 'digital_api_listing', 'mybible_official_registry', 'digital_ebook_listing', 'digital_epub_draft']);
+const STATUSES = new Set(['listing_only', 'sqlite_built_checked_not_android', 'sqlite_source_verified_not_android', 'epub_draft_sqlite_checked_not_android']);
 
 export function validateDiscovery(document) {
   const errors = [];
@@ -35,6 +35,7 @@ export function validateDiscovery(document) {
     }
     const built = record.verification === 'sqlite_built_checked_not_android';
     const official = record.verification === 'sqlite_source_verified_not_android';
+    const epubDraft = record.verification === 'epub_draft_sqlite_checked_not_android';
     if (record.sourceKind === 'digital_ebook_listing' && (
       record.verification !== 'listing_only' ||
       typeof record.digitalDownloadUrl !== 'string' ||
@@ -44,15 +45,29 @@ export function validateDiscovery(document) {
       errors.push(`${context}: invalid or prematurely promoted digital eBook source`);
     }
     if (built !== (record.sourceKind === 'existing_build_branch') ||
-        official !== (record.sourceKind === 'mybible_official_registry')) {
+        official !== (record.sourceKind === 'mybible_official_registry') ||
+        epubDraft !== (record.sourceKind === 'digital_epub_draft')) {
       errors.push(`${context}: sourceKind and verification do not match`);
     }
-    if (record.downloaded !== (built || official) || record.sqliteChecked !== (built || official)) {
+    if (record.downloaded !== (built || official || epubDraft) || record.sqliteChecked !== (built || official || epubDraft)) {
       errors.push(`${context}: downloaded/sqliteChecked must match evidence level`);
     }
     if (built && (!record.existingBranch || !Number.isInteger(record.booksChecked) || record.booksChecked < 1 ||
       !Number.isInteger(record.verseRowsChecked) || record.verseRowsChecked < 1)) {
       errors.push(`${context}: missing prior build evidence`);
+    }
+    if (epubDraft && (
+      !/^https:\/\/ibtrussia\.org\/sites\/default\/files\/ebm\/ebook\/[^\s]+\.epub$/.test(record.digitalEpubUrl) ||
+      !/^https:\/\/github\.com\/lifemaksim-source\/bible-app-modules\/actions\/runs\/\d+$/.test(record.evidenceRunUrl) ||
+      !/^[a-f0-9]{64}$/.test(record.sourceSha256) ||
+      !/^[a-f0-9]{64}$/.test(record.sqliteSha256) ||
+      !Number.isInteger(record.booksChecked) || record.booksChecked < 1 ||
+      !Number.isInteger(record.verseRowsChecked) || record.verseRowsChecked < 1 ||
+      !Number.isInteger(record.blankVerseAnchors) || record.blankVerseAnchors < 0 ||
+      !Number.isInteger(record.verseAnchors) || record.verseAnchors <= record.blankVerseAnchors ||
+      record.licenseStatus !== 'not_cleared' || record.published !== false
+    )) {
+      errors.push(`${context}: missing EPUB draft-only conversion evidence or rights flag`);
     }
     if (official && (
       record.sourceUrl !== 'https://mybible.zone/repository/registry/registry.zip' ||
