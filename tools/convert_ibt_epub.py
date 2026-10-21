@@ -210,7 +210,9 @@ def sqlite_draft(rows: dict[tuple[int, int, int], str], language: str, source_sh
 
 def test_registry(registry_file: Path) -> dict:
     source = json.loads(registry_file.read_text("utf-8"))
-    entries = [x for x in source["records"] if x.get("sourceKind") == "digital_ebook_listing"]
+    entries = [x for x in source["records"] if x.get("sourceKind") in ("digital_ebook_listing", "digital_epub_draft")]
+    if not entries:
+        raise DraftError("No IBT eBook sources found: do not report empty successful conversion")
     report = {"format": 1, "attempted": len(entries), "draftsWithVerses": 0, "modules": []}
     for entry in entries:
         uri = entry.get("digitalEpubUrl")
