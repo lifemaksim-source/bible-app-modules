@@ -86,6 +86,17 @@ class RegionalRegistryTest(unittest.TestCase):
         self.assertEqual(out["languages"]["tg"]["status"], "no_compatible_archive_verified")
         self.assertIn("Module declares language", out["languages"]["tg"]["failures"][0]["reason"])
 
+    def test_known_dargi_label_is_accepted_but_flagged(self):
+        registry = self.registry()
+        registry['downloads'].append({
+            'fil': 'DRG', 'lng': 'dar', 'abr': 'DRG', 'des': 'Даргинский',
+            'url': ['{good}DRG'],
+        })
+        report = summary_from_registry(registry, ['dar'])
+        row = verify_one_per_language(report, lambda _url, _limit: self.make_valid_zip('Dargi'))
+        self.assertEqual(row['languagesWithVerifiedSqlite'], 1)
+        self.assertTrue(any('alias' in warning for warning in row['languages']['dar']['verified']['warnings']))
+
     def test_archive_errors_do_not_abort_other_languages(self):
         report = summary_from_registry(self.registry(), ["tg", "mn"])
         def remote(url, _):
