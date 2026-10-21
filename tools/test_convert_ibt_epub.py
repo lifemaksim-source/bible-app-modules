@@ -201,6 +201,38 @@ class EpubDraftTest(unittest.TestCase):
         with self.assertRaises(UnicodeDecodeError):
             extract_epub(epub)
 
+
+    def test_local_zip_is_importable_mybible_sqlite_and_never_written_by_default(self):
+        import sqlite3
+        rows = {(470, 1, 1): "Салам, дүйнө! Ӏараб", (470, 1, 3): "Second verse."}
+        with tempfile.TemporaryDirectory() as root:
+            out = Path(root)
+            original = sqlite_draft(rows, "inh", "a" * 64)
+            self.assertNotIn("localTestZip", original)
+            self.assertEqual(list(out.iterdir()), [])
+            result = sqlite_draft(rows, "inh", "a" * 64, local_test_dir=out)
+            archive = Path(result["localTestZip"])
+            self.assertEqual(archive.name, "IBT_inh_LOCAL_TEST_ONLY.zip")
+            with zipfile.ZipFile(archive) as z:
+                self.assertEqual(z.namelist(), ["IBT_inh.SQLite3"])
+                db_file = out / "private.sqlite3"
+                db_file.write_bytes(z.read("IBT_inh.SQLite3"))
+            with sqlite3.connect(db_file) as db:
+                self.assertEqual(db.execute("PRAGMA quick_check").fetchone()[0], "ok")
+                self.assertEqual(db.execute(
+                    "SELECT book_number, chapter, verse, text FROM verses ORDER BY verse"
+                ).fetchall(), [(470, 1, 1, rows[(470, 1, 1)]),
+                               (470, 1, 3, rows[(470, 1, 3)])])
+                self.assertEqual(db.execute("SELECT value FROM info WHERE name='language'").fetchone()[0], "inh")
+            with self.assertRaises(FileExistsError):
+                sqlite_draft(rows, "inh", "a" * 64, local_test_dir=out)
+
+    def test_local_test_zip_restricted_to_audited_sources(self):
+        with tempfile.TemporaryDirectory() as root:
+            with self.assertRaisesRegex(DraftError, "audited IBT"):
+                sqlite_draft({(470, 1, 1): "Test"}, "not-a-language", "a" * 64,
+                             local_test_dir=Path(root))
+
     def test_no_text_fails_closed(self):
         with self.assertRaisesRegex(DraftError, "No unambiguous"):
             sqlite_draft({}, "gag", "b" * 64)
