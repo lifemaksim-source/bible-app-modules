@@ -47,6 +47,7 @@ jobs:
           git add scratch/i18n-app/src/i18n/locales scratch/i18n-app/src/i18n/books scratch/i18n-app/src/i18n/extraLocalizations.ts scratch/i18n-app/regional-translation-report.json
           if ! git diff --staged --quiet; then
             git commit -m "chore(ci): temporarily stage translated Bible App UI drafts for review"
+            git pull --rebase origin feature/ussr-warsaw-language-audit-20261021
             git push origin HEAD:feature/ussr-warsaw-language-audit-20261021
           fi
       - name: Итог перевода
