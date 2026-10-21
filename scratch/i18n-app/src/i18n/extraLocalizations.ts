@@ -13,6 +13,8 @@ import locale_kk from './locales/kk.json';
 import books_kk from './books/kk.json';
 import locale_ky from './locales/ky.json';
 import books_ky from './books/ky.json';
+import locale_lt from './locales/lt.json';
+import books_lt from './books/lt.json';
 import locale_mn from './locales/mn.json';
 import books_mn from './books/mn.json';
 import locale_ro from './locales/ro.json';
@@ -21,6 +23,8 @@ import locale_sah from './locales/sah.json';
 import books_sah from './books/sah.json';
 import locale_tg from './locales/tg.json';
 import books_tg from './books/tg.json';
+import locale_tk from './locales/tk.json';
+import books_tk from './books/tk.json';
 import locale_tt from './locales/tt.json';
 import books_tt from './books/tt.json';
 import locale_uz from './locales/uz.json';
@@ -34,10 +38,12 @@ export const EXTRA_LANGUAGE_NAMES = {
   ka: "ქართული",
   kk: "Қазақша",
   ky: "Кыргызча",
+  lt: "Lietuvių",
   mn: "Монгол",
   ro: "Română",
   sah: "Саха тыла",
   tg: "Тоҷикӣ",
+  tk: "Türkmençe",
   tt: "Татарча",
   uz: "Oʻzbekcha",
 } as const;
@@ -50,10 +56,12 @@ export const EXTRA_RESOURCES = {
   ka: { translation: locale_ka },
   kk: { translation: locale_kk },
   ky: { translation: locale_ky },
+  lt: { translation: locale_lt },
   mn: { translation: locale_mn },
   ro: { translation: locale_ro },
   sah: { translation: locale_sah },
   tg: { translation: locale_tg },
+  tk: { translation: locale_tk },
   tt: { translation: locale_tt },
   uz: { translation: locale_uz },
 };
@@ -66,10 +74,12 @@ export const EXTRA_BOOKS = {
   ka: books_ka,
   kk: books_kk,
   ky: books_ky,
+  lt: books_lt,
   mn: books_mn,
   ro: books_ro,
   sah: books_sah,
   tg: books_tg,
+  tk: books_tk,
   tt: books_tt,
   uz: books_uz,
 };

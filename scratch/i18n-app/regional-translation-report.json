@@ -1,74 +1,24 @@
 {
   "report": [
     {
-      "code": "be",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78,
-      "safeRussianFallbacks": []
-    },
-    {
-      "code": "bg",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78,
-      "safeRussianFallbacks": []
-    },
-    {
-      "code": "ro",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78,
-      "safeRussianFallbacks": []
-    },
-    {
-      "code": "hy",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78,
-      "safeRussianFallbacks": []
-    },
-    {
-      "code": "ka",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78,
-      "safeRussianFallbacks": []
-    },
-    {
       "code": "tk",
-      "status": "failed",
-      "reason": "tk: HTTP 429"
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": [
+        {
+          "code": "tk",
+          "index": 945,
+          "method": "segmented"
+        }
+      ]
     },
     {
       "code": "lt",
-      "status": "failed",
-      "reason": "lt: HTTP 429"
-    },
-    {
-      "code": "lv",
-      "status": "failed",
-      "reason": "lv: HTTP 429"
-    },
-    {
-      "code": "et",
-      "status": "failed",
-      "reason": "et: HTTP 429"
-    },
-    {
-      "code": "cs",
-      "status": "failed",
-      "reason": "cs: HTTP 429"
-    },
-    {
-      "code": "sk",
-      "status": "failed",
-      "reason": "sk: HTTP 429"
-    },
-    {
-      "code": "mk",
-      "status": "failed",
-      "reason": "mk: HTTP 429"
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
     }
   ],
   "enabled": [
@@ -79,10 +29,12 @@
     "ka",
     "kk",
     "ky",
+    "lt",
     "mn",
     "ro",
     "sah",
     "tg",
+    "tk",
     "tt",
     "uz"
   ],
@@ -93,19 +45,19 @@
     "ba": {
       "originalIdentical": 35,
       "repaired": 0,
-      "failed": 35,
+      "failed": 0,
       "remainingIdentical": 38
     },
     "sah": {
       "originalIdentical": 37,
       "repaired": 0,
-      "failed": 37,
+      "failed": 0,
       "remainingIdentical": 40
     },
     "mn": {
       "originalIdentical": 3,
       "repaired": 0,
-      "failed": 3,
+      "failed": 0,
       "remainingIdentical": 6
     }
   }

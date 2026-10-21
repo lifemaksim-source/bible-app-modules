@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Pradžios knyga",
+    "abbr": "Pr"
+  },
+  "20": {
+    "name": "Išėjimo knyga",
+    "abbr": "Iš"
+  },
+  "30": {
+    "name": "Kunigų knyga",
+    "abbr": "Kun"
+  },
+  "40": {
+    "name": "Skaičių knyga",
+    "abbr": "Sk"
+  },
+  "50": {
+    "name": "Pakartoto įstatymo knyga",
+    "abbr": "Įst"
+  },
+  "60": {
+    "name": "Jozuės knyga",
+    "abbr": "Joz"
+  },
+  "70": {
+    "name": "Teisėjų knyga",
+    "abbr": "Ts"
+  },
+  "80": {
+    "name": "Rūtos knyga",
+    "abbr": "Rūt"
+  },
+  "90": {
+    "name": "Pirmoji Samuelio knyga",
+    "abbr": "1Sam"
+  },
+  "100": {
+    "name": "Antroji Samuelio knyga",
+    "abbr": "2Sam"
+  },
+  "110": {
+    "name": "Pirmoji Karalių knyga",
+    "abbr": "1Kar"
+  },
+  "120": {
+    "name": "Antroji Karalių knyga",
+    "abbr": "2Kar"
+  },
+  "130": {
+    "name": "Pirmoji Kronikų knyga",
+    "abbr": "1Krn"
+  },
+  "140": {
+    "name": "Antroji Kronikų knyga",
+    "abbr": "2Krn"
+  },
+  "145": {
+    "name": "Manaso malda",
+    "abbr": "Manaso"
+  },
+  "150": {
+    "name": "Ezros knyga",
+    "abbr": "Ezr"
+  },
+  "160": {
+    "name": "Nehemijo knyga",
+    "abbr": "Neh"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judita",
+    "abbr": "Judita"
+  },
+  "190": {
+    "name": "Esteros knyga",
+    "abbr": "Est"
+  },
+  "220": {
+    "name": "Jobo knyga",
+    "abbr": "Job"
+  },
+  "230": {
+    "name": "Psalmių knyga",
+    "abbr": "Ps"
+  },
+  "240": {
+    "name": "Patarlių knyga",
+    "abbr": "Pat"
+  },
+  "250": {
+    "name": "Ekleziasto knyga",
+    "abbr": "Ekl"
+  },
+  "260": {
+    "name": "Giesmių giesmė",
+    "abbr": "Gg"
+  },
+  "270": {
+    "name": "Saliamono išmintis",
+    "abbr": "Saliam"
+  },
+  "280": {
+    "name": "Jėzaus, Siracho sūnaus, išmintis",
+    "abbr": "Jėzaus"
+  },
+  "290": {
+    "name": "Izaijo pranašystė",
+    "abbr": "Iz"
+  },
+  "300": {
+    "name": "Jeremijo pranašystė",
+    "abbr": "Jer"
+  },
+  "310": {
+    "name": "Raudų knyga",
+    "abbr": "Rd"
+  },
+  "315": {
+    "name": "Jeremijo žinia",
+    "abbr": "Jeremi"
+  },
+  "320": {
+    "name": "Baruchas",
+    "abbr": "Baruch"
+  },
+  "330": {
+    "name": "Ezechielio pranašystė",
+    "abbr": "Ez"
+  },
+  "340": {
+    "name": "Danieliaus pranašystė",
+    "abbr": "Dan"
+  },
+  "350": {
+    "name": "Ozėjo pranašystė",
+    "abbr": "Oz"
+  },
+  "360": {
+    "name": "Joelio pranašystė",
+    "abbr": "Jl"
+  },
+  "370": {
+    "name": "Amoso pranašystė",
+    "abbr": "Am"
+  },
+  "380": {
+    "name": "Abdijo pranašystė",
+    "abbr": "Abd"
+  },
+  "390": {
+    "name": "Jonos pranašystė",
+    "abbr": "Jon"
+  },
+  "400": {
+    "name": "Michėjo pranašystė",
+    "abbr": "Mch"
+  },
+  "410": {
+    "name": "Nahumo pranašystė",
+    "abbr": "Nah"
+  },
+  "420": {
+    "name": "Habakuko pranašystė",
+    "abbr": "Hab"
+  },
+  "430": {
+    "name": "Sofonijo pranašystė",
+    "abbr": "Sof"
+  },
+  "440": {
+    "name": "Agėjo pranašystė",
+    "abbr": "Ag"
+  },
+  "450": {
+    "name": "Zacharijo pranašystė",
+    "abbr": "Zch"
+  },
+  "460": {
+    "name": "Malachijo pranašystė",
+    "abbr": "Mal"
+  },
+  "462": {
+    "name": "1-ieji Makabėjai",
+    "abbr": "1-ieji"
+  },
+  "464": {
+    "name": "2-ieji Makabėjai",
+    "abbr": "2-ieji"
+  },
+  "466": {
+    "name": "3-ieji Makabijai",
+    "abbr": "3-ieji"
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "Evangelija pagal Matą",
+    "abbr": "Mt"
+  },
+  "480": {
+    "name": "Evangelija pagal Morkų",
+    "abbr": "Mk"
+  },
+  "490": {
+    "name": "Evangelija pagal Luką",
+    "abbr": "Lk"
+  },
+  "500": {
+    "name": "Evangelija pagal Joną",
+    "abbr": "Jn"
+  },
+  "510": {
+    "name": "Apaštalų darbai",
+    "abbr": "Apd"
+  },
+  "520": {
+    "name": "Laiškas Romiečiams",
+    "abbr": "Rom"
+  },
+  "530": {
+    "name": "Pirmasis laiškas Korintiečiams",
+    "abbr": "1Kor"
+  },
+  "540": {
+    "name": "Antrasis laiškas Korintiečiams",
+    "abbr": "2Kor"
+  },
+  "550": {
+    "name": "Laiškas Galatams",
+    "abbr": "Gal"
+  },
+  "560": {
+    "name": "Laiškas Efeziečiams",
+    "abbr": "Ef"
+  },
+  "570": {
+    "name": "Laiškas Filipiečiams",
+    "abbr": "Fil"
+  },
+  "580": {
+    "name": "Laiškas Kolosiečiams",
+    "abbr": "Kol"
+  },
+  "590": {
+    "name": "Pirmasis laiškas Tesalonikiečiams",
+    "abbr": "1Tes"
+  },
+  "600": {
+    "name": "Antrasis laiškas Tesalonikiečiams",
+    "abbr": "2Tes"
+  },
+  "610": {
+    "name": "Pirmasis laiškas Timotiejui",
+    "abbr": "1Tim"
+  },
+  "620": {
+    "name": "Antrasis laiškas Timotiejui",
+    "abbr": "2Tim"
+  },
+  "630": {
+    "name": "Laiškas Titui",
+    "abbr": "Tit"
+  },
+  "640": {
+    "name": "Laiškas Filemonui",
+    "abbr": "Fm"
+  },
+  "650": {
+    "name": "Laiškas Hebrajams",
+    "abbr": "Hbr"
+  },
+  "660": {
+    "name": "Jokūbo laiškas",
+    "abbr": "Jok"
+  },
+  "670": {
+    "name": "Pirmasis Petro laiškas",
+    "abbr": "1Pt"
+  },
+  "680": {
+    "name": "Antrasis Petro laiškas",
+    "abbr": "2Pt"
+  },
+  "690": {
+    "name": "Pirmasis Jono laiškas",
+    "abbr": "1Jn"
+  },
+  "700": {
+    "name": "Antrasis Jono laiškas",
+    "abbr": "2Jn"
+  },
+  "710": {
+    "name": "Trečiasis Jono laiškas",
+    "abbr": "3Jn"
+  },
+  "720": {
+    "name": "Judo laiškas",
+    "abbr": "Jud"
+  },
+  "730": {
+    "name": "Apreiškimas Jonui",
+    "abbr": "Apr"
+  }
+}

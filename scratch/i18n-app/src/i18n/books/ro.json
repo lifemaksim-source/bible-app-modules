@@ -1,59 +1,59 @@
 {
   "10": {
-    "name": "Fiinţă",
-    "abbr": "Fiinţă"
+    "name": "Geneza",
+    "abbr": "Gen."
   },
   "20": {
-    "name": "Exod",
-    "abbr": "Exod"
+    "name": "Exodul",
+    "abbr": "Ex."
   },
   "30": {
     "name": "Leviticul",
-    "abbr": "Leviti"
+    "abbr": "Lev."
   },
   "40": {
-    "name": "Numerele",
-    "abbr": "Numere"
+    "name": "Numeri",
+    "abbr": "Num."
   },
   "50": {
     "name": "Deuteronomul",
-    "abbr": "Deuter"
+    "abbr": "Deut."
   },
   "60": {
     "name": "Iosua",
-    "abbr": "Iosua"
+    "abbr": "Ios."
   },
   "70": {
     "name": "Judecătorii",
-    "abbr": "Judecă"
+    "abbr": "Jud."
   },
   "80": {
-    "name": "Ruth",
-    "abbr": "Ruth"
+    "name": "Rut",
+    "abbr": "Rut"
   },
   "90": {
     "name": "1 Samuel",
-    "abbr": "1 Samu"
+    "abbr": "1Sam."
   },
   "100": {
-    "name": "2 Regi",
-    "abbr": "2 Regi"
+    "name": "2 Samuel",
+    "abbr": "2Sam."
   },
   "110": {
-    "name": "1 Regi",
-    "abbr": "1 Regi"
+    "name": "1 Împărați",
+    "abbr": "1Împ."
   },
   "120": {
-    "name": "2 Regi",
-    "abbr": "2 Regi"
+    "name": "2 Împărați",
+    "abbr": "2Împ."
   },
   "130": {
     "name": "1 Cronici",
-    "abbr": "1 Cron"
+    "abbr": "1Cron."
   },
   "140": {
     "name": "2 Cronici",
-    "abbr": "2 Cron"
+    "abbr": "2Cron."
   },
   "145": {
     "name": "Rugăciunea lui Manase",
@@ -65,7 +65,7 @@
   },
   "160": {
     "name": "Neemia",
-    "abbr": "Neemia"
+    "abbr": "Neem."
   },
   "165": {
     "name": "2 Esdras",
@@ -80,28 +80,28 @@
     "abbr": "Judith"
   },
   "190": {
-    "name": "Esther",
-    "abbr": "Esther"
+    "name": "Estera",
+    "abbr": "Est."
   },
   "220": {
-    "name": "Post",
-    "abbr": "Post"
+    "name": "Iov",
+    "abbr": "Iov"
   },
   "230": {
-    "name": "psaltire",
-    "abbr": "psalti"
+    "name": "Psalmul",
+    "abbr": "Ps."
   },
   "240": {
-    "name": "Proverbe",
-    "abbr": "Prover"
+    "name": "Proverbele",
+    "abbr": "Prov."
   },
   "250": {
     "name": "Eclesiastul",
-    "abbr": "Eclesi"
+    "abbr": "Ecl."
   },
   "260": {
-    "name": "Cântecul Cântărilor",
-    "abbr": "Cântec"
+    "name": "Cântarea cântărilor",
+    "abbr": "Cânt."
   },
   "270": {
     "name": "Înțelepciunea lui Solomon",
@@ -113,15 +113,15 @@
   },
   "290": {
     "name": "Isaia",
-    "abbr": "Isaia"
+    "abbr": "Is."
   },
   "300": {
     "name": "Ieremia",
-    "abbr": "Ieremi"
+    "abbr": "Ier."
   },
   "310": {
-    "name": "Lamentații",
-    "abbr": "Lament"
+    "name": "Plângerile lui Ieremia",
+    "abbr": "Plân."
   },
   "315": {
     "name": "Mesajul lui Ieremia",
@@ -133,27 +133,27 @@
   },
   "330": {
     "name": "Ezechiel",
-    "abbr": "Ezechi"
+    "abbr": "Ezec."
   },
   "340": {
     "name": "Daniel",
-    "abbr": "Daniel"
+    "abbr": "Dan."
   },
   "350": {
     "name": "Osea",
-    "abbr": "Osea"
+    "abbr": "Os."
   },
   "360": {
-    "name": "Joel",
-    "abbr": "Joel"
+    "name": "Ioel",
+    "abbr": "Ioel"
   },
   "370": {
     "name": "Amos",
-    "abbr": "Amos"
+    "abbr": "Am."
   },
   "380": {
-    "name": "Avdiy",
-    "abbr": "Avdiy"
+    "name": "Obadia",
+    "abbr": "Ob."
   },
   "390": {
     "name": "Iona",
@@ -164,28 +164,28 @@
     "abbr": "Mica"
   },
   "410": {
-    "name": "Nahum",
-    "abbr": "Nahum"
+    "name": "Naum",
+    "abbr": "Naum"
   },
   "420": {
     "name": "Habacuc",
-    "abbr": "Habacu"
+    "abbr": "Hab."
   },
   "430": {
-    "name": "Sofonia",
-    "abbr": "Sofoni"
+    "name": "Țefania",
+    "abbr": "Țef."
   },
   "440": {
     "name": "Hagai",
-    "abbr": "Hagai"
+    "abbr": "Hag."
   },
   "450": {
     "name": "Zaharia",
-    "abbr": "Zahari"
+    "abbr": "Zah."
   },
   "460": {
     "name": "Maleahi",
-    "abbr": "Maleah"
+    "abbr": "Mal."
   },
   "462": {
     "name": "1 Macabei",
@@ -204,111 +204,111 @@
     "abbr": "3 Esdr"
   },
   "470": {
-    "name": "De la Matei",
-    "abbr": "De la "
+    "name": "Matei",
+    "abbr": "Mat."
   },
   "480": {
-    "name": "De la Mark",
-    "abbr": "De la "
+    "name": "Marcu",
+    "abbr": "Mar."
   },
   "490": {
-    "name": "De la Luke",
-    "abbr": "De la "
+    "name": "Luca",
+    "abbr": "Luca"
   },
   "500": {
-    "name": "De la Ioan",
-    "abbr": "De la "
+    "name": "Ioan",
+    "abbr": "Ioan"
   },
   "510": {
-    "name": "Acte",
-    "abbr": "Acte"
+    "name": "Faptele apostolilor",
+    "abbr": "Fap."
   },
   "520": {
-    "name": "romani",
-    "abbr": "romani"
+    "name": "Romani",
+    "abbr": "Rom."
   },
   "530": {
     "name": "1 Corinteni",
-    "abbr": "1 Cori"
+    "abbr": "1Cor."
   },
   "540": {
     "name": "2 Corinteni",
-    "abbr": "2 Cori"
+    "abbr": "2Cor."
   },
   "550": {
     "name": "Galateni",
-    "abbr": "Galate"
+    "abbr": "Gal."
   },
   "560": {
     "name": "Efeseni",
-    "abbr": "Efesen"
+    "abbr": "Efes."
   },
   "570": {
     "name": "Filipeni",
-    "abbr": "Filipe"
+    "abbr": "Filip."
   },
   "580": {
     "name": "Coloseni",
-    "abbr": "Colose"
+    "abbr": "Col."
   },
   "590": {
     "name": "1 Tesaloniceni",
-    "abbr": "1 Tesa"
+    "abbr": "1Tes."
   },
   "600": {
     "name": "2 Tesaloniceni",
-    "abbr": "2 Tesa"
+    "abbr": "2Tes."
   },
   "610": {
     "name": "1 Timotei",
-    "abbr": "1 Timo"
+    "abbr": "1Tim."
   },
   "620": {
     "name": "2 Timotei",
-    "abbr": "2 Timo"
+    "abbr": "2Tim."
   },
   "630": {
-    "name": "Titu",
-    "abbr": "Titu"
+    "name": "Tit",
+    "abbr": "Tit"
   },
   "640": {
-    "name": "Filemon",
-    "abbr": "Filemo"
+    "name": "Filimon",
+    "abbr": "Flm."
   },
   "650": {
-    "name": "evrei",
-    "abbr": "evrei"
+    "name": "Evrei",
+    "abbr": "Evr."
   },
   "660": {
     "name": "Iacov",
-    "abbr": "Iacov"
+    "abbr": "Iac."
   },
   "670": {
     "name": "1 Petru",
-    "abbr": "1 Petr"
+    "abbr": "1Pet."
   },
   "680": {
     "name": "2 Petru",
-    "abbr": "2 Petr"
+    "abbr": "2Pet."
   },
   "690": {
     "name": "1 Ioan",
-    "abbr": "1 Ioan"
+    "abbr": "1Ioan"
   },
   "700": {
     "name": "2 Ioan",
-    "abbr": "2 Ioan"
+    "abbr": "2Ioan"
   },
   "710": {
     "name": "3 Ioan",
-    "abbr": "3 Ioan"
+    "abbr": "3Ioan"
   },
   "720": {
     "name": "Iuda",
     "abbr": "Iuda"
   },
   "730": {
-    "name": "Revelaţie",
-    "abbr": "Revela"
+    "name": "Apocalipsa",
+    "abbr": "Apoc."
   }
 }

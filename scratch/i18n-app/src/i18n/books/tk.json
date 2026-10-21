@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Gelip çykyş",
+    "abbr": "Gelip "
+  },
+  "20": {
+    "name": "Çykyş",
+    "abbr": "Çykyş"
+  },
+  "30": {
+    "name": "Lewiler",
+    "abbr": "Lewile"
+  },
+  "40": {
+    "name": "Sanlar",
+    "abbr": "Sanlar"
+  },
+  "50": {
+    "name": "Kanun taglymaty",
+    "abbr": "Kanun "
+  },
+  "60": {
+    "name": "Joshuaeşuwa",
+    "abbr": "Joshua"
+  },
+  "70": {
+    "name": "Kazylar",
+    "abbr": "Kazyla"
+  },
+  "80": {
+    "name": "Rut",
+    "abbr": "Rut"
+  },
+  "90": {
+    "name": "1 Şamuwel",
+    "abbr": "1 Şamu"
+  },
+  "100": {
+    "name": "2 Patyşa",
+    "abbr": "2 Paty"
+  },
+  "110": {
+    "name": "1 Patyşa",
+    "abbr": "1 Paty"
+  },
+  "120": {
+    "name": "2 Patyşa",
+    "abbr": "2 Paty"
+  },
+  "130": {
+    "name": "1 Chroniclesazgylar",
+    "abbr": "1 Chro"
+  },
+  "140": {
+    "name": "2 Chroniclesazgylar",
+    "abbr": "2 Chro"
+  },
+  "145": {
+    "name": "Manaşe dogasy",
+    "abbr": "Manaşe"
+  },
+  "150": {
+    "name": "Ezra",
+    "abbr": "Ezra"
+  },
+  "160": {
+    "name": "Nehemýa",
+    "abbr": "Nehemý"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judith",
+    "abbr": "Judith"
+  },
+  "190": {
+    "name": "Ester",
+    "abbr": "Ester"
+  },
+  "220": {
+    "name": "Iş",
+    "abbr": "Iş"
+  },
+  "230": {
+    "name": "Zebur",
+    "abbr": "Zebur"
+  },
+  "240": {
+    "name": "Süleýmanyň pähimleri",
+    "abbr": "Süleým"
+  },
+  "250": {
+    "name": "Wagyz kitaby",
+    "abbr": "Wagyz "
+  },
+  "260": {
+    "name": "Aýdym aýdymy",
+    "abbr": "Aýdym "
+  },
+  "270": {
+    "name": "Süleýmanyň hikmeti",
+    "abbr": "Süleým"
+  },
+  "280": {
+    "name": "Sirakyň ogly Isanyň hikmeti",
+    "abbr": "Siraky"
+  },
+  "290": {
+    "name": "Işaýa",
+    "abbr": "Işaýa"
+  },
+  "300": {
+    "name": "Jeremiahermeýa",
+    "abbr": "Jeremi"
+  },
+  "310": {
+    "name": "Jeremiahermeýanyň agy",
+    "abbr": "Jeremi"
+  },
+  "315": {
+    "name": "Jeremiahermeýanyň habary",
+    "abbr": "Jeremi"
+  },
+  "320": {
+    "name": "Baruk",
+    "abbr": "Baruk"
+  },
+  "330": {
+    "name": "Ezekiýel",
+    "abbr": "Ezekiý"
+  },
+  "340": {
+    "name": "Daniel",
+    "abbr": "Daniel"
+  },
+  "350": {
+    "name": "Hoşeýa",
+    "abbr": "Hoşeýa"
+  },
+  "360": {
+    "name": "Joel",
+    "abbr": "Joel"
+  },
+  "370": {
+    "name": "Amos",
+    "abbr": "Amos"
+  },
+  "380": {
+    "name": "Awdiy",
+    "abbr": "Awdiy"
+  },
+  "390": {
+    "name": "Ahunus",
+    "abbr": "Ahunus"
+  },
+  "400": {
+    "name": "Mika",
+    "abbr": "Mika"
+  },
+  "410": {
+    "name": "Nahum",
+    "abbr": "Nahum"
+  },
+  "420": {
+    "name": "Habakuk",
+    "abbr": "Habaku"
+  },
+  "430": {
+    "name": "Sefaniýa",
+    "abbr": "Sefani"
+  },
+  "440": {
+    "name": "Hagaý",
+    "abbr": "Hagaý"
+  },
+  "450": {
+    "name": "Zakarýa",
+    "abbr": "Zakarý"
+  },
+  "460": {
+    "name": "Malaki",
+    "abbr": "Malaki"
+  },
+  "462": {
+    "name": "1-nji Makkabe",
+    "abbr": "1-nji "
+  },
+  "464": {
+    "name": "2-nji Makkabe",
+    "abbr": "2-nji "
+  },
+  "466": {
+    "name": "3-nji Makkabe",
+    "abbr": "3-nji "
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "Matta",
+    "abbr": "Matta"
+  },
+  "480": {
+    "name": "Markdan",
+    "abbr": "Markda"
+  },
+  "490": {
+    "name": "Lukadan",
+    "abbr": "Lukada"
+  },
+  "500": {
+    "name": "Johnahýadan",
+    "abbr": "Johnah"
+  },
+  "510": {
+    "name": "Resullaryň Işleri",
+    "abbr": "Resull"
+  },
+  "520": {
+    "name": "Rimliler",
+    "abbr": "Rimlil"
+  },
+  "530": {
+    "name": "1 Korintoslylar",
+    "abbr": "1 Kori"
+  },
+  "540": {
+    "name": "2 Korintoslylar",
+    "abbr": "2 Kori"
+  },
+  "550": {
+    "name": "Galatýalylar",
+    "abbr": "Galatý"
+  },
+  "560": {
+    "name": "Efesliler",
+    "abbr": "Efesli"
+  },
+  "570": {
+    "name": "Filipililer",
+    "abbr": "Filipi"
+  },
+  "580": {
+    "name": "Koloseliler",
+    "abbr": "Kolose"
+  },
+  "590": {
+    "name": "1 Selanikliler",
+    "abbr": "1 Sela"
+  },
+  "600": {
+    "name": "2 Selanikliler",
+    "abbr": "2 Sela"
+  },
+  "610": {
+    "name": "1 Timoteos",
+    "abbr": "1 Timo"
+  },
+  "620": {
+    "name": "2 Timoteos",
+    "abbr": "2 Timo"
+  },
+  "630": {
+    "name": "Titu",
+    "abbr": "Titu"
+  },
+  "640": {
+    "name": "Filemon",
+    "abbr": "Filemo"
+  },
+  "650": {
+    "name": "Hebrewsewreýler",
+    "abbr": "Hebrew"
+  },
+  "660": {
+    "name": "Jacobakup",
+    "abbr": "Jacoba"
+  },
+  "670": {
+    "name": "1 Petrus",
+    "abbr": "1 Petr"
+  },
+  "680": {
+    "name": "2 Petrus",
+    "abbr": "2 Petr"
+  },
+  "690": {
+    "name": "1 Johnahýa",
+    "abbr": "1 John"
+  },
+  "700": {
+    "name": "2 Johnahýa",
+    "abbr": "2 John"
+  },
+  "710": {
+    "name": "3 Johnahýa",
+    "abbr": "3 John"
+  },
+  "720": {
+    "name": "Iuda",
+    "abbr": "Iuda"
+  },
+  "730": {
+    "name": "Ylham",
+    "abbr": "Ylham"
+  }
+}
