@@ -65,6 +65,52 @@ def inspect_xml(data: bytes, suffix: str) -> dict:
                 numbered += 1
             if len(paragraphs) < 26:
                 paragraphs.append({"tag": tag, "textLength": len(text), "shape": _shape(text), "attributes": attrs})
+    # OSIS-style IDs are identifiers, not quotations; a verse anchor must
+    # be an id/name on the element itself, not a hyperlink to another verse.
+    osis = re.compile(r"^([1-3]?[A-Za-z][A-Za-z0-9]*)\.(\d{1,3})(?:\.(\d{1,3}))?$")
+    book_codes = Counter()
+    id_counts = Counter()
+    reference_counts = Counter()
+    anchor_examples = []
+    chapter_examples = []
+    context_examples = []
+    parents = {child: parent for parent in root.iter() for child in parent}
+    for node in root.iter():
+        tag = _localname(node.tag)
+        for key in ("id", "name"):
+            raw_id = node.attrib.get(key)
+            if not raw_id:
+                continue
+            match = osis.fullmatch(raw_id)
+            if not match:
+                continue
+            book_codes[match.group(1)] += 1
+            kind = "verse" if match.group(3) else "chapter"
+            id_counts[(tag, kind)] += 1
+            example = anchor_examples if kind == "verse" else chapter_examples
+            if len(example) < 12:
+                example.append({"tag": tag, "id": raw_id})
+            if kind == "verse" and len(context_examples) < 8:
+                chain = []
+                parent = node
+                for _ in range(5):
+                    if parent not in parents:
+                        break
+                    parent = parents[parent]
+                    chain.append(_localname(parent.tag))
+                context_examples.append({
+                    "id": raw_id, "element": tag, "parentTags": chain,
+                    "elementChildTags": [_localname(x.tag) for x in list(node)[:8]],
+                    "textLength": len("".join(node.itertext()).strip()),
+                    "textShape": _shape("".join(node.itertext())),
+                })
+        href = node.attrib.get("href", "")
+        if href:
+            target = href.rsplit("#", 1)[-1]
+            match = osis.fullmatch(target)
+            if match:
+                reference_counts[("verse" if match.group(3) else "chapter")] += 1
+
     return {
         "format": suffix,
         "rootTag": _localname(root.tag),
@@ -73,6 +119,14 @@ def inspect_xml(data: bytes, suffix: str) -> dict:
         "attributeSamples": sample_attributes,
         "paragraphSamples": paragraphs,
         "paragraphsStartingWithNumber": numbered,
+        "osisEvidence": {
+            "idCountsByTag": [[tag, kind, n] for (tag, kind), n in sorted(id_counts.items())],
+            "referenceCounts": dict(reference_counts),
+            "topBookCodes": book_codes.most_common(25),
+            "verseIdExamples": anchor_examples,
+            "chapterIdExamples": chapter_examples,
+            "verseContextExamples": context_examples,
+        },
         "structureVerdict": "requires_manual_verse_mapping_review",
     }
 
@@ -114,7 +168,7 @@ def _read_zip(data: bytes, fmt: str) -> dict:
                 candidates.append(info)
         if not candidates:
             raise ValueError("No FB2/XHTML entries")
-        candidates.sort(key=lambda x: (not x.filename.lower().endswith(".fb2"), x.filename))
+        candidates.sort(key=lambda x: (not x.filename.lower().endswith(".fb2"), not bool(re.search(r"(?:split_|chapter_|/text/)", x.filename, re.I)), x.filename))
         profiles = []
         for info in candidates[:2]:
             raw = archive.read(info)
