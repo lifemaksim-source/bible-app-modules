@@ -58,6 +58,8 @@ class VerseHtml(HTMLParser):
         self.unknown_codes = Counter()
         self.seen_anchors = 0
         self.skipped_anchors = 0
+        self.empty_addresses: list[tuple[int, int, int]] = []
+        self.outside_flow = Counter()
 
     def _save(self) -> None:
         if self.active is None:
@@ -67,6 +69,7 @@ class VerseHtml(HTMLParser):
             self.verses.append((self.active, text))
         else:
             self.skipped_anchors += 1
+            self.empty_addresses.append(self.active)
         self.parts = []
 
     def handle_starttag(self, tag, attrs) -> None:
@@ -102,6 +105,10 @@ class VerseHtml(HTMLParser):
                for tag, cls, typ in self.stack):
             return
         if not any(tag == "p" and CONTENT_CLASS.search(cls) for tag, cls, _ in self.stack):
+            if data.strip():
+                relevant = [f"{tag}:{cls[:48]}" for tag, cls, _ in self.stack if tag in ("p", "div", "td", "span", "v")]
+                label = " > ".join(relevant[-3:]) or "(no p/div)"
+                self.outside_flow[label] += len(data.strip())
             return
         self.parts.append(data)
 
@@ -125,6 +132,8 @@ def extract_epub(data: bytes) -> dict:
     files_with_text = 0
     anchors = 0
     empty_anchors = 0
+    missing_by_book = Counter()
+    outside_flow = Counter()
     with zipfile.ZipFile(BytesIO(data)) as archive:
         members = archive.infolist()
         if len(members) > MAX_ENTRIES:
@@ -148,10 +157,14 @@ def extract_epub(data: bytes) -> dict:
                 files_with_text += 1
             anchors += probe.seen_anchors
             empty_anchors += probe.skipped_anchors
+            missing_by_book.update(b for b, _, _ in probe.empty_addresses)
+            outside_flow.update(probe.outside_flow)
             unknown.update(probe.unknown_codes)
     return {
         "verses": results, "verseAnchors": anchors, "blankAnchors": empty_anchors,
         "filesWithVerses": files_with_text, "unknownBooks": dict(unknown),
+        "blankByBook": [[book, n] for book, n in missing_by_book.most_common(20)],
+        "outsideFlowContexts": outside_flow.most_common(16),
     }
 
 
@@ -209,7 +222,9 @@ def test_registry(registry_file: Path) -> dict:
             item.update({"sourceSha256": source_hash, "verseAnchors": parsed["verseAnchors"],
                          "blankAnchors": parsed["blankAnchors"],
                          "filesWithVerses": parsed["filesWithVerses"],
-                         "unknownBooks": parsed["unknownBooks"]})
+                         "unknownBooks": parsed["unknownBooks"],
+                         "blankByBook": parsed["blankByBook"],
+                         "outsideFlowContexts": parsed["outsideFlowContexts"]})
             item.update(sqlite_draft(parsed["verses"], entry["language"], source_hash))
             report["draftsWithVerses"] += 1
         except (OSError, ValueError, UnicodeError, zipfile.BadZipFile) as exc:
