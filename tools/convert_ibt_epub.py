@@ -38,6 +38,7 @@ BOOKS = {
 ALIASES = {"1Th": "1Thess", "2Th": "2Thess", "1Jn": "1John", "2Jn": "2John", "3Jn": "3John"}
 VERSE_ID = re.compile(r"^_?([1-3]?[A-Za-z][A-Za-z0-9]*)\.(\d{1,3})\.(\d{1,3})$")
 CONTENT_CLASS = re.compile(r"\bosis-(?:p\d*|m\d*|q\d*|pi\d*|pc|nb|li\d*|b|tr|tc\d*)\b")
+POETRY_CLASS = re.compile(r"\bosis-l\d*\b")
 MAX_ENTRIES = 1600
 MAX_ENTRY_BYTES = 48 * 1024 * 1024
 
@@ -100,11 +101,14 @@ class VerseHtml(HTMLParser):
         if self.active is None or not data:
             return
         if any(tag in ("sup", "script", "style", "h1", "h2", "h3", "h4", "h5", "h6")
-               or "noteref" in typ or "osis-note" in cls or "xsl-chapter-number" in cls
-               or "xsl-verse-number" in cls
+               or "noteref" in typ or "footnote" in typ
+               or "osis-note" in cls or "footnote" in cls
+               or "xsl-chapter-number" in cls or "xsl-verse-number" in cls
                for tag, cls, typ in self.stack):
             return
-        if not any(tag == "p" and CONTENT_CLASS.search(cls) for tag, cls, _ in self.stack):
+        if not any((tag == "p" and CONTENT_CLASS.search(cls))
+                   or (tag == "div" and POETRY_CLASS.search(cls))
+                   for tag, cls, _ in self.stack):
             if data.strip():
                 relevant = [f"{tag}:{cls[:48]}" for tag, cls, _ in self.stack if tag in ("p", "div", "td", "span", "v")]
                 label = " > ".join(relevant[-3:]) or "(no p/div)"
