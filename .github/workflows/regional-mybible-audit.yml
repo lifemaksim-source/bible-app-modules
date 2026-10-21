@@ -1,0 +1,53 @@
+name: Аудит реестра языков СССР и Восточной Европы
+
+on:
+  pull_request:
+    paths:
+      - tools/scan_regional_mybible.py
+      - tools/test_scan_regional_mybible.py
+      - .github/workflows/regional-mybible-audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regional-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Тесты аудита региональных языков
+        run: |
+          python3 -W error::ResourceWarning -m unittest discover -s tools -p test_scan_regional_mybible.py -v
+      - name: Официальный реестр MyBible — один реальный ZIP на язык
+        run: python3 tools/scan_regional_mybible.py --output regional-module-audit.json
+      - name: Итоги без бинарных текстов
+        if: always()
+        run: |
+          if test -f regional-module-audit.json; then
+            python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          d = json.loads(Path('regional-module-audit.json').read_text('utf-8'))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('## Реальный MyBible registry\n\n')
+              f.write(f"Языков с предложениями: {d['languagesWithOffers']}; модулей в реестре: {d['moduleOffers']}; проверена SQLite для {d.get('languagesWithVerifiedSqlite', 0)} языков.\n\n")
+              for language, item in d['languages'].items():
+                  verified = item['verified']
+                  detail = f"{verified['books']} книг, {verified['nonEmptyVerseRows']} непустых стиховых строк" if verified else 'не проверено'
+                  f.write(f"- {language}: {item['registryEntries']} кандидатов, {detail}\n")
+          PY
+          fi
+      - name: Архивировать только метаданные
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regional-module-audit
+          path: regional-module-audit.json
+          retention-days: 7
+          if-no-files-found: ignore
