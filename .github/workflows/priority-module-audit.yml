@@ -5,6 +5,8 @@ on:
     paths:
       - tools/audit_mybible.py
       - tools/test_audit_mybible.py
+      - tools/inspect_mybible.py
+      - tools/test_inspect_mybible.py
       - tools/check-language-discovery.mjs
       - tools/language-discovery.test.mjs
       - docs/language-module-discovery.json
@@ -31,7 +33,9 @@ jobs:
       - name: Node.js тесты реестра и существующих модулей
         run: npm test
       - name: Локальные тесты проверки MyBible
-        run: python3 -W error::ResourceWarning -m unittest discover -s tools -p test_audit_mybible.py -v
+        run: |
+          python3 -W error::ResourceWarning -m unittest discover -s tools -p test_audit_mybible.py -v
+          python3 -W error::ResourceWarning -m unittest discover -s tools -p test_inspect_mybible.py -v
       - name: Действительный реестр и ZIP-архивы, без публикации
         shell: bash
         run: |
