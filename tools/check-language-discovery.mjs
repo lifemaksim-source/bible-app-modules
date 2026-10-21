@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const TYPES = new Set(['mybible_catalog_listing', 'prior_branch_report', 'existing_build_branch', 'digital_api_listing']);
-const STATUSES = new Set(['listing_only', 'sqlite_built_checked_not_android']);
+const TYPES = new Set(['mybible_catalog_listing', 'prior_branch_report', 'existing_build_branch', 'digital_api_listing', 'mybible_official_registry']);
+const STATUSES = new Set(['listing_only', 'sqlite_built_checked_not_android', 'sqlite_source_verified_not_android']);
 
 export function validateDiscovery(document) {
   const errors = [];
@@ -34,15 +34,29 @@ export function validateDiscovery(document) {
       errors.push(`${context}: unverified candidate may not be published or Android-verified`);
     }
     const built = record.verification === 'sqlite_built_checked_not_android';
-    if (built !== (record.sourceKind === 'existing_build_branch')) {
+    const official = record.verification === 'sqlite_source_verified_not_android';
+    if (built !== (record.sourceKind === 'existing_build_branch') ||
+        official !== (record.sourceKind === 'mybible_official_registry')) {
       errors.push(`${context}: sourceKind and verification do not match`);
     }
-    if (record.downloaded !== built || record.sqliteChecked !== built) {
+    if (record.downloaded !== (built || official) || record.sqliteChecked !== (built || official)) {
       errors.push(`${context}: downloaded/sqliteChecked must match evidence level`);
     }
     if (built && (!record.existingBranch || !Number.isInteger(record.booksChecked) || record.booksChecked < 1 ||
       !Number.isInteger(record.verseRowsChecked) || record.verseRowsChecked < 1)) {
       errors.push(`${context}: missing prior build evidence`);
+    }
+    if (official && (
+      record.sourceUrl !== 'https://mybible.zone/repository/registry/registry.zip' ||
+      !/^https:\/\/mybible\.zone\/repository\/modules\/[^\s]+\.zip$/.test(record.downloadUrl) ||
+      !/^https:\/\/github\.com\/lifemaksim-source\/bible-app-modules\/actions\/runs\/\d+$/.test(record.evidenceRunUrl) ||
+      !/^[0-9a-f]{64}$/.test(record.sha256) || !record.sqliteFile ||
+      !Number.isInteger(record.registryVersion) || record.registryVersion < 1 ||
+      !Number.isInteger(record.booksChecked) || record.booksChecked < 1 ||
+      !Number.isInteger(record.verseRowsChecked) || record.verseRowsChecked < 1 ||
+      !Number.isInteger(record.blankVerseRows) || record.blankVerseRows < 0
+    )) {
+      errors.push(`${context}: missing official downloaded SQLite evidence`);
     }
   }
   for (const language of ['tg', 'mn']) if (!languages.has(language)) errors.push(`Missing required priority language: ${language}`);
