@@ -830,8 +830,8 @@
       "language": "tg",
       "name": "Таджикский",
       "externalId": "КМО'16",
-      "title": "Таджикский Новый Завет (КМО’16)",
-      "claimedScope": "new_testament",
+      "title": "КМО’16 — отдельные книги Ветхого и Нового Заветов",
+      "claimedScope": "partial",
       "sourceKind": "mybible_official_registry",
       "sourceUrl": "https://mybible.zone/repository/registry/registry.zip",
       "downloadUrl": "https://mybible.zone/repository/modules/%D0%9A%D0%9C%D0%9E%2716.zip",
@@ -846,7 +846,8 @@
       "booksChecked": 27,
       "verseRowsChecked": 8499,
       "blankVerseRows": 107,
-      "sha256": "ff816001774291a8409a8ff3d89b8f9dae4a7e62f5fa0486de75f9e691fbccbf"
+      "sha256": "ff816001774291a8409a8ff3d89b8f9dae4a7e62f5fa0486de75f9e691fbccbf",
+      "scopeNote": "27 books total does not mean 27 NT: 6 books are OT and 21 are NT; 107 blank verse rows, sparse Isaiah chapters. Based on real SQLite from Actions 39619189414."
     },
     {
       "id": "mybible-mn-mnkjv",
