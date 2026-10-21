@@ -61,8 +61,8 @@ jobs:
               report['registry'] = {'status': 'loaded', 'version': reg.get('version'), 'matchingEntries': len(rows)}
               for language in ('tg', 'mn'):
                   offers = [r for r in rows if r['language'] == language]
-                  summary = {'status': 'no_registry_entry', 'entries': len(offers), 'attempts': []}
-                  for offer in offers[:3]:
+                  summary = {'status': 'no_registry_entry', 'entries': len(offers), 'verified': 0, 'attempts': []}
+                  for offer in offers:
                       for url in offer['downloadUrls'][:2]:
                           attempt = {'file': offer['file'], 'url': url}
                           try:
@@ -73,15 +73,17 @@ jobs:
                               if valid['language'].lower().split('-')[0].split('_')[0] != language:
                                   raise AuditError('Wrong module language: ' + valid['language'])
                               attempt['inspection'] = valid
-                              summary['status'] = 'sqlite_verified_not_android'
+                              summary['verified'] += 1
                           except Exception as exc:
                               attempt['error'] = str(exc)[:240]
                           summary['attempts'].append(attempt)
-                          if summary['status'] == 'sqlite_verified_not_android':
+                          if 'inspection' in attempt:
                               break
-                      if summary['status'] == 'sqlite_verified_not_android':
-                          break
-                  if offers and summary['status'] != 'sqlite_verified_not_android':
+                  if summary['verified'] == len(offers) and offers:
+                      summary['status'] = 'all_sqlite_verified_not_android'
+                  elif summary['verified']:
+                      summary['status'] = 'partly_sqlite_verified_not_android'
+                  elif offers:
                       summary['status'] = 'registry_present_archive_not_verified'
                   report['languages'][language] = summary
           except Exception as exc:
@@ -91,7 +93,7 @@ jobs:
           lines = ['## Приоритетные языки — проверка', '']
           lines.append('Реестр: ' + report.get('registry', {}).get('status', '?'))
           for language, value in report['languages'].items():
-              lines.append(f'- {language}: {value["status"]}; записей в реестре: {value["entries"]}')
+              lines.append(f'- {language}: {value["status"]}; записей: {value["entries"]}, проверено SQLite: {value["verified"]}')
           with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf8') as f:
               f.write('\n'.join(lines) + '\n')
           print(json.dumps(report, ensure_ascii=False, indent=2))
