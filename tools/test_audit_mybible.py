@@ -5,7 +5,7 @@ import unittest
 import zipfile
 from contextlib import closing
 from pathlib import Path
-from audit_mybible import AuditError, read_registry, registry_candidates, verify_zip
+from audit_mybible import AuditError, NT_BOOKS, OT_BOOKS, read_registry, registry_candidates, scope_from_book_ids, verify_zip
 
 
 class RegistryTest(unittest.TestCase):
@@ -69,11 +69,19 @@ class RegistryTest(unittest.TestCase):
         result = verify_zip(archive)
         self.assertEqual(result['nonEmptyVerseRows'], 1)
         self.assertEqual(result['books'], 1)
+        self.assertEqual(result['canonicalScope'], 'partial')
         self.assertEqual(result['booksWithNonEmptyText'], [470])
         self.assertEqual(result['blankVerseAddressSample'], [])
         self.assertEqual(result['missingChapterSamples'], {})
         self.assertEqual(result['language'], 'tg')
         self.assertEqual(result['status'], 'sqlite_structure_verified_android_not_tested')
+
+    def test_equal_book_counts_do_not_make_mixed_27_books_a_new_testament(self):
+        mixed = set(sorted(OT_BOOKS)[:6]) | set(sorted(NT_BOOKS)[:21])
+        self.assertEqual(len(mixed), 27)
+        self.assertEqual(scope_from_book_ids(mixed), 'partial')
+        self.assertEqual(scope_from_book_ids(NT_BOOKS), 'nt')
+        self.assertEqual(scope_from_book_ids(OT_BOOKS | NT_BOOKS), 'bible')
 
     def test_rejects_bad_zip(self):
         p = self.p / 'bad.zip'
