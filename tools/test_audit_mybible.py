@@ -69,6 +69,9 @@ class RegistryTest(unittest.TestCase):
         result = verify_zip(archive)
         self.assertEqual(result['nonEmptyVerseRows'], 1)
         self.assertEqual(result['books'], 1)
+        self.assertEqual(result['booksWithNonEmptyText'], [470])
+        self.assertEqual(result['blankVerseAddressSample'], [])
+        self.assertEqual(result['missingChapterSamples'], {})
         self.assertEqual(result['language'], 'tg')
         self.assertEqual(result['status'], 'sqlite_structure_verified_android_not_tested')
 
@@ -112,7 +115,21 @@ class RegistryTest(unittest.TestCase):
         result = verify_zip(archive)
         self.assertEqual(result["nonEmptyVerseRows"], 1)
         self.assertEqual(result["blankVerseRows"], 1)
+        self.assertEqual(result["blankVerseAddressSample"], [{"bookNumber": 470, "chapter": 1, "verse": 2}])
+        self.assertEqual(result["booksWithNonEmptyText"], [470])
         self.assertTrue(result["warnings"])
+
+    def test_reports_non_contiguous_chapter_numbers(self):
+        p = self.make_db()
+        with closing(sqlite3.connect(p)) as db:
+            db.execute("INSERT INTO verses VALUES(470, 3, 1, 'Дигар')")
+            db.commit()
+        archive = self.p / "gaps.zip"
+        with zipfile.ZipFile(archive, "w") as z:
+            z.write(p, "KM.SQLite3")
+        result = verify_zip(archive)
+        self.assertEqual(result["missingChapterSamples"], {"470": [2]})
+        self.assertEqual(result["booksWithNonEmptyText"], [470])
 
     def test_rejects_missing_book(self):
         p = self.make_db()
