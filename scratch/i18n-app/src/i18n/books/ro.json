@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Fiinţă",
+    "abbr": "Fiinţă"
+  },
+  "20": {
+    "name": "Exod",
+    "abbr": "Exod"
+  },
+  "30": {
+    "name": "Leviticul",
+    "abbr": "Leviti"
+  },
+  "40": {
+    "name": "Numerele",
+    "abbr": "Numere"
+  },
+  "50": {
+    "name": "Deuteronomul",
+    "abbr": "Deuter"
+  },
+  "60": {
+    "name": "Iosua",
+    "abbr": "Iosua"
+  },
+  "70": {
+    "name": "Judecătorii",
+    "abbr": "Judecă"
+  },
+  "80": {
+    "name": "Ruth",
+    "abbr": "Ruth"
+  },
+  "90": {
+    "name": "1 Samuel",
+    "abbr": "1 Samu"
+  },
+  "100": {
+    "name": "2 Regi",
+    "abbr": "2 Regi"
+  },
+  "110": {
+    "name": "1 Regi",
+    "abbr": "1 Regi"
+  },
+  "120": {
+    "name": "2 Regi",
+    "abbr": "2 Regi"
+  },
+  "130": {
+    "name": "1 Cronici",
+    "abbr": "1 Cron"
+  },
+  "140": {
+    "name": "2 Cronici",
+    "abbr": "2 Cron"
+  },
+  "145": {
+    "name": "Rugăciunea lui Manase",
+    "abbr": "Rugăci"
+  },
+  "150": {
+    "name": "Ezra",
+    "abbr": "Ezra"
+  },
+  "160": {
+    "name": "Neemia",
+    "abbr": "Neemia"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judith",
+    "abbr": "Judith"
+  },
+  "190": {
+    "name": "Esther",
+    "abbr": "Esther"
+  },
+  "220": {
+    "name": "Post",
+    "abbr": "Post"
+  },
+  "230": {
+    "name": "psaltire",
+    "abbr": "psalti"
+  },
+  "240": {
+    "name": "Proverbe",
+    "abbr": "Prover"
+  },
+  "250": {
+    "name": "Eclesiastul",
+    "abbr": "Eclesi"
+  },
+  "260": {
+    "name": "Cântecul Cântărilor",
+    "abbr": "Cântec"
+  },
+  "270": {
+    "name": "Înțelepciunea lui Solomon",
+    "abbr": "Înțele"
+  },
+  "280": {
+    "name": "Înțelepciunea lui Isus, fiul lui Sirah",
+    "abbr": "Înțele"
+  },
+  "290": {
+    "name": "Isaia",
+    "abbr": "Isaia"
+  },
+  "300": {
+    "name": "Ieremia",
+    "abbr": "Ieremi"
+  },
+  "310": {
+    "name": "Lamentații",
+    "abbr": "Lament"
+  },
+  "315": {
+    "name": "Mesajul lui Ieremia",
+    "abbr": "Mesaju"
+  },
+  "320": {
+    "name": "Baruch",
+    "abbr": "Baruch"
+  },
+  "330": {
+    "name": "Ezechiel",
+    "abbr": "Ezechi"
+  },
+  "340": {
+    "name": "Daniel",
+    "abbr": "Daniel"
+  },
+  "350": {
+    "name": "Osea",
+    "abbr": "Osea"
+  },
+  "360": {
+    "name": "Joel",
+    "abbr": "Joel"
+  },
+  "370": {
+    "name": "Amos",
+    "abbr": "Amos"
+  },
+  "380": {
+    "name": "Avdiy",
+    "abbr": "Avdiy"
+  },
+  "390": {
+    "name": "Iona",
+    "abbr": "Iona"
+  },
+  "400": {
+    "name": "Mica",
+    "abbr": "Mica"
+  },
+  "410": {
+    "name": "Nahum",
+    "abbr": "Nahum"
+  },
+  "420": {
+    "name": "Habacuc",
+    "abbr": "Habacu"
+  },
+  "430": {
+    "name": "Sofonia",
+    "abbr": "Sofoni"
+  },
+  "440": {
+    "name": "Hagai",
+    "abbr": "Hagai"
+  },
+  "450": {
+    "name": "Zaharia",
+    "abbr": "Zahari"
+  },
+  "460": {
+    "name": "Maleahi",
+    "abbr": "Maleah"
+  },
+  "462": {
+    "name": "1 Macabei",
+    "abbr": "1 Maca"
+  },
+  "464": {
+    "name": "2 Macabei",
+    "abbr": "2 Maca"
+  },
+  "466": {
+    "name": "3 Macabei",
+    "abbr": "3 Maca"
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "De la Matei",
+    "abbr": "De la "
+  },
+  "480": {
+    "name": "De la Mark",
+    "abbr": "De la "
+  },
+  "490": {
+    "name": "De la Luke",
+    "abbr": "De la "
+  },
+  "500": {
+    "name": "De la Ioan",
+    "abbr": "De la "
+  },
+  "510": {
+    "name": "Acte",
+    "abbr": "Acte"
+  },
+  "520": {
+    "name": "romani",
+    "abbr": "romani"
+  },
+  "530": {
+    "name": "1 Corinteni",
+    "abbr": "1 Cori"
+  },
+  "540": {
+    "name": "2 Corinteni",
+    "abbr": "2 Cori"
+  },
+  "550": {
+    "name": "Galateni",
+    "abbr": "Galate"
+  },
+  "560": {
+    "name": "Efeseni",
+    "abbr": "Efesen"
+  },
+  "570": {
+    "name": "Filipeni",
+    "abbr": "Filipe"
+  },
+  "580": {
+    "name": "Coloseni",
+    "abbr": "Colose"
+  },
+  "590": {
+    "name": "1 Tesaloniceni",
+    "abbr": "1 Tesa"
+  },
+  "600": {
+    "name": "2 Tesaloniceni",
+    "abbr": "2 Tesa"
+  },
+  "610": {
+    "name": "1 Timotei",
+    "abbr": "1 Timo"
+  },
+  "620": {
+    "name": "2 Timotei",
+    "abbr": "2 Timo"
+  },
+  "630": {
+    "name": "Titu",
+    "abbr": "Titu"
+  },
+  "640": {
+    "name": "Filemon",
+    "abbr": "Filemo"
+  },
+  "650": {
+    "name": "evrei",
+    "abbr": "evrei"
+  },
+  "660": {
+    "name": "Iacov",
+    "abbr": "Iacov"
+  },
+  "670": {
+    "name": "1 Petru",
+    "abbr": "1 Petr"
+  },
+  "680": {
+    "name": "2 Petru",
+    "abbr": "2 Petr"
+  },
+  "690": {
+    "name": "1 Ioan",
+    "abbr": "1 Ioan"
+  },
+  "700": {
+    "name": "2 Ioan",
+    "abbr": "2 Ioan"
+  },
+  "710": {
+    "name": "3 Ioan",
+    "abbr": "3 Ioan"
+  },
+  "720": {
+    "name": "Iuda",
+    "abbr": "Iuda"
+  },
+  "730": {
+    "name": "Revelaţie",
+    "abbr": "Revela"
+  }
+}
