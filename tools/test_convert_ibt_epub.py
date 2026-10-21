@@ -227,8 +227,11 @@ class EpubDraftTest(unittest.TestCase):
                 self.assertEqual(db.execute(
                     "SELECT short_name, long_name FROM books WHERE book_number=470"
                 ).fetchone(), ("", ""))
-            with self.assertRaises(FileExistsError):
-                sqlite_draft(rows, "inh", "a" * 64, local_test_dir=out)
+            # Re-running the command refreshes the same private preview file,
+            # rather than requiring the user to delete an old ZIP manually.
+            again = sqlite_draft(rows, "inh", "a" * 64, local_test_dir=out)
+            self.assertEqual(again["localTestZip"], result["localTestZip"])
+            self.assertEqual(again["sqliteSha256"], result["sqliteSha256"])
 
     def test_local_test_zip_restricted_to_audited_sources(self):
         with tempfile.TemporaryDirectory() as root:
