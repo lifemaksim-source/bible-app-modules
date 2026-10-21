@@ -45,5 +45,25 @@
   ],
   "sourceKeys": 1040,
   "machineTranslated": true,
-  "humanReviewed": false
+  "humanReviewed": false,
+  "segmentRepair": {
+    "ba": {
+      "originalIdentical": 187,
+      "repaired": 152,
+      "failed": 0,
+      "remainingIdentical": 38
+    },
+    "sah": {
+      "originalIdentical": 48,
+      "repaired": 11,
+      "failed": 0,
+      "remainingIdentical": 40
+    },
+    "mn": {
+      "originalIdentical": 3,
+      "repaired": 0,
+      "failed": 0,
+      "remainingIdentical": 6
+    }
+  }
 }

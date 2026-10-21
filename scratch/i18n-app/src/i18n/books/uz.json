@@ -1,71 +1,71 @@
 {
   "10": {
-    "name": "Ibtido",
-    "abbr": "Ibtido"
+    "name": "Ибтидо",
+    "abbr": "Ибт"
   },
   "20": {
-    "name": "Chiqish",
-    "abbr": "Chiqis"
+    "name": "Чиқиш",
+    "abbr": "Чиқ"
   },
   "30": {
-    "name": "Levilar",
-    "abbr": "Levila"
+    "name": "Левилар",
+    "abbr": "Лев"
   },
   "40": {
-    "name": "Raqamlar",
-    "abbr": "Raqaml"
+    "name": "Саҳрода",
+    "abbr": "Саҳ"
   },
   "50": {
-    "name": "Qonunlar",
-    "abbr": "Qonunl"
+    "name": "Қонунлар",
+    "abbr": "Қон"
   },
   "60": {
-    "name": "Yoshua",
-    "abbr": "Yoshua"
+    "name": "Ёшуа",
+    "abbr": "Ёшу"
   },
   "70": {
-    "name": "Hakamlar",
-    "abbr": "Hakaml"
+    "name": "Ҳакамлар",
+    "abbr": "Ҳак"
   },
   "80": {
-    "name": "Rut",
-    "abbr": "Rut"
+    "name": "Рут",
+    "abbr": "Рут"
   },
   "90": {
-    "name": "1 Shomuil",
-    "abbr": "1 Shom"
+    "name": "Шоҳлар 1",
+    "abbr": "Шоҳ1"
   },
   "100": {
-    "name": "2 Shoh",
-    "abbr": "2 Shoh"
+    "name": "Шоҳлар 2",
+    "abbr": "Шоҳ2"
   },
   "110": {
-    "name": "1 Shohlar",
-    "abbr": "1 Shoh"
+    "name": "Шоҳлар 3",
+    "abbr": "Шоҳ3"
   },
   "120": {
-    "name": "2 Shoh",
-    "abbr": "2 Shoh"
+    "name": "Шоҳлар 4",
+    "abbr": "Шоҳ4"
   },
   "130": {
-    "name": "1 Solnomalar",
-    "abbr": "1 Soln"
+    "name": "Солномалар 1",
+    "abbr": "Сол1"
   },
   "140": {
-    "name": "2 Solnomalar",
-    "abbr": "2 Soln"
+    "name": "Солномалар 2",
+    "abbr": "Сол2"
   },
   "145": {
     "name": "Manashening ibodati",
     "abbr": "Manash"
   },
   "150": {
-    "name": "Ezra",
-    "abbr": "Ezra"
+    "name": "Эзра",
+    "abbr": "Эзр"
   },
   "160": {
-    "name": "Naximiyo",
-    "abbr": "Naximi"
+    "name": "Нахимиё",
+    "abbr": "Нах"
   },
   "165": {
     "name": "2 Esdras",
@@ -80,28 +80,28 @@
     "abbr": "Judit"
   },
   "190": {
-    "name": "Ester",
-    "abbr": "Ester"
+    "name": "Эстер",
+    "abbr": "Эст"
   },
   "220": {
-    "name": "Ish",
-    "abbr": "Ish"
+    "name": "Аюб",
+    "abbr": "Аюб"
   },
   "230": {
-    "name": "Zabur",
-    "abbr": "Zabur"
+    "name": "Забур",
+    "abbr": "Заб"
   },
   "240": {
-    "name": "Hikmatlar",
-    "abbr": "Hikmat"
+    "name": "Сулаймоннинг ҳикматлари",
+    "abbr": "Сул="
   },
   "250": {
-    "name": "Voizlar",
-    "abbr": "Voizla"
+    "name": "Воиз",
+    "abbr": "Вои"
   },
   "260": {
-    "name": "Qo'shiqlar qo'shig'i",
-    "abbr": "Qo'shi"
+    "name": "Сулаймоннинг гўзал қўшиғи",
+    "abbr": "Сул="
   },
   "270": {
     "name": "Sulaymonning donoligi",
@@ -112,16 +112,16 @@
     "abbr": "Sirax "
   },
   "290": {
-    "name": "Ishayo",
-    "abbr": "Ishayo"
+    "name": "Ишаё",
+    "abbr": "Иша"
   },
   "300": {
-    "name": "Yeremiyo",
-    "abbr": "Yeremi"
+    "name": "Еремиё",
+    "abbr": "Ере"
   },
   "310": {
-    "name": "Yeremiyoning nolalari",
-    "abbr": "Yeremi"
+    "name": "Еремиёнинг марсияси",
+    "abbr": "Ере="
   },
   "315": {
     "name": "Yeremiyoning xabari",
@@ -132,60 +132,60 @@
     "abbr": "Baruch"
   },
   "330": {
-    "name": "Hizqiyo",
-    "abbr": "Hizqiy"
+    "name": "Ҳизқиё",
+    "abbr": "Ҳиз"
   },
   "340": {
-    "name": "Daniel",
-    "abbr": "Daniel"
+    "name": "Дониёр",
+    "abbr": "Дон"
   },
   "350": {
-    "name": "Xo'sheya",
-    "abbr": "Xo'she"
+    "name": "Хўшея",
+    "abbr": "Хўш"
   },
   "360": {
-    "name": "Joel",
-    "abbr": "Joel"
+    "name": "Йўэл",
+    "abbr": "Йўэ"
   },
   "370": {
-    "name": "Amos",
-    "abbr": "Amos"
+    "name": "Амос",
+    "abbr": "Амо"
   },
   "380": {
-    "name": "Avdiy",
-    "abbr": "Avdiy"
+    "name": "Обoдиё",
+    "abbr": "Обo"
   },
   "390": {
-    "name": "Yunus",
-    "abbr": "Yunus"
+    "name": "Юнус",
+    "abbr": "Юну"
   },
   "400": {
-    "name": "Mixa",
-    "abbr": "Mixa"
+    "name": "Михо",
+    "abbr": "Мих"
   },
   "410": {
-    "name": "Nahum",
-    "abbr": "Nahum"
+    "name": "Нохум",
+    "abbr": "Нох"
   },
   "420": {
-    "name": "Xabakkuk",
-    "abbr": "Xabakk"
+    "name": "Хабаққуқ",
+    "abbr": "Хаб"
   },
   "430": {
-    "name": "Zafaniyo",
-    "abbr": "Zafani"
+    "name": "Зафаниё",
+    "abbr": "Заф"
   },
   "440": {
-    "name": "Xaggay",
-    "abbr": "Xaggay"
+    "name": "Хаггей",
+    "abbr": "Хаг"
   },
   "450": {
-    "name": "Zakariyo",
-    "abbr": "Zakari"
+    "name": "Закариё",
+    "abbr": "Зак"
   },
   "460": {
-    "name": "Malakiy",
-    "abbr": "Malaki"
+    "name": "Малаки",
+    "abbr": "Мал"
   },
   "462": {
     "name": "1-makkabilar",
@@ -204,111 +204,111 @@
     "abbr": "3 Esdr"
   },
   "470": {
-    "name": "Metyudan",
-    "abbr": "Metyud"
+    "name": "Янги аҳд",
+    "abbr": "Мат"
   },
   "480": {
-    "name": "Markdan",
-    "abbr": "Markda"
+    "name": "Марк",
+    "abbr": "Марк"
   },
   "490": {
-    "name": "Luqodan",
-    "abbr": "Luqoda"
+    "name": "Лука",
+    "abbr": "Лук"
   },
   "500": {
-    "name": "Jondan",
-    "abbr": "Jondan"
+    "name": "Юҳанно",
+    "abbr": "Юҳан"
   },
   "510": {
-    "name": "Amallar",
-    "abbr": "Amalla"
+    "name": "Ҳаворийларнинг Фаолияти",
+    "abbr": "Ҳав"
   },
   "520": {
-    "name": "Rimliklar",
-    "abbr": "Rimlik"
+    "name": "Римликларга",
+    "abbr": "Рим"
   },
   "530": {
-    "name": "1 Korinfliklarga",
-    "abbr": "1 Kori"
+    "name": "1 Коринфликларга",
+    "abbr": "1Кор"
   },
   "540": {
-    "name": "2 Korinfliklarga",
-    "abbr": "2 Kori"
+    "name": "2 Коринфликларга",
+    "abbr": "2Кор"
   },
   "550": {
-    "name": "Galatiyaliklar",
-    "abbr": "Galati"
+    "name": "Галатияликларга",
+    "abbr": "Гал"
   },
   "560": {
-    "name": "Efesliklar",
-    "abbr": "Efesli"
+    "name": "Эфесликларга",
+    "abbr": "Эфес"
   },
   "570": {
-    "name": "Filippiliklar",
-    "abbr": "Filipp"
+    "name": "Филиппиликларга",
+    "abbr": "Фил"
   },
   "580": {
-    "name": "Kolosaliklar",
-    "abbr": "Kolosa"
+    "name": "Колосаликларга",
+    "abbr": "Кол"
   },
   "590": {
-    "name": "1 Salonikaliklar",
-    "abbr": "1 Salo"
+    "name": "1 Салоникаликларга",
+    "abbr": "1Сал"
   },
   "600": {
-    "name": "2 Salonikaliklarga",
-    "abbr": "2 Salo"
+    "name": "2 Салоникаликларга",
+    "abbr": "2Сал"
   },
   "610": {
-    "name": "1 Timo'tiy",
-    "abbr": "1 Timo"
+    "name": "1 Тимофейга",
+    "abbr": "1Тим"
   },
   "620": {
-    "name": "2 Timo'tiy",
-    "abbr": "2 Timo"
+    "name": "2 Тимофейга",
+    "abbr": "2Тим"
   },
   "630": {
-    "name": "Titu",
-    "abbr": "Titu"
+    "name": "Титусга",
+    "abbr": "Тит"
   },
   "640": {
-    "name": "Filimon",
-    "abbr": "Filimo"
+    "name": "Филимўнга",
+    "abbr": "Флмн"
   },
   "650": {
-    "name": "ibroniylar",
-    "abbr": "ibroni"
+    "name": "Ибронийларга",
+    "abbr": "Ибр"
   },
   "660": {
-    "name": "Yoqub",
-    "abbr": "Yoqub"
+    "name": "Ёқубнинги",
+    "abbr": "Ёқуб"
   },
   "670": {
-    "name": "1 Butrus",
-    "abbr": "1 Butr"
+    "name": "1 Петрнинги",
+    "abbr": "1Пет"
   },
   "680": {
-    "name": "2 Butrus",
-    "abbr": "2 Butr"
+    "name": "2 Петрнинг",
+    "abbr": "2Пет"
   },
   "690": {
-    "name": "1 Yuhanno",
-    "abbr": "1 Yuha"
+    "name": "1 Юҳаннонинги",
+    "abbr": "1Юҳ"
   },
   "700": {
-    "name": "2 Yuhanno",
-    "abbr": "2 Yuha"
+    "name": "2 Юҳаннонинг",
+    "abbr": "2Юҳ"
   },
   "710": {
-    "name": "3 Yuhanno",
-    "abbr": "3 Yuha"
+    "name": "3 Юҳаннонинг",
+    "abbr": "3Юҳ"
   },
   "720": {
-    "name": "Yahudo",
-    "abbr": "Yahudo"
+    "name": "Яҳуданинги",
+    "abbr": "Яҳуд"
   },
   "730": {
-    "name": "Vahiy",
-    "abbr": "Vahiy"
+    "name": "Ваҳий",
+    "abbr": "Ваҳ"
   }
 }
