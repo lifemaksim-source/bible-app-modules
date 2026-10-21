@@ -168,6 +168,7 @@ class EpubDraftTest(unittest.TestCase):
         rows = dict(parser.finish())
         self.assertEqual(rows, {(10, 1, 2): "Real text"})
         self.assertEqual(parser.blank_reasons["notes_only"], 1)
+        self.assertEqual(parser.note_reference_count, 1)
 
     def test_rejects_epub_invalid_utf8_instead_of_corrupting_scripture(self):
         epub = make_epub([("a.xhtml", b'<p class="osis-p"><span id="Gen.1.1"></span>\xff</p>')])
