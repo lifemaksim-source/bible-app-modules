@@ -16,6 +16,8 @@ from audit_mybible import AuditError, read_registry, registry_candidates, verify
 
 REGISTRY_URL = "https://mybible.zone/repository/registry/registry.zip"
 ALLOW_HOSTS = {"mybible.zone", "mybible.infoo.pro"}
+# Known upstream metadata uses a human language name rather than an ISO code.
+LANGUAGE_LABEL_ALIASES = {"dar": {"dargi"}}
 
 # ISO 639-1/3 identifiers as represented in MyBible's "lng" field.
 # Explicit geography rather than a "top languages" popularity list.
@@ -95,7 +97,8 @@ def verify_one_per_language(report, download=retrieve):
                         archive.write_bytes(download(url, 100 * 1024 * 1024))
                         scanned = verify_zip(archive)
                         tag = scanned["language"].lower().split("-")[0].split("_")[0]
-                        if tag != lang:
+                        alias_match = tag != lang and tag in LANGUAGE_LABEL_ALIASES.get(lang, set())
+                        if tag != lang and not alias_match:
                             raise AuditError(f"Module declares language {scanned['language']!r}, expected {lang!r}")
                         entry["verified"] = {
                             "file": offer["file"],
@@ -105,7 +108,10 @@ def verify_one_per_language(report, download=retrieve):
                             "blankVerseRows": scanned["blankVerseRows"],
                             "sqliteSha256": scanned["sqliteSha256"],
                             "sqliteEntry": scanned["sqliteEntry"],
-                            "warnings": scanned["warnings"],
+                            "warnings": scanned["warnings"] + (
+                                [f"Header language {scanned['language']!r} is a known display-name alias for {lang!r}"]
+                                if alias_match else []
+                            ),
                             "status": "structural_sqlite_only_android_not_tested",
                         }
                         entry["status"] = "one_archive_sqlite_verified"
