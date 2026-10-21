@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/ui-translation-probe.yml
+      - scratch/i18n-app/tools/translate-regional.mjs
 permissions:
   contents: write
 jobs:
