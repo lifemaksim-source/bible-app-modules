@@ -1,4 +1,4 @@
-name: Разовый тест перевода интерфейса для Bible App
+name: Генерация локализаций Bible App для СНГ
 on:
   pull_request:
     paths:
@@ -6,31 +6,48 @@ on:
 permissions:
   contents: read
 jobs:
-  sample:
+  translate:
     runs-on: ubuntu-24.04
-    timeout-minutes: 2
+    timeout-minutes: 22
     steps:
+      - uses: actions/checkout@v6
+        with:
+          repository: lifemaksim-source/bible-app
+          ref: feature/i18n-regional-20261021
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
-      - name: Таджикский, монгольский и редкие языки
+      - name: Полные UI-локализации для восьми приоритетных языков
+        run: node tools/translate-regional.mjs --languages=tg,mn,kk,uz,ky,tt,ba,sah
+      - name: Проверка ключей, переменных и названий книг без зависимостей
+        shell: bash
         run: |
           node --input-type=module <<'NODE'
-          for (const lang of ['tg','mn','kk','uz','ky','tt','ba','sah','dar','tab']) {
-            try {
-              const params=new URLSearchParams({client:'gtx',sl:'ru',tl:lang,dt:'t',q:'Библиотека переводов'});
-              const result=await fetch('https://translate.googleapis.com/translate_a/single?'+params,{signal:AbortSignal.timeout(6000)});
-              const raw=await result.text();
-              console.log(lang, result.status, raw.slice(0,180));
-            }catch(e){console.log(lang,'error',String(e).slice(0,150));}
+          import {readFileSync,existsSync} from 'node:fs';
+          const ru=JSON.parse(readFileSync('src/i18n/locales/ru.json','utf8'));
+          const report=JSON.parse(readFileSync('regional-translation-report.json','utf8'));
+          let passed=0;
+          for(const {code,status} of report.report){
+            if(status!=='machine-draft' && status!=='existing')continue;
+            const translations=JSON.parse(readFileSync('src/i18n/locales/'+code+'.json','utf8'));
+            const books=JSON.parse(readFileSync('src/i18n/books/'+code+'.json','utf8'));
+            if(Object.keys(translations).length!==Object.keys(ru).length || Object.keys(books).length!==78)throw Error('Missing '+code+' keys');
+            const vars=(s)=>[...s.matchAll(/\{\{([^}]+)\}\}/g)].map(x=>x[1]).sort().join('|');
+            for(const [key,value] of Object.entries(ru)){
+              if(!(key in translations)||!translations[key].trim()||vars(value)!==vars(translations[key]))throw Error('Broken '+code+' '+key);
+            }
+            console.log('PASS '+code+': '+Object.keys(ru).length+' UI entries, 78 book names');
+            passed++;
           }
+          if(!passed)throw Error('No translations generated');
           NODE
-          node --input-type=module <<'NODE'
-          const text='Настройки\n[[[SEP]]] Библиотека переводов\n[[[SEP]]] Загрузить модуль';
-          for(const lang of ['tg','mn']){
-            const p=new URLSearchParams({client:'gtx',sl:'ru',tl:lang,dt:'t',q:text});
-            const a=await (await fetch('https://translate.googleapis.com/translate_a/single?'+p)).json();
-            const combined=(a[0]||[]).map(x=>x[0]).join('');
-            console.log(lang,JSON.stringify(combined).slice(0,400));
-          }
-          NODE
+      - name: Сохранить локализации без публикации в приложение
+        uses: actions/upload-artifact@v4
+        with:
+          name: regional-ui-priority-drafts
+          path: |
+            src/i18n/locales/*.json
+            src/i18n/books/*.json
+            src/i18n/extraLocalizations.ts
+            regional-translation-report.json
+          retention-days: 7
