@@ -136,8 +136,13 @@ class VerseHtml(HTMLParser):
         # Some editions (e.g. Ingush Genesis genealogies) place verse text
         # directly in an OSIS div without an intervening paragraph. Accept
         # *direct* text nodes only; never all prose in descendant containers.
-        direct_osis_div = bool(self.stack and self.stack[-1][0] == "div" and
-                               re.search(r"\bosis-div\b", self.stack[-1][1]))
+        inline_tags = {"a", "span", "em", "strong", "b", "i", "u", "small", "mark", "font"}
+        direct_osis_div = False
+        for pos in range(len(self.stack) - 1, -1, -1):
+            tag, cls, _ = self.stack[pos]
+            if tag == "div" and re.search(r"\bosis-div\b", cls):
+                direct_osis_div = all(child_tag in inline_tags for child_tag, _, _ in self.stack[pos + 1:])
+                break
         if not direct_osis_div and not any((tag == "p" and CONTENT_CLASS.search(cls))
                    or (tag == "div" and POETRY_CLASS.search(cls))
                    for tag, cls, _ in self.stack):
