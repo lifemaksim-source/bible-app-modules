@@ -137,7 +137,7 @@ class VerseHtml(HTMLParser):
         # directly in an OSIS div without an intervening paragraph. Accept
         # *direct* text nodes only; never all prose in descendant containers.
         direct_osis_div = bool(self.stack and self.stack[-1][0] == "div" and
-                               re.search(r"\\bosis-div\\b", self.stack[-1][1]))
+                               re.search(r"\bosis-div\b", self.stack[-1][1]))
         if not direct_osis_div and not any((tag == "p" and CONTENT_CLASS.search(cls))
                    or (tag == "div" and POETRY_CLASS.search(cls))
                    for tag, cls, _ in self.stack):
