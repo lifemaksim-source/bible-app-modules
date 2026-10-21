@@ -255,7 +255,8 @@ def extract_epub(data: bytes) -> dict:
     }
 
 
-def sqlite_draft(rows: dict[tuple[int, int, int], str], language: str, source_sha: str) -> dict:
+def sqlite_draft(rows: dict[tuple[int, int, int], str], language: str, source_sha: str,
+                 local_test_dir: Path | None = None) -> dict:
     if not rows:
         raise DraftError("No unambiguous Scripture verses extracted")
     with tempfile.TemporaryDirectory(prefix="ibt-sqlite-draft-") as tmp:
@@ -295,11 +296,23 @@ def sqlite_draft(rows: dict[tuple[int, int, int], str], language: str, source_sh
             if db.execute("SELECT COUNT(*) FROM verses WHERE text IS NULL OR TRIM(text) = ''").fetchone()[0]:
                 raise DraftError("Empty Scripture text inserted into SQLite")
         digest = hashlib.sha256(filename.read_bytes()).hexdigest()
-        return {"sqliteSha256": digest, "books": len(by_book), "verseRows": len(rows),
-                "bookNumbers": by_book, "status": "sqlite_draft_not_published_or_android_tested"}
+        report = {"sqliteSha256": digest, "books": len(by_book), "verseRows": len(rows),
+                  "bookNumbers": by_book, "status": "sqlite_draft_not_published_or_android_tested"}
+        if local_test_dir is not None:
+            # Opt-in developer-only archive. Never put these binaries into Git,
+            # public Actions artifacts, catalog.json or an APK.
+            if language not in {"tab", "lbe", "inh", "gag", "dng"}:
+                raise DraftError("Local test ZIP language must be an audited IBT source")
+            target_dir = Path(local_test_dir)
+            target_dir.mkdir(parents=True, exist_ok=True)
+            archive = target_dir / f"IBT_{language}_LOCAL_TEST_ONLY.zip"
+            with zipfile.ZipFile(archive, "x", compression=zipfile.ZIP_DEFLATED) as zip_out:
+                zip_out.write(filename, arcname=f"IBT_{language}.SQLite3")
+            report["localTestZip"] = str(archive)
+        return report
 
 
-def test_registry(registry_file: Path) -> dict:
+def test_registry(registry_file: Path, local_test_dir: Path | None = None) -> dict:
     source = json.loads(registry_file.read_text("utf-8"))
     entries = [x for x in source["records"] if x.get("sourceKind") in ("digital_ebook_listing", "digital_epub_draft")]
     if not entries:
@@ -326,7 +339,8 @@ def test_registry(registry_file: Path) -> dict:
                          "noteReferenceCount": parsed["noteReferenceCount"],
                          "blankReasonCounts": parsed["blankReasonCounts"],
                          "blankAddressSamples": parsed["blankAddressSamples"]})
-            item.update(sqlite_draft(parsed["verses"], entry["language"], source_hash))
+            item.update(sqlite_draft(parsed["verses"], entry["language"], source_hash,
+                                     local_test_dir=local_test_dir))
             report["draftsWithVerses"] += 1
         except (OSError, ValueError, UnicodeError, zipfile.BadZipFile) as exc:
             item.update(status="needs_manual_mapping", error=str(exc)[:230])
@@ -338,10 +352,14 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--registry", default="docs/language-module-discovery.json")
     ap.add_argument("--report", default="ibt-sqlite-drafts.json")
+    ap.add_argument("--local-test-zips", type=Path,
+                    help="EXPLICIT opt-in: save private test ZIPs here; do not publish (rights not cleared)")
     args = ap.parse_args()
-    report = test_registry(Path(args.registry))
+    report = test_registry(Path(args.registry), local_test_dir=args.local_test_zips)
     Path(args.report).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf8")
     print(f"Draft SQLite structural checks: {report['draftsWithVerses']}/{report['attempted']}; no Scripture uploaded")
+    if args.local_test_zips:
+        print("Private local test ZIPs created. Do not distribute: permission and Android QA are pending.")
     for x in report["modules"]:
         print(x["language"], x["status"], x.get("books"), x.get("verseRows"), x.get("error", ""))
     return 0
