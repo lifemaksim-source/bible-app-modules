@@ -739,6 +739,22 @@
       "sqliteChecked": false,
       "androidChecked": false,
       "published": false
+    },
+    {
+      "id": "api-mn-monkjv",
+      "language": "mn",
+      "name": "Монгольский",
+      "externalId": "monkjv",
+      "title": "Mongolian King James Version — New Testament",
+      "claimedScope": "new_testament",
+      "sourceKind": "digital_api_listing",
+      "sourceUrl": "https://api.getbible.net/v2/monkjv.json",
+      "verification": "listing_only",
+      "downloaded": false,
+      "sqliteChecked": false,
+      "androidChecked": false,
+      "published": false,
+      "sourceNote": "getBible v2 public repository translation manifest, Mongolian NT (27 USFM source books). Actual JSON response and converted SQLite not downloaded or checked."
     }
   ]
 }
