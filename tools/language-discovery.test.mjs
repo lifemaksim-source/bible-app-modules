@@ -64,6 +64,13 @@ test('five IBT EPUB downloads produced ephemeral verified SQLite drafts, not pub
     x.licenseStatus === 'not_cleared' && x.blankVerseAnchors > 0));
   assert.equal(sources.find(x => x.language === 'tab').booksChecked, 37);
   assert.equal(sources.find(x => x.language === 'dng').booksChecked, 6);
+  assert.equal(sources.find(x => x.language === 'inh').verseRowsChecked, 3623);
+  assert.equal(sources.find(x => x.language === 'inh').blankVerseAnchors, 4);
+  assert.equal(sources.find(x => x.language === 'lbe').verseRowsChecked, 5087);
+  assert.equal(sources.find(x => x.language === 'lbe').blankVerseAnchors, 103);
+  assert.ok(sources.every(x => x.sqliteRoundtripChecked &&
+    Number.isInteger(x.noteReferenceCount) && x.noteReferenceCount > 0));
+
 });
 
 test('IBT EPUB draft needs true source + SQLite evidence and may not become a published source', () => {
