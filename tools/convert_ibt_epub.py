@@ -41,6 +41,7 @@ CONTENT_CLASS = re.compile(r"\bosis-(?:p\d*|m\d*|q\d*|pi\d*|pc|nb|li\d*|b|tr|tc\
 POETRY_CLASS = re.compile(r"\bosis-l\d*\b")
 MAX_ENTRIES = 1600
 MAX_ENTRY_BYTES = 48 * 1024 * 1024
+MAX_UNCOMPRESSED_TOTAL = 160 * 1024 * 1024
 
 
 class DraftError(ValueError):
@@ -61,6 +62,11 @@ class VerseHtml(HTMLParser):
         self.skipped_anchors = 0
         self.empty_addresses: list[tuple[int, int, int]] = []
         self.outside_flow = Counter()
+        self.blank_reasons = Counter()
+        self.blank_samples: list[dict] = []
+        self.active_note_chars = 0
+        self.active_outside_chars = 0
+        self.active_number_chars = 0
 
     def _save(self) -> None:
         if self.active is None:
@@ -71,7 +77,17 @@ class VerseHtml(HTMLParser):
         else:
             self.skipped_anchors += 1
             self.empty_addresses.append(self.active)
+            reason = ('outside_flow' if self.active_outside_chars else
+                      'notes_only' if self.active_note_chars else
+                      'only_number_or_marker' if self.active_number_chars else 'no_source_text')
+            self.blank_reasons[reason] += 1
+            if len(self.blank_samples) < 18:
+                b, ch, vs = self.active
+                self.blank_samples.append({'book': b, 'chapter': ch, 'verse': vs, 'reason': reason})
         self.parts = []
+        self.active_note_chars = 0
+        self.active_outside_chars = 0
+        self.active_number_chars = 0
 
     def handle_starttag(self, tag, attrs) -> None:
         a = dict(attrs)
@@ -80,8 +96,14 @@ class VerseHtml(HTMLParser):
         if tag == "span":
             match = VERSE_ID.fullmatch(a.get("id", "") or "")
             if match:
-                self._save()
-                self.seen_anchors += 1
+                # Do not treat cross references or headings *inside notes* as verses.
+                if not any('footnote' in cls or 'osis-note' in cls or 'noteref' in typ
+                           for _, cls, typ in self.stack):
+                    self._save()
+                    self.seen_anchors += 1
+                else:
+                    match = None
+            if match:
                 book_code = ALIASES.get(match.group(1), match.group(1))
                 book = BOOKS.get(book_code)
                 chap, verse = int(match.group(2)), int(match.group(3))
@@ -105,6 +127,11 @@ class VerseHtml(HTMLParser):
                or "osis-note" in cls or "footnote" in cls
                or "xsl-chapter-number" in cls or "xsl-verse-number" in cls
                for tag, cls, typ in self.stack):
+            if data.strip():
+                if any('note' in cls or 'noteref' in typ for _, cls, typ in self.stack):
+                    self.active_note_chars += len(data.strip())
+                else:
+                    self.active_number_chars += len(data.strip())
             return
         if not any((tag == "p" and CONTENT_CLASS.search(cls))
                    or (tag == "div" and POETRY_CLASS.search(cls))
@@ -113,6 +140,7 @@ class VerseHtml(HTMLParser):
                 relevant = [f"{tag}:{cls[:48]}" for tag, cls, _ in self.stack if tag in ("p", "div", "td", "span", "v")]
                 label = " > ".join(relevant[-3:]) or "(no p/div)"
                 self.outside_flow[label] += len(data.strip())
+                self.active_outside_chars += len(data.strip())
             return
         self.parts.append(data)
 
@@ -138,10 +166,14 @@ def extract_epub(data: bytes) -> dict:
     empty_anchors = 0
     missing_by_book = Counter()
     outside_flow = Counter()
+    blank_reasons = Counter()
+    blank_samples = []
     with zipfile.ZipFile(BytesIO(data)) as archive:
         members = archive.infolist()
         if len(members) > MAX_ENTRIES:
             raise DraftError("Too many EPUB entries")
+        if sum(info.file_size for info in members if not info.is_dir()) > MAX_UNCOMPRESSED_TOTAL:
+            raise DraftError("EPUB expanded size limit exceeded")
         for item in sorted(members, key=lambda x: x.filename):
             if item.is_dir():
                 continue
@@ -150,7 +182,7 @@ def extract_epub(data: bytes) -> dict:
             if not item.filename.lower().endswith((".xhtml", ".html", ".htm")):
                 continue
             probe = VerseHtml()
-            probe.feed(archive.read(item).decode("utf-8-sig", "replace"))
+            probe.feed(archive.read(item).decode("utf-8-sig", "strict"))
             for key, text in probe.finish():
                 if key in results:
                     if results[key] != text:
@@ -163,12 +195,18 @@ def extract_epub(data: bytes) -> dict:
             empty_anchors += probe.skipped_anchors
             missing_by_book.update(b for b, _, _ in probe.empty_addresses)
             outside_flow.update(probe.outside_flow)
+            blank_reasons.update(probe.blank_reasons)
+            blank_samples.extend(probe.blank_samples[:max(0, 25-len(blank_samples))])
             unknown.update(probe.unknown_codes)
+    if anchors != len(results) + empty_anchors + sum(unknown.values()):
+        raise DraftError("OSIS anchor accounting mismatch; publication is unsafe")
     return {
         "verses": results, "verseAnchors": anchors, "blankAnchors": empty_anchors,
         "filesWithVerses": files_with_text, "unknownBooks": dict(unknown),
         "blankByBook": [[book, n] for book, n in missing_by_book.most_common(20)],
         "outsideFlowContexts": outside_flow.most_common(16),
+        "blankReasonCounts": dict(blank_reasons),
+        "blankAddressSamples": blank_samples,
     }
 
 
@@ -203,6 +241,14 @@ def sqlite_draft(rows: dict[tuple[int, int, int], str], language: str, source_sh
             db.execute("CREATE INDEX verses_bc ON verses(book_number,chapter)")
             if db.execute("PRAGMA quick_check").fetchone()[0] != "ok":
                 raise DraftError("SQLite integrity check failed")
+            # Verify every verse against the exact normalized source string, not only row counts.
+            # SQL equality on text makes whitespace and Unicode handling auditable.
+            reread = {(int(book), int(ch), int(v)): text for book,ch,v,text in
+                      db.execute("SELECT book_number, chapter, verse, text FROM verses")}
+            if reread != rows:
+                raise DraftError("SQLite round-trip text mismatch")
+            if db.execute("SELECT COUNT(*) FROM verses WHERE text IS NULL OR TRIM(text) = ''").fetchone()[0]:
+                raise DraftError("Empty Scripture text inserted into SQLite")
         digest = hashlib.sha256(filename.read_bytes()).hexdigest()
         return {"sqliteSha256": digest, "books": len(by_book), "verseRows": len(rows),
                 "bookNumbers": by_book, "status": "sqlite_draft_not_published_or_android_tested"}
@@ -230,7 +276,9 @@ def test_registry(registry_file: Path) -> dict:
                          "filesWithVerses": parsed["filesWithVerses"],
                          "unknownBooks": parsed["unknownBooks"],
                          "blankByBook": parsed["blankByBook"],
-                         "outsideFlowContexts": parsed["outsideFlowContexts"]})
+                         "outsideFlowContexts": parsed["outsideFlowContexts"],
+                         "blankReasonCounts": parsed["blankReasonCounts"],
+                         "blankAddressSamples": parsed["blankAddressSamples"]})
             item.update(sqlite_draft(parsed["verses"], entry["language"], source_hash))
             report["draftsWithVerses"] += 1
         except (OSError, ValueError, UnicodeError, zipfile.BadZipFile) as exc:
