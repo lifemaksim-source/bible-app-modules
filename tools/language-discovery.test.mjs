@@ -43,6 +43,7 @@ test('seven official MyBible modules have real SQLite evidence', () => {
   assert.ok(rows.some(x => x.id === 'mybible-mn-ab2013' && x.booksChecked === 66));
   assert.ok(rows.some(x => x.id === 'mybible-tj-km92' && x.booksChecked === 66));
   assert.ok(rows.every(x => x.downloaded && x.sqliteChecked && !x.published && !x.androidChecked));
+  assert.equal(rows.find(x => x.id === 'mybible-tj-kmo16')?.claimedScope, 'partial'); // mixed OT/NT, not 27 NT books
 });
 
 test('official MyBible evidence may not contain an invented hash or missing check results', () => {
