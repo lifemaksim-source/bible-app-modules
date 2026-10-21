@@ -53,8 +53,7 @@ def inspect_module(filename: str) -> dict:
             raise ModuleError("Module contains no books or verses")
         if connection.execute("SELECT 1 FROM verses WHERE book_number <= 0 OR chapter <= 0 OR verse < 0 LIMIT 1").fetchone():
             raise ModuleError("Invalid book/chapter/verse addresses")
-        if connection.execute("SELECT 1 FROM verses WHERE text IS NULL OR TRIM(text) = '' LIMIT 1").fetchone():
-            raise ModuleError("Empty verse text")
+        blank_rows = connection.execute("SELECT COUNT(*) FROM verses WHERE text IS NULL OR TRIM(text) = ''").fetchone()[0]
         if connection.execute("SELECT 1 FROM verses GROUP BY book_number, chapter, verse HAVING COUNT(*) > 1 LIMIT 1").fetchone():
             raise ModuleError("Duplicate verse addresses")
         if connection.execute("SELECT 1 FROM verses v LEFT JOIN books b ON v.book_number = b.book_number WHERE b.book_number IS NULL LIMIT 1").fetchone():
@@ -74,10 +73,12 @@ def inspect_module(filename: str) -> dict:
             "sqliteQuickCheck": "ok",
             "books": book_count,
             "verseRows": verse_count,
+            "blankVerseRows": blank_rows,
             "bookNumbersWithVerses": connection.execute("SELECT COUNT(DISTINCT book_number) FROM verses").fetchone()[0],
             "sample": {"bookNumber": sample[0], "chapter": sample[1], "verse": sample[2], "textStart": sample[3]},
             "metadata": metadata,
-            "warnings": ["Verse numbering, text fidelity, and Android loading were not verified"],
+            "warnings": ["Verse numbering, text fidelity, and Android loading were not verified"] +
+                        (["Source contains blank verse placeholders"] if blank_rows else []),
         }
     finally:
         connection.close()
