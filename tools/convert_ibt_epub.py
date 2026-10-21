@@ -118,6 +118,10 @@ class VerseHtml(HTMLParser):
         self.stack.append((tag, name, epub_type))
         if tag in ("p", "div") and self.active is not None and CONTENT_CLASS.search(name):
             self.parts.append(" ")
+        # OSIS numbered lists (genealogies, law lists) are real Scripture
+        # text; their list-item boundaries are word separators, not verses.
+        if tag == "li" and re.search(r"\bosis-item\d*\b", name) and self.active is not None:
+            self.parts.append(" ")
 
     def handle_startendtag(self, tag, attrs) -> None:
         # <br/> is a word separator, not a source of Scripture text.
@@ -148,7 +152,25 @@ class VerseHtml(HTMLParser):
             if tag == "div" and re.search(r"\bosis-div\b", cls):
                 direct_osis_div = all(child_tag in inline_tags for child_tag, _, _ in self.stack[pos + 1:])
                 break
-        if not direct_osis_div and not any((tag == "p" and CONTENT_CLASS.search(cls))
+        # IBT EPUBs encode some genuine Scripture as <ol class=osis-list>
+        # <li class=osis-item> outside paragraphs and poetry lines.
+        # Require the complete OSIS list hierarchy to prevent collecting
+        # navigation lists, publisher introductions, and unrelated lists.
+        scripture_list = False
+        osis_div_pos = next((i for i,(tag,cls,_) in enumerate(self.stack)
+                             if tag == "div" and re.search(r"\bosis-div\b", cls)), -1)
+        if osis_div_pos >= 0:
+            list_pos = next((i for i in range(osis_div_pos + 1, len(self.stack))
+                             if self.stack[i][0] in ("ol", "ul")
+                             and re.search(r"\bosis-list\b", self.stack[i][1])), -1)
+            if list_pos >= 0:
+                item_pos = next((i for i in range(list_pos + 1, len(self.stack))
+                                 if self.stack[i][0] == "li"
+                                 and re.search(r"\bosis-item\d*\b", self.stack[i][1])), -1)
+                scripture_list = item_pos >= 0 and all(
+                    tag in inline_tags for tag, _, _ in self.stack[item_pos + 1:]
+                )
+        if not direct_osis_div and not scripture_list and not any((tag == "p" and CONTENT_CLASS.search(cls))
                    or (tag == "div" and POETRY_CLASS.search(cls))
                    for tag, cls, _ in self.stack):
             if data.strip():
