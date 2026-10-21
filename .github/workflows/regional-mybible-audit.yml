@@ -1,7 +1,8 @@
 name: Аудит реестра языков СССР и Восточной Европы
 
 on:
-  pull_request:
+  push:
+    branches: [feature/ussr-warsaw-language-audit-20261021]
     paths:
       - tools/scan_regional_mybible.py
       - tools/test_scan_regional_mybible.py
