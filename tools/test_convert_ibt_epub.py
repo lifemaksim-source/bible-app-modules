@@ -124,6 +124,24 @@ class EpubDraftTest(unittest.TestCase):
         self.assertEqual(parser.blank_reasons["only_number_or_marker"], 1)
         self.assertEqual(parser.blank_samples[0]["verse"], 1)
 
+    def test_direct_osis_div_verse_text_is_not_dropped(self):
+        parser = VerseHtml()
+        parser.feed('<div class="calibre1"><div class="osis-div">'
+                    '<span id="Gen.10.2"></span> Text in OSIS div, not a paragraph.'
+                    '<span id="Gen.10.3"></span> Another verse.</div></div>')
+        self.assertEqual(dict(parser.finish()), {
+            (10, 10, 2): "Text in OSIS div, not a paragraph.",
+            (10, 10, 3): "Another verse.",
+        })
+        self.assertEqual(parser.skipped_anchors, 0)
+
+    def test_unrelated_non_osis_div_and_titles_are_not_attached(self):
+        parser = VerseHtml()
+        parser.feed('<div class="calibre1"><span id="Gen.1.1"></span>'
+                    '<div class="publisher-intro">Unrelated heading</div>'
+                    '<div class="osis-div">Actual verse content</div></div>')
+        self.assertEqual(dict(parser.finish()), {(10, 1, 1): "Actual verse content"})
+
     def test_note_only_content_is_not_mistaken_for_scripture(self):
         parser = VerseHtml()
         parser.feed('<p class="osis-p"><span id="Gen.1.1"></span>'
