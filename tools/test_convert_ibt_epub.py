@@ -92,6 +92,21 @@ class EpubDraftTest(unittest.TestCase):
         self.assertEqual(len(result["sqliteSha256"]), 64)
         self.assertIn("not_published", result["status"])
 
+    def test_real_registry_draft_status_is_not_skipped(self):
+        import json
+        from unittest.mock import patch
+        from convert_ibt_epub import test_registry as run_registry
+        with tempfile.TemporaryDirectory() as root:
+            source = Path(root) / "entries.json"
+            source.write_text(json.dumps({"records": [{
+                "language": "lbe", "sourceKind": "digital_epub_draft",
+                "digitalEpubUrl": "https://ibtrussia.org/sites/default/files/ebm/ebook/safe/edition.epub"
+            }]}), encoding="utf8")
+            with patch("convert_ibt_epub.fetch_ibt", return_value=make_epub([("body.xhtml", CHAPTER)])):
+                report = run_registry(source)
+            self.assertEqual(report["attempted"], 1)
+            self.assertEqual(report["draftsWithVerses"], 1)
+
     def test_no_text_fails_closed(self):
         with self.assertRaisesRegex(DraftError, "No unambiguous"):
             sqlite_draft({}, "gag", "b" * 64)
