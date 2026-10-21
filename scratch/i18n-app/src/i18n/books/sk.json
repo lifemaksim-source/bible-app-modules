@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Genesis",
+    "abbr": "Gn"
+  },
+  "20": {
+    "name": "Exodus",
+    "abbr": "Ex"
+  },
+  "30": {
+    "name": "Levitikus",
+    "abbr": "Lv"
+  },
+  "40": {
+    "name": "Numeri",
+    "abbr": "Nu"
+  },
+  "50": {
+    "name": "Deuteronómium",
+    "abbr": "Dt"
+  },
+  "60": {
+    "name": "Jozue",
+    "abbr": "Joz"
+  },
+  "70": {
+    "name": "Sudcovia",
+    "abbr": "Sd"
+  },
+  "80": {
+    "name": "Rút",
+    "abbr": "Rt"
+  },
+  "90": {
+    "name": "1 Samuel",
+    "abbr": "1S"
+  },
+  "100": {
+    "name": "2 Samuel",
+    "abbr": "2S"
+  },
+  "110": {
+    "name": "1 Kniha kráľov",
+    "abbr": "1Kr"
+  },
+  "120": {
+    "name": "2 Kniha kráľov",
+    "abbr": "2Kr"
+  },
+  "130": {
+    "name": "1 Kniha kroník; Paralipomenon",
+    "abbr": "1Pa"
+  },
+  "140": {
+    "name": "2 Kniha kroník; Paralipomenon",
+    "abbr": "2Pa"
+  },
+  "145": {
+    "name": "Modlitba Manassesa",
+    "abbr": "Modlit"
+  },
+  "150": {
+    "name": "Ezdráš",
+    "abbr": "Ezd"
+  },
+  "160": {
+    "name": "Nehemiáš",
+    "abbr": "Neh"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judith",
+    "abbr": "Judith"
+  },
+  "190": {
+    "name": "Ester",
+    "abbr": "Est"
+  },
+  "220": {
+    "name": "Jób",
+    "abbr": "Jb"
+  },
+  "230": {
+    "name": "Žalmy",
+    "abbr": "Ž"
+  },
+  "240": {
+    "name": "Príslovia",
+    "abbr": "Př"
+  },
+  "250": {
+    "name": "Kazateľ",
+    "abbr": "Kaz"
+  },
+  "260": {
+    "name": "Pieseň piesní; Veľpieseň",
+    "abbr": "Pís"
+  },
+  "270": {
+    "name": "Šalamúnova múdrosť",
+    "abbr": "Šalamú"
+  },
+  "280": {
+    "name": "Múdrosť Ježiša, syna Sirachovho",
+    "abbr": "Múdros"
+  },
+  "290": {
+    "name": "Izaiáš",
+    "abbr": "Iz"
+  },
+  "300": {
+    "name": "Jeremiáš",
+    "abbr": "Jr"
+  },
+  "310": {
+    "name": "Žalospevy; Plač Jeremiášov",
+    "abbr": "Pl"
+  },
+  "315": {
+    "name": "Posolstvo Jeremiáša",
+    "abbr": "Posols"
+  },
+  "320": {
+    "name": "Baruch",
+    "abbr": "Baruch"
+  },
+  "330": {
+    "name": "Ezechiel",
+    "abbr": "Ez"
+  },
+  "340": {
+    "name": "Daniel",
+    "abbr": "Dn"
+  },
+  "350": {
+    "name": "Ozeáš",
+    "abbr": "Oz"
+  },
+  "360": {
+    "name": "Joel",
+    "abbr": "Jl"
+  },
+  "370": {
+    "name": "Amos",
+    "abbr": "Am"
+  },
+  "380": {
+    "name": "Obadiáš",
+    "abbr": "Abd"
+  },
+  "390": {
+    "name": "Jonáš",
+    "abbr": "Jon"
+  },
+  "400": {
+    "name": "Micheáš",
+    "abbr": "Mi"
+  },
+  "410": {
+    "name": "Nahum",
+    "abbr": "Na"
+  },
+  "420": {
+    "name": "Abakuk",
+    "abbr": "Ab"
+  },
+  "430": {
+    "name": "Sofoniáš",
+    "abbr": "Sf"
+  },
+  "440": {
+    "name": "Aggeus",
+    "abbr": "Ag"
+  },
+  "450": {
+    "name": "Zachariáš",
+    "abbr": "Za"
+  },
+  "460": {
+    "name": "Malachiáš",
+    "abbr": "Mal"
+  },
+  "462": {
+    "name": "1. Makabejské",
+    "abbr": "1. Mak"
+  },
+  "464": {
+    "name": "2. Maccabees",
+    "abbr": "2. Mac"
+  },
+  "466": {
+    "name": "3. Makabejské",
+    "abbr": "3. Mak"
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "Evanjelium podľa Matúša",
+    "abbr": "Mt"
+  },
+  "480": {
+    "name": "Evanjelium podľa Mareka",
+    "abbr": "Mk"
+  },
+  "490": {
+    "name": "Evanjelium podľa Lukáša",
+    "abbr": "L"
+  },
+  "500": {
+    "name": "Evanjelium podľa Jána",
+    "abbr": "J"
+  },
+  "510": {
+    "name": "Skutky apoštolov",
+    "abbr": "Sk"
+  },
+  "520": {
+    "name": "List apoštola Pavla Rímskym",
+    "abbr": "Ř"
+  },
+  "530": {
+    "name": "Prvýlist apoštola Pavla Korintským",
+    "abbr": "1Kor"
+  },
+  "540": {
+    "name": "Druhýlist apoštola Pavla Korintským",
+    "abbr": "2Kor"
+  },
+  "550": {
+    "name": "List apoštola Pavla Galatským",
+    "abbr": "Ga"
+  },
+  "560": {
+    "name": "List apoštola Pavla Efezským",
+    "abbr": "Ef"
+  },
+  "570": {
+    "name": "List apoštola Pavla Filipským",
+    "abbr": "Fp"
+  },
+  "580": {
+    "name": "List apoštola Pavla Kolosenským",
+    "abbr": "Ko"
+  },
+  "590": {
+    "name": "Prvýlist apoštola Pavla Tesalonickým",
+    "abbr": "1Te"
+  },
+  "600": {
+    "name": "Druhýlist apoštola Pavla Tesalonickým",
+    "abbr": "2Te"
+  },
+  "610": {
+    "name": "Prvýlist apoštola Pavla Timoteovi",
+    "abbr": "1Tm"
+  },
+  "620": {
+    "name": "Druhýlist apoštola Pavla Timoteovi",
+    "abbr": "2Tm"
+  },
+  "630": {
+    "name": "List apoštola Pavla Títovi",
+    "abbr": "Tt"
+  },
+  "640": {
+    "name": "List apoštola Pavla Filemonovi",
+    "abbr": "Fm"
+  },
+  "650": {
+    "name": "List Židom",
+    "abbr": "Žd"
+  },
+  "660": {
+    "name": "List Jakuba",
+    "abbr": "Jk"
+  },
+  "670": {
+    "name": "Prvýlist apoštola Petra",
+    "abbr": "1Pt"
+  },
+  "680": {
+    "name": "Druhýlist apoštola Petra",
+    "abbr": "2Pt"
+  },
+  "690": {
+    "name": "Prvýlist Jánov",
+    "abbr": "1J"
+  },
+  "700": {
+    "name": "Druhýlist Jánov",
+    "abbr": "2J"
+  },
+  "710": {
+    "name": "Tretílist Jánov",
+    "abbr": "3J"
+  },
+  "720": {
+    "name": "List Júdov",
+    "abbr": "Ju"
+  },
+  "730": {
+    "name": "Zjavenie Jána",
+    "abbr": "Zj"
+  }
+}

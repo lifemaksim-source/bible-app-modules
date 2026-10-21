@@ -1,0 +1,88 @@
+name: Проверка тестовых ZIP IBT без публикации
+
+on:
+  pull_request:
+    paths:
+      - tools/convert_ibt_epub.py
+      - tools/test_convert_ibt_epub.py
+      - tools/probe_ibt_ebooks.py
+      - tools/test_probe_ibt_ebooks.py
+      - docs/language-module-discovery.json
+      - .github/workflows/ibt-ebook-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-local-zip:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Локальные тесты готовых конвертеров
+        run: |
+          python3 -m unittest discover -s tools -p test_probe_ibt_ebooks.py -v
+          python3 -m unittest discover -s tools -p test_convert_ibt_epub.py -v
+      - name: Собрать пять ZIP из настоящих EPUB и проверить импортную SQLite
+        shell: bash
+        run: |
+          python3 tools/convert_ibt_epub.py --local-test-zips /tmp/ibt-local-qa --report ibt-sqlite-drafts.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          import sqlite3
+          import tempfile
+          import zipfile
+
+          report = json.loads(Path("ibt-sqlite-drafts.json").read_text("utf8"))
+          if report["attempted"] != 5 or report["draftsWithVerses"] != 5:
+              raise RuntimeError("Expected five verified private test ZIPs")
+          for record in report["modules"]:
+              lang = record["language"]
+              archive = Path(record["localTestZip"])
+              if archive.parent != Path("/tmp/ibt-local-qa") or archive.name != f"IBT_{lang}_LOCAL_TEST_ONLY.zip":
+                  raise RuntimeError("Unexpected private archive name or location")
+              with zipfile.ZipFile(archive) as z:
+                  if z.namelist() != [f"IBT_{lang}.SQLite3"] or z.testzip() is not None:
+                      raise RuntimeError(f"{lang}: invalid MyBible ZIP structure")
+                  with tempfile.TemporaryDirectory() as tmp:
+                      filename = Path(tmp) / "module.sqlite3"
+                      filename.write_bytes(z.read(f"IBT_{lang}.SQLite3"))
+                      with sqlite3.connect(filename) as db:
+                          if db.execute("PRAGMA quick_check").fetchone()[0] != "ok":
+                              raise RuntimeError(f"{lang}: broken SQLite")
+                          books = db.execute("SELECT COUNT(*) FROM books").fetchone()[0]
+                          verses = db.execute("SELECT COUNT(*) FROM verses").fetchone()[0]
+                          header = db.execute("SELECT value FROM info WHERE name='language'").fetchone()[0]
+                          if (books, verses, header) != (record["books"], record["verseRows"], lang):
+                              raise RuntimeError(f"{lang}: source/ZIP metadata disagreement")
+              print(f"OK: {lang} — {books} books, {verses} verse rows; private ZIP")
+          PY
+      - name: Краткий результат без файлов Библии
+        if: always()
+        shell: bash
+        run: |
+          if test -f ibt-sqlite-drafts.json; then
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          d = json.loads(Path("ibt-sqlite-drafts.json").read_text("utf8"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf8") as f:
+              f.write("## IBT: реальные EPUB → приватные ZIP → SQLite\n\n")
+              for m in d["modules"]:
+                  f.write(f"- {m['language']}: {m['status']}; книг {m.get('books', 0)}, строк стихов {m.get('verseRows', 0)}, пустых маркеров {m.get('blankAnchors', 0)}\n")
+              f.write("\nZIP создаются только внутри runner /tmp, не загружаются как artifacts.\n")
+          PY
+          fi
+      - name: Сохранить только JSON-отчёт
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ibt-zip-qa-metadata
+          path: ibt-sqlite-drafts.json
+          retention-days: 7
+          if-no-files-found: ignore

@@ -1,3 +1,5 @@
 node_modules/
 work/
 dist/
+# Local-only copyrighted-source conversion previews; never commit or publish.
+private-ibt-test/

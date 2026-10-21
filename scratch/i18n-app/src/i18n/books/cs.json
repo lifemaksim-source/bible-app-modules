@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Genesis",
+    "abbr": "Gn"
+  },
+  "20": {
+    "name": "Exodus",
+    "abbr": "Ex"
+  },
+  "30": {
+    "name": "Leviticus",
+    "abbr": "Lv"
+  },
+  "40": {
+    "name": "Numeri",
+    "abbr": "Nm"
+  },
+  "50": {
+    "name": "Deuteronomium",
+    "abbr": "Dt"
+  },
+  "60": {
+    "name": "Jozue",
+    "abbr": "Joz"
+  },
+  "70": {
+    "name": "Soudců",
+    "abbr": "Sd"
+  },
+  "80": {
+    "name": "Rút",
+    "abbr": "Rt"
+  },
+  "90": {
+    "name": "1. Samuelova",
+    "abbr": "1 Sam"
+  },
+  "100": {
+    "name": "2. Samuelova",
+    "abbr": "2 Sam"
+  },
+  "110": {
+    "name": "1. Královská",
+    "abbr": "1 Král"
+  },
+  "120": {
+    "name": "2. Královská",
+    "abbr": "2 Král"
+  },
+  "130": {
+    "name": "1. Letopisů",
+    "abbr": "1 Kron"
+  },
+  "140": {
+    "name": "2. Letopisů",
+    "abbr": "2 Kron"
+  },
+  "145": {
+    "name": "Modlitba Manasseho",
+    "abbr": "Modlit"
+  },
+  "150": {
+    "name": "Ezdráš",
+    "abbr": "Ezd"
+  },
+  "160": {
+    "name": "Nehemiáš",
+    "abbr": "Neh"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobiáš",
+    "abbr": "Tob"
+  },
+  "180": {
+    "name": "Judita",
+    "abbr": "Jdt"
+  },
+  "190": {
+    "name": "Ester",
+    "abbr": "Est"
+  },
+  "220": {
+    "name": "Job",
+    "abbr": "Job"
+  },
+  "230": {
+    "name": "Žalmy",
+    "abbr": "Žl"
+  },
+  "240": {
+    "name": "Přísloví",
+    "abbr": "Př"
+  },
+  "250": {
+    "name": "Kazatel",
+    "abbr": "Kaz"
+  },
+  "260": {
+    "name": "Píseň písní",
+    "abbr": "Pís"
+  },
+  "270": {
+    "name": "Moudrost Šalomounova",
+    "abbr": "Mdr"
+  },
+  "280": {
+    "name": "Sirachovec",
+    "abbr": "Sir"
+  },
+  "290": {
+    "name": "Izaiáš",
+    "abbr": "Iz"
+  },
+  "300": {
+    "name": "Jeremiáš",
+    "abbr": "Jer"
+  },
+  "310": {
+    "name": "Pláč",
+    "abbr": "Pláč"
+  },
+  "315": {
+    "name": "Poselství Jeremiášovo",
+    "abbr": "Posels"
+  },
+  "320": {
+    "name": "Baruch",
+    "abbr": "Bar"
+  },
+  "330": {
+    "name": "Ezechiel",
+    "abbr": "Ez"
+  },
+  "340": {
+    "name": "Daniel",
+    "abbr": "Dan"
+  },
+  "350": {
+    "name": "Ozeáš",
+    "abbr": "Oz"
+  },
+  "360": {
+    "name": "Joel",
+    "abbr": "Jl"
+  },
+  "370": {
+    "name": "Amos",
+    "abbr": "Am"
+  },
+  "380": {
+    "name": "Abdiáš",
+    "abbr": "Abd"
+  },
+  "390": {
+    "name": "Jonáš",
+    "abbr": "Jon"
+  },
+  "400": {
+    "name": "Micheáš",
+    "abbr": "Mich"
+  },
+  "410": {
+    "name": "Nahum",
+    "abbr": "Nah"
+  },
+  "420": {
+    "name": "Abakuk",
+    "abbr": "Hab"
+  },
+  "430": {
+    "name": "Sofoniáš",
+    "abbr": "Sof"
+  },
+  "440": {
+    "name": "Ageus",
+    "abbr": "Ag"
+  },
+  "450": {
+    "name": "Zachariáš",
+    "abbr": "Zach"
+  },
+  "460": {
+    "name": "Malachiáš",
+    "abbr": "Mal"
+  },
+  "462": {
+    "name": "1. Makabejská",
+    "abbr": "1 Mak"
+  },
+  "464": {
+    "name": "2. Makabejská",
+    "abbr": "2 Mak"
+  },
+  "466": {
+    "name": "3. Maccabees",
+    "abbr": "3. Mac"
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "Matouš",
+    "abbr": "Mt"
+  },
+  "480": {
+    "name": "Marek",
+    "abbr": "Mk"
+  },
+  "490": {
+    "name": "Lukáš",
+    "abbr": "Lk"
+  },
+  "500": {
+    "name": "Jan",
+    "abbr": "Jan"
+  },
+  "510": {
+    "name": "Skutky apoštolů",
+    "abbr": "Sk"
+  },
+  "520": {
+    "name": "Římanům",
+    "abbr": "Řím"
+  },
+  "530": {
+    "name": "1. Korintským",
+    "abbr": "1 Kor"
+  },
+  "540": {
+    "name": "2. Korintským",
+    "abbr": "2 Kor"
+  },
+  "550": {
+    "name": "Galatským",
+    "abbr": "Gal"
+  },
+  "560": {
+    "name": "Efeským",
+    "abbr": "Ef"
+  },
+  "570": {
+    "name": "Filipským",
+    "abbr": "Flp"
+  },
+  "580": {
+    "name": "Koloským",
+    "abbr": "Kol"
+  },
+  "590": {
+    "name": "1. Tesalonickým",
+    "abbr": "1 Sol"
+  },
+  "600": {
+    "name": "2. Tesalonickým",
+    "abbr": "2 Sol"
+  },
+  "610": {
+    "name": "1. Timoteovi",
+    "abbr": "1 Tim"
+  },
+  "620": {
+    "name": "2. Timoteovi",
+    "abbr": "2 Tim"
+  },
+  "630": {
+    "name": "Titovi",
+    "abbr": "Tit"
+  },
+  "640": {
+    "name": "Filemonovi",
+    "abbr": "Flm"
+  },
+  "650": {
+    "name": "Židům",
+    "abbr": "Žid"
+  },
+  "660": {
+    "name": "Jakub",
+    "abbr": "Jak"
+  },
+  "670": {
+    "name": "1. Petr",
+    "abbr": "1 Petr"
+  },
+  "680": {
+    "name": "2. Petr",
+    "abbr": "2 Petr"
+  },
+  "690": {
+    "name": "1. Jan",
+    "abbr": "1 Jan"
+  },
+  "700": {
+    "name": "2. Jan",
+    "abbr": "2 Jan"
+  },
+  "710": {
+    "name": "3. Jan",
+    "abbr": "3 Jan"
+  },
+  "720": {
+    "name": "Juda",
+    "abbr": "Jud"
+  },
+  "730": {
+    "name": "Zjevení",
+    "abbr": "Zj"
+  }
+}

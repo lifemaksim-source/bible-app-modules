@@ -1,0 +1,78 @@
+{
+  "report": [
+    {
+      "code": "lv",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "et",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "cs",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "sk",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "mk",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": [
+        {
+          "code": "mk",
+          "index": 95,
+          "method": "segmented"
+        }
+      ]
+    },
+    {
+      "code": "hr",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    }
+  ],
+  "enabled": [
+    "ba",
+    "be",
+    "bg",
+    "cs",
+    "et",
+    "hr",
+    "hy",
+    "ka",
+    "kk",
+    "ky",
+    "lt",
+    "lv",
+    "mk",
+    "mn",
+    "ro",
+    "sah",
+    "sk",
+    "tg",
+    "tk",
+    "tt",
+    "uz"
+  ],
+  "sourceKeys": 1040,
+  "machineTranslated": true,
+  "humanReviewed": false
+}

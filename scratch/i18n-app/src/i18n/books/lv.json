@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "PIRMĀ MOZUS",
+    "abbr": "1Moz"
+  },
+  "20": {
+    "name": "OTRA MOZUS",
+    "abbr": "2Moz"
+  },
+  "30": {
+    "name": "TREŠĀ MOZUS",
+    "abbr": "3Moz"
+  },
+  "40": {
+    "name": "CETURTĀ MOZUS",
+    "abbr": "4Moz"
+  },
+  "50": {
+    "name": "PIEKTĀ MOZUS",
+    "abbr": "5Moz"
+  },
+  "60": {
+    "name": "JOZUAS",
+    "abbr": "Joz"
+  },
+  "70": {
+    "name": "SOG̒U",
+    "abbr": "Soģ"
+  },
+  "80": {
+    "name": "RUTES",
+    "abbr": "Rut"
+  },
+  "90": {
+    "name": "PIRMĀ SAMUELA",
+    "abbr": "1Sam"
+  },
+  "100": {
+    "name": "OTRA SAMUELA",
+    "abbr": "2Sam"
+  },
+  "110": {
+    "name": "PIRMĀ ĶĒNIŅU",
+    "abbr": "1Ķēn"
+  },
+  "120": {
+    "name": "OTRA ĶĒNIŅU",
+    "abbr": "2Ķēn"
+  },
+  "130": {
+    "name": "PIRMĀ LAIKU",
+    "abbr": "1L"
+  },
+  "140": {
+    "name": "OTRA LAIKU",
+    "abbr": "2L"
+  },
+  "145": {
+    "name": "Manases lūgšana",
+    "abbr": "Manase"
+  },
+  "150": {
+    "name": "EZRAS",
+    "abbr": "Ezr"
+  },
+  "160": {
+    "name": "NECHEMIJAS",
+    "abbr": "Neh"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judīte",
+    "abbr": "Judīte"
+  },
+  "190": {
+    "name": "ESTERES",
+    "abbr": "Est"
+  },
+  "220": {
+    "name": "ĪJABA",
+    "abbr": "Īj"
+  },
+  "230": {
+    "name": "PSALMI",
+    "abbr": "Ps"
+  },
+  "240": {
+    "name": "SALAMANA PAMĀCĪBAS",
+    "abbr": "Sak"
+  },
+  "250": {
+    "name": "SALAMANS MĀCĪTĀJS",
+    "abbr": "Māc"
+  },
+  "260": {
+    "name": "AUGSTĀ DZIESMA",
+    "abbr": "Dz"
+  },
+  "270": {
+    "name": "Zālamana gudrība",
+    "abbr": "Zālama"
+  },
+  "280": {
+    "name": "Jēzus, Siraha dēla, gudrība",
+    "abbr": "Jēzus,"
+  },
+  "290": {
+    "name": "JESAJAS",
+    "abbr": "Jes"
+  },
+  "300": {
+    "name": "JEREMIJAS",
+    "abbr": "Jer"
+  },
+  "310": {
+    "name": "RAUDU DZIESMAS",
+    "abbr": "Rdz"
+  },
+  "315": {
+    "name": "Jeremijas vēstījums",
+    "abbr": "Jeremi"
+  },
+  "320": {
+    "name": "Baruhs",
+    "abbr": "Baruhs"
+  },
+  "330": {
+    "name": "ECECHIELA",
+    "abbr": "Ech"
+  },
+  "340": {
+    "name": "DANIĒLA",
+    "abbr": "Dan"
+  },
+  "350": {
+    "name": "HOZEJAS",
+    "abbr": "Hoz"
+  },
+  "360": {
+    "name": "JOĒLA",
+    "abbr": "Jl"
+  },
+  "370": {
+    "name": "AMOSA",
+    "abbr": "Am"
+  },
+  "380": {
+    "name": "OBADJAS",
+    "abbr": "Ob"
+  },
+  "390": {
+    "name": "JONAS",
+    "abbr": "Jon"
+  },
+  "400": {
+    "name": "MICHAS",
+    "abbr": "Mih"
+  },
+  "410": {
+    "name": "NACHUMA",
+    "abbr": "Nah"
+  },
+  "420": {
+    "name": "HABAKUKA",
+    "abbr": "Hab"
+  },
+  "430": {
+    "name": "CEFANJAS",
+    "abbr": "Cef"
+  },
+  "440": {
+    "name": "HAGAJA",
+    "abbr": "Hag"
+  },
+  "450": {
+    "name": "CAKARIJAS",
+    "abbr": "Zah"
+  },
+  "460": {
+    "name": "MALEACHIJA",
+    "abbr": "Mal"
+  },
+  "462": {
+    "name": "1. Makabejs",
+    "abbr": "1. Mak"
+  },
+  "464": {
+    "name": "2. Makabiji",
+    "abbr": "2. Mak"
+  },
+  "466": {
+    "name": "3. Makabiji",
+    "abbr": "3. Mak"
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "MATEJA EVAŅG̒ELIJS",
+    "abbr": "Mt"
+  },
+  "480": {
+    "name": "MARKA EVAŅG̒ELIJS",
+    "abbr": "Mk"
+  },
+  "490": {
+    "name": "LŪKAS EVAŅG̒ELIJS",
+    "abbr": "Lk"
+  },
+  "500": {
+    "name": "JĀŅA EVAŅG̒ELIJS",
+    "abbr": "Jņ"
+  },
+  "510": {
+    "name": "APUSTUĻU DARBI",
+    "abbr": "Apd"
+  },
+  "520": {
+    "name": "PĀVILAVĒSTULĒ ROMIEŠIEM",
+    "abbr": "Rm"
+  },
+  "530": {
+    "name": "PĀVILA 1. VĒSTULE KORINTIEŠIEM",
+    "abbr": "1kor"
+  },
+  "540": {
+    "name": "PĀVILA 2. VĒSTULE KORINTIEŠIEM",
+    "abbr": "2kor"
+  },
+  "550": {
+    "name": "PĀVILA VĒSTULE GALATIEŠIEM",
+    "abbr": "Gal"
+  },
+  "560": {
+    "name": "PĀVILA VĒSTULE EFEZIEŠIEM",
+    "abbr": "Ef"
+  },
+  "570": {
+    "name": "PĀVILA VĒSTULE FILIPIEŠIEM",
+    "abbr": "Flp"
+  },
+  "580": {
+    "name": "PĀVILA VĒSTULE KOLOSIEŠIEM",
+    "abbr": "Kol"
+  },
+  "590": {
+    "name": "PĀVILA 1. VĒSTULE TESALONIKIEŠIEM",
+    "abbr": "1tes"
+  },
+  "600": {
+    "name": "PĀVILA 2. VĒSTULE TESALONIĶIEŠIEM",
+    "abbr": "2tes"
+  },
+  "610": {
+    "name": "PĀVILA 1. VĒSTULE TIMOTEJAM",
+    "abbr": "1Tim"
+  },
+  "620": {
+    "name": "PĀVILA 2. VĒSTULE TIMOTEJAM",
+    "abbr": "2Tim"
+  },
+  "630": {
+    "name": "PĀVILA VĒSTULE TĪTAM",
+    "abbr": "Tit"
+  },
+  "640": {
+    "name": "PĀVILA VĒSTULE FILEMONAM",
+    "abbr": "Flm"
+  },
+  "650": {
+    "name": "VĒSTULE EBRĒJIEM",
+    "abbr": "Ebr"
+  },
+  "660": {
+    "name": "JĒKABA VĒSTULE",
+    "abbr": "Jk"
+  },
+  "670": {
+    "name": "PĒTEŖA 1. VĒSTULE",
+    "abbr": "1Pēt"
+  },
+  "680": {
+    "name": "PĒTEŖA 2. VĒSTULE",
+    "abbr": "2Pēt"
+  },
+  "690": {
+    "name": "JĀŅA 1. VĒSTULE",
+    "abbr": "1Jņ"
+  },
+  "700": {
+    "name": "JĀŅA 2. VĒSTULE",
+    "abbr": "2Jņ"
+  },
+  "710": {
+    "name": "JĀŅA 3. VĒSTULE",
+    "abbr": "3Jņ"
+  },
+  "720": {
+    "name": "JŪDAS VĒSTULE",
+    "abbr": "Jūd"
+  },
+  "730": {
+    "name": "JAŅA ATKLĀSMES GRĀMATA",
+    "abbr": "Atkl"
+  }
+}

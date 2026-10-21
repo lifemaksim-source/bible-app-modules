@@ -1,0 +1,57 @@
+name: Черновые языки интерфейса Bible App
+on:
+  pull_request:
+    paths:
+      - .github/workflows/ui-translation-probe.yml
+      - scratch/i18n-app/tools/translate-regional.mjs
+permissions:
+  contents: write
+jobs:
+  translate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: feature/ussr-warsaw-language-audit-20261021
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Восемь полных интерфейсных файлов (только публичные строки UI)
+        working-directory: scratch/i18n-app
+        run: node tools/translate-regional.mjs --languages=lv,et,cs,sk,mk,hr
+      - name: Названия книг брать из настоящих MyBible SQLite
+        working-directory: scratch/i18n-app
+        run: python3 tools/use-mybible-book-names.py
+      - name: Проверить все ключи, переменные и 78 названий книг
+        working-directory: scratch/i18n-app
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          const ru=JSON.parse(readFileSync('src/i18n/locales/ru.json','utf8'));
+          const report=JSON.parse(readFileSync('regional-translation-report.json','utf8'));
+          let passed=0;
+          for(const {code,status} of report.report){
+            if(status!=='machine-draft' && status!=='existing')continue;
+            const l=JSON.parse(readFileSync('src/i18n/locales/'+code+'.json','utf8'));
+            const b=JSON.parse(readFileSync('src/i18n/books/'+code+'.json','utf8'));
+            if(Object.keys(l).length!==Object.keys(ru).length||Object.keys(b).length!==78)throw Error('Missing keys '+code);
+            const vars=(s)=>[...s.matchAll(/\{\{([^}]+)\}\}/g)].map(x=>x[1]).sort().join('|');
+            for(const [k,v] of Object.entries(ru))if(!l[k]||vars(v)!==vars(l[k]))throw Error('Invalid '+code+':'+k);
+            console.log('PASS '+code+': full '+Object.keys(l).length+' UI keys, 78 Bible books');
+            passed++;
+          }
+          if(!passed)throw Error('No languages translated');
+          NODE
+      - name: Сохранить переводы только во временной рабочей ветке
+        run: |
+          git config user.name "Bible App i18n CI"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scratch/i18n-app/src/i18n/locales scratch/i18n-app/src/i18n/books scratch/i18n-app/src/i18n/extraLocalizations.ts scratch/i18n-app/regional-translation-report.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(ci): temporarily stage translated Bible App UI drafts for review"
+            git pull --rebase origin feature/ussr-warsaw-language-audit-20261021
+            git push origin HEAD:feature/ussr-warsaw-language-audit-20261021
+          fi
+      - name: Итог перевода
+        run: cat scratch/i18n-app/regional-translation-report.json

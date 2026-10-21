@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Bitie",
+    "abbr": "Bit"
+  },
+  "20": {
+    "name": "Izlez",
+    "abbr": "Izl"
+  },
+  "30": {
+    "name": "Levit",
+    "abbr": "Lev"
+  },
+  "40": {
+    "name": "Broevi",
+    "abbr": "Bro"
+  },
+  "50": {
+    "name": "Vtorozakonie",
+    "abbr": "Vto"
+  },
+  "60": {
+    "name": "Isus Navin",
+    "abbr": "Nav"
+  },
+  "70": {
+    "name": "Sudii",
+    "abbr": "Sud"
+  },
+  "80": {
+    "name": "Rut",
+    "abbr": "Rut"
+  },
+  "90": {
+    "name": "1 Samuil",
+    "abbr": "1Sam"
+  },
+  "100": {
+    "name": "2 Samuil",
+    "abbr": "2Sam"
+  },
+  "110": {
+    "name": "1 Carevi",
+    "abbr": "1Car"
+  },
+  "120": {
+    "name": "2 Carevi",
+    "abbr": "2Car"
+  },
+  "130": {
+    "name": "1 Letopisi",
+    "abbr": "1Let"
+  },
+  "140": {
+    "name": "2 Letopisi",
+    "abbr": "2Let"
+  },
+  "145": {
+    "name": "Молитва на Манасија",
+    "abbr": "Молитв"
+  },
+  "150": {
+    "name": "Ezra",
+    "abbr": "Ezra"
+  },
+  "160": {
+    "name": "Neemija",
+    "abbr": "Nee"
+  },
+  "165": {
+    "name": "2 Есдрас",
+    "abbr": "2 Есдр"
+  },
+  "170": {
+    "name": "Тобит",
+    "abbr": "Тобит"
+  },
+  "180": {
+    "name": "Џудит",
+    "abbr": "Џудит"
+  },
+  "190": {
+    "name": "Estira",
+    "abbr": "Est"
+  },
+  "220": {
+    "name": "Jov",
+    "abbr": "Jov"
+  },
+  "230": {
+    "name": "Psalmi",
+    "abbr": "Psal"
+  },
+  "240": {
+    "name": "Poslovici",
+    "abbr": "Posl"
+  },
+  "250": {
+    "name": "Propovednik",
+    "abbr": "Prop"
+  },
+  "260": {
+    "name": "Pesna nad pesnite",
+    "abbr": "Pesn"
+  },
+  "270": {
+    "name": "Мудроста на Соломон",
+    "abbr": "Мудрос"
+  },
+  "280": {
+    "name": "Мудроста на Исус, синот на Сирах",
+    "abbr": "Мудрос"
+  },
+  "290": {
+    "name": "Isaija",
+    "abbr": "Isai"
+  },
+  "300": {
+    "name": "Eremija",
+    "abbr": "Erem"
+  },
+  "310": {
+    "name": "Plač Eremiin",
+    "abbr": "Plač"
+  },
+  "315": {
+    "name": "Пораката на Еремија",
+    "abbr": "Порака"
+  },
+  "320": {
+    "name": "Барух",
+    "abbr": "Барух"
+  },
+  "330": {
+    "name": "Ezekiel",
+    "abbr": "Ezek"
+  },
+  "340": {
+    "name": "Daniel",
+    "abbr": "Dan"
+  },
+  "350": {
+    "name": "Osija",
+    "abbr": "Osi"
+  },
+  "360": {
+    "name": "Joil",
+    "abbr": "Joil"
+  },
+  "370": {
+    "name": "Amos",
+    "abbr": "Amos"
+  },
+  "380": {
+    "name": "Avdij",
+    "abbr": "Avd"
+  },
+  "390": {
+    "name": "Jona",
+    "abbr": "Jon"
+  },
+  "400": {
+    "name": "Miȟej",
+    "abbr": "Miȟ"
+  },
+  "410": {
+    "name": "Naum",
+    "abbr": "Naum"
+  },
+  "420": {
+    "name": "Ȟabakuk",
+    "abbr": "Ȟab"
+  },
+  "430": {
+    "name": "Sofonija",
+    "abbr": "Sof"
+  },
+  "440": {
+    "name": "Agej",
+    "abbr": "Age"
+  },
+  "450": {
+    "name": "Zaȟarija",
+    "abbr": "Zaȟ"
+  },
+  "460": {
+    "name": "Malaȟija",
+    "abbr": "Mal"
+  },
+  "462": {
+    "name": "1-ви Макавејци",
+    "abbr": "1-ви М"
+  },
+  "464": {
+    "name": "2. Макавејци",
+    "abbr": "2. Мак"
+  },
+  "466": {
+    "name": "3. Макавејци",
+    "abbr": "3. Мак"
+  },
+  "468": {
+    "name": "3 Есдрас",
+    "abbr": "3 Есдр"
+  },
+  "470": {
+    "name": "Evangelie spored Matej",
+    "abbr": "Mat"
+  },
+  "480": {
+    "name": "Evangelie spored Marko",
+    "abbr": "Mar"
+  },
+  "490": {
+    "name": "Evangelie spored Luka",
+    "abbr": "Luk"
+  },
+  "500": {
+    "name": "Evangelie spored Jovan",
+    "abbr": "Jov"
+  },
+  "510": {
+    "name": "Dela na svetite Apostoli",
+    "abbr": "Dela"
+  },
+  "520": {
+    "name": "Poslanie do Rimjanite",
+    "abbr": "Rim"
+  },
+  "530": {
+    "name": "Prvo Poslanie do Korintjanite",
+    "abbr": "1Kor"
+  },
+  "540": {
+    "name": "Vtoro Poslanie do Korintjanite",
+    "abbr": "2Kor"
+  },
+  "550": {
+    "name": "Poslanie do Galatjanite",
+    "abbr": "Gal"
+  },
+  "560": {
+    "name": "Poslanie do Efesjanite",
+    "abbr": "Efes"
+  },
+  "570": {
+    "name": "Poslanie do Filipjanite",
+    "abbr": "Fil"
+  },
+  "580": {
+    "name": "Poslanie do Kolosjanite",
+    "abbr": "Kol"
+  },
+  "590": {
+    "name": "Prvo Poslanie do Soluǌanite",
+    "abbr": "1Sol"
+  },
+  "600": {
+    "name": "Vtoro Poslanie do Soluǌanite",
+    "abbr": "2Sol"
+  },
+  "610": {
+    "name": "Prvo Poslanie do Timotej",
+    "abbr": "1Tim"
+  },
+  "620": {
+    "name": "Vtoro Poslanie do Timotej",
+    "abbr": "2Tim"
+  },
+  "630": {
+    "name": "Poslanie do Tit",
+    "abbr": "Tit"
+  },
+  "640": {
+    "name": "Poslanie do Filimon",
+    "abbr": "Flm"
+  },
+  "650": {
+    "name": "Poslanie do Evreite",
+    "abbr": "Evr"
+  },
+  "660": {
+    "name": "Poslanie na Jakov",
+    "abbr": "Jak"
+  },
+  "670": {
+    "name": "Prvo Poslanie na Petar",
+    "abbr": "1Pet"
+  },
+  "680": {
+    "name": "Vtoro Poslanie na Petar",
+    "abbr": "2Pet"
+  },
+  "690": {
+    "name": "Prvo Poslanie na Jovan",
+    "abbr": "1Jov"
+  },
+  "700": {
+    "name": "Vtoro Poslanie na Jovan",
+    "abbr": "2Jov"
+  },
+  "710": {
+    "name": "Treto Poslanie na Jovan",
+    "abbr": "3Jov"
+  },
+  "720": {
+    "name": "Poslanie na Juda",
+    "abbr": "Jud"
+  },
+  "730": {
+    "name": "Otkrovenie na Jovan",
+    "abbr": "Otk"
+  }
+}
