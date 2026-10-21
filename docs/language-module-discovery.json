@@ -916,6 +916,30 @@
       "verseRowsChecked": 31104,
       "blankVerseRows": 0,
       "sha256": "16af831bd975bc15cd748213dc35ff4319408281825881229007abbd6a69d7e1"
+    },
+    {
+      "id": "mybible-dar-drg",
+      "language": "dar",
+      "name": "Даргинский",
+      "externalId": "DRG",
+      "title": "Евангельские книги на даргинском (DRG)",
+      "claimedScope": "partial",
+      "sourceKind": "mybible_official_registry",
+      "sourceUrl": "https://mybible.zone/repository/registry/registry.zip",
+      "downloadUrl": "https://mybible.zone/repository/modules/DRG.zip",
+      "sqliteFile": "DRG.SQLite3",
+      "registryVersion": 8018606,
+      "evidenceRunUrl": "https://github.com/lifemaksim-source/bible-app-modules/actions/runs/39613786039",
+      "verification": "sqlite_source_verified_not_android",
+      "downloaded": true,
+      "sqliteChecked": true,
+      "androidChecked": false,
+      "published": false,
+      "booksChecked": 1,
+      "verseRowsChecked": 1068,
+      "blankVerseRows": 3,
+      "sha256": "ccc788ccc619bb57ad99d8b23feaea08e1c115ea1d3ec08efb860ff6164f9471",
+      "sourceNote": "Registry language dar; source info.language uses human label 'Dargi'. Known alias verified in audit with explicit warning. Book and verse totals only; Android not tested."
     }
   ]
 }
