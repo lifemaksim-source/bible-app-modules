@@ -1,12 +1,6 @@
 name: Проверка таджикских и монгольских модулей MyBible
 
 on:
-  push:
-    branches: [feature/ussr-warsaw-language-audit-20261021]
-    paths:
-      - tools/audit_mybible.py
-      - tools/test_audit_mybible.py
-      - .github/workflows/priority-module-audit.yml
   pull_request:
     paths:
       - tools/audit_mybible.py
@@ -20,7 +14,7 @@ permissions:
 jobs:
   inspect:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -76,7 +70,7 @@ jobs:
                               archive = tmp / 'module.zip'
                               archive.write_bytes(data)
                               valid = verify_zip(archive)
-                              if valid['language'] and valid['language'].lower().split('-')[0] != language:
+                              if valid['language'].lower().split('-')[0].split('_')[0] != language:
                                   raise AuditError('Wrong module language: ' + valid['language'])
                               attempt['inspection'] = valid
                               summary['status'] = 'sqlite_verified_not_android'
