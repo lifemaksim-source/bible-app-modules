@@ -33,6 +33,7 @@ const names = {
   udm:'Удмурт кыл', uz:'Oʻzbekcha',
 };
 const separator = '[[[SEP]]]';
+const safeFallbacks = [];
 const placeholders = (s) => [...s.matchAll(/\{\{([^}]+)\}\}/g)].map((m) => m[1]).sort().join('|');
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -95,7 +96,11 @@ async function translateAll(code, items) {
           value = decodeVariables(await remote(code,encoded[i].masked),encoded[i].vars);
         }
         if (!value || placeholders(value)!==placeholders(selected[i])) {
-          throw Error(code+': interpolation mismatch at item '+(start+i));
+          // Translation services sometimes alter placeholders. The app
+          // must never crash or refer to the wrong variable; keep this
+          // one string in the original Russian for later human review.
+          value = selected[i];
+          safeFallbacks.push({code,index:start+i});
         }
         output[start+i]=value;
       }
@@ -151,7 +156,8 @@ async function main(){
          bk.some((key)=>!books[key].name))throw Error('bad source alignment');
       writeFileSync(join(localDir,code+'.json'),JSON.stringify(locale,null,2)+'\n');
       writeFileSync(join(bookDir,code+'.json'),JSON.stringify(books,null,2)+'\n');
-      report.push({code,status:'machine-draft',uiKeys:keys.length,bookKeys:bk.length});
+      report.push({code,status:'machine-draft',uiKeys:keys.length,bookKeys:bk.length,
+        safeRussianFallbacks: safeFallbacks.filter((x)=>x.code===code)});
       console.log(code+' generated');
     }catch(e){
       report.push({code,status:'failed',reason:String(e.message).slice(0,200)});
