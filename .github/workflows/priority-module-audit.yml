@@ -1,7 +1,8 @@
 name: Проверка таджикских и монгольских модулей MyBible
 
 on:
-  pull_request:
+  push:
+    branches: [feature/ussr-warsaw-language-audit-20261021]
     paths:
       - tools/audit_mybible.py
       - tools/test_audit_mybible.py
