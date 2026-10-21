@@ -16,6 +16,16 @@ from io import BytesIO
 BOOKS = {
     "tg": "KM'92", "mn": "АБ'2013", "kk": "KAZB'10", "uz": "UZB",
     "ky": "KYB", "tt": "TTRB", "ba": "BaI", "sah": "YKT",
+    "be": "BBS", "bg": "BB'2000", "ro": "BDC'24",
+    "hy": "ABA", "ka": "ka2015", "tk": "TKCI",
+    "lt": "KBB", "lv": "LTV'65", "et": "EEB",
+    "cs": "B21", "sk": "ECAV", "mk": "BK'99",
+    "sr": "ERV-sr", "hr": "BKJ'11", "sl": "DAL1584",
+    "hu": "BDUZ", "sq": "AL'2007", "bua": "BUR",
+    "ady": "ADG", "av": "AVAR", "ce": "CHE", "crh": "CRT",
+    "cv": "CHV", "kaa": "KAAB'22C", "kbd": "KBD",
+    "kom": "KMMB'15", "lez": "LEZNT'18", "nog": "NOGNT'11",
+    "os": "OSNT", "tyv": "TYVB'25", "udm": "UDMB'16",
 }
 
 
