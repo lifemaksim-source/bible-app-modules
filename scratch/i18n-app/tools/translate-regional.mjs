@@ -74,6 +74,20 @@ function decodeVariables(s,vars) {
   vars.forEach((v,i) => { out=out.replaceAll('ZZZVARIABLE'+i+'ZZZ','{{'+v+'}}'); });
   return out.trim();
 }
+/** Last-resort translation of individual text spans around protected variables. */
+async function translateAroundVariables(code, original) {
+  const pieces = original.split(/(\{\{[^}]+\}\})/g);
+  const output = [];
+  for(const piece of pieces) {
+    if(!piece || /^\{\{[^}]+\}\}$/.test(piece) || !piece.trim()) {
+      output.push(piece);
+      continue;
+    }
+    const match = piece.match(/^(\s*)([\s\S]*?)(\s*)$/);
+    output.push(match[1] + (await remote(code, match[2])).trim() + match[3]);
+  }
+  return output.join('');
+}
 async function translateAll(code, items) {
   const output = Array(items.length);
   const batchSize = 9;
@@ -96,11 +110,16 @@ async function translateAll(code, items) {
           value = decodeVariables(await remote(code,encoded[i].masked),encoded[i].vars);
         }
         if (!value || placeholders(value)!==placeholders(selected[i])) {
-          // Translation services sometimes alter placeholders. The app
-          // must never crash or refer to the wrong variable; keep this
-          // one string in the original Russian for later human review.
-          value = selected[i];
-          safeFallbacks.push({code,index:start+i});
+          // Translate natural-language fragments around source variables.
+          // Never send the {{value}} keys themselves to machine translation.
+          try {
+            value = await translateAroundVariables(code, selected[i]);
+            if (!value || placeholders(value)!==placeholders(selected[i])) throw Error('bad segmented result');
+            safeFallbacks.push({code,index:start+i,method:'segmented'});
+          } catch (error) {
+            value = selected[i];
+            safeFallbacks.push({code,index:start+i,method:'source-fallback'});
+          }
         }
         output[start+i]=value;
       }
