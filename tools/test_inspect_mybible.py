@@ -47,6 +47,15 @@ class InspectModuleTest(unittest.TestCase):
         with self.assertRaisesRegex(ModuleError, "Duplicate"):
             inspect_module(str(self.db))
 
+    def test_blank_verse_placeholder_is_reported(self):
+        with closing(sqlite3.connect(self.db)) as c:
+            c.execute("INSERT INTO verses VALUES (470, 1, 2, ' ')")
+            c.commit()
+        report = inspect_module(str(self.db))
+        self.assertEqual(report["blankVerseRows"], 1)
+        self.assertEqual(report["verseRows"], 2)
+        self.assertIn("Source contains blank verse placeholders", report["warnings"])
+
     def test_missing_table_fails(self):
         with closing(sqlite3.connect(self.db)) as c:
             c.execute("DROP TABLE verses")
