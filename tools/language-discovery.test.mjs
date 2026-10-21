@@ -55,13 +55,25 @@ test('official MyBible evidence may not contain an invented hash or missing chec
   assert.match(validateDiscovery(data).join(' '), /missing official downloaded SQLite evidence/);
 });
 
-test('IBT digital sources are only candidates until text and verse mapping verified', () => {
-  const sources = source.records.filter(x => x.sourceKind === 'digital_ebook_listing');
+test('five IBT EPUB downloads produced ephemeral verified SQLite drafts, not published Bibles', () => {
+  const sources = source.records.filter(x => x.sourceKind === 'digital_epub_draft');
   assert.equal(sources.length, 5);
   assert.deepEqual(new Set(sources.map(x => x.language)), new Set(['tab', 'lbe', 'inh', 'gag', 'dng']));
-  assert.ok(sources.every(x => x.verification === 'listing_only' && !x.downloaded && !x.published));
+  assert.ok(sources.every(x => x.verification === 'epub_draft_sqlite_checked_not_android' &&
+    x.downloaded && x.sqliteChecked && !x.published && !x.androidChecked &&
+    x.licenseStatus === 'not_cleared' && x.blankVerseAnchors > 0));
+  assert.equal(sources.find(x => x.language === 'tab').booksChecked, 37);
+  assert.equal(sources.find(x => x.language === 'dng').booksChecked, 6);
+});
+
+test('IBT EPUB draft needs true source + SQLite evidence and may not become a published source', () => {
   const data = clone();
-  const candidate = data.records.find(x => x.sourceKind === 'digital_ebook_listing');
-  candidate.digitalDownloadUrl = 'https://not-trusted.example/forged.fb2.zip';
-  assert.match(validateDiscovery(data).join(' '), /invalid or prematurely promoted digital eBook source/);
+  const candidate = data.records.find(x => x.sourceKind === 'digital_epub_draft');
+  candidate.digitalEpubUrl = 'https://example.com/forged.epub';
+  candidate.sourceSha256 = 'bad';
+  candidate.booksChecked = 0;
+  candidate.licenseStatus = 'approved';
+  assert.match(validateDiscovery(data).join(' '), /missing EPUB draft-only conversion evidence or rights flag/);
+  candidate.published = true;
+  assert.match(validateDiscovery(data).join(' '), /unverified candidate may not be published/);
 });
