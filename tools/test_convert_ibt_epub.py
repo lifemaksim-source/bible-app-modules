@@ -153,6 +153,32 @@ class EpubDraftTest(unittest.TestCase):
                     '<a>Actual verse</a></div>')
         self.assertEqual(dict(parser.finish()), {(10, 1, 1): "Actual verse"})
 
+
+    def test_osis_list_items_contain_real_scripture_in_original_verse(self):
+        html = ('<div class="calibre1"><div class="osis-div"><ol class="osis-list">'
+                '<li class="osis-item"><span id="Gen.10.2"></span>'
+                '<span>First family</span></li>'
+                '<li class="osis-item1"><span id="Gen.10.3"></span>'
+                '<a class="osis-reference">Second family</a></li>'
+                '</ol></div></div>')
+        parser = VerseHtml()
+        parser.feed(html)
+        self.assertEqual(dict(parser.finish()), {
+            (10, 10, 2): "First family",
+            (10, 10, 3): "Second family",
+        })
+        self.assertEqual(parser.skipped_anchors, 0)
+
+    def test_regular_lists_and_publisher_notes_never_create_scripture(self):
+        html = ('<div class="calibre1"><ol class="list"><li class="osis-item">'
+                '<span id="Gen.1.1"></span>Editorial navigation</li></ol>'
+                '<div class="xsl-footnote-section"><ol class="osis-list">'
+                '<li class="osis-item">Note-only reference</li></ol></div></div>')
+        parser = VerseHtml()
+        parser.feed(html)
+        self.assertEqual(parser.finish(), [])
+        self.assertEqual(parser.skipped_anchors, 1)
+
     def test_unrelated_non_osis_div_and_titles_are_not_attached(self):
         parser = VerseHtml()
         parser.feed('<div class="calibre1"><span id="Gen.1.1"></span>'
