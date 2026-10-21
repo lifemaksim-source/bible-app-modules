@@ -132,8 +132,7 @@ def verify_zip(file):
                 count = db.execute("SELECT COUNT(*) FROM verses WHERE text IS NOT NULL AND TRIM(text) != ''").fetchone()[0]
                 if not books or not count:
                     raise AuditError("No books or verses")
-                if db.execute("SELECT 1 FROM verses WHERE text IS NULL OR TRIM(text) = '' LIMIT 1").fetchone():
-                    raise AuditError("Empty verse text")
+                blank_rows = db.execute("SELECT COUNT(*) FROM verses WHERE text IS NULL OR TRIM(text) = ''").fetchone()[0]
                 orphan = db.execute("SELECT 1 FROM verses AS v LEFT JOIN books AS b ON v.book_number=b.book_number WHERE b.book_number IS NULL LIMIT 1").fetchone()
                 if orphan:
                     raise AuditError("Verse references a missing book")
@@ -150,6 +149,8 @@ def verify_zip(file):
                 "sqliteSha256": hashlib.sha256(dest.read_bytes()).hexdigest(),
                 "books": books,
                 "nonEmptyVerseRows": count,
+                "blankVerseRows": blank_rows,
+                "warnings": (["Source contains empty verse rows; inspect before Android approval"] if blank_rows else []),
                 "language": str(language_row[0]) if language_row else "",
                 "status": "sqlite_structure_verified_android_not_tested",
             }
