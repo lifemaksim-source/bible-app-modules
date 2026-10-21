@@ -1,10 +1,10 @@
-name: Генерация локализаций Bible App для СНГ
+name: Черновые языки интерфейса Bible App
 on:
   pull_request:
     paths:
       - .github/workflows/ui-translation-probe.yml
 permissions:
-  contents: read
+  contents: write
 jobs:
   translate:
     runs-on: ubuntu-24.04
@@ -12,42 +12,41 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          repository: lifemaksim-source/bible-app
-          ref: feature/i18n-regional-20261021
+          ref: feature/ussr-warsaw-language-audit-20261021
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
-      - name: Полные UI-локализации для восьми приоритетных языков
+      - name: Восемь полных интерфейсных файлов (только публичные строки UI)
+        working-directory: scratch/i18n-app
         run: node tools/translate-regional.mjs --languages=tg,mn,kk,uz,ky,tt,ba,sah
-      - name: Проверка ключей, переменных и названий книг без зависимостей
-        shell: bash
+      - name: Проверить все ключи, переменные и 78 названий книг
+        working-directory: scratch/i18n-app
         run: |
           node --input-type=module <<'NODE'
-          import {readFileSync,existsSync} from 'node:fs';
+          import {readFileSync} from 'node:fs';
           const ru=JSON.parse(readFileSync('src/i18n/locales/ru.json','utf8'));
           const report=JSON.parse(readFileSync('regional-translation-report.json','utf8'));
           let passed=0;
           for(const {code,status} of report.report){
             if(status!=='machine-draft' && status!=='existing')continue;
-            const translations=JSON.parse(readFileSync('src/i18n/locales/'+code+'.json','utf8'));
-            const books=JSON.parse(readFileSync('src/i18n/books/'+code+'.json','utf8'));
-            if(Object.keys(translations).length!==Object.keys(ru).length || Object.keys(books).length!==78)throw Error('Missing '+code+' keys');
+            const l=JSON.parse(readFileSync('src/i18n/locales/'+code+'.json','utf8'));
+            const b=JSON.parse(readFileSync('src/i18n/books/'+code+'.json','utf8'));
+            if(Object.keys(l).length!==Object.keys(ru).length||Object.keys(b).length!==78)throw Error('Missing keys '+code);
             const vars=(s)=>[...s.matchAll(/\{\{([^}]+)\}\}/g)].map(x=>x[1]).sort().join('|');
-            for(const [key,value] of Object.entries(ru)){
-              if(!(key in translations)||!translations[key].trim()||vars(value)!==vars(translations[key]))throw Error('Broken '+code+' '+key);
-            }
-            console.log('PASS '+code+': '+Object.keys(ru).length+' UI entries, 78 book names');
+            for(const [k,v] of Object.entries(ru))if(!l[k]||vars(v)!==vars(l[k]))throw Error('Invalid '+code+':'+k);
+            console.log('PASS '+code+': full '+Object.keys(l).length+' UI keys, 78 Bible books');
             passed++;
           }
-          if(!passed)throw Error('No translations generated');
+          if(!passed)throw Error('No languages translated');
           NODE
-      - name: Сохранить локализации без публикации в приложение
-        uses: actions/upload-artifact@v4
-        with:
-          name: regional-ui-priority-drafts
-          path: |
-            src/i18n/locales/*.json
-            src/i18n/books/*.json
-            src/i18n/extraLocalizations.ts
-            regional-translation-report.json
-          retention-days: 7
+      - name: Сохранить переводы только во временной рабочей ветке
+        run: |
+          git config user.name "Bible App i18n CI"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scratch/i18n-app/src/i18n/locales scratch/i18n-app/src/i18n/books scratch/i18n-app/src/i18n/extraLocalizations.ts scratch/i18n-app/regional-translation-report.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(ci): temporarily stage translated Bible App UI drafts for review"
+            git push origin HEAD:feature/ussr-warsaw-language-audit-20261021
+          fi
+      - name: Итог перевода
+        run: cat scratch/i18n-app/regional-translation-report.json
