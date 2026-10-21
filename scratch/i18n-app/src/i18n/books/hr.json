@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Biće",
+    "abbr": "Biće"
+  },
+  "20": {
+    "name": "Egzodus",
+    "abbr": "Egzodu"
+  },
+  "30": {
+    "name": "Levitski zakonik",
+    "abbr": "Levits"
+  },
+  "40": {
+    "name": "Brojke",
+    "abbr": "Brojke"
+  },
+  "50": {
+    "name": "Ponovljeni zakon",
+    "abbr": "Ponovl"
+  },
+  "60": {
+    "name": "Joshua",
+    "abbr": "Joshua"
+  },
+  "70": {
+    "name": "suci",
+    "abbr": "suci"
+  },
+  "80": {
+    "name": "Ruth",
+    "abbr": "Ruth"
+  },
+  "90": {
+    "name": "1. Samuelova",
+    "abbr": "1. Sam"
+  },
+  "100": {
+    "name": "2 Kralja",
+    "abbr": "2 Kral"
+  },
+  "110": {
+    "name": "1 Kraljevi",
+    "abbr": "1 Kral"
+  },
+  "120": {
+    "name": "2 Kralja",
+    "abbr": "2 Kral"
+  },
+  "130": {
+    "name": "1 Ljetopisa",
+    "abbr": "1 Ljet"
+  },
+  "140": {
+    "name": "2 Ljetopisa",
+    "abbr": "2 Ljet"
+  },
+  "145": {
+    "name": "Molitva Manasehova",
+    "abbr": "Molitv"
+  },
+  "150": {
+    "name": "Ezra",
+    "abbr": "Ezra"
+  },
+  "160": {
+    "name": "Nehemija",
+    "abbr": "Nehemi"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judith",
+    "abbr": "Judith"
+  },
+  "190": {
+    "name": "Esther",
+    "abbr": "Esther"
+  },
+  "220": {
+    "name": "Posao",
+    "abbr": "Posao"
+  },
+  "230": {
+    "name": "PSALMI",
+    "abbr": "Ps"
+  },
+  "240": {
+    "name": "Izreke",
+    "abbr": "Izreke"
+  },
+  "250": {
+    "name": "Propovjednik",
+    "abbr": "Propov"
+  },
+  "260": {
+    "name": "Pjesma nad pjesmama",
+    "abbr": "Pjesma"
+  },
+  "270": {
+    "name": "Mudrost Salomonova",
+    "abbr": "Mudros"
+  },
+  "280": {
+    "name": "Mudrost Isusa, sina Sirahova",
+    "abbr": "Mudros"
+  },
+  "290": {
+    "name": "Izaije",
+    "abbr": "Izaije"
+  },
+  "300": {
+    "name": "Jeremija",
+    "abbr": "Jeremi"
+  },
+  "310": {
+    "name": "Tužaljke",
+    "abbr": "Tužalj"
+  },
+  "315": {
+    "name": "Poruka Jeremije",
+    "abbr": "Poruka"
+  },
+  "320": {
+    "name": "Baruch",
+    "abbr": "Baruch"
+  },
+  "330": {
+    "name": "Ezekiel",
+    "abbr": "Ezekie"
+  },
+  "340": {
+    "name": "Daniel",
+    "abbr": "Daniel"
+  },
+  "350": {
+    "name": "Hošea",
+    "abbr": "Hošea"
+  },
+  "360": {
+    "name": "Joel",
+    "abbr": "Joel"
+  },
+  "370": {
+    "name": "Amos",
+    "abbr": "Amos"
+  },
+  "380": {
+    "name": "Avdiy",
+    "abbr": "Avdiy"
+  },
+  "390": {
+    "name": "Jona",
+    "abbr": "Jona"
+  },
+  "400": {
+    "name": "Micah",
+    "abbr": "Micah"
+  },
+  "410": {
+    "name": "Nahum",
+    "abbr": "Nahum"
+  },
+  "420": {
+    "name": "Habakuk",
+    "abbr": "Habaku"
+  },
+  "430": {
+    "name": "Sefanija",
+    "abbr": "Sefani"
+  },
+  "440": {
+    "name": "Hagaj",
+    "abbr": "Hagaj"
+  },
+  "450": {
+    "name": "Zaharija",
+    "abbr": "Zahari"
+  },
+  "460": {
+    "name": "Malahije",
+    "abbr": "Malahi"
+  },
+  "462": {
+    "name": "1. Makabejci",
+    "abbr": "1. Mak"
+  },
+  "464": {
+    "name": "2. Makabejci",
+    "abbr": "2. Mak"
+  },
+  "466": {
+    "name": "3. Makabejci",
+    "abbr": "3. Mak"
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "EVANĐELJE PO MATEJU",
+    "abbr": "Mt"
+  },
+  "480": {
+    "name": "EVANĐELJE PO MARKU",
+    "abbr": "Mk"
+  },
+  "490": {
+    "name": "EVANĐELJE PO LUKI",
+    "abbr": "Lk"
+  },
+  "500": {
+    "name": "EVANĐELJE PO IVANU",
+    "abbr": "Iv"
+  },
+  "510": {
+    "name": "DJELA APOSTOLSKA",
+    "abbr": "Djela"
+  },
+  "520": {
+    "name": "POSLANICA RIMLJANIMA",
+    "abbr": "Rim"
+  },
+  "530": {
+    "name": "PRVA POSLANICA KORINĆANIMA",
+    "abbr": "1 Kor"
+  },
+  "540": {
+    "name": "DRUGA POSLANICA KORINĆANIMA",
+    "abbr": "2 Kor"
+  },
+  "550": {
+    "name": "POSLANICA GALAĆANIMA",
+    "abbr": "Gal"
+  },
+  "560": {
+    "name": "POSLANICA EFEŽANIMA",
+    "abbr": "Ef"
+  },
+  "570": {
+    "name": "POSLANICA FILIPLJANIMA",
+    "abbr": "Flp"
+  },
+  "580": {
+    "name": "POSLANICA KOLOŠANIMA",
+    "abbr": "Kol"
+  },
+  "590": {
+    "name": "PRVA POSLANICA SOLUNJANIMA",
+    "abbr": "1 Sol"
+  },
+  "600": {
+    "name": "DRUGA POSLANICA SOLUNJANIMA",
+    "abbr": "2 Sol"
+  },
+  "610": {
+    "name": "PRVA POSLANICA TIMOTEJU",
+    "abbr": "1 Tim"
+  },
+  "620": {
+    "name": "DRUGA POSLANICA TIMOTEJU",
+    "abbr": "2 Tim"
+  },
+  "630": {
+    "name": "POSLANICA TITU",
+    "abbr": "Tit"
+  },
+  "640": {
+    "name": "POSLANICA FILEMONU",
+    "abbr": "Flm"
+  },
+  "650": {
+    "name": "POSLANICA HEBREJIMA",
+    "abbr": "Heb"
+  },
+  "660": {
+    "name": "JAKOVLJEVA POSLANICA",
+    "abbr": "Jak"
+  },
+  "670": {
+    "name": "PRVA PETROVA POSLANICA",
+    "abbr": "1 Pet"
+  },
+  "680": {
+    "name": "DRUGA PETROVA POSLANICA",
+    "abbr": "2 Pet"
+  },
+  "690": {
+    "name": "PRVA IVANOVA POSLANICA",
+    "abbr": "1 Iv"
+  },
+  "700": {
+    "name": "DRUGA IVANOVA POSLANICA",
+    "abbr": "2 Iv"
+  },
+  "710": {
+    "name": "TREĆA IVANOVA POSLANICA",
+    "abbr": "3 Iv"
+  },
+  "720": {
+    "name": "JUDINA POSLANICA",
+    "abbr": "Jud"
+  },
+  "730": {
+    "name": "OTKRIVENJE",
+    "abbr": "Otk"
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "1 Moosese raamat",
+    "abbr": "1Ms"
+  },
+  "20": {
+    "name": "2 Moosese raamat",
+    "abbr": "2Ms"
+  },
+  "30": {
+    "name": "3 Moosese raamat",
+    "abbr": "3Ms"
+  },
+  "40": {
+    "name": "4 Moosese raamat",
+    "abbr": "4Ms"
+  },
+  "50": {
+    "name": "5 Moosese raamat",
+    "abbr": "5Ms"
+  },
+  "60": {
+    "name": "Joosua raamat",
+    "abbr": "Jo"
+  },
+  "70": {
+    "name": "Kohtumoistjate raamat",
+    "abbr": "Km"
+  },
+  "80": {
+    "name": "Rutt",
+    "abbr": "Rt"
+  },
+  "90": {
+    "name": "1 Saamueli raamat",
+    "abbr": "1Sm"
+  },
+  "100": {
+    "name": "2 Saamueli raamat",
+    "abbr": "2Sm"
+  },
+  "110": {
+    "name": "1 Kuningate raamat",
+    "abbr": "1Kn"
+  },
+  "120": {
+    "name": "2 Kuningate raamat",
+    "abbr": "2Kn"
+  },
+  "130": {
+    "name": "1 Ajaraamat",
+    "abbr": "1Aj"
+  },
+  "140": {
+    "name": "2 Ajaraamat",
+    "abbr": "2Aj"
+  },
+  "145": {
+    "name": "Manasse palve",
+    "abbr": "Manass"
+  },
+  "150": {
+    "name": "Esra",
+    "abbr": "Es"
+  },
+  "160": {
+    "name": "Nehemja",
+    "abbr": "Ne"
+  },
+  "165": {
+    "name": "2 Esdrat",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judith",
+    "abbr": "Judith"
+  },
+  "190": {
+    "name": "Ester",
+    "abbr": "Er"
+  },
+  "220": {
+    "name": "Iiob",
+    "abbr": "Ii"
+  },
+  "230": {
+    "name": "Laulud",
+    "abbr": "Ps"
+  },
+  "240": {
+    "name": "Opetussonad",
+    "abbr": "Op"
+  },
+  "250": {
+    "name": "Koguja",
+    "abbr": "Kg"
+  },
+  "260": {
+    "name": "Ulemlaul",
+    "abbr": "Ul"
+  },
+  "270": {
+    "name": "Saalomoni tarkus",
+    "abbr": "Saalom"
+  },
+  "280": {
+    "name": "Jeesuse, Siraki poja tarkus",
+    "abbr": "Jeesus"
+  },
+  "290": {
+    "name": "Jesaja",
+    "abbr": "Js"
+  },
+  "300": {
+    "name": "Jeremija",
+    "abbr": "Jr"
+  },
+  "310": {
+    "name": "Nutulaulud",
+    "abbr": "Nl"
+  },
+  "315": {
+    "name": "Jeremija sõnum",
+    "abbr": "Jeremi"
+  },
+  "320": {
+    "name": "Baruch",
+    "abbr": "Baruch"
+  },
+  "330": {
+    "name": "Hesekiel",
+    "abbr": "Hs"
+  },
+  "340": {
+    "name": "Taaniel",
+    "abbr": "Tn"
+  },
+  "350": {
+    "name": "Hoosea",
+    "abbr": "Ho"
+  },
+  "360": {
+    "name": "Joel",
+    "abbr": "Jl"
+  },
+  "370": {
+    "name": "Aamos",
+    "abbr": "Am"
+  },
+  "380": {
+    "name": "Obadja",
+    "abbr": "Ob"
+  },
+  "390": {
+    "name": "Joona",
+    "abbr": "Jn"
+  },
+  "400": {
+    "name": "Miika",
+    "abbr": "Mi"
+  },
+  "410": {
+    "name": "Nahum",
+    "abbr": "Na"
+  },
+  "420": {
+    "name": "Habakuk",
+    "abbr": "Ha"
+  },
+  "430": {
+    "name": "Sefanja",
+    "abbr": "Sf"
+  },
+  "440": {
+    "name": "Haggai",
+    "abbr": "Hg"
+  },
+  "450": {
+    "name": "Sakarja",
+    "abbr": "Sk"
+  },
+  "460": {
+    "name": "Malakia",
+    "abbr": "Ml"
+  },
+  "462": {
+    "name": "1. Maccabees",
+    "abbr": "1. Mac"
+  },
+  "464": {
+    "name": "2. Makkabid",
+    "abbr": "2. Mak"
+  },
+  "466": {
+    "name": "3. Makkabid",
+    "abbr": "3. Mak"
+  },
+  "468": {
+    "name": "3 Esdrat",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "Matteuse evangeelium",
+    "abbr": "Mat"
+  },
+  "480": {
+    "name": "Markuse evangeelium",
+    "abbr": "Mar"
+  },
+  "490": {
+    "name": "Luuka evangeelium",
+    "abbr": "Luuk"
+  },
+  "500": {
+    "name": "Johannese evangeelium",
+    "abbr": "Joh"
+  },
+  "510": {
+    "name": "Apostlite teod",
+    "abbr": "Apo"
+  },
+  "520": {
+    "name": "Roomlastele",
+    "abbr": "Room"
+  },
+  "530": {
+    "name": "1 Korintlastele",
+    "abbr": "1Kor"
+  },
+  "540": {
+    "name": "2 Korintlastele",
+    "abbr": "2Kor"
+  },
+  "550": {
+    "name": "Galaatlastele",
+    "abbr": "Gal"
+  },
+  "560": {
+    "name": "Efeslastele",
+    "abbr": "Ef"
+  },
+  "570": {
+    "name": "Filiplastele",
+    "abbr": "Fil"
+  },
+  "580": {
+    "name": "Koloslastele",
+    "abbr": "Kol"
+  },
+  "590": {
+    "name": "1 Tessalooniklastele",
+    "abbr": "1Tes"
+  },
+  "600": {
+    "name": "2 Tessalooniklastele",
+    "abbr": "2Tes"
+  },
+  "610": {
+    "name": "1 Timoteosele",
+    "abbr": "1Ti"
+  },
+  "620": {
+    "name": "2 Timoteosele",
+    "abbr": "2Ti"
+  },
+  "630": {
+    "name": "Tiitusele",
+    "abbr": "Tiit"
+  },
+  "640": {
+    "name": "Fileemonile",
+    "abbr": "Flm"
+  },
+  "650": {
+    "name": "Heebrealastele",
+    "abbr": "Heeb"
+  },
+  "660": {
+    "name": "Jaakobuse",
+    "abbr": "Jaak"
+  },
+  "670": {
+    "name": "1 Peetruse",
+    "abbr": "1Pe"
+  },
+  "680": {
+    "name": "2 Peetruse",
+    "abbr": "2Pe"
+  },
+  "690": {
+    "name": "1 Johannese",
+    "abbr": "1Joh"
+  },
+  "700": {
+    "name": "2 Johannese",
+    "abbr": "2Joh"
+  },
+  "710": {
+    "name": "3 Johannese",
+    "abbr": "3Joh"
+  },
+  "720": {
+    "name": "Juuda",
+    "abbr": "Juud"
+  },
+  "730": {
+    "name": "Ilmutuseraamat",
+    "abbr": "Ilm"
+  }
+}

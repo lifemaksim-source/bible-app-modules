@@ -1,20 +1,48 @@
 {
   "report": [
     {
-      "code": "tk",
+      "code": "lv",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "et",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "cs",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "sk",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": []
+    },
+    {
+      "code": "mk",
       "status": "machine-draft",
       "uiKeys": 1040,
       "bookKeys": 78,
       "safeRussianFallbacks": [
         {
-          "code": "tk",
-          "index": 945,
+          "code": "mk",
+          "index": 95,
           "method": "segmented"
         }
       ]
     },
     {
-      "code": "lt",
+      "code": "hr",
       "status": "machine-draft",
       "uiKeys": 1040,
       "bookKeys": 78,
@@ -25,14 +53,20 @@
     "ba",
     "be",
     "bg",
+    "cs",
+    "et",
+    "hr",
     "hy",
     "ka",
     "kk",
     "ky",
     "lt",
+    "lv",
+    "mk",
     "mn",
     "ro",
     "sah",
+    "sk",
     "tg",
     "tk",
     "tt",
@@ -40,25 +74,5 @@
   ],
   "sourceKeys": 1040,
   "machineTranslated": true,
-  "humanReviewed": false,
-  "segmentRepair": {
-    "ba": {
-      "originalIdentical": 35,
-      "repaired": 0,
-      "failed": 0,
-      "remainingIdentical": 38
-    },
-    "sah": {
-      "originalIdentical": 37,
-      "repaired": 0,
-      "failed": 0,
-      "remainingIdentical": 40
-    },
-    "mn": {
-      "originalIdentical": 3,
-      "repaired": 0,
-      "failed": 0,
-      "remainingIdentical": 6
-    }
-  }
+  "humanReviewed": false
 }
