@@ -35,6 +35,14 @@ export function validateDiscovery(document) {
     }
     const built = record.verification === 'sqlite_built_checked_not_android';
     const official = record.verification === 'sqlite_source_verified_not_android';
+    if (record.sourceKind === 'digital_ebook_listing' && (
+      record.verification !== 'listing_only' ||
+      typeof record.digitalDownloadUrl !== 'string' ||
+      !/^https:\/\/ibtrussia\.org\/sites\/default\/files\/[^\s]+\.(?:fb2(?:\.zip)?|epub)$/.test(record.digitalDownloadUrl) ||
+      !['fb2', 'fb2.zip', 'epub'].includes(record.digitalFormat)
+    )) {
+      errors.push(`${context}: invalid or prematurely promoted digital eBook source`);
+    }
     if (built !== (record.sourceKind === 'existing_build_branch') ||
         official !== (record.sourceKind === 'mybible_official_registry')) {
       errors.push(`${context}: sourceKind and verification do not match`);
