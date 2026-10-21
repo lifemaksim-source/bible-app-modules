@@ -7,6 +7,11 @@ on:
       - tools/audit_mybible.py
       - tools/test_audit_mybible.py
       - .github/workflows/priority-module-audit.yml
+  pull_request:
+    paths:
+      - tools/audit_mybible.py
+      - tools/test_audit_mybible.py
+      - .github/workflows/priority-module-audit.yml
   workflow_dispatch:
 
 permissions:
