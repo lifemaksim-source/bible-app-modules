@@ -5,6 +5,9 @@ on:
     paths:
       - tools/audit_mybible.py
       - tools/test_audit_mybible.py
+      - tools/check-language-discovery.mjs
+      - tools/language-discovery.test.mjs
+      - docs/language-module-discovery.json
       - .github/workflows/priority-module-audit.yml
   workflow_dispatch:
 
