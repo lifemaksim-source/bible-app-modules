@@ -65,6 +65,8 @@ export function validateDiscovery(document) {
       !Number.isInteger(record.verseRowsChecked) || record.verseRowsChecked < 1 ||
       !Number.isInteger(record.blankVerseAnchors) || record.blankVerseAnchors < 0 ||
       !Number.isInteger(record.verseAnchors) || record.verseAnchors <= record.blankVerseAnchors ||
+      !Number.isInteger(record.noteReferenceCount) || record.noteReferenceCount < 0 ||
+      record.sqliteRoundtripChecked !== true ||
       record.licenseStatus !== 'not_cleared' || record.published !== false
     )) {
       errors.push(`${context}: missing EPUB draft-only conversion evidence or rights flag`);
