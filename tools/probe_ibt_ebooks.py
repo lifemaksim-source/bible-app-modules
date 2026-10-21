@@ -251,7 +251,9 @@ def fetch_ibt(url: str) -> bytes:
 
 def probe_registry(path: Path, download=fetch_ibt) -> dict:
     rows = json.loads(path.read_text("utf-8"))["records"]
-    candidates = [r for r in rows if r.get("sourceKind") == "digital_ebook_listing"]
+    candidates = [r for r in rows if r.get("sourceKind") in ("digital_ebook_listing", "digital_epub_draft")]
+    if not candidates:
+        raise ValueError("No IBT eBook candidates found: do not report a successful empty audit")
     result = {"schemaVersion": 1, "attempted": len(candidates), "verified": 0, "items": []}
     for row in candidates:
         item = {"language": row["language"], "sourceUrl": row["sourceUrl"],
