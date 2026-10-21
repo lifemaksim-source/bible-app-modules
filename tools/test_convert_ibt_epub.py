@@ -135,6 +135,24 @@ class EpubDraftTest(unittest.TestCase):
         })
         self.assertEqual(parser.skipped_anchors, 0)
 
+    def test_inline_links_in_direct_osis_div_are_scripture_text(self):
+        parser = VerseHtml()
+        parser.feed('<div class="osis-div"><span id="Gen.10.2"></span>'
+                    '<a class="osis-reference" href="glossary.xhtml">One</a> '
+                    '<em>two</em><span id="Gen.10.3"></span>'
+                    '<span class="osis-hi">Three</span></div>')
+        self.assertEqual(dict(parser.finish()), {
+            (10, 10, 2): "One two",
+            (10, 10, 3): "Three",
+        })
+
+    def test_nested_non_osis_block_does_not_qualify_as_direct_scripture(self):
+        parser = VerseHtml()
+        parser.feed('<div class="osis-div"><span id="Gen.1.1"></span>'
+                    '<div class="publisher-caption"><a>Not Scripture</a></div>'
+                    '<a>Actual verse</a></div>')
+        self.assertEqual(dict(parser.finish()), {(10, 1, 1): "Actual verse"})
+
     def test_unrelated_non_osis_div_and_titles_are_not_attached(self):
         parser = VerseHtml()
         parser.feed('<div class="calibre1"><span id="Gen.1.1"></span>'
