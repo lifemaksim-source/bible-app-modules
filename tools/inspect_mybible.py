@@ -5,6 +5,7 @@ Usage: python3 tools/inspect_mybible.py translation.SQLite3
 """
 import argparse
 import json
+import hashlib
 import sqlite3
 from pathlib import Path
 
@@ -21,7 +22,7 @@ def inspect_module(filename: str) -> dict:
         if handle.read(16) != b"SQLite format 3\x00":
             raise ModuleError("Not an SQLite 3 database")
 
-    connection = sqlite3.connect(f"{path.as_uri()}?mode=ro", uri=True, timeout=5)
+    connection = sqlite3.connect(f"{path.as_uri()}?mode=ro&immutable=1", uri=True, timeout=5)
     try:
         connection.execute("PRAGMA query_only = ON")
         connection.execute("PRAGMA trusted_schema = OFF")
@@ -63,7 +64,10 @@ def inspect_module(filename: str) -> dict:
         for name, value in connection.execute("SELECT name, value FROM info"):
             if isinstance(name, str) and name in {"description", "language", "origin", "year", "code", "numbering", "license", "app_format"}:
                 metadata[name] = str(value or "")[:300]
+        with path.open("rb") as handle:
+            digest = hashlib.file_digest(handle, "sha256").hexdigest()
         return {
+            "sha256": digest,
             "inspection": "structural_only_not_published",
             "file": path.name,
             "sizeBytes": path.stat().st_size,
