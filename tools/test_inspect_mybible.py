@@ -1,4 +1,5 @@
 import sqlite3
+import hashlib
 import tempfile
 import unittest
 from contextlib import closing
@@ -26,6 +27,7 @@ class InspectModuleTest(unittest.TestCase):
 
     def test_valid_partial_translation(self):
         report = inspect_module(str(self.db))
+        self.assertEqual(report["sha256"], hashlib.sha256(self.db.read_bytes()).hexdigest())
         self.assertEqual(report["books"], 1)
         self.assertEqual(report["verseRows"], 1)
         self.assertEqual(report["metadata"]["language"], "tg")
