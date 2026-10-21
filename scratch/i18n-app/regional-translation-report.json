@@ -1,0 +1,59 @@
+{
+  "report": [
+    {
+      "code": "tg",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78
+    },
+    {
+      "code": "mn",
+      "status": "failed",
+      "reason": "mn: interpolation mismatch at item 716"
+    },
+    {
+      "code": "kk",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78
+    },
+    {
+      "code": "uz",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78
+    },
+    {
+      "code": "ky",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78
+    },
+    {
+      "code": "tt",
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78
+    },
+    {
+      "code": "ba",
+      "status": "failed",
+      "reason": "ba: interpolation mismatch at item 14"
+    },
+    {
+      "code": "sah",
+      "status": "failed",
+      "reason": "sah: interpolation mismatch at item 945"
+    }
+  ],
+  "enabled": [
+    "kk",
+    "ky",
+    "tg",
+    "tt",
+    "uz"
+  ],
+  "sourceKeys": 1040,
+  "machineTranslated": true,
+  "humanReviewed": false
+}

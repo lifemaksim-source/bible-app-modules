@@ -1,0 +1,314 @@
+{
+  "10": {
+    "name": "Ibtido",
+    "abbr": "Ibtido"
+  },
+  "20": {
+    "name": "Chiqish",
+    "abbr": "Chiqis"
+  },
+  "30": {
+    "name": "Levilar",
+    "abbr": "Levila"
+  },
+  "40": {
+    "name": "Raqamlar",
+    "abbr": "Raqaml"
+  },
+  "50": {
+    "name": "Qonunlar",
+    "abbr": "Qonunl"
+  },
+  "60": {
+    "name": "Yoshua",
+    "abbr": "Yoshua"
+  },
+  "70": {
+    "name": "Hakamlar",
+    "abbr": "Hakaml"
+  },
+  "80": {
+    "name": "Rut",
+    "abbr": "Rut"
+  },
+  "90": {
+    "name": "1 Shomuil",
+    "abbr": "1 Shom"
+  },
+  "100": {
+    "name": "2 Shoh",
+    "abbr": "2 Shoh"
+  },
+  "110": {
+    "name": "1 Shohlar",
+    "abbr": "1 Shoh"
+  },
+  "120": {
+    "name": "2 Shoh",
+    "abbr": "2 Shoh"
+  },
+  "130": {
+    "name": "1 Solnomalar",
+    "abbr": "1 Soln"
+  },
+  "140": {
+    "name": "2 Solnomalar",
+    "abbr": "2 Soln"
+  },
+  "145": {
+    "name": "Manashening ibodati",
+    "abbr": "Manash"
+  },
+  "150": {
+    "name": "Ezra",
+    "abbr": "Ezra"
+  },
+  "160": {
+    "name": "Naximiyo",
+    "abbr": "Naximi"
+  },
+  "165": {
+    "name": "2 Esdras",
+    "abbr": "2 Esdr"
+  },
+  "170": {
+    "name": "Tobit",
+    "abbr": "Tobit"
+  },
+  "180": {
+    "name": "Judit",
+    "abbr": "Judit"
+  },
+  "190": {
+    "name": "Ester",
+    "abbr": "Ester"
+  },
+  "220": {
+    "name": "Ish",
+    "abbr": "Ish"
+  },
+  "230": {
+    "name": "Zabur",
+    "abbr": "Zabur"
+  },
+  "240": {
+    "name": "Hikmatlar",
+    "abbr": "Hikmat"
+  },
+  "250": {
+    "name": "Voizlar",
+    "abbr": "Voizla"
+  },
+  "260": {
+    "name": "Qo'shiqlar qo'shig'i",
+    "abbr": "Qo'shi"
+  },
+  "270": {
+    "name": "Sulaymonning donoligi",
+    "abbr": "Sulaym"
+  },
+  "280": {
+    "name": "Sirax o'g'li Isoning donoligi",
+    "abbr": "Sirax "
+  },
+  "290": {
+    "name": "Ishayo",
+    "abbr": "Ishayo"
+  },
+  "300": {
+    "name": "Yeremiyo",
+    "abbr": "Yeremi"
+  },
+  "310": {
+    "name": "Yeremiyoning nolalari",
+    "abbr": "Yeremi"
+  },
+  "315": {
+    "name": "Yeremiyoning xabari",
+    "abbr": "Yeremi"
+  },
+  "320": {
+    "name": "Baruch",
+    "abbr": "Baruch"
+  },
+  "330": {
+    "name": "Hizqiyo",
+    "abbr": "Hizqiy"
+  },
+  "340": {
+    "name": "Daniel",
+    "abbr": "Daniel"
+  },
+  "350": {
+    "name": "Xo'sheya",
+    "abbr": "Xo'she"
+  },
+  "360": {
+    "name": "Joel",
+    "abbr": "Joel"
+  },
+  "370": {
+    "name": "Amos",
+    "abbr": "Amos"
+  },
+  "380": {
+    "name": "Avdiy",
+    "abbr": "Avdiy"
+  },
+  "390": {
+    "name": "Yunus",
+    "abbr": "Yunus"
+  },
+  "400": {
+    "name": "Mixa",
+    "abbr": "Mixa"
+  },
+  "410": {
+    "name": "Nahum",
+    "abbr": "Nahum"
+  },
+  "420": {
+    "name": "Xabakkuk",
+    "abbr": "Xabakk"
+  },
+  "430": {
+    "name": "Zafaniyo",
+    "abbr": "Zafani"
+  },
+  "440": {
+    "name": "Xaggay",
+    "abbr": "Xaggay"
+  },
+  "450": {
+    "name": "Zakariyo",
+    "abbr": "Zakari"
+  },
+  "460": {
+    "name": "Malakiy",
+    "abbr": "Malaki"
+  },
+  "462": {
+    "name": "1-makkabilar",
+    "abbr": "1-makk"
+  },
+  "464": {
+    "name": "2-makkabilar",
+    "abbr": "2-makk"
+  },
+  "466": {
+    "name": "3-makkabilar",
+    "abbr": "3-makk"
+  },
+  "468": {
+    "name": "3 Esdras",
+    "abbr": "3 Esdr"
+  },
+  "470": {
+    "name": "Metyudan",
+    "abbr": "Metyud"
+  },
+  "480": {
+    "name": "Markdan",
+    "abbr": "Markda"
+  },
+  "490": {
+    "name": "Luqodan",
+    "abbr": "Luqoda"
+  },
+  "500": {
+    "name": "Jondan",
+    "abbr": "Jondan"
+  },
+  "510": {
+    "name": "Amallar",
+    "abbr": "Amalla"
+  },
+  "520": {
+    "name": "Rimliklar",
+    "abbr": "Rimlik"
+  },
+  "530": {
+    "name": "1 Korinfliklarga",
+    "abbr": "1 Kori"
+  },
+  "540": {
+    "name": "2 Korinfliklarga",
+    "abbr": "2 Kori"
+  },
+  "550": {
+    "name": "Galatiyaliklar",
+    "abbr": "Galati"
+  },
+  "560": {
+    "name": "Efesliklar",
+    "abbr": "Efesli"
+  },
+  "570": {
+    "name": "Filippiliklar",
+    "abbr": "Filipp"
+  },
+  "580": {
+    "name": "Kolosaliklar",
+    "abbr": "Kolosa"
+  },
+  "590": {
+    "name": "1 Salonikaliklar",
+    "abbr": "1 Salo"
+  },
+  "600": {
+    "name": "2 Salonikaliklarga",
+    "abbr": "2 Salo"
+  },
+  "610": {
+    "name": "1 Timo'tiy",
+    "abbr": "1 Timo"
+  },
+  "620": {
+    "name": "2 Timo'tiy",
+    "abbr": "2 Timo"
+  },
+  "630": {
+    "name": "Titu",
+    "abbr": "Titu"
+  },
+  "640": {
+    "name": "Filimon",
+    "abbr": "Filimo"
+  },
+  "650": {
+    "name": "ibroniylar",
+    "abbr": "ibroni"
+  },
+  "660": {
+    "name": "Yoqub",
+    "abbr": "Yoqub"
+  },
+  "670": {
+    "name": "1 Butrus",
+    "abbr": "1 Butr"
+  },
+  "680": {
+    "name": "2 Butrus",
+    "abbr": "2 Butr"
+  },
+  "690": {
+    "name": "1 Yuhanno",
+    "abbr": "1 Yuha"
+  },
+  "700": {
+    "name": "2 Yuhanno",
+    "abbr": "2 Yuha"
+  },
+  "710": {
+    "name": "3 Yuhanno",
+    "abbr": "3 Yuha"
+  },
+  "720": {
+    "name": "Yahudo",
+    "abbr": "Yahudo"
+  },
+  "730": {
+    "name": "Vahiy",
+    "abbr": "Vahiy"
+  }
+}
