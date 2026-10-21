@@ -74,3 +74,38 @@ python3 -m unittest discover -s tools -p test_inspect_mybible.py -v
 - Уточнён SQLite-инспектор: база открывается с `mode=ro&immutable=1`, дополнительно выдаётся `sha256` конкретного файла. Локально заново проверены **5/5 Python unit-тестов**, включая совпадение SHA-256.
 - Сеть контейнера не разрешает DNS для ph4.org и github.com. Поэтому **реальные ZIP не скачаны** и **ни один новый модуль не опубликован**. Не подменять отсутствие доступа утверждением об отсутствии переводов.
 - Перед выпуском файла по-прежнему обязательны реальная загрузка ZIP, проверка SQLite, нумерации, соответствия языку и Android.
+
+## 21 октября: от списков к проверке реальных источников
+
+**Архитектурная находка:** в приложении уже есть механизм реестра MyBible —
+[`src/library/mybible.ts`](https://github.com/lifemaksim-source/bible-app/blob/integration/stage-b-20261021/src/library/mybible.ts),
+[`src/library/registry.ts`](https://github.com/lifemaksim-source/bible-app/blob/integration/stage-b-20261021/src/library/registry.ts),
+[`src/library/install.native.ts`](https://github.com/lifemaksim-source/bible-app/blob/integration/stage-b-20261021/src/library/install.native.ts).
+Он получает `registry.zip`, предлагает переводы по языкам и импортирует соответствующий `.SQLite3` из ZIP. **Создавать новый загрузчик не требуется**; проверить надо именно работу существующего на настоящих архивах.
+
+Добавлен [`tools/audit_mybible.py`](../tools/audit_mybible.py) — без сторонних Python-зависимостей:
+
+```bash
+# Скачать актуальный registry.zip из https://mybible.zone/repository/registry/registry.zip
+python3 tools/audit_mybible.py --registry /path/to/registry.zip --languages tg mn
+
+# Скачать ZIP по точному downloadUrls в выводе выше
+python3 tools/audit_mybible.py --file /path/to/translation.zip
+
+# 7 синтетических тестов
+python3 -W error::ResourceWarning -m unittest discover -s tools -p test_audit_mybible.py -v
+```
+
+Режим `--registry` **не придумывает URL из названия перевода**: он читает фактические `downloads` и HTTPS-шаблоны `hosts` официального реестра. Режим `--file` не извлекает пути ZIP на диск напрямую, ограничивает объём, игнорирует сопровождающие комментарии/словари, проверяет SQLITE, `books`, `verses`, `info`, целостность, дубли, пустые стихи и SHA-256. Вывод не приравнивается к Android smoke или подтверждению стиховой нумерации.
+
+Добавлен [`priority-module-audit.yml`](../.github/workflows/priority-module-audit.yml): на GitHub Actions делает **попытку** прочитать официальный реестр и взять один рабочий перевод на каждый приоритетный язык. Сохраняет лишь JSON-отчёт и никогда не публикует сам текст. Успех этих сетевых проверок нельзя считать подтверждённым, пока нет результата workflow.
+
+**Резервный источник монгольского Нового Завета:** [getBible v2 `monkjv`](https://github.com/getbible/v2/tree/master/monkjv) и [метаданные](https://github.com/getbible/v2/blob/master/translations.json) заявляют отдельный Mongolian KJV NT, 27 книг. Получен индекс книг и глав GitHub, но исходные файлы стихов и готовая SQLite из этого источника ещё не проверены; поэтому это `digital_api_listing`, а не опубликованный модуль.
+
+**Текущий реестр:** 49 кандидатских записей, 36 языков, в том числе 3 предыдущих локальных draft. Ни одна новая запись не добавлена в `catalog.json`.
+
+### Минимальный Android smoke после успешного скачивания
+
+В разделе «Библиотека» найти `Тоҷикӣ` и `Монгол`; скачать по одному реальному модулю, открыть Мф 1 и Ин 3, переключить перевод, проверить отображение национальных букв и поиск, включить авиарежим и открыть те же главы, затем удалить модуль. Для частичных переводов — отдельно проверить, что переход по отсутствующим книгам и главам не выдаёт пустую страницу. Эти действия ещё **не проводились**.
+
+**Claude:** использовать имеющийся `installRegistryModule`; не переписывать загрузчик и не переносить кандидатский JSON в пользовательскую библиотеку. Требуются только проверка регистровых записей, RTL/Unicode (если язык требует), нумерации, диапазонов и офлайн-чтения на Android.
