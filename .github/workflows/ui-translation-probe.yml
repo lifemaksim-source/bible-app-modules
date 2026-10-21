@@ -25,3 +25,12 @@ jobs:
             }catch(e){console.log(lang,'error',String(e).slice(0,150));}
           }
           NODE
+          node --input-type=module <<'NODE'
+          const text='Настройки\n[[[SEP]]] Библиотека переводов\n[[[SEP]]] Загрузить модуль';
+          for(const lang of ['tg','mn']){
+            const p=new URLSearchParams({client:'gtx',sl:'ru',tl:lang,dt:'t',q:text});
+            const a=await (await fetch('https://translate.googleapis.com/translate_a/single?'+p)).json();
+            const combined=(a[0]||[]).map(x=>x[0]).join('');
+            console.log(lang,JSON.stringify(combined).slice(0,400));
+          }
+          NODE
