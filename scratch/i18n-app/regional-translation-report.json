@@ -2,53 +2,695 @@
   "report": [
     {
       "code": "tg",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78
+      "status": "existing"
     },
     {
       "code": "mn",
-      "status": "failed",
-      "reason": "mn: interpolation mismatch at item 716"
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": [
+        {
+          "code": "mn",
+          "index": 716
+        }
+      ]
     },
     {
       "code": "kk",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78
+      "status": "existing"
     },
     {
       "code": "uz",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78
+      "status": "existing"
     },
     {
       "code": "ky",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78
+      "status": "existing"
     },
     {
       "code": "tt",
-      "status": "machine-draft",
-      "uiKeys": 1040,
-      "bookKeys": 78
+      "status": "existing"
     },
     {
       "code": "ba",
-      "status": "failed",
-      "reason": "ba: interpolation mismatch at item 14"
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": [
+        {
+          "code": "ba",
+          "index": 14
+        },
+        {
+          "code": "ba",
+          "index": 36
+        },
+        {
+          "code": "ba",
+          "index": 37
+        },
+        {
+          "code": "ba",
+          "index": 24
+        },
+        {
+          "code": "ba",
+          "index": 25
+        },
+        {
+          "code": "ba",
+          "index": 26
+        },
+        {
+          "code": "ba",
+          "index": 91
+        },
+        {
+          "code": "ba",
+          "index": 55
+        },
+        {
+          "code": "ba",
+          "index": 92
+        },
+        {
+          "code": "ba",
+          "index": 84
+        },
+        {
+          "code": "ba",
+          "index": 59
+        },
+        {
+          "code": "ba",
+          "index": 93
+        },
+        {
+          "code": "ba",
+          "index": 85
+        },
+        {
+          "code": "ba",
+          "index": 94
+        },
+        {
+          "code": "ba",
+          "index": 95
+        },
+        {
+          "code": "ba",
+          "index": 97
+        },
+        {
+          "code": "ba",
+          "index": 98
+        },
+        {
+          "code": "ba",
+          "index": 109
+        },
+        {
+          "code": "ba",
+          "index": 110
+        },
+        {
+          "code": "ba",
+          "index": 113
+        },
+        {
+          "code": "ba",
+          "index": 115
+        },
+        {
+          "code": "ba",
+          "index": 154
+        },
+        {
+          "code": "ba",
+          "index": 120
+        },
+        {
+          "code": "ba",
+          "index": 122
+        },
+        {
+          "code": "ba",
+          "index": 123
+        },
+        {
+          "code": "ba",
+          "index": 124
+        },
+        {
+          "code": "ba",
+          "index": 190
+        },
+        {
+          "code": "ba",
+          "index": 180
+        },
+        {
+          "code": "ba",
+          "index": 181
+        },
+        {
+          "code": "ba",
+          "index": 184
+        },
+        {
+          "code": "ba",
+          "index": 244
+        },
+        {
+          "code": "ba",
+          "index": 220
+        },
+        {
+          "code": "ba",
+          "index": 235
+        },
+        {
+          "code": "ba",
+          "index": 225
+        },
+        {
+          "code": "ba",
+          "index": 238
+        },
+        {
+          "code": "ba",
+          "index": 227
+        },
+        {
+          "code": "ba",
+          "index": 241
+        },
+        {
+          "code": "ba",
+          "index": 231
+        },
+        {
+          "code": "ba",
+          "index": 242
+        },
+        {
+          "code": "ba",
+          "index": 264
+        },
+        {
+          "code": "ba",
+          "index": 252
+        },
+        {
+          "code": "ba",
+          "index": 269
+        },
+        {
+          "code": "ba",
+          "index": 270
+        },
+        {
+          "code": "ba",
+          "index": 304
+        },
+        {
+          "code": "ba",
+          "index": 305
+        },
+        {
+          "code": "ba",
+          "index": 274
+        },
+        {
+          "code": "ba",
+          "index": 276
+        },
+        {
+          "code": "ba",
+          "index": 277
+        },
+        {
+          "code": "ba",
+          "index": 278
+        },
+        {
+          "code": "ba",
+          "index": 286
+        },
+        {
+          "code": "ba",
+          "index": 287
+        },
+        {
+          "code": "ba",
+          "index": 334
+        },
+        {
+          "code": "ba",
+          "index": 335
+        },
+        {
+          "code": "ba",
+          "index": 344
+        },
+        {
+          "code": "ba",
+          "index": 339
+        },
+        {
+          "code": "ba",
+          "index": 361
+        },
+        {
+          "code": "ba",
+          "index": 356
+        },
+        {
+          "code": "ba",
+          "index": 363
+        },
+        {
+          "code": "ba",
+          "index": 394
+        },
+        {
+          "code": "ba",
+          "index": 416
+        },
+        {
+          "code": "ba",
+          "index": 409
+        },
+        {
+          "code": "ba",
+          "index": 448
+        },
+        {
+          "code": "ba",
+          "index": 495
+        },
+        {
+          "code": "ba",
+          "index": 498
+        },
+        {
+          "code": "ba",
+          "index": 499
+        },
+        {
+          "code": "ba",
+          "index": 503
+        },
+        {
+          "code": "ba",
+          "index": 487
+        },
+        {
+          "code": "ba",
+          "index": 489
+        },
+        {
+          "code": "ba",
+          "index": 494
+        },
+        {
+          "code": "ba",
+          "index": 517
+        },
+        {
+          "code": "ba",
+          "index": 518
+        },
+        {
+          "code": "ba",
+          "index": 519
+        },
+        {
+          "code": "ba",
+          "index": 551
+        },
+        {
+          "code": "ba",
+          "index": 533
+        },
+        {
+          "code": "ba",
+          "index": 554
+        },
+        {
+          "code": "ba",
+          "index": 524
+        },
+        {
+          "code": "ba",
+          "index": 537
+        },
+        {
+          "code": "ba",
+          "index": 556
+        },
+        {
+          "code": "ba",
+          "index": 525
+        },
+        {
+          "code": "ba",
+          "index": 527
+        },
+        {
+          "code": "ba",
+          "index": 529
+        },
+        {
+          "code": "ba",
+          "index": 560
+        },
+        {
+          "code": "ba",
+          "index": 561
+        },
+        {
+          "code": "ba",
+          "index": 565
+        },
+        {
+          "code": "ba",
+          "index": 567
+        },
+        {
+          "code": "ba",
+          "index": 576
+        },
+        {
+          "code": "ba",
+          "index": 568
+        },
+        {
+          "code": "ba",
+          "index": 577
+        },
+        {
+          "code": "ba",
+          "index": 571
+        },
+        {
+          "code": "ba",
+          "index": 578
+        },
+        {
+          "code": "ba",
+          "index": 574
+        },
+        {
+          "code": "ba",
+          "index": 580
+        },
+        {
+          "code": "ba",
+          "index": 610
+        },
+        {
+          "code": "ba",
+          "index": 614
+        },
+        {
+          "code": "ba",
+          "index": 624
+        },
+        {
+          "code": "ba",
+          "index": 637
+        },
+        {
+          "code": "ba",
+          "index": 615
+        },
+        {
+          "code": "ba",
+          "index": 638
+        },
+        {
+          "code": "ba",
+          "index": 620
+        },
+        {
+          "code": "ba",
+          "index": 654
+        },
+        {
+          "code": "ba",
+          "index": 655
+        },
+        {
+          "code": "ba",
+          "index": 713
+        },
+        {
+          "code": "ba",
+          "index": 702
+        },
+        {
+          "code": "ba",
+          "index": 714
+        },
+        {
+          "code": "ba",
+          "index": 689
+        },
+        {
+          "code": "ba",
+          "index": 696
+        },
+        {
+          "code": "ba",
+          "index": 703
+        },
+        {
+          "code": "ba",
+          "index": 715
+        },
+        {
+          "code": "ba",
+          "index": 690
+        },
+        {
+          "code": "ba",
+          "index": 697
+        },
+        {
+          "code": "ba",
+          "index": 716
+        },
+        {
+          "code": "ba",
+          "index": 698
+        },
+        {
+          "code": "ba",
+          "index": 717
+        },
+        {
+          "code": "ba",
+          "index": 699
+        },
+        {
+          "code": "ba",
+          "index": 700
+        },
+        {
+          "code": "ba",
+          "index": 701
+        },
+        {
+          "code": "ba",
+          "index": 738
+        },
+        {
+          "code": "ba",
+          "index": 741
+        },
+        {
+          "code": "ba",
+          "index": 743
+        },
+        {
+          "code": "ba",
+          "index": 720
+        },
+        {
+          "code": "ba",
+          "index": 729
+        },
+        {
+          "code": "ba",
+          "index": 721
+        },
+        {
+          "code": "ba",
+          "index": 725
+        },
+        {
+          "code": "ba",
+          "index": 728
+        },
+        {
+          "code": "ba",
+          "index": 749
+        },
+        {
+          "code": "ba",
+          "index": 750
+        },
+        {
+          "code": "ba",
+          "index": 766
+        },
+        {
+          "code": "ba",
+          "index": 783
+        },
+        {
+          "code": "ba",
+          "index": 812
+        },
+        {
+          "code": "ba",
+          "index": 794
+        },
+        {
+          "code": "ba",
+          "index": 784
+        },
+        {
+          "code": "ba",
+          "index": 813
+        },
+        {
+          "code": "ba",
+          "index": 785
+        },
+        {
+          "code": "ba",
+          "index": 790
+        },
+        {
+          "code": "ba",
+          "index": 803
+        },
+        {
+          "code": "ba",
+          "index": 804
+        },
+        {
+          "code": "ba",
+          "index": 805
+        },
+        {
+          "code": "ba",
+          "index": 820
+        },
+        {
+          "code": "ba",
+          "index": 822
+        },
+        {
+          "code": "ba",
+          "index": 823
+        },
+        {
+          "code": "ba",
+          "index": 824
+        },
+        {
+          "code": "ba",
+          "index": 827
+        },
+        {
+          "code": "ba",
+          "index": 838
+        },
+        {
+          "code": "ba",
+          "index": 839
+        },
+        {
+          "code": "ba",
+          "index": 857
+        },
+        {
+          "code": "ba",
+          "index": 828
+        },
+        {
+          "code": "ba",
+          "index": 883
+        },
+        {
+          "code": "ba",
+          "index": 880
+        },
+        {
+          "code": "ba",
+          "index": 912
+        },
+        {
+          "code": "ba",
+          "index": 938
+        },
+        {
+          "code": "ba",
+          "index": 945
+        },
+        {
+          "code": "ba",
+          "index": 941
+        },
+        {
+          "code": "ba",
+          "index": 942
+        },
+        {
+          "code": "ba",
+          "index": 931
+        },
+        {
+          "code": "ba",
+          "index": 967
+        },
+        {
+          "code": "ba",
+          "index": 968
+        },
+        {
+          "code": "ba",
+          "index": 993
+        },
+        {
+          "code": "ba",
+          "index": 1027
+        }
+      ]
     },
     {
       "code": "sah",
-      "status": "failed",
-      "reason": "sah: interpolation mismatch at item 945"
+      "status": "machine-draft",
+      "uiKeys": 1040,
+      "bookKeys": 78,
+      "safeRussianFallbacks": [
+        {
+          "code": "sah",
+          "index": 945
+        }
+      ]
     }
   ],
   "enabled": [
+    "ba",
     "kk",
     "ky",
+    "mn",
+    "sah",
     "tg",
     "tt",
     "uz"
