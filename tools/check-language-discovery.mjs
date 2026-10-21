@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const TYPES = new Set(['mybible_catalog_listing', 'prior_branch_report', 'existing_build_branch', 'digital_api_listing', 'mybible_official_registry']);
+const TYPES = new Set(['mybible_catalog_listing', 'prior_branch_report', 'existing_build_branch', 'digital_api_listing', 'mybible_official_registry', 'digital_ebook_listing']);
 const STATUSES = new Set(['listing_only', 'sqlite_built_checked_not_android', 'sqlite_source_verified_not_android']);
 
 export function validateDiscovery(document) {
