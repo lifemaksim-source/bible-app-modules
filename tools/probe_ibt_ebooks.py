@@ -132,17 +132,48 @@ def inspect_xml(data: bytes, suffix: str) -> dict:
 
 
 class HtmlProbe(HTMLParser):
+    VERSE_ID = re.compile(r"^[1-3]?[A-Za-z][A-Za-z0-9]*\.\d{1,3}\.\d{1,3}$")
+
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.counts = Counter()
         self.examples = []
+        self.verse_ids: list[str] = []
+        self.verse_count = 0
+        self.verse_contents: list[dict] = []
+        self._verse_span_depth = 0
+        self._sup_depth = 0
+        self._verse_chars = 0
+        self._verse_id = ""
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self.counts[tag] += 1
-        if tag in ("section", "span", "sup", "p", "a") and len(self.examples) < 25:
-            fields = {k: (v or "")[:90] for k, v in attrs if k in ATTRS}
-            if fields:
-                self.examples.append({"tag": tag, "attributes": fields})
+        fields = {k: (v or "")[:90] for k, v in attrs if k in ATTRS}
+        if tag in ("section", "span", "sup", "p", "a") and len(self.examples) < 25 and fields:
+            self.examples.append({"tag": tag, "attributes": fields})
+        if tag == "span" and self.VERSE_ID.fullmatch(fields.get("id", "")):
+            self.verse_count += 1
+            self._verse_span_depth = 1
+            self._verse_chars = 0
+            self._verse_id = fields["id"]
+            if len(self.verse_ids) < 12:
+                self.verse_ids.append(self._verse_id)
+        elif self._verse_span_depth and tag == "span":
+            self._verse_span_depth += 1
+        if self._verse_span_depth and tag == "sup":
+            self._sup_depth += 1
+
+    def handle_data(self, data: str) -> None:
+        if self._verse_span_depth and not self._sup_depth:
+            self._verse_chars += len(data.strip())
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "sup" and self._sup_depth:
+            self._sup_depth -= 1
+        if tag == "span" and self._verse_span_depth:
+            self._verse_span_depth -= 1
+            if not self._verse_span_depth and len(self.verse_contents) < 12:
+                self.verse_contents.append({"id": self._verse_id, "bodyCharsWithinSpan": self._verse_chars})
 
 
 def _read_zip(data: bytes, fmt: str) -> dict:
@@ -179,7 +210,11 @@ def _read_zip(data: bytes, fmt: str) -> dict:
                 probe = HtmlProbe()
                 probe.feed(raw.decode("utf-8-sig", "replace"))
                 profile = {"format": "xhtml", "tagCounts": probe.counts.most_common(18),
-                           "attributeSamples": probe.examples, "structureVerdict": "requires_manual_verse_mapping_review"}
+                           "attributeSamples": probe.examples,
+                           "verseAnchorCount": probe.verse_count,
+                           "verseIdSamples": probe.verse_ids,
+                           "verseSpanTextSamples": probe.verse_contents,
+                           "structureVerdict": "requires_manual_verse_mapping_review"}
             profiles.append({"member": Path(info.filename).name[:110],
                              "uncompressedBytes": info.file_size, "structure": profile})
         return {"archiveEntries": len(members), "xmlEntries": len(candidates),
@@ -225,6 +260,13 @@ def probe_registry(path: Path, download=fetch_ibt) -> dict:
             raw = download(row["digitalDownloadUrl"])
             item.update(inspect_ebook(raw, row["digitalFormat"]))
             result["verified"] += 1
+            epub_url = row.get("digitalEpubUrl")
+            if epub_url and epub_url != row["digitalDownloadUrl"]:
+                try:
+                    item["epubSourceUrl"] = epub_url
+                    item["epubScan"] = inspect_ebook(download(epub_url), "epub")
+                except (OSError, ValueError, ET.ParseError, zipfile.BadZipFile, UnicodeError) as exc:
+                    item["epubError"] = str(exc)[:240]
         except (OSError, ValueError, ET.ParseError, zipfile.BadZipFile, UnicodeError) as exc:
             item.update(status="probe_failed", error=str(exc)[:240])
         result["items"].append(item)
