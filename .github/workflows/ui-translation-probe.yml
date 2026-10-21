@@ -19,7 +19,7 @@ jobs:
           node-version: '22'
       - name: Восемь полных интерфейсных файлов (только публичные строки UI)
         working-directory: scratch/i18n-app
-        run: node tools/translate-regional.mjs --languages=tg,mn,kk,uz,ky,tt,ba,sah
+        run: node tools/translate-regional.mjs --languages=be,bg,ro,hy,ka,tk,lt,lv,et,cs,sk,mk
       - name: Исправить только оставшиеся русские строки с переменными
         working-directory: scratch/i18n-app
         run: |
