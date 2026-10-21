@@ -39,6 +39,21 @@ class EpubDraftTest(unittest.TestCase):
         self.assertNotIn("Title", repr(rows))
         self.assertNotIn("Should not", repr(rows))
 
+    def test_proverbs_and_other_poetry_lines_are_real_verse_text(self):
+        p = VerseHtml()
+        p.feed('<div class="osis-lg"><div class="osis-l"><span id="Prov.1.1"><sup>1</sup></span>First line</div>'
+               '<div class="osis-l1"><span id="Prov.1.2"><sup>2</sup></span>Second line</div></div>')
+        self.assertEqual(dict(p.finish()), {
+            (240, 1, 1): 'First line',
+            (240, 1, 2): 'Second line',
+        })
+
+    def test_footnotes_not_accidentally_attached_to_preceding_verse(self):
+        p = VerseHtml()
+        p.feed('<p class="osis-p"><span id="Gen.1.1"><sup>1</sup></span>Real Scripture</p>'
+               '<div class="xsl-footnote-section"><p class="osis-p">Publisher note</p></div>')
+        self.assertEqual(dict(p.finish()), {(10, 1, 1): 'Real Scripture'})
+
     def test_hyperlinks_are_not_verse_addresses(self):
         p = VerseHtml()
         p.feed('<html><p class="osis-p"><a href="#Matt.1.1">reference</a></p></html>')
