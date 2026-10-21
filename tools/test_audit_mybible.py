@@ -90,7 +90,7 @@ class RegistryTest(unittest.TestCase):
         with self.assertRaisesRegex(AuditError, 'Duplicate'):
             verify_zip(archive)
 
-    def test_rejects_empty_verse(self):
+    def test_reports_blank_verse_placeholder_without_altering_source(self):
         p = self.make_db()
         with closing(sqlite3.connect(p)) as db:
             db.execute("UPDATE verses SET text = ' '")
@@ -98,8 +98,21 @@ class RegistryTest(unittest.TestCase):
         archive = self.p / 'bad.zip'
         with zipfile.ZipFile(archive, 'w') as z:
             z.write(p, 'KM.SQLite3')
-        with self.assertRaisesRegex(AuditError, 'No books or verses|Empty verse'):
+        with self.assertRaisesRegex(AuditError, "No books or verses"):
             verify_zip(archive)
+
+    def test_mixed_blank_and_valid_verses_allowed_with_warning(self):
+        p = self.make_db()
+        with closing(sqlite3.connect(p)) as db:
+            db.execute("INSERT INTO verses VALUES (470, 1, 2, ' ')")
+            db.commit()
+        archive = self.p / "mixed.zip"
+        with zipfile.ZipFile(archive, "w") as z:
+            z.write(p, "KM.SQLite3")
+        result = verify_zip(archive)
+        self.assertEqual(result["nonEmptyVerseRows"], 1)
+        self.assertEqual(result["blankVerseRows"], 1)
+        self.assertTrue(result["warnings"])
 
     def test_rejects_missing_book(self):
         p = self.make_db()
