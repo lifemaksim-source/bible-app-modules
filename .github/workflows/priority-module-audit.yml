@@ -1,0 +1,105 @@
+name: Проверка таджикских и монгольских модулей MyBible
+
+on:
+  push:
+    branches: [feature/ussr-warsaw-language-audit-20261021]
+    paths:
+      - tools/audit_mybible.py
+      - tools/test_audit_mybible.py
+      - .github/workflows/priority-module-audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Локальные тесты проверки MyBible
+        run: python3 -W error::ResourceWarning -m unittest discover -s tools -p test_audit_mybible.py -v
+      - name: Действительный реестр и ZIP-архивы, без публикации
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          from urllib.error import URLError
+          from urllib.parse import urlparse
+          from urllib.request import Request, urlopen
+
+          sys.path.insert(0, 'tools')
+          from audit_mybible import AuditError, read_registry, registry_candidates, verify_zip
+
+          tmp = Path('/tmp/mybible-registry-audit')
+          tmp.mkdir(exist_ok=True)
+          report = {'source': 'https://mybible.zone/repository/registry/registry.zip', 'languages': {}}
+          HOSTS = {'mybible.zone', 'mybible.infoo.pro'}
+          def get(url, max_bytes):
+              if urlparse(url).scheme != 'https' or urlparse(url).hostname not in HOSTS:
+                  raise ValueError('URL host outside audited MyBible servers')
+              req = Request(url, headers={'User-Agent': 'bible-app-modules/priority-audit'})
+              with urlopen(req, timeout=25) as response:
+                  if response.status != 200:
+                      raise RuntimeError('HTTP ' + str(response.status))
+                  data = response.read(max_bytes + 1)
+              if len(data) > max_bytes:
+                  raise ValueError('Archive larger than configured limit')
+              return data
+
+          try:
+              raw = get(report['source'], 32 * 1024 * 1024)
+              registry_file = tmp / 'registry.zip'
+              registry_file.write_bytes(raw)
+              reg = read_registry(registry_file)
+              rows = registry_candidates(reg, {'tg', 'mn'})
+              report['registry'] = {'status': 'loaded', 'version': reg.get('version'), 'matchingEntries': len(rows)}
+              for language in ('tg', 'mn'):
+                  offers = [r for r in rows if r['language'] == language]
+                  summary = {'status': 'no_registry_entry', 'entries': len(offers), 'attempts': []}
+                  for offer in offers[:3]:
+                      for url in offer['downloadUrls'][:2]:
+                          attempt = {'file': offer['file'], 'url': url}
+                          try:
+                              data = get(url, 100 * 1024 * 1024)
+                              archive = tmp / 'module.zip'
+                              archive.write_bytes(data)
+                              valid = verify_zip(archive)
+                              if valid['language'] and valid['language'].lower().split('-')[0] != language:
+                                  raise AuditError('Wrong module language: ' + valid['language'])
+                              attempt['inspection'] = valid
+                              summary['status'] = 'sqlite_verified_not_android'
+                          except Exception as exc:
+                              attempt['error'] = str(exc)[:240]
+                          summary['attempts'].append(attempt)
+                          if summary['status'] == 'sqlite_verified_not_android':
+                              break
+                      if summary['status'] == 'sqlite_verified_not_android':
+                          break
+                  if offers and summary['status'] != 'sqlite_verified_not_android':
+                      summary['status'] = 'registry_present_archive_not_verified'
+                  report['languages'][language] = summary
+          except Exception as exc:
+              report['registry'] = {'status': 'unavailable', 'error': str(exc)[:300]}
+          # Publish only metadata; never the texts, ZIP or SQLite.
+          Path('priority-module-audit.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf8')
+          lines = ['## Приоритетные языки — проверка', '']
+          lines.append('Реестр: ' + report.get('registry', {}).get('status', '?'))
+          for language, value in report['languages'].items():
+              lines.append(f'- {language}: {value["status"]}; записей в реестре: {value["entries"]}')
+          with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf8') as f:
+              f.write('\n'.join(lines) + '\n')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
+      - name: Сохранить только JSON-отчёт (без библейских файлов)
+        uses: actions/upload-artifact@v4
+        with:
+          name: priority-module-audit
+          path: priority-module-audit.json
+          retention-days: 7
