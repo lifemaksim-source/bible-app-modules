@@ -958,7 +958,8 @@
       "sqliteChecked": false,
       "androidChecked": false,
       "published": false,
-      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified."
+      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified.",
+      "digitalEpubUrl": "https://ibtrussia.org/sites/default/files/ebm/ebook/657c98eni/tab_cyrillic_compilation.epub"
     },
     {
       "id": "ibt-lbe-lak-matt-acts-rev-2023",
@@ -976,7 +977,8 @@
       "sqliteChecked": false,
       "androidChecked": false,
       "published": false,
-      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified."
+      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified.",
+      "digitalEpubUrl": "https://ibtrussia.org/sites/default/files/ebm/ebook/657c8yo2v/lbe_cyrillic_Matt-Acts-Rev.epub"
     },
     {
       "id": "ibt-inh-inh-compilation",
@@ -994,7 +996,8 @@
       "sqliteChecked": false,
       "androidChecked": false,
       "published": false,
-      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified."
+      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified.",
+      "digitalEpubUrl": "https://ibtrussia.org/sites/default/files/ebm/ebook/m4c0ujod/inh_cyrillic_compilation.epub"
     },
     {
       "id": "ibt-gag-gag-cyrillic-2025",
@@ -1012,7 +1015,8 @@
       "sqliteChecked": false,
       "androidChecked": false,
       "published": false,
-      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified."
+      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified.",
+      "digitalEpubUrl": "https://ibtrussia.org/sites/default/files/ebm/ebook/e0ee1c3c/gag_cyrillic_Gen-Ruth-Eccl-Jonah-Matt-Rev.epub"
     },
     {
       "id": "ibt-dng-dng-proverbs-compilation",
@@ -1030,7 +1034,8 @@
       "sqliteChecked": false,
       "androidChecked": false,
       "published": false,
-      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified."
+      "sourceNote": "Digitally downloadable FB2/EPUB linked from IBT publishing page; archive bytes, verse markup, canonical mapping, conversion and Android not yet verified.",
+      "digitalEpubUrl": "https://ibtrussia.org/sites/default/files/ebm/ebook/657c89o2g/dng_cyrillic_compilation.epub"
     }
   ]
 }
