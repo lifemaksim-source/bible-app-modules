@@ -165,10 +165,12 @@ def verify_zip(file):
                     for book, existing in chapters.items()
                     if existing and len(existing) != max(existing)
                 }
+            with dest.open("rb") as digest_stream:
+                digest = hashlib.file_digest(digest_stream, "sha256").hexdigest()
             return {
                 "archive": p.name,
                 "sqliteEntry": entry.filename,
-                "sqliteSha256": hashlib.sha256(dest.read_bytes()).hexdigest(),
+                "sqliteSha256": digest,
                 "books": books,
                 "booksWithNonEmptyText": present_books,
                 "nonEmptyVerseRows": count,
