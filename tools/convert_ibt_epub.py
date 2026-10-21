@@ -279,9 +279,11 @@ def sqlite_draft(rows: dict[tuple[int, int, int], str], language: str, source_sh
             }
             db.executemany("INSERT INTO info VALUES (?, ?)", sorted(metadata.items()))
             by_book = sorted({row[0] for row in rows})
-            code_by_number = {v: k for k, v in BOOKS.items()}
+            # OSIS codes (Gen, Matt, Acts) identify books; they are NOT
+            # their localized names. Leave labels empty so the existing app
+            # displays its own translated canonical names instead.
             db.executemany("INSERT INTO books VALUES (?,?,?,?,1)",
-                           [("", b, code_by_number[b], code_by_number[b]) for b in by_book])
+                           [("", b, "", "") for b in by_book])
             db.executemany("INSERT INTO verses VALUES (?,?,?,?)",
                            [(b,c,v,t) for (b,c,v),t in sorted(rows.items())])
             db.execute("CREATE INDEX verses_bc ON verses(book_number,chapter)")
