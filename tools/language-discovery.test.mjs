@@ -35,8 +35,9 @@ test('the required priority languages cannot be silently removed', () => {
 });
 
 test('seven official MyBible modules have real SQLite evidence', () => {
-  const rows = source.records.filter(x => x.verification === 'sqlite_source_verified_not_android');
+  const rows = source.records.filter(x => x.verification === 'sqlite_source_verified_not_android' && ['tg', 'mn'].includes(x.language));
   assert.equal(rows.length, 7);
+  assert.ok(source.records.some(x => x.id === 'mybible-dar-drg' && x.booksChecked === 1 && x.verseRowsChecked === 1068));
   assert.equal(rows.filter(x => x.language === 'tg').length, 4);
   assert.equal(rows.filter(x => x.language === 'mn').length, 3);
   assert.ok(rows.some(x => x.id === 'mybible-mn-ab2013' && x.booksChecked === 66));
