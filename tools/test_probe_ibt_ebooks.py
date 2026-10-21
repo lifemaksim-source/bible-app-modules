@@ -67,6 +67,19 @@ class IbtebooksTest(unittest.TestCase):
             self.assertEqual(report["verified"], 1)
             self.assertEqual(report["items"][0]["status"], "bytes_inspected_not_converted")
 
+    def test_after_epub_draft_promotion_audit_still_scans_the_source(self):
+        with tempfile.TemporaryDirectory() as root:
+            source = Path(root) / "registry.json"
+            source.write_text(json.dumps({"records": [
+                {"sourceKind": "digital_epub_draft", "language": "tab",
+                 "sourceUrl": "https://ibtrussia.org/Tabasaran",
+                 "digitalDownloadUrl": "https://ibtrussia.org/sites/default/files/ebm/ebook/test.fb2.zip",
+                 "digitalFormat": "fb2.zip"}
+            ]}))
+            report = probe_registry(source, lambda url: zips(("test.fb2", FB2)))
+            self.assertEqual(report["attempted"], 1)
+            self.assertEqual(report["verified"], 1)
+
     def test_source_whitelist(self):
         with self.assertRaisesRegex(ValueError, "Untrusted"):
             fetch_ibt("https://example.com/file.fb2")
