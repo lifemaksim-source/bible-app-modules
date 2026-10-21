@@ -308,7 +308,7 @@ def sqlite_draft(rows: dict[tuple[int, int, int], str], language: str, source_sh
             target_dir = Path(local_test_dir)
             target_dir.mkdir(parents=True, exist_ok=True)
             archive = target_dir / f"IBT_{language}_LOCAL_TEST_ONLY.zip"
-            with zipfile.ZipFile(archive, "x", compression=zipfile.ZIP_DEFLATED) as zip_out:
+            with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as zip_out:
                 zip_out.write(filename, arcname=f"IBT_{language}.SQLite3")
             report["localTestZip"] = str(archive)
         return report
