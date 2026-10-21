@@ -224,6 +224,9 @@ class EpubDraftTest(unittest.TestCase):
                 ).fetchall(), [(470, 1, 1, rows[(470, 1, 1)]),
                                (470, 1, 3, rows[(470, 1, 3)])])
                 self.assertEqual(db.execute("SELECT value FROM info WHERE name='language'").fetchone()[0], "inh")
+                self.assertEqual(db.execute(
+                    "SELECT short_name, long_name FROM books WHERE book_number=470"
+                ).fetchone(), ("", ""))
             with self.assertRaises(FileExistsError):
                 sqlite_draft(rows, "inh", "a" * 64, local_test_dir=out)
 
