@@ -1,0 +1,53 @@
+name: Проверка электронных книг IBT для новых языков
+
+on:
+  push:
+    branches: [feature/ussr-warsaw-language-audit-20261021]
+    paths:
+      - tools/probe_ibt_ebooks.py
+      - tools/test_probe_ibt_ebooks.py
+      - docs/language-module-discovery.json
+      - .github/workflows/ibt-ebook-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-ibt:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Проверка безопасности инспектора на синтетических FB2 и EPUB
+        run: python3 -W error::ResourceWarning -m unittest discover -s tools -p test_probe_ibt_ebooks.py -v
+      - name: Скачать и изучить 5 реальных IBT-файлов без публикации текста
+        run: python3 tools/probe_ibt_ebooks.py --report ibt-ebook-probe.json
+      - name: Краткий итог без фрагментов текста
+        if: always()
+        shell: bash
+        run: |
+          if test -f ibt-ebook-probe.json; then
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          d = json.loads(Path("ibt-ebook-probe.json").read_text("utf8"))
+          lines = ["## Инспекция реальных FB2/EPUB", "", f"Успешно скачано и изучено: **{d['verified']}/{d['attempted']}**", ""]
+          for x in d["items"]:
+              count = ", ".join(f"{p['structure'].get('rootTag', 'HTML')}: {p['structure'].get('paragraphsStartingWithNumber', 'unknown')} paragraphs starting with numbers" for p in x.get("profiles", []))
+              lines.append(f"- {x['language']}: {x['status']}, {x.get('downloadBytes', 'unknown')} bytes; {count}")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf8") as f:
+              f.write("\n".join(lines) + "\n")
+          PY
+          fi
+      - name: Архивировать только техническую структуру, без произведений
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ibt-ebook-structure
+          path: ibt-ebook-probe.json
+          retention-days: 7
+          if-no-files-found: ignore
