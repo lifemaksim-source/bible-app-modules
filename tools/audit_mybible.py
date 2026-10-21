@@ -62,7 +62,7 @@ def registry_candidates(registry, languages):
         if not isinstance(entry, dict) or entry.get("hid") is True:
             continue
         raw_lang = entry.get("lng", "")
-        language = raw_lang.strip().split(" ")[0].split("_")[0].lower() if isinstance(raw_lang, str) else ""
+        language = re.split(r"[\s_-]", raw_lang.strip(), maxsplit=1)[0].lower() if isinstance(raw_lang, str) else ""
         file = entry.get("fil")
         if language not in languages or not isinstance(file, str) or not file or "." in file:
             continue
@@ -132,6 +132,8 @@ def verify_zip(file):
                 count = db.execute("SELECT COUNT(*) FROM verses WHERE text IS NOT NULL AND TRIM(text) != ''").fetchone()[0]
                 if not books or not count:
                     raise AuditError("No books or verses")
+                if db.execute("SELECT 1 FROM verses WHERE text IS NULL OR TRIM(text) = '' LIMIT 1").fetchone():
+                    raise AuditError("Empty verse text")
                 orphan = db.execute("SELECT 1 FROM verses AS v LEFT JOIN books AS b ON v.book_number=b.book_number WHERE b.book_number IS NULL LIMIT 1").fetchone()
                 if orphan:
                     raise AuditError("Verse references a missing book")
